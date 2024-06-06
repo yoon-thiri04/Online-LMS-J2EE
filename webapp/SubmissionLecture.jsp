@@ -2,8 +2,8 @@
     pageEncoding="ISO-8859-1"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ page import="dao.*" %>
-<%@ page import="model.Submission" %>
-<%@ page import="java.util.List" %>
+<%@ page import="model.Submission" import="java.sql.*" %>
+<%@ page import="java.util.List" import="util.*" %>
 
 
 <% 
@@ -13,11 +13,24 @@ lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);%>
 <%
 int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
-
+int id = Integer.parseInt(request.getParameter("id").toString());
 submitDAO sdao=new submitDAO();
-List<Submission> submitList=(List<Submission>)request.getAttribute("submitList");
+List<Submission> submitList=sdao.get(id, course_id);
 pageContext.setAttribute("sList",submitList,PageContext.PAGE_SCOPE);
+String title=null;
+Connection connection=DBConnection.openConnection();
+String sql = "SELECT title FROM material WHERE id = ?";
+PreparedStatement statement = connection.prepareStatement(sql);
+statement.setInt(1, id);
 
+ResultSet resultSet = statement.executeQuery();
+
+if(resultSet.next()) {
+    
+     title = resultSet.getString("title");
+    } else {
+    System.out.println("No course found with id " + course_id);
+}
 %>
 
 <!DOCTYPE html>
@@ -27,11 +40,10 @@ pageContext.setAttribute("sList",submitList,PageContext.PAGE_SCOPE);
 <meta charset="UTF-8" />
 <title>Material Student</title>
 <script>
-function add(id) {
-	
-            	window.location.href="SubmissionForm.jsp?mat_id="+id;
-                
-           
+
+function viewSubmission(id){
+	window.location.href="ViewSubmissionLecture.jsp?s_id="+id;
+
 }
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
@@ -447,7 +459,7 @@ label{
   </div>
   
   <div id="title">
-    <p>Submissions of <%=(String)request.getAttribute("title") %></p>
+    <p>Submissions of <%=title %></p>
     <div id="Addbtn">
       <a href="SubmissionAllLecture.jsp" class="btn">
         <h3>Go Back</h3>
@@ -489,6 +501,8 @@ label{
                 
                 <td style="padding-right:10px; border:2px solid black ;background-color:#fff ;"> 
                 	<a href = "${pageContext.request.contextPath}/SubmissionLectureController?action=DOWNLOAD&id=${sub.submission_id}&title=${sub.title}&f_type=${sub.f_type}" class="button1">Download</a>
+                	<a href="#" onclick="viewSubmission(${sub.submission_id})" class="button1">View Submission</a>
+       
                 	 <c:if test="${sub.score eq 0}">
                 	<a href = "#popup" class="button1">Add Score</a>               
                         </c:if>         
@@ -517,7 +531,7 @@ label{
             <div class="input-data">
                 <input type="text" name="comment" required>
                 <div class="underline"></div>
-                <label for="">Add Comment for Submission(Optional)</label>
+                <label for="">Add Comment for Submission</label>
             </div>
         </div>
         <div class="form-row submit-btn">

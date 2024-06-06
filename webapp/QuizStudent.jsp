@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ page import="dao.*" %>
-<%@ page import="model.Material" %>
+<%@ page import="model.Quiz" %>
 <%@ page import="java.util.List" import="java.sql.*" import="util.*"%>
 
 
@@ -14,28 +14,18 @@ String username=udao.getName(userEmail);
     int course_id = Integer.parseInt(request.getParameter("course_id"));
     
     session.setAttribute("course_id",course_id);
-    uploadDao mDAO = new uploadDao();
-    List<Material> matList = mDAO.getfor(course_id);
-    pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
+    quizDAO qdao=new quizDAO();
+    List<Quiz> quizList = qdao.get(course_id);
+    pageContext.setAttribute("qList", quizList,PageContext.PAGE_SCOPE);
    
 %>
-
+    
 <!DOCTYPE html>
-
 <html>
 <head>
-<meta charset="UTF-8" />
-<title>Material Student</title>
-<script>
-function add(id) {
-	window.location.href="SubmissionForm.jsp?mat_id="+id;
-         
-}
-function viewSubmission(id){
-	window.location.href="ViewSubmission.jsp?mat_id="+id;
-
-}
-</script>
+<meta charset="ISO-8859-1">
+<title>Student Quiz</title>
+</head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <style> @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
 *{
@@ -262,7 +252,7 @@ color:;
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
 		        <h4><%= username %></h4>
-		    </div>
+		   </div>
 	    </div>
 	</header>
 	<div style="height:60px;">------------</div>
@@ -270,7 +260,7 @@ color:;
     <ul>
       <li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses</a></li>
       <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
-       
+      <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
       <li><a href="Announcements.jsp"><i class="fa-solid fa-calendar-week"></i>Announcements</a></li>
       <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
       <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
@@ -282,7 +272,7 @@ color:;
           <table>
           <tr>
           <th style="padding-right:80px;padding-bottom:15px; padding-top:10px" >
-            <h4>Class Materials</h4>
+            <h4>Quiz</h4>
             </th>
            
             <th style="padding-right:80px;padding-bottom:15px;" ></th>
@@ -292,21 +282,24 @@ color:;
             
            <tr>
            
-            <td class="th"><h4>Material Title</h4></td>
-            <td class="th"><h4>Material Type</h4></td>
+            <td class="th"><h4>Quiz Title</h4></td>
+            <td class="th"><h4>Total Quizzes</h4></td>
             
+            <td class="th"><h4>Time allowed</h4></td>
+            <td class="th"><h4>Deadline Date</h4></td>
             <td class="th"><h4>Status</h4></td>
-            
             <td class="th"><h4>Operations</h4></td>
          
            </tr>
-            <c:forEach items="${mList}" var="ml">
-            <c:set var="mat_id" value="${ml.id}" />
-            
-              <tr class="twotd">
-				<td>${ml.title}</td>
-                <td>${ml.type}</td>
-                <%
+            <c:forEach items="${qList}" var="quiz">
+           <tr class="twotd">
+				<td>${quiz.title}</td>
+                <td>${quiz.total_quizes}</td>
+                <td>${quiz.deadline_date}</td>
+                <td></td>
+                 <td>
+                 <c:choose>
+                        <%
 boolean submissionExists = false;
 PreparedStatement statement = null;
 ResultSet resultSet = null;
@@ -328,7 +321,7 @@ try {
     
     
 } finally {
-    // Close resources
+    
     if (resultSet != null) {
         resultSet.close();
     }
@@ -352,9 +345,6 @@ if (submissionExists) {
 pageContext.setAttribute("submissionExists", submissionExists);
 pageContext.setAttribute("score", score);
 %>
-                <td>
-                 <c:choose>
-        
         <c:when test="${ml.type eq 'Assignment'}">
             
             <c:choose>
@@ -382,13 +372,12 @@ pageContext.setAttribute("score", score);
                 
 
                 <td>
-                	<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">Download</a>
                 	 <c:choose>
         <c:when test="${not submissionExists and ml.type  eq 'Assignment'}">
-            <a href="#" onclick="add(${ml.id})" class="button1">Add Submission</a>
+            <a href="#" onclick="add(${quiz.quiz_id})" class="button1"></a>
         </c:when>
         <c:when test="${submissionExists and ml.type eq 'Assignment' }">
-            <a href="#" onclick="viewSubmission(${ml.id})" class="button1">View Submission</a>
+            <a href="#" class="button1">View Submission</a>
         </c:when>
     </c:choose>
                 </td>
@@ -403,6 +392,8 @@ pageContext.setAttribute("score", score);
         
     
 </div>
+                
+<body>
 
 </body>
 </html>

@@ -20,8 +20,7 @@ String username=udao.getName(userEmail);%>
   <title>Courses Enrolled</title>
 <script>
 	function enroll(course_id) {
-	    // Redirect to the enrollform.jsp with the course_id as a query parameter
-	    window.location.href = "Material.jsp?course_id=" + course_id;
+	        window.location.href = "Material.jsp?course_id=" + course_id;
 	}
 </script>
   <script>
@@ -323,9 +322,9 @@ img{
 		    Class.forName("com.mysql.jdbc.Driver");
 		    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:/onlinelearningsystem", "root", "yoonthiri@2004");
 		    Statement st = con.createStatement();
-		    String sql = "SELECT course_id FROM enrollment where name=?";
+		    String sql = "SELECT course_id FROM enrollment where email=?";
 		    preparedstatement = con.prepareStatement(sql);
-		    preparedstatement.setString(1, username);
+		    preparedstatement.setString(1, userEmail);
 		    resultSet = preparedstatement.executeQuery(); 
 		    
 		    while (resultSet.next()) {

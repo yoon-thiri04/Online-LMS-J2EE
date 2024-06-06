@@ -161,7 +161,7 @@ public boolean isExist1(String name) {
 	 public String getPwd1(String email) {
 		    String pwd = null;
 		    try {
-		        String sql = "SELECT password FROM student WHERE email=?";
+		        String sql = "SELECT password FROM userlist WHERE email=?";
 		        connection = DBConnection.openConnection();
 		        preparedStatement = connection.prepareStatement(sql);
 		        preparedStatement.setString(1, email);

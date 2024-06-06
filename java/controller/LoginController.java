@@ -66,14 +66,7 @@ public class LoginController extends HttpServlet {
 	    	dispatcher=request.getRequestDispatcher("Admin.jsp");
 			dispatcher.forward(request, response);
 	    }
-	   /* if(udao.isExistUsers(name)) {
-	    	String pwd=sdao.getPwdAdmin(name);
-	    	if (pwd != null && pwd.equals(password)) {
-	    		dispatcher=request.getRequestDispatcher("Admin.jsp");
-				dispatcher.forward(request, response);
-	    	}
-	    }
-	    else*/ if(sdao.isExist(email) ) {
+	   if(sdao.isExist(email) ) {
 			
 			String pwd=sdao.getPwd1(email);
 			if (pwd != null && pwd.equals(password)) {

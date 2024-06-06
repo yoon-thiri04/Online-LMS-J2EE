@@ -51,14 +51,7 @@ public class SubmissionController extends HttpServlet {
         mDAO=new uploadDao();
     }
 
-    private void listMaterial(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-   	 HttpSession session=request.getSession(false);
-        int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
-      List<Material> mat=mDAO.getfor(course_id);
-      request.setAttribute("mList", mat);
-      dispatcher=request.getRequestDispatcher("/Material.jsp");
-      dispatcher.forward(request, response);
-      }
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 	    

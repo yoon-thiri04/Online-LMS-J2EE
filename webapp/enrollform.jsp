@@ -14,7 +14,7 @@ String username=udao.getName(userEmail);%>
     if (deadlineReached != null && deadlineReached) {
 %>
     <script>
-        alert("Enrollment deadline reached. You cannot enroll.");
+        window.alert("Enrollment deadline reached. You cannot enroll.");
         window.history.go(-2);
     </script>
 <%
@@ -127,7 +127,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 .container{
   max-width: 500px;
   width: 500px;
-  height:360px;
+  height:400px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;

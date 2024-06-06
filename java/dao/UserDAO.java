@@ -83,7 +83,7 @@ public boolean isExistUsers(String name) {
 	        preparedStatement = connection.prepareStatement(sql);
 	        preparedStatement.setString(1, name);
 	        resultSet = preparedStatement.executeQuery();
-	        flag = resultSet.next(); // If there is any result, set flag to true
+	        flag = resultSet.next();
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    } 

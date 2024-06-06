@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
+
+<%@page import="java.sql.*"%>
 <%@page import="util.DBConnection" %>
 <%@page import="java.util.List" %>
 <%@page import="model.Lect" %>
@@ -21,9 +19,7 @@ List<CourseInstructor> courses = new ArrayList<>();
 courses = lecturerdao.get1("HTML");
 pageContext.setAttribute("lectd", courses,PageContext.PAGE_SCOPE);
 
-/*String s_name=lecturerdao.getName(name);
-pageContext.setAttribute("s_name",s_name,PageContext.PAGE_SCOPE);
-*/
+
 %>
 
 <!DOCTYPE html>
@@ -35,26 +31,29 @@ pageContext.setAttribute("s_name",s_name,PageContext.PAGE_SCOPE);
 
 
 <script>
-function enroll(course_id,email) {
+function enroll(course_id) {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "${pageContext.request.contextPath}/DivClickServlet?course_id="+course_id+"&email="+email, true);
+    xhr.open("POST", "${pageContext.request.contextPath}/DivClickServlet?course_id="+course_id, true);
     xhr.send();
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var enrolled = xhr.responseText.trim(); 
-            
-            
-           
-            
-            if (enrolled==="true") {
-                window.location.href="Material.jsp?course_id="+course_id;
+            var deadlineReached = xhr.responseText.trim(); 
+            if (deadlineReached==="true") {
+              alert("Enrollment Deadline is reached!Wait for another batch or choose other courses.");
             } else {
                 window.location.href="enrollform.jsp?course_id="+course_id;
             }
         }
     };
 }
+function view(course_id) {
+      window.location.href="Material.jsp?course_id="+course_id;
+           
+}
+
+
+
 
 
 </script>
@@ -195,7 +194,7 @@ function enroll(course_id,email) {
     display:flex;
     
     
-    width:660px;
+    width:800px;
 }
 .grid-item:hover{
     box-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
@@ -209,6 +208,9 @@ function enroll(course_id,email) {
 }
 .grid-item table {
 	padding-bottom:20px;
+}
+.grid-item table tr{
+width:300px;
 }
 .grid-item table td{
 	text-align:left;
@@ -309,48 +311,39 @@ img{
 	    <div id="javatext">
 	    	<h1>HTML</h1>
 	    	<p>
-	    		HTML (Hypertext Markup Language) is the standard markup language used to create and design web pages. It provides a structure for web content by using a system of tags and attributes to define the various elements on a webpage, such as text, images, links, forms, and multimedia.
+	    		HTML (Hypertext Mark up Language) is the standard markup language used to create and design web pages. It provides a structure for web content by using a system of tags and attributes to define the various elements on a webpage, such as text, images, links, forms, and multimedia.
 	    	</p><br><br>
 	    </div>
     </div>
    <div class="mainmain">
 <%
 try {
-    // Establishing the connection
     Connection con = DBConnection.openConnection();
-    
-    // Query to get course IDs for category C#
+    int courseId=0;
     String courseQuery = "SELECT course_id FROM courses WHERE category='HTML'";
     Statement courseStatement = con.createStatement();
     ResultSet courseResultSet = courseStatement.executeQuery(courseQuery);
 
     while (courseResultSet.next()) {
-        int courseId = courseResultSet.getInt("course_id");
-        
-        // Query to get lecture information for each course
+        courseId = courseResultSet.getInt("course_id");
         String lectureQuery = "SELECT filename, name FROM lectures WHERE course_id=" + courseId;
         Statement lectureStatement = con.createStatement();
         ResultSet lectureResultSet = lectureStatement.executeQuery(lectureQuery);
-        
-        // Query to get course information for each course
-        String courseQuery1 = "SELECT title, level, category, description, duration FROM courses WHERE course_id=" + courseId;
+        String courseQuery1 = "SELECT * FROM courses WHERE course_id=" + courseId;
         Statement courseStatement1 = con.createStatement();
         ResultSet courseResultSet1 = courseStatement1.executeQuery(courseQuery1);
-        
-        // Processing lectures for the current course
         while (lectureResultSet.next()) {
             String filename = lectureResultSet.getString("filename");
-            String lectureName = lectureResultSet.getString("name"); // Storing name in variable
-            
-            // Processing course details
+            String lectureName = lectureResultSet.getString("name"); 
             if (courseResultSet1.next()) {
                 String title = courseResultSet1.getString("title");
                 String level = courseResultSet1.getString("level");
                 String category = courseResultSet1.getString("category");
                 String description = courseResultSet1.getString("description");
                 String duration = courseResultSet1.getString("duration");
-         
-                // Displaying lecture and course information
+                String start_date=courseResultSet1.getString("start_date");
+                String enroll_deadline=courseResultSet1.getString("enrollment_deadline");
+               
 %>
                 <div class="grid-container">
                     <div id="b1" class="grid-item">
@@ -376,6 +369,14 @@ try {
                             		<td><b>Duration:</b></td>
                             		<td><%=duration%></td>
                             	</tr>
+                            	<tr>
+                            	 <td><b>Start Date</b></td>
+                            		<td><%=start_date%></td>
+                            	</tr>
+                            	<tr>
+                            	 <td><b>Enroll Deadline</b></td>
+                            		<td><%=enroll_deadline%></td>
+                            	</tr>
                             	<tr style="height:30px;">
                             		<td style="display:flex;"><b>Description:</b></td>
                             		<td><%=description%></td>
@@ -383,28 +384,61 @@ try {
                             	
    
                             </table>
+                                            <%
+boolean enrollExists = false;
+PreparedStatement statement = null;
+ResultSet resultSet = null;
+Connection connection=DBConnection.openConnection();
+
+try {
+    String query = "SELECT EXISTS (SELECT 1 FROM enrollment WHERE email = ?  AND course_id = ?)";
+    statement = connection.prepareStatement(query);
+    statement.setString(1, userEmail);
+    statement.setInt(2,courseId);
+    resultSet = statement.executeQuery();
+
+    if (resultSet.next()) {
+       enrollExists= resultSet.getBoolean(1);
+    }
+    
+    
+} finally {
+   
+    if (resultSet != null) {
+        resultSet.close();
+    }
+    if (statement != null) {
+        statement.close();
+    }
+}
+pageContext.setAttribute("enrollExists",enrollExists);
+
+%>
+              <c:choose>
+                <c:when test="${not enrollExists}">
                             <div style="display:flex;align-item:center;gap:20px;">
-                            	<button  class="viewmaterial" onclick="enroll(<%= courseId %>,'${stuEmail}')" type="button">Enroll</button>
+                            	<button  class="viewmaterial" onclick="enroll(<%= courseId %>)" type="button">Enroll</button>
                             </div>
+                            </c:when>
+                        <c:otherwise>
+                        <div style="display:flex;align-item:center;gap:20px;">
+                            	<button  class="viewmaterial" onclick="view(<%= courseId %>)" type="button">View</button>
+                            </div>
+                         </c:otherwise>
+                         </c:choose>
                         </div>
                     </div>
                 </div>
 <%
             }
         }
-        
-        // Closing result sets and statements for lectures and courses
         lectureResultSet.close();
         lectureStatement.close();
         courseResultSet1.close();
         courseStatement1.close();
     }
-    
-    // Closing result set and statement for courses
     courseResultSet.close();
     courseStatement.close();
-    
-    // Closing the database connection
     con.close();
     
 } catch (Exception e) {

@@ -65,8 +65,6 @@ public class enrollController extends HttpServlet {
         dispatcher.forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve form parameters
-    	
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Date tdyDate=new Date();
@@ -77,37 +75,7 @@ public class enrollController extends HttpServlet {
         Statement statement1 = null;
     	PreparedStatement preparedStatement= null;
     	ResultSet resultSet = null;
-    	String coursedate=null;
-        try {
-			
-			String sql = "SELECT enrollment_deadline FROM courses where course_id="+course_id;
-			Connection connection = DBConnection.openConnection();
-			statement1 = connection.createStatement();
-			resultSet = statement1.executeQuery(sql);
-			if(resultSet.next()) {
-			
-				coursedate=resultSet.getString("enrollment_deadline");
-				}
-			}catch(SQLException e) {
-			e.printStackTrace();
-		      }
-        Date TodayEnrollDate = null;
-		try {
-			TodayEnrollDate = sdf.parse(date);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-        Date DeadlineDate = null;
-		try {
-			DeadlineDate = sdf.parse(coursedate);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-        if(TodayEnrollDate.compareTo(DeadlineDate)<=0) {
-        	
-        
+    	
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:/onlinelearningsystem", "root", "yoonthiri@2004");
@@ -125,9 +93,6 @@ public class enrollController extends HttpServlet {
 
         response.sendRedirect("student1.jsp");
     }
-    else {
-    	 request.setAttribute("deadlineReached", true);
-    	request.getRequestDispatcher("enrollform.jsp").forward(request, response);
-    }
-    }
+    
+    
 }

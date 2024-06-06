@@ -197,4 +197,35 @@ public String getAssignmentName(int id) {
 		}
 	return title;
 }
+public Submission getmySumission(int sub_id) {
+	 Submission submit = null;
+	   try {
+		submit=new Submission();
+		String sql = "SELECT * FROM submission where submission_id=?";
+		
+      connection = DBConnection.openConnection();
+      preparedStatement = connection.prepareStatement(sql);
+      preparedStatement.setInt(1,sub_id);
+      
+      resultSet = preparedStatement.executeQuery(); 
+      
+      if (resultSet != null && resultSet.next()) {
+      	submit.setSubmission_id(resultSet.getInt("submission_id"));
+      	submit.setId(resultSet.getInt("id"));
+      	submit.setCourse_id(resultSet.getInt("course_id"));
+      	submit.setTitle(resultSet.getString("title"));
+      	submit.setStudent_email(resultSet.getString("student_email"));
+      	submit.setStudent_name(resultSet.getString("student_name"));
+      	submit.setSubmission_date(resultSet.getString("submission_datetime"));
+      	submit.setStatus(resultSet.getString("status"));
+      	submit.setScore(resultSet.getInt("score"));
+      	submit.setComment(resultSet.getString("comment"));
+      	submit.setF_type(resultSet.getString("f_type"));
+			}
+      
+		}catch(SQLException e) {
+		e.printStackTrace();
+	      }
+	    return submit;
+}
 }

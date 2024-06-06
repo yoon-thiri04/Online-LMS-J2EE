@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%><%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ page import="dao.*" %>
-<%@ page import="model.Material" %>
+<%@ page import="model.Quiz" %>
 <%@ page import="java.util.List" import="javax.servlet.http.HttpServlet"%>
 <% 
 session = request.getSession(); 
@@ -10,9 +10,9 @@ lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);%>
 <%
     int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
-    uploadDao mDAO = new uploadDao();
-    List<Material> matList = mDAO.getfor(course_id);
-    pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
+    quizDAO qdao=new quizDAO();
+    List<Quiz> quizList = qdao.get(course_id);
+    pageContext.setAttribute("qList", quizList,PageContext.PAGE_SCOPE);
    
 %>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ String username=udao.getNameLecture(userEmail);%>
   }
 </script>
 <meta charset="UTF-8" />
-<title>Material lecture</title>
+<title>Quiz lecture</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 </head>
 <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
@@ -445,6 +445,16 @@ form .form-row .textarea{
     width: 40%!important;
   }
 }
+ .container .text1{
+  margin-top:5px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  background: white;
+  color:black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
  
 </style>
 </head>
@@ -478,7 +488,7 @@ form .form-row .textarea{
   </div>
   
   <div id="title">
-    <p>Class Materials</p>
+    <p>Quiz</p>
     <div id="Addbtn">
       <a href="#popup" class="btn">
         <h3>Create Quiz</h3><i class="fa-solid fa-user-plus"></i>
@@ -492,27 +502,29 @@ form .form-row .textarea{
         	<tr>
           		<td style="padding-right:60px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Quiz Title</h4></td>
 				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Total Quizzes</h4></td>
-				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Highest Score</h4></td>
-				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Attempt Student</h4></td>
+				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Time Allowed</h4></td>
+				
+				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Deadline Date</h4></td>
                 
                 <td style="padding-right:125px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
             </tr>
-            
+             <c:forEach items="${qList}" var="quiz">
             <tr class="twotd">
-            	<td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">Quiz-I</td>
-                <td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">20</td>
-                <td style="padding-right:60px; border:2px solid black; background-color:#fff ;cursor: pointer;">20</td>
+            	<td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.title}</td>
+                <td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.total_quizes}</td>
+              
+				<td style="padding-right:60px; border:2px solid black; background-color:#fff ;cursor: pointer;">${quiz.time_allowed }</td>
 				
-                <td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">0</td>
+                <td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.deadline}</td>
                 
                 <td style="padding-right:60px;margin-right:180px; border:2px solid black ;background-color:#fff ;"> 
-                	<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">View Quizzes</a> 
-                	<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">View Student Score</a>               
+                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=View&id=${quiz.quiz_id}" class="button1">View Quizzes</a> 
+                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=Score&id=${quiz.quiz_id}" class="button1">View Student Score</a>               
                                  
-                    <a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}"  class="button1 delete">Delete</a>
+                    <a href = "${pageContext.request.contextPath}/QuizLectureController?action=DELETE&id=${quiz.quiz_id}"  class="button1 delete">Delete</a>
                 </td>
             </tr>
-            
+            </c:forEach>
 		</table>
 	</div>
 
@@ -521,15 +533,36 @@ form .form-row .textarea{
     	<div class="text">
       		Quiz Creation Form
         </div>
+        <div class="text1">
+      		Quiz Scores are fixed 1 mark per quiz.
+        </div>
 		<form action="QuizLectureController" method="post" > 
-      		<input type="hidden" name="id"/>
+      		
       		<div class="form-row">
 	        	<div class="input-data">
 		            <input type="text" name="title" required>
 		            <div class="underline"></div>
 		            <label for="">Quiz Title</label>
 	            </div>
-         	</div>
+         	</div> 
+          	<div class="form-row">
+	        	<div class="input-data">
+               <label for="" style="margin-bottom:;">Time Allowed</label>
+                </div>              
+				<select name="time" required>
+                  
+                      <option value="30">30 minutes</option>
+                      <option value="60">60 minutes</option>
+                  
+                </select>  </div >
+       <div class="form-row">
+	        	<div class="input-data">
+               <label for="" style="margin-bottom:;">Deadline Date</label>
+                </div>  
+                <input type="date" name="deadline" required>       
+				  </div >
+       
+         	
           	
            <div class="form-row submit-btn">
 				<div class="input-data">

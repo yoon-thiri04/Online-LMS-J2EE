@@ -1,14 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="dao.*" import="javax.servlet.http.HttpServlet"%>
-<%
-
+    pageEncoding="ISO-8859-1" import="dao.*" import="util.DBConnection" import ="java.sql.Connection" import="java.sql.*"%>
+     <% 
 session = request.getSession(); 
-String userEmail = (String) session.getAttribute("stuEmail"); 
-UserDAO udao=new UserDAO();
-String username=udao.getName(userEmail);
+String userEmail = (String) session.getAttribute("userEmail"); 
+lectureDAO udao=new lectureDAO();
+String username=udao.getNameLecture(userEmail);
+int id=(int)session.getAttribute("quiz_id");
 
+int total=0;
+try{String sql= "select count(*) as total from quizz where id="+id;
+Connection connection = DBConnection.openConnection();
+Statement statement = connection.createStatement();
+ResultSet resultSet = statement.executeQuery(sql);
+if(resultSet.next()){
+total =resultSet.getInt("total");
+}
+}catch(SQLException e) {
+	e.printStackTrace();
+	}
+String quiz_title=null;
 
-%> 
+String sql= "select title from quiz where id="+id;
+Connection connection = DBConnection.openConnection();
+Statement statement = connection.createStatement();
+ResultSet resultSet = statement.executeQuery(sql);
+if(resultSet.next()){
+quiz_title=resultSet.getString("title");
+} %>
+ <!DOCTYPE html>
+<html>
+<head>   
+<script>
+function toAll(){
+    window.location.href="QuizesLecture.jsp";
+     
+}
+function toChoose(){
+    window.location.href="QuizTypeChoose.jsp";
+     
+}
+</script>  
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 *{
@@ -99,15 +130,15 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  margin-left:470px;
+  margin-left:450px;
   margin-top:70px;
-  margin-bottom:99px;
-  height:470px;
+  margin-bottom:200px;
+  height:400px;
   background: hsla(270, 94%, 25%, 1);
-  background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -moz-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#42047e", endColorstr="#07f49e", GradientType=1 ); 
+  background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
+  background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
+  background:  -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
+ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
 }
 .container .text{
   text-align: center;
@@ -176,7 +207,7 @@ form .form-row .textarea{
   position: absolute;
   bottom: 0;
   height: 2px;
-  width:320px;
+  width:615px;
 }
 .input-data .underline:before{
   position: absolute;
@@ -194,10 +225,11 @@ form .form-row .textarea{
 .textarea textarea:valid ~ .underline:before{
   transform: scale(1);
 }
+
 .submit-btn .input-data{
   overflow: hidden;
   height: 45px!important;
-  width: 25%!important;
+  width: 23%!important;
   color:white;
 }
 .submit-btn .input-data .inner{
@@ -217,6 +249,7 @@ form .form-row .textarea{
   color: #fff;
   font-size: 17px;
   font-weight: 500;
+  padding-left:10px;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -288,7 +321,7 @@ label{
 }
 .container .text{
   text-align: center;
-  font-size: 36px;
+  font-size: 25px;
   font-weight: 600;
   background:white;
   -webkit-background-clip: text;
@@ -298,7 +331,7 @@ label{
 .container .text1{
   margin-top:5px;
   text-align: center;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   background: white;
   color:black;
@@ -307,6 +340,9 @@ label{
 }
 
 </style>
+
+<meta charset="ISO-8859-1">
+<title>Blank Question</title>
 </head>
 <body>
 <header class="header">
@@ -315,48 +351,58 @@ label{
     </div>
     <div class="header-icons">
     	<div class="account">
-	        <i class="fa-solid fa-circle-user"></i>
+	         <i class="fa-solid fa-circle-user"></i>
 	        <h3><%= username %></h3>
     	</div>
     </div>
+    
   </header>
- 
-  <div style="height:60px;"></div>
+   <div style="height:60px;"></div>
 	    <div id="popup" class="container popup">
-    	<a href="Material.jsp?course_id=<%=(int)session.getAttribute("course_id") %>" class="close">&times;</a>
     	<div class="text">
-      		Assignment Submission Form
+      		Create Fill the Blank Quiz.
+      		
         </div>
         <div class="text1">
-      		Submit your assignment  file here.
+      		You have created <%=total %> quizzes for <%=quiz_title %>.
         </div>
-		<form action="SubmissionController" method="post" enctype="multipart/form-data">
-		     <input type="hidden" name="mat_id" value="<%= request.getParameter("mat_id")%>">
-		           
-			<div class="form-row">
+		<form action="QuizMultipleAndTFContrller" method="post" >
+		<input type="hidden" name="qtype" value="blank">
+		<input type="hidden" name="quizz_id" value="${quiz.quiz_id}">
+
+		     <div class="form-row">
 	        	<div class="input-data">
-		            <input type="text" name="title" required/>
+		            <input type="text" name="question" value="${quiz.question}" required/>
 		            <div class="underline"></div>
-		            <label for="">Your Assignment file Title</label>
+		            <label for="">Question</label>
 	            </div>
          	</div>
-          	
-            <div class="form-row" > 
-            	<div class="photoupload">
-             		<label for="">Add File</label>
-             		<input type="file" name="myfile"/>
-        		</div>
-           </div>
+			<div class="form-row">
+	        	<div class="input-data">
+		            <input type="text" name="correctAns" value="${quiz.correct_answer}" required/>
+		            <div class="underline"></div>
+		            <label for="">Answer</label>
+	            </div>  
+                </div >
+            
               
            <div class="form-row submit-btn">
 				<div class="input-data">
 	                <div class="inner"></div>
-	                <input type="submit" value="Submit"/>
+	                <input type="submit" name="action" value="Save Quiz"/>
                 </div>
+                 <div class="input-data">
+	                <div class="inner" ></div>
+	                 <input type="" onclick="toChoose()" value="Re-Choose"/>
+                </div>
+                <div class="input-data">
+	                <div class="inner" ></div>
+	                 <input type="submit" name="action"value="Save & End"/>
+                </div>
+                
           </div>
 		</form>
 	</div>
-  	<a href="Material.jsp?course_id=<%=(int)session.getAttribute("course_id") %>" class="close-popup"></a>
- 
+  	
 </body>
 </html>

@@ -27,7 +27,7 @@ pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
 </head>
 <script>
 function redirectToDetails(id, title) {
-    window.location.href = "SubmissionLectureController?action=View&id="+id+"&title="+title;
+    window.location.href = "SubmissionLectureController?action=View&id="+id;
 }
 
 </script>
@@ -274,7 +274,7 @@ html{
     }
 %>
     				<p>Submission made - <%=tot %></p>
-    				<button type="button" class="viewmaterial" onclick="redirectToDetails(${ml.id}, '${ml.title}')">View Details</button>
+    				<button type="button" class="viewmaterial" onclick="redirectToDetails(${ml.id})">View Details</button>
 </div>
     			
     	</div>

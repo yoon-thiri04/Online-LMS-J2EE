@@ -41,15 +41,17 @@ public class SubmissionLectureController extends HttpServlet {
     	 int id=Integer.parseInt(request.getParameter("id"));
 		 HttpSession session=request.getSession(false);
 	     int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
-	     String title=request.getParameter("title");
+	     
 	     try {
 			List<Submission> submitList=sdao.get(id, course_id);
+			request.setAttribute("id", String.valueOf(id));
+
 			request.setAttribute("submitList", submitList);
-			request.setAttribute("title", title);
+			
 			dispatcher=request.getRequestDispatcher("/SubmissionLecture.jsp");
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
       }

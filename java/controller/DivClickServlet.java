@@ -5,6 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,27 +46,47 @@ public class DivClickServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean enrolled=false;
+		boolean deadlineReached=false;
+		String deadline=null;
 		 try {
-		        // Retrieve course_id and name parameters from the request
 		        int course_id = Integer.parseInt(request.getParameter("course_id"));
-		        String email = request.getParameter("email");
-		        String sql = "SELECT course_id FROM enrollment WHERE email=? AND course_id=?";
+		        String sql = "SELECT enrollment_deadline FROM courses WHERE course_id=?";
 		        Connection connection = DBConnection.openConnection();
 		        PreparedStatement preparedstatement = connection.prepareStatement(sql);
-		        preparedstatement.setString(1, email);
-		        preparedstatement.setInt(2, course_id);
+		        preparedstatement.setInt(1, course_id);
 		        ResultSet resultSet = preparedstatement.executeQuery(); 
+		        if(resultSet.next()) {
+		        	deadline=resultSet.getString("enrollment_deadline");
+		        }
 		        
-		        
-		        enrolled = resultSet.next();
-		        response.getWriter().write(String.valueOf(enrolled));
 		    } catch (SQLException e) {
 		        e.printStackTrace();
 		    }
-		    
+		    Date tdyDate=new Date();
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	        String date = sdf.format(tdyDate);
+	        Date TodayEnrollDate = null;
+			try {
+				TodayEnrollDate = sdf.parse(date);
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+	        Date DeadlineDate = null;
+			try {
+				DeadlineDate = sdf.parse(deadline);
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+			if(TodayEnrollDate.compareTo(DeadlineDate)<=0) {
+				response.getWriter().write(String.valueOf(deadlineReached));
+			}
+			else {
+				deadlineReached=true;
+				response.getWriter().write(String.valueOf(deadlineReached));
+		    }
+		}
 		    
 
 	}
 
-}
+

@@ -159,7 +159,7 @@ font-size:20px;
 #Addbtn{
 	display:flex;
 	align-items:center;
-	margin-left:200px;
+	margin-left:400px;
 	margin-top:20px;
 	margin-bottom:25px;
 	background-color:#3D56B2;
@@ -182,7 +182,7 @@ font-size:20px;
 	margin-bottom:25px;
 	background-color:#3D56B2;
 	height:40px;
-	width:150px;
+	width:300px;
 	padding-left:10px;
 	padding-right:10px;
 	border:1px solid black;
@@ -450,7 +450,7 @@ form .form-row .textarea{
 </style>
 </head>
 <body>
-  <header class="header">
+ <header class="header">
     <div class="logo">
         <a href="#"><b>Smart Learn</b></a>
       </div>
@@ -479,7 +479,7 @@ form .form-row .textarea{
   </div>
   
   <div id="title">
-    <p>Class Materials</p>
+    <p>Class Material</p>
     <div id="Addbtn">
       <a href="#popup" class="btn">
         <h3>Add</h3><i class="fa-solid fa-user-plus"></i>

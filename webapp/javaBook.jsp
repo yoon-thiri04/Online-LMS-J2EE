@@ -39,28 +39,26 @@ pageContext.setAttribute("s_name",s_name,PageContext.PAGE_SCOPE);
 
 
 <script>
-function enroll(course_id,email) {
+function enroll(course_id) {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "${pageContext.request.contextPath}/DivClickServlet?course_id="+course_id+"&email="+email, true);
+    xhr.open("POST", "${pageContext.request.contextPath}/DivClickServlet?course_id="+course_id, true);
     xhr.send();
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var enrolled = xhr.responseText.trim(); 
-            
-            
-           
-            
-            if (enrolled==="true") {
-                window.location.href="Material.jsp?course_id="+course_id;
+            var deadlineReached = xhr.responseText.trim(); 
+            if (deadlineReached==="true") {
+              alert("Enrollment Deadline is reached!Wait for another batch or choose other courses.");
             } else {
                 window.location.href="enrollform.jsp?course_id="+course_id;
             }
         }
     };
 }
-
-
+function view(course_id) {
+      window.location.href="Material.jsp?course_id="+course_id;
+           
+}
 </script>
 
 <style>
@@ -389,7 +387,7 @@ try {
    
                             </table>
                             <div style="display:flex;align-item:center;gap:20px;">
-                            	<button  class="viewmaterial" onclick="enroll(<%= courseId %>,'${stuEmail}')" type="button">Enroll</button>
+                            	<button  class="viewmaterial" onclick="enroll(<%= courseId %>)" type="button">Enroll</button>
                             </div>
                         </div>
                     </div>
@@ -397,19 +395,17 @@ try {
 <%
             }
         }
-        
-        // Closing result sets and statements for lectures and courses
+       
         lectureResultSet.close();
         lectureStatement.close();
         courseResultSet1.close();
         courseStatement1.close();
     }
     
-    // Closing result set and statement for courses
     courseResultSet.close();
     courseStatement.close();
     
-    // Closing the database connection
+    
     con.close();
     
 } catch (Exception e) {
