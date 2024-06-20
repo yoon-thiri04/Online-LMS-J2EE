@@ -26,6 +26,8 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - Create quizzes (future update).
 - Score assignments submitted by enrolled students.
 - Change password.
+- Create and manage quizzes.
+- View each student's Quiz scores.
 
 ### Registered User
 **Capabilities:**
