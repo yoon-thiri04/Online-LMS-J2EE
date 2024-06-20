@@ -40,8 +40,9 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - Download course materials.
 - Submit assignments.
 - View submission status and scores.
-- Attempt quizzes (future update).
-- View quiz results (future update).
+- Attempt quizzes.
+- View quiz results.
+- Review their own quiz answers for the previous attempt.
 
 ## Features
 - **Course Management:** Admins can add courses and assign instructors.
