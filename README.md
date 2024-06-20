@@ -47,8 +47,6 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - **Material Upload:** Instructors can upload various types of course materials and specify their type.
 - **Assignment Submission:** Students can submit assignments and view their scores.
 - **Enrollment Deadlines:** Courses have enrollment deadlines, after which students cannot enroll.
-
-## Future Updates
 - **Quiz Creation and Management:** Instructors will be able to create and manage quizzes.
 - **Quiz Attempt and Result Viewing:** Students will be able to attempt quizzes and view their results.
 
