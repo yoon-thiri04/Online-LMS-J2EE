@@ -28,7 +28,6 @@ public class SubmissionLectureController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	submitDAO sdao=new submitDAO();
 	RequestDispatcher dispatcher=null;
-	
     public SubmissionLectureController() {
         
     }
