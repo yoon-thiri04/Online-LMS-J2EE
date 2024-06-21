@@ -26,6 +26,8 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - Create quizzes (future update).
 - Score assignments submitted by enrolled students.
 - Change password.
+- Create and manage quizzes.
+- View each student's Quiz scores.
 
 ### Registered User
 **Capabilities:**
@@ -38,8 +40,9 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - Download course materials.
 - Submit assignments.
 - View submission status and scores.
-- Attempt quizzes (future update).
-- View quiz results (future update).
+- Attempt quizzes.
+- View quiz results.
+- Review their own quiz answers for the previous attempt.
 
 ## Features
 - **Course Management:** Admins can add courses and assign instructors.
@@ -47,8 +50,6 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - **Material Upload:** Instructors can upload various types of course materials and specify their type.
 - **Assignment Submission:** Students can submit assignments and view their scores.
 - **Enrollment Deadlines:** Courses have enrollment deadlines, after which students cannot enroll.
-
-## Future Updates
 - **Quiz Creation and Management:** Instructors will be able to create and manage quizzes.
 - **Quiz Attempt and Result Viewing:** Students will be able to attempt quizzes and view their results.
 
