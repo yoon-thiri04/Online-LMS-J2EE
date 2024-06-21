@@ -23,17 +23,11 @@ import model.Submission;
 import util.DBConnection;
 import dao.submitDAO;
 
-/**
- * Servlet implementation class SubmissionLectureController
- */
 @WebServlet("/SubmissionLectureController")
 public class SubmissionLectureController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	submitDAO sdao=new submitDAO();
 	RequestDispatcher dispatcher=null;
-	
-       
-   
     public SubmissionLectureController() {
         
     }
