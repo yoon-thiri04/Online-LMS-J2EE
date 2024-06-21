@@ -19,22 +19,16 @@ import dao.announceDAO;
 import model.Announcement;
 import util.DBConnection;
 
-/**
- * Servlet implementation class AnnounceController
- */
 @WebServlet("/AnnounceController")
 public class AnnounceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      announceDAO andao=null;
      Announcement anno=null;
-     
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public AnnounceController() {
         andao=new announceDAO();
         anno=new Announcement();
-        // TODO Auto-generated constructor stub
+       
     }
     private void listAnnouncement(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
    	    HttpSession session=request.getSession(false);
@@ -44,9 +38,7 @@ public class AnnounceController extends HttpServlet {
       RequestDispatcher dispatcher = request.getRequestDispatcher("/AnnouncementLecture.jsp");
       dispatcher.forward(request, response);
       }
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 	    if(action == null) {
@@ -64,10 +56,6 @@ public class AnnounceController extends HttpServlet {
 
 	  }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-
 private void deleteAnnouncement(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
      String id = request.getParameter("announcement_id");
      
@@ -83,7 +71,6 @@ private void deleteAnnouncement(HttpServletRequest request, HttpServletResponse 
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     Connection conn = null;
     PreparedStatement pstmt = null;
-
     String title = request.getParameter("title");
     String course_name = request.getParameter("course_name");
     String content = request.getParameter("contents");
@@ -94,7 +81,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     try {
        
             conn = DBConnection.openConnection();
-           
             pstmt = conn.prepareStatement("INSERT INTO announcements(title,content,created_at,course_id,course_title) VALUES (?,?,?,?,?)");
             pstmt.setString(1, title);
             pstmt.setString(2, content);
@@ -102,22 +88,18 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             pstmt.setInt(4, course_id);
             pstmt.setString(5, course_name);
             pstmt.executeUpdate();
-
-            conn.commit(); // Commit transaction if successful
+            conn.commit(); 
         
     } catch (NumberFormatException ex) {
-        // Handle the case where course_Id is not a valid integer
         ex.printStackTrace();
     } catch (SQLException ex) {
-        // Handle database-related errors
+       
         ex.printStackTrace();
     } finally {
-        // Close resources and rollback transaction if necessary
-        try {
+         try {
             if (conn != null) {
-                conn.rollback(); // Rollback if transaction failed
-                conn.setAutoCommit(true); // Restore auto-commit mode
-                
+                conn.rollback(); 
+                conn.setAutoCommit(true); 
             }
             if (pstmt != null) {
                 pstmt.close();
@@ -126,7 +108,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             ex.printStackTrace();
         }
     }
-
 
     listAnnouncement(request, response);
 }
