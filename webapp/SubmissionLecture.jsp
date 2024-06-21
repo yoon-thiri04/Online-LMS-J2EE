@@ -13,9 +13,10 @@ lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);%>
 <%
 int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
+
 int id = Integer.parseInt(request.getParameter("id").toString());
 submitDAO sdao=new submitDAO();
-List<Submission> submitList=sdao.get(id, course_id);
+List<Submission> submitList=sdao.get(id);
 pageContext.setAttribute("sList",submitList,PageContext.PAGE_SCOPE);
 String title=null;
 Connection connection=DBConnection.openConnection();
@@ -188,7 +189,7 @@ ul li:hover a{
 }
 .row{
   font-size:20px;
-  margin-left:280px;
+  margin-left:250px;
 }
 .row table {
 padding-left:0px;
@@ -199,12 +200,11 @@ padding-left:0px;
 }
  .row table th {
  font-size:20px;
- 
- padding:10px;
+ padding:5px;
  }
 .row table td{
 font-size:18px;
-padding:10px;
+padding:5px;
 }
 .row table .twotd td{
  font-size:17px;
@@ -452,7 +452,7 @@ label{
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
-          
+          <li><a href="QuizResultAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz Result</a></li>
             <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
       </ul>
@@ -485,10 +485,10 @@ label{
             <c:set var="id" value="${sub.id}" />
             
             <tr class="twotd">
-            	<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.student_name}</td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.student_email}</td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.title}</td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.submission_date}</td>
+            	<td style="padding-right:50px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.student_name}</td>
+                <td style="padding-right:50px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.student_email}</td>
+                <td style="padding-right:50px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.title}</td>
+                <td style="padding-right:50px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.submission_date}</td>
                 
                 <td style="padding-right:20px; border:2px solid black ;background-color:#fff ;cursor: pointer;"><c:choose>
     <c:when test="${sub.score eq 0}">
@@ -519,10 +519,9 @@ label{
     <form action="AddScoreController" method="post" > 
         <input type="hidden" name="sub_id" value="<%=pageContext.getAttribute("sub_id") %>"/>
          <input type="hidden" name="id" value="<%=pageContext.getAttribute("id") %>"/>
-       
         <div class="form-row">
             <div class="input-data">
-                <input type="text" name="myscore" required>
+                <input type="number" max="10" min="1" name="myscore" required>
                 <div class="underline"></div>
                 <label for="">Score</label>
             </div>

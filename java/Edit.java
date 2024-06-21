@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import dao.courseDAO;
+import dao.uploadDao;
 import model.Lect;
 import util.DBConnection;
 
@@ -28,6 +30,8 @@ public class Edit extends HttpServlet {
  private static final long serialVersionUID = 1L;
  public static final String UPLOAD_DIR = "images";
  public String dbFileName = "";
+ courseDAO cdao=new courseDAO();
+ uploadDao upload=new uploadDao();
  protected void doGet(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
      String lectureEmail = request.getParameter("email");
@@ -45,44 +49,20 @@ public class Edit extends HttpServlet {
  protected void doPost(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
      // Retrieve form parameters
+	 
 	 Connection con=DBConnection.openConnection();
-     String name = request.getParameter("name"); // Get the updated lecture name
+	 
+	 int prev_course_id=Integer.parseInt(request.getParameter("prev_course_id"));
+     String name = request.getParameter("name"); 
      String password = request.getParameter("password");
      String email = request.getParameter("email");
      String qualification = request.getParameter("qualification");
      String course_name=request.getParameter("course_name");
-     int course_id = -1; 
-     PreparedStatement ps = null;
-	try {
-		ps = con.prepareStatement("SELECT course_id FROM courses WHERE title = ?");
-	} catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
-     try {
-		ps.setString(1, course_name);
-	} catch (SQLException e2) {
-		
-		e2.printStackTrace();
-	}
-     ResultSet rs2 = null;
-	try {
-		rs2 = ps.executeQuery();
-	} catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
-     try {
-		if (rs2.next()) {
-		     course_id = rs2.getInt("course_id");
-		 }
-	} catch (SQLException e1) {
-		
-		e1.printStackTrace();
-	}
      
-         Part part = request.getPart("file");
-     String fileName = extractFileName(part);//file name
+     int course_id = cdao.getCourse_id(course_name); 
+     
+     Part part = request.getPart("file");
+     String fileName = extractFileName(part);
     
      String applicationPath = getServletContext().getRealPath("");
      String uploadPath = applicationPath + File.separator + UPLOAD_DIR;
@@ -99,24 +79,32 @@ public class Edit extends HttpServlet {
      File fileSaveDir1 = new File(savePath);
       dbFileName = UPLOAD_DIR + File.separator + fileName;
      part.write(savePath + File.separator);
-     
-     // Update lecture in the database
      boolean updated = false;
-     try {
-         updated = updateLecture( name, password, email, qualification, dbFileName, savePath , course_id); // Pass original lecture name here
-     } catch (SQLException e) {
-         
-         e.printStackTrace(); // Log the error
-        response.sendRedirect("error.jsp");
-         return; 
-     }
+     boolean course_updated=false;
      
-   
-     if (updated) {
+     if(course_id == prev_course_id) {
+    	 try {
+			updated = updateLecture1( name, password, email, qualification, dbFileName, savePath,course_id);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+    	 if(updated) {
          response.sendRedirect("lectures.jsp");
-     } else {
-        
-         response.sendRedirect("error.jsp");
+    	 }
+     }
+    
+     else {
+    	 try {
+			updated = updateLecture2( name, password, email, qualification, dbFileName, savePath,course_id);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+    	 course_updated=upload.updateCourseMerged(course_id, "Yes") && upload.updateCourseMerged(prev_course_id, "No");
+         if(updated && course_updated) {
+         response.sendRedirect("lectures.jsp");
+         }
      }
  }
 
@@ -158,12 +146,12 @@ public class Edit extends HttpServlet {
      return lecture;
  }
 
- private boolean updateLecture(String name, String password, String email, String qualification, String filename, String path, int course_id) throws SQLException {
+ private boolean updateLecture1(String name, String password, String email, String qualification, String filename, String path,int course_id) throws SQLException {
 	    boolean updated = false;
 	    Connection connection = null;
 	    try {
-	        connection = DriverManager.getConnection("jdbc:mysql://localhost/onlinelearningsystem", "root", "yoonthiri@2004");
-	        String sql = "UPDATE lectures SET name=?, password=?, email=?, qualification=?, filename=?, path=?, course_id=? WHERE email=?";
+	        connection = DBConnection.openConnection();
+	        String sql = "UPDATE lectures SET name=?, password=?, email=?, qualification=?, filename=?, path=?,course_id=? WHERE email=?";
 	        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
 	            pstmt.setString(1, name); // Updated lecture name
 	            pstmt.setString(2, password);
@@ -172,18 +160,17 @@ public class Edit extends HttpServlet {
 	            pstmt.setString(5, filename);
 	            pstmt.setString(6, path);
 	            pstmt.setInt(7, course_id);
-	            // Use original name as the WHERE clause
 	            pstmt.setString(8, email);
 	            
 	            int rowsAffected = pstmt.executeUpdate();
-	            updated = rowsAffected > 0;
+	            updated=rowsAffected>0;
 	        }
 	    } finally {
 	        if (connection != null) {
 	            try {
 	                connection.close();
 	            } catch (SQLException e) {
-	                // Handle any errors closing the connection
+	                
 	                e.printStackTrace();
 	            }
 	        }
@@ -191,4 +178,31 @@ public class Edit extends HttpServlet {
 	    return updated;
 	}
 
-	    }
+	    
+private boolean updateLecture2(String name, String password, String email, String qualification, String filename, String path,int course_id) throws SQLException {
+    boolean updated = false;
+    Connection connection = null;
+    try {
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/onlinelearningsystem", "root", "yoonthiri@2004");
+        String sql = "UPDATE lectures SET name=?, password=?, email=?, qualification=?, filename=?, path=?,course_id=? WHERE email=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, name);
+            pstmt.setString(2, password);
+            pstmt.setString(3, email);
+            pstmt.setString(4, qualification);
+            pstmt.setString(5, filename);
+            pstmt.setString(6, path);
+            pstmt.setInt(7, course_id);
+            pstmt.setString(8, email);
+            
+            int rowsAffected = pstmt.executeUpdate();
+            updated = rowsAffected > 0;
+            
+        }
+    } catch(Exception e) {
+    	e.printStackTrace();
+    }
+    return updated;
+}
+
+    }

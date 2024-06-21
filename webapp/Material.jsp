@@ -270,6 +270,7 @@ color:;
     <ul>
       <li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses</a></li>
       <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
+       <li><a href="QuizStudent.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
        
       <li><a href="Announcements.jsp"><i class="fa-solid fa-calendar-week"></i>Announcements</a></li>
       <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
@@ -328,7 +329,7 @@ try {
     
     
 } finally {
-    // Close resources
+    
     if (resultSet != null) {
         resultSet.close();
     }

@@ -39,13 +39,9 @@ public class SubmissionLectureController extends HttpServlet {
     }
     private void listSubmission(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	 int id=Integer.parseInt(request.getParameter("id"));
-		 HttpSession session=request.getSession(false);
-	     int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
-	     
 	     try {
-			List<Submission> submitList=sdao.get(id, course_id);
+			List<Submission> submitList=sdao.get(id);
 			request.setAttribute("id", String.valueOf(id));
-
 			request.setAttribute("submitList", submitList);
 			
 			dispatcher=request.getRequestDispatcher("/SubmissionLecture.jsp");

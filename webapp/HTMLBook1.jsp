@@ -161,7 +161,7 @@ function loginFirst() {
     display:flex;
     
     
-    width:800px;
+    width:660px;
 }
 .grid-item:hover{
     box-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);

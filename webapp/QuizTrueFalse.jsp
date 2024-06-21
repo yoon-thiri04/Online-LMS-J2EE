@@ -6,6 +6,7 @@ String userEmail = (String) session.getAttribute("userEmail");
 lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);
 int id=(int)session.getAttribute("quiz_id");
+String action=(String) request.getAttribute("action");
 int total=0;
 try{String sql= "select count(*) as total from quizz where id="+id;
 Connection connection = DBConnection.openConnection();
@@ -35,7 +36,9 @@ function toChoose(){
     window.location.href="QuizTypeChoose.jsp";
      
 }
-</script>    
+</script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+   
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 *{
@@ -356,13 +359,18 @@ label{
    <div style="height:60px;"></div>
 	    <div id="popup" class="container popup">
     	<div class="text">
+    	    <% if(action!=null && action.equalsIgnoreCase("Edit")){
+    	    %>
+    	    Update True or False Quiz<%
+    	    } else{ %>
+    	    
       		Create True or False Quiz.
-      		
+      		<%} %>
         </div>
         <div class="text1">
       		You have created <%=total %> quizzes for <%=quiz_title %>.
         </div>
-		<form action="QuizMultipleAndTFContrller" method="post" >
+		<form action="QuizMultipleAndTFContrller?action1=<%=action %>" method="post" >
 		<input type="hidden" name="qtype" value="true">
 		<input type="hidden" name="quizz_id" value="${quiz.quiz_id}">
 		
@@ -382,6 +390,16 @@ label{
                       <option value="false" ${quiz.correct_answer == 'False' ? 'selected' : ''}>False</option>         
                 </select>  
                 </div >
+            <% if(action!=null && action.equalsIgnoreCase("Edit")){
+    	    %> 
+           <div class="form-row submit-btn">
+				<div class="input-data">
+	                <div class="inner"></div>
+	                <input type="submit" name="action" value="Save Quiz"/>
+                </div>
+                
+          </div>
+          <%}else{ %>
            <div class="form-row submit-btn">
 				<div class="input-data">
 	                <div class="inner"></div>
@@ -396,6 +414,7 @@ label{
 	                 <input type="submit" name="action"  value="Save & End"/>
                 </div>
           </div>
+          <%} %>
 		</form>
 	</div>
   	

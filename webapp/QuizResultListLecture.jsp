@@ -1,39 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ page import="dao.*" %>
-<%@ page import="model.Material" %>
-<%@ page import="java.util.List" import="javax.servlet.http.HttpServlet"%>
-<% 
+<%@ page import="model.Submission" import="java.sql.*" %>
+<%@ page import="java.util.List" import="util.*" %>
+    
+    <% 
 session = request.getSession(); 
 String userEmail = (String) session.getAttribute("userEmail"); 
 lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);%>
 <%
-    int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
-    uploadDao mDAO = new uploadDao();
-    List<Material> matList = mDAO.getfor(course_id);
-    pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
-   
+int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
+
+int quiz_id = Integer.parseInt(request.getParameter("quiz_id"));
+String title=null;
+int total=0;
+Connection connection = null;
+PreparedStatement statement = null;
+ResultSet resultSet = null;
+try {
+    connection = DBConnection.openConnection();
+    String sql = "SELECT title,total_quizes FROM quiz WHERE id=?";
+    statement = connection.prepareStatement(sql);
+    statement.setInt(1, quiz_id);
+    resultSet = statement.executeQuery();
+
+    if (resultSet.next()) {
+        title = resultSet.getString("title");
+        total=resultSet.getInt("total_quizes");
+    }
+} catch (SQLException e) {
+    e.printStackTrace();
+} finally {
+    try {
+        if (resultSet != null) resultSet.close();
+        if (statement != null) statement.close();
+        if (connection != null) connection.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
 %>
+    
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-  function show(){
-    var a=confirm("Are you sure to delete?");
-    if(a==true){
-      document.write("");
-    }
-    else{
-      document.write("");
-    }
-  }
-</script>
-<meta charset="UTF-8" />
-<title>Material lecture</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+<meta charset="ISO-8859-1">
+<title>List of Student Who completed the related quiz</title>
 </head>
+<script>
+
+function viewSubmission(id){
+	window.location.href="ViewSubmissionLecture.jsp?s_id="+id;
+
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
 <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
 *{
   margin: 0;
@@ -126,8 +151,9 @@ ul li:hover a{
 #title{
 	height:60px;
 	width:1250px;
-	margin-left:250px;
-	margin-top:10px;
+	margin-left:280px;
+	margin-top:20px;
+	margin-bottom:10px;
 	display:flex;
 	align-items:center;
 }
@@ -138,28 +164,22 @@ ul li:hover a{
 }
 /*Add Button*/
 .btn{
-	width:210px;
+	width:150px;
 	height:70px;
 	color:black;
 	display:flex;
 	align-items:center;
 	transition:all 0.5s ease 0s;
 }
-#Addbtn i{
+.btn i{
 	font-size:20px;
 	margin-left:10px;
-	color:white;
-}
-#mybtn i{
-font-size:20px;
-	margin-left:10px;
-	margin-bottom:30px;
 	color:white;
 }
 #Addbtn{
 	display:flex;
 	align-items:center;
-	margin-left:400px;
+	margin-left:500px;
 	margin-top:20px;
 	margin-bottom:25px;
 	background-color:#3D56B2;
@@ -173,25 +193,6 @@ font-size:20px;
 }
 #Addbtn h3{
   color:white;
-}
-#mybtn{
-	
-	align-items:center;
-	margin-left:20px;
-	margin-top:20px;
-	margin-bottom:25px;
-	background-color:#3D56B2;
-	height:40px;
-	width:300px;
-	padding-left:10px;
-	padding-right:10px;
-	border:1px solid black;
-  transition: all 0.5s ease 0s;
-  border-radius:20px;
-}
-#mybtn h3{
-  color:white;
-  margin-bottom:30px;
 }
 .main-body{
   width: 83%;
@@ -210,12 +211,11 @@ padding-left:0px;
 }
  .row table th {
  font-size:20px;
- 
- padding:10px;
+ padding:15px;
  }
 .row table td{
 font-size:18px;
-padding:10px;
+padding:15px;
 }
 .row table .twotd td{
  font-size:17px;
@@ -237,19 +237,7 @@ padding-right:8px;
 background-color:  #14279B ;
 color:white;
 }
-
-/*Pop up*/
-html, body {
-   padding: 0;
-   margin: 0;
-   width: 100%;
-   height: 100%;
-}
-a {
-   color: #fff;
-   text-decoration: none;
-}
-.popup {
+  .popup {
    position: fixed;
    padding: 10px;
    max-width: 820px;
@@ -446,11 +434,13 @@ form .form-row .textarea{
     width: 40%!important;
   }
 }
- 
+label{
+  cursor:pointer;
+} 
 </style>
 </head>
 <body>
- <header class="header">
+	<header class="header">
     <div class="logo">
         <a href="#"><b>Smart Learn</b></a>
       </div>
@@ -466,82 +456,69 @@ form .form-row .textarea{
     <div class="sidebar">
         <ul>
         <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
+          
           <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
           <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
+          
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
           <li><a href="QuizResultAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz Result</a></li>
+          
             <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
       </ul>
   </div>
   
   <div id="title">
-    <p>Class Material</p>
+    <p>Student Result of <%=title %><br> Total Quizzes : <%=total %></p>
     <div id="Addbtn">
-      <a href="#popup" class="btn">
-        <h3>Add</h3><i class="fa-solid fa-user-plus"></i>
+      <a href="QuizResultAllLecture.jsp" class="btn">
+        <h3>Go Back</h3>
         </a>
       </div>
-      
     </div>
     
     <div class="row">
     	<table>
         	<tr>
-          		<td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Material Title</h4></td>
-				<td style="padding-right:80px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Material Type</h4></td>
-                <td style="padding-right:125px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
+          		<td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Name</h4></td>
+				<td style="padding-right:80px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Email</h4></td>
+                <td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>State</h4></td>
+                <td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
             </tr>
-            <c:forEach items="${mList}" var="ml">
+            <c:forEach items="${resultList}" var="result">
+            <c:set var="stud_email" value="${result.student_email}" />
+            <%
+        String email=(String)pageContext.getAttribute("stud_email");
+		String stud_name=null;
+        String sql1= "select user_name from userlist where email=?";
+        Connection connection1 = DBConnection.openConnection();
+        PreparedStatement preparedStatement = connection1.prepareStatement(sql1);
+		preparedStatement.setString(1,email); 
+		ResultSet resultSet1 = preparedStatement.executeQuery();
+        if(resultSet1.next()){
+        stud_name=resultSet1.getString("user_name");
+        }
+        %>
+           
             <tr class="twotd">
-            	<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${ml.title}</td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${ml.type}</td>
-                <td style="padding-right:125px;margin-right:180px; border:2px solid black ;background-color:#fff ;"> 
-                	<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">Download</a>               
-                    <a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}&type=${ml.type}"  class="button1 delete">Delete</a>
-                </td>
+            	<td style="padding-right:100px; border:2px solid black ;background-color:#fff ;cursor: pointer;"><%=stud_name %></td>
+                <td style="padding-right:100px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${result.student_email}</td>
+                <td style="padding-right:100px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${result.state}</td>
+                <td style="padding-right:100px; border:2px solid black ;background-color:#fff ;"> 
+                	<a href = "QuizResultController?action=REVIEWLECT&quiz_id=${result.quiz_id}&result_id=${result.result_id}&title=<%=title %>" class="button1">Review Quiz</a>
+                	<a href="QuizResultController?action=RESULTLECT&quiz_id=${result.quiz_id}&result_id=${result.result_id}" class="button1">View Result</a>         
+                    </td>
             </tr>
             </c:forEach>   
 		</table>
 	</div>
 
-	<div id="popup" class="container popup">
-    	<a href="#" class="close">&times;</a>
-    	<div class="text">
-      		Material Add Form
-        </div>
-		<form action="MaterialLectureController" method="post" enctype="multipart/form-data"> 
-      		<input type="hidden" name="id"/>
-      		<div class="form-row">
-	        	<div class="input-data">
-		            <input type="text" name="title" required>
-		            <div class="underline"></div>
-		            <label for="">Material Title</label>
-	            </div>
-         	</div>
-          	<div class="form-row"> 
-            	<div class="input-data">
-                	<input type="text" name="mtype" required>
-                 	<div class="underline"></div>
-                 	<label for="">Material Type</label>
-              	</div>
-      		</div>
-            <div class="form-row" > 
-            	<div class="photoupload">
-             		
-             		<input type="file" name="file"/>
-        		</div>
-           </div>
-           <div class="form-row submit-btn">
-				<div class="input-data">
-	                <div class="inner"></div>
-	                <input type="submit" value="Upload">
-                </div>
-          </div>
-		</form>
-	</div>
-  	
+
+	
+
+
+
 </body>
 </html>

@@ -41,7 +41,7 @@ public class AddScoreController extends HttpServlet {
 	     int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
 	     String title=sdao.getAssignmentName(id);
 	     try {
-			List<Submission> submitList=sdao.get(id, course_id);
+			List<Submission> submitList=sdao.get(id);
 			request.setAttribute("submitList", submitList);
 			request.setAttribute("title", title);
 			dispatcher=request.getRequestDispatcher("/SubmissionLecture.jsp");

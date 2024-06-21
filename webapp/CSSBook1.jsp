@@ -20,9 +20,6 @@ List<CourseInstructor> courses = new ArrayList<>();
 courses = lecturerdao.get1("CSS");
 pageContext.setAttribute("lectd", courses,PageContext.PAGE_SCOPE);
 
-/*String s_name=lecturerdao.getName(name);
-pageContext.setAttribute("s_name",s_name,PageContext.PAGE_SCOPE);
-*/
 %>
 
 <!DOCTYPE html>
@@ -34,27 +31,9 @@ pageContext.setAttribute("s_name",s_name,PageContext.PAGE_SCOPE);
 
 
 <script>
-function enroll(course_id,name) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "${pageContext.request.contextPath}/DivClickServlet?course_id="+course_id+"&name="+name, true);
-    xhr.send();
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var enrolled = xhr.responseText.trim(); 
-            
-            
-           
-            
-            if (enrolled==="true") {
-                window.location.href="Material.jsp?course_id="+course_id;
-            } else {
-                window.location.href="login.jsp?course_id="+course_id;
-            }
-        }
-    };
+function loginFirst() {
+	window.location.href="login.jsp";
 }
-
 
 </script>
 
@@ -318,7 +297,7 @@ try {
         ResultSet lectureResultSet = lectureStatement.executeQuery(lectureQuery);
         
         // Query to get course information for each course
-        String courseQuery1 = "SELECT title, level, category, description, duration FROM courses WHERE course_id=" + courseId;
+        String courseQuery1 = "SELECT * FROM courses WHERE course_id=" + courseId;
         Statement courseStatement1 = con.createStatement();
         ResultSet courseResultSet1 = courseStatement1.executeQuery(courseQuery1);
         
@@ -334,8 +313,9 @@ try {
                 String category = courseResultSet1.getString("category");
                 String description = courseResultSet1.getString("description");
                 String duration = courseResultSet1.getString("duration");
-         
-                // Displaying lecture and course information
+                String start_date=courseResultSet1.getString("start_date");
+                String enroll_deadline=courseResultSet1.getString("enrollment_deadline");
+               
 %>
                 <div class="grid-container">
                     <div id="b1" class="grid-item">
@@ -358,6 +338,14 @@ try {
                             		<td><%=category%></td>
                             	</tr>
                             	<tr>
+                            	 <td><b>Start Date</b></td>
+                            		<td><%=start_date%></td>
+                            	</tr>
+                            	<tr>
+                            	 <td><b>Enroll Deadline</b></td>
+                            		<td><%=enroll_deadline%></td>
+                            	</tr>
+                            	<tr>
                             		<td><b>Duration:</b></td>
                             		<td><%=duration%></td>
                             	</tr>
@@ -365,11 +353,9 @@ try {
                             		<td style="display:flex;"><b>Description:</b></td>
                             		<td><%=description%></td>
                             	</tr>
-                            	
-   
                             </table>
                             <div style="display:flex;align-item:center;gap:20px;">
-                            	<button  class="viewmaterial" onclick="enroll(<%= courseId %>,'${stuName}')" type="button">Enroll</button>
+                            	<button  class="viewmaterial" onclick="loginFirst()" type="button">Enroll</button>
                             </div>
                         </div>
                     </div>
@@ -377,26 +363,21 @@ try {
 <%
             }
         }
-        
-        // Closing result sets and statements for lectures and courses
-        lectureResultSet.close();
+       lectureResultSet.close();
         lectureStatement.close();
         courseResultSet1.close();
         courseStatement1.close();
     }
     
-    // Closing result set and statement for courses
     courseResultSet.close();
     courseStatement.close();
-    
-    // Closing the database connection
     con.close();
     
 } catch (Exception e) {
     out.println(e);
 }
 %>
-</div>
 
+</div>
 </body>
 </html>

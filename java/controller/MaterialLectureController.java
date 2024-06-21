@@ -1,6 +1,7 @@
 package controller;
 import java.io.IOException;
 
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Paths;
@@ -112,13 +113,12 @@ public class MaterialLectureController extends HttpServlet {
      
      private void deleteMaterial(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
           String id = request.getParameter("id");
+          String type=request.getParameter("type");
           
-          
-        if(mDAO.delete(Integer.parseInt(id))) {
+        mDAO.delete(Integer.parseInt(id),type) ;
           request.setAttribute("MSG", "Successfully Deleted");
-        
         listMaterial(request, response);
-          }
+          
           
             
           }
@@ -126,10 +126,8 @@ public class MaterialLectureController extends HttpServlet {
      
  
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // TODO Auto-generated method stub
      Connection conn=null;
      String status=null;
-    /* HttpSession session = request.getSession(false);*/
      PreparedStatement pstmt = null;
      String title=request.getParameter("title");
      String type=request.getParameter("mtype");

@@ -36,6 +36,8 @@ quiz_title=resultSet.getString("title");
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
 *{
@@ -128,7 +130,7 @@ ul li:hover a{
 .grid-container{
     margin-left:400px;
     margin-top:20px;
-    margin-bottom:30px;
+    margin-bottom:20px;
     padding-bottom:20px;
    }
 .grid-item .quest h5{
@@ -142,13 +144,12 @@ display:flex;
     border: 1px solid #111;
     border-radius: 15px 30px ;
     transition: all .3s cubic-bezier(.445, .05, .55, .95);
-   
     transition: all 1s ease 0s;
     cursor: pointer;
     padding-left:50px;
     padding-top:20px;
-    height:280px;
-    width:800px;
+    height:290px;
+    width:880px;
 }
 .grid-item #cAns{
 margin-top:20px;
@@ -173,8 +174,6 @@ flex: 0 0 calc(27.33% - 20px);
     text-decoration: none;
     border: 1px solid #999;
     border-radius: 4px;
-    
-    
     transition: all 0.3s ease 0s;
     background:white;
 }
@@ -188,8 +187,8 @@ flex: 0 0 calc(27.33% - 20px);
 #title{
 	height:60px;
 	width:1050px;
-	margin-left:330px;
-	margin-top:10px;
+	margin-left:400px;
+	margin-top:20px;
 	display:flex;
 	align-items:center;
 }
@@ -265,18 +264,18 @@ a {
 			 <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
           <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
           <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
-          
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
+           <li><a href="QuizResultAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz Result</a></li>
           
-            <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
+          <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
       </ul>
 	</div>
-	
      <div id="title">
-    <p><%=quiz_title %>-Total Quizzes(<%=total %>)</p>
+    <p><%=quiz_title %><br>
+    Total Quizzes(<%=total %>)</p>
     <div id="Addbtn">
       <a href="QuizTypeChoose.jsp" class="btn">
         <h3>Add</h3><i class="fa-solid fa-user-plus"></i>

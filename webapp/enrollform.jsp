@@ -9,17 +9,13 @@ String username=udao.getName(userEmail);%>
 <head>
 <meta charset="ISO-8859-1">
 <title>Enroll Form</title>
-<%
-    Boolean deadlineReached = (Boolean) request.getAttribute("deadlineReached");
-    if (deadlineReached != null && deadlineReached) {
-%>
+
     <script>
-        window.alert("Enrollment deadline reached. You cannot enroll.");
-        window.history.go(-2);
-    </script>
-<%
+    function goBack() {
+        history.back();
     }
-%>
+       
+    </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
@@ -325,7 +321,7 @@ label{
 	</header>
 	<div style="height:60px;">------------</div>
 	<div id="popup" class="container popup">
-       <a href="#" class="close">&times;</a>
+       <a href="#" onclick="goBack()" class="close">&times;</a>
     	<div class="text">
          	Enroll Form
       	</div>

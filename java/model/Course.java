@@ -10,6 +10,7 @@ public class Course {
     private String description;
     private String start_date;
     private String enrollment_deadline;
+    private String merged;
 	public int getCourse_id() {
 		return course_id;
 	}
@@ -59,4 +60,11 @@ public class Course {
 	public void setEnrollment_deadline(String enrollment_deadline) {
 		this.enrollment_deadline = enrollment_deadline;
 	}
+	public String getMerged() {
+		return merged;
+	}
+	public void setMerged(String merged) {
+		this.merged = merged;
+	}
+	
 }

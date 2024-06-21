@@ -52,10 +52,6 @@ function view(course_id) {
            
 }
 
-
-
-
-
 </script>
 
 <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
@@ -194,7 +190,7 @@ function view(course_id) {
     display:flex;
     
     
-    width:800px;
+    width:660px;
 }
 .grid-item:hover{
     box-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
@@ -381,8 +377,6 @@ try {
                             		<td style="display:flex;"><b>Description:</b></td>
                             		<td><%=description%></td>
                             	</tr>
-                            	
-   
                             </table>
                                             <%
 boolean enrollExists = false;
@@ -446,7 +440,5 @@ pageContext.setAttribute("enrollExists",enrollExists);
 }
 %>
 </div>
-
-
 </body>
 </html>

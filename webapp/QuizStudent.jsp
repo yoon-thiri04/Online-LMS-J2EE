@@ -11,13 +11,12 @@ session = request.getSession();
 String userEmail = (String) session.getAttribute("stuEmail"); 
 UserDAO udao=new UserDAO();
 String username=udao.getName(userEmail);
-    int course_id = Integer.parseInt(request.getParameter("course_id"));
-    
-    session.setAttribute("course_id",course_id);
+
+    int course_id = (int)session.getAttribute("course_id");
+ 
     quizDAO qdao=new quizDAO();
     List<Quiz> quizList = qdao.get(course_id);
-    pageContext.setAttribute("qList", quizList,PageContext.PAGE_SCOPE);
-   
+    pageContext.setAttribute("qList", quizList,PageContext.PAGE_SCOPE);  
 %>
     
 <!DOCTYPE html>
@@ -26,6 +25,24 @@ String username=udao.getName(userEmail);
 <meta charset="ISO-8859-1">
 <title>Student Quiz</title>
 </head>
+<script>
+function start(quiz_id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "${pageContext.request.contextPath}/DivClickServlet?quiz_id="+quiz_id, true);
+    xhr.send();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var deadlineReached = xhr.responseText.trim(); 
+            if (deadlineReached==="true") {
+              alert("Quiz Deadline Date is reached!You can't have access to attempt.");
+            } else {
+                window.location.href="${pageContext.request.contextPath}/QuizStartController?quiz_id="+quiz_id;
+            }
+        }
+    };
+}
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <style> @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
 *{
@@ -195,14 +212,14 @@ padding-left:0px;
  
 }
 .row table .th {
-	padding-right:90px;
+	padding-right:80px;
 	border:2px solid black;
 	background-color:#C6E377 ;
 	height:60px;
 }
 .row table td{
 font-size:18px;
-padding:15px;
+padding:10px;
 }
  .row table td:hover{
   background-color:#C6E377 ;
@@ -210,7 +227,7 @@ padding:15px;
 .row table .twotd td{
  font-size:17px;
  height:50px;
- padding-right:80px;
+ 
  border:2px solid black;
  background-color:#fff;
  cursor: pointer;
@@ -259,20 +276,19 @@ color:;
   <div class="sidebar">
     <ul>
       <li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses</a></li>
-      <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
+      <li><a href="Material.jsp?course_id=<%=course_id%>"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
       <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
       <li><a href="Announcements.jsp"><i class="fa-solid fa-calendar-week"></i>Announcements</a></li>
       <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
       <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
     </ul>  
   </div>
-  
   <div class="container">
        <div class="row">
           <table>
           <tr>
           <th style="padding-right:80px;padding-bottom:15px; padding-top:10px" >
-            <h4>Quiz</h4>
+            <h3>Quiz</h3>
             </th>
            
             <th style="padding-right:80px;padding-bottom:15px;" ></th>
@@ -285,104 +301,79 @@ color:;
             <td class="th"><h4>Quiz Title</h4></td>
             <td class="th"><h4>Total Quizzes</h4></td>
             
-            <td class="th"><h4>Time allowed</h4></td>
             <td class="th"><h4>Deadline Date</h4></td>
-            <td class="th"><h4>Status</h4></td>
+            <td class="th"><h4>State</h4></td>
             <td class="th"><h4>Operations</h4></td>
          
            </tr>
             <c:forEach items="${qList}" var="quiz">
+            <c:set var="quiz_id" value="${quiz.quiz_id}" />
+            
            <tr class="twotd">
 				<td>${quiz.title}</td>
                 <td>${quiz.total_quizes}</td>
-                <td>${quiz.deadline_date}</td>
-                <td></td>
-                 <td>
-                 <c:choose>
-                        <%
-boolean submissionExists = false;
+                
+                <td>${quiz.deadline}</td>
+                 <%
+boolean quizResultExists = false;
+int result_id=0;
 PreparedStatement statement = null;
 ResultSet resultSet = null;
 PreparedStatement statement1 = null;
 ResultSet resultSet1 = null;
 Connection connection=DBConnection.openConnection();
-int mat_id=(int)pageContext.getAttribute("mat_id");
-int score=0;
+Connection connection1=DBConnection.openConnection();
+int quiz_id=(int)pageContext.getAttribute("quiz_id");
+
 try {
-    String query = "SELECT EXISTS (SELECT 1 FROM submission WHERE student_email = ?  AND id = ?)";
+    String query = "SELECT EXISTS (SELECT 1 FROM quizresult WHERE student_email = ?  AND quiz_id = ?)";
     statement = connection.prepareStatement(query);
     statement.setString(1, userEmail);
-    statement.setInt(2,mat_id );
+    statement.setInt(2,quiz_id );
     resultSet = statement.executeQuery();
-
     if (resultSet.next()) {
-        submissionExists = resultSet.getBoolean(1);
+        quizResultExists = resultSet.getBoolean(1);
+        if(quizResultExists){
+        	String sql="Select result_id from quizresult where student_email=? and quiz_id=?";
+        	statement1=connection1.prepareStatement(sql);
+        	statement1.setString(1,userEmail);
+        	statement1.setInt(2,quiz_id);
+        	resultSet1=statement1.executeQuery();
+        	if(resultSet1.next()){
+        		result_id=resultSet1.getInt("result_id");
+        	}
+        }
     }
-    
-    
-} finally {
-    
-    if (resultSet != null) {
-        resultSet.close();
-    }
-    if (statement != null) {
-        statement.close();
-    }
-}
-if (submissionExists) {
-    String query1 = "SELECT score FROM submission WHERE student_email = ? AND id = ?";
-    statement1 = connection.prepareStatement(query1);
-    statement1.setString(1, userEmail);
-    statement1.setInt(2, mat_id);
-    resultSet1 = statement1.executeQuery();
-
-    if (resultSet1.next()) {
-       score = resultSet1.getInt("score");
-        // Do something with the score
-    }
+} catch(Exception e){
+	e.printStackTrace();
 }
 
-pageContext.setAttribute("submissionExists", submissionExists);
-pageContext.setAttribute("score", score);
+pageContext.setAttribute("result_id",result_id);
+pageContext.setAttribute("quizResultExists", quizResultExists);
+
 %>
-        <c:when test="${ml.type eq 'Assignment'}">
-            
-            <c:choose>
-                <c:when test="${not submissionExists}">
-                   <a href="#"> Not Submitted Yet</a>
-                   
+         <c:choose>
+                <c:when test="${not quizResultExists}">
+                <td>Not Started</td>
                 </c:when>
                 <c:otherwise>
-                    <c:choose>
-                        <c:when test="${submissionExists and pageContext.getAttribute('score') == 0}">
-                            <a href="#">Submitted For Evaluation</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="#">Evaluated</a>
-                        </c:otherwise>
-                    </c:choose>
-                </c:otherwise>
-            </c:choose>
+                 <td>Finished</td>
+                 </c:otherwise>
+                 
+                 </c:choose>
+                  <td>
+                	 <c:choose>
+        <c:when test="${not quizResultExists}">
+            <a href="#" onclick="start(<%=quiz_id%>)" class="button1">Start Now</a>
         </c:when>
         <c:otherwise>
-            -
+            <a href="QuizResultController?action=REVIEW&quiz_id=${quiz.quiz_id}&result_id=<%=pageContext.getAttribute("result_id") %>&title=${quiz.title}" class="button1">Review Quiz</a>
+            <a href="QuizResultController?action=RESULT&quiz_id=${quiz.quiz_id}&result_id=${result_id}" class="button1">View Result</a>
         </c:otherwise>
     </c:choose>
-             </td>    
-                
-
-                <td>
-                	 <c:choose>
-        <c:when test="${not submissionExists and ml.type  eq 'Assignment'}">
-            <a href="#" onclick="add(${quiz.quiz_id})" class="button1"></a>
-        </c:when>
-        <c:when test="${submissionExists and ml.type eq 'Assignment' }">
-            <a href="#" class="button1">View Submission</a>
-        </c:when>
-    </c:choose>
-                </td>
-                
+    </td>
              </tr>
+            
             </c:forEach>
                
               

@@ -66,6 +66,8 @@ public class RegisterController extends HttpServlet {
       HttpSession session = request.getSession();
       session.setAttribute("stuName",name);
       session.setAttribute("email",email);
+      sdao.save1(stu1);
+      sdao.save(stu);
       dispatcher=request.getRequestDispatcher("sourceHome.jsp");
       dispatcher.forward(request, response);
     }
@@ -77,8 +79,7 @@ public class RegisterController extends HttpServlet {
       dispatcher=request.getRequestDispatcher("indexRegister.jsp");
       dispatcher.forward(request, response);
     }
-    sdao.save1(stu1);
-    sdao.save(stu);
+    
     
   }
 

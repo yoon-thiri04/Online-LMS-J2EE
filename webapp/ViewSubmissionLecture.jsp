@@ -8,19 +8,21 @@
 <% 
 session = request.getSession(); 
 String userEmail = (String) session.getAttribute("userEmail"); 
+
 lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);
+
 int sub_id=Integer.parseInt(request.getParameter("s_id"));
 submitDAO sdao=new submitDAO();
 Submission mySubmission=sdao.getmySumission(sub_id);
 pageContext.setAttribute("mySubmission", mySubmission);
+
 int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
 String title=null;
 Connection connection=DBConnection.openConnection();
 String sql = "SELECT title FROM courses WHERE course_id = ?";
 PreparedStatement statement = connection.prepareStatement(sql);
 statement.setInt(1, course_id);
-
 ResultSet resultSet = statement.executeQuery();
 
 if(resultSet.next()) {
@@ -30,6 +32,7 @@ if(resultSet.next()) {
     System.out.println("No course found with course_id " + course_id);
 }
 %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");

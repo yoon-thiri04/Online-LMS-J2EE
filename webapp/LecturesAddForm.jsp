@@ -331,17 +331,17 @@ select{
             </div>
          </div>
          <%
-// Initialize variables
+
 Connection conn = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
-
+String merge="No";
 try {
-    // Load the JDBC driver
+    
     Class.forName("com.mysql.cj.jdbc.Driver");
     conn = DriverManager.getConnection("jdbc:mysql://localhost:/onlinelearningSystem","root","yoonthiri@2004");
-
-    String query = "SELECT title FROM courses";
+    
+    String query = "SELECT title FROM courses where merged='No'";
     stmt = conn.prepareStatement(query);
     rs = stmt.executeQuery();
 

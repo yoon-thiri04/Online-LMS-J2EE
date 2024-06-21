@@ -268,7 +268,7 @@ ul li:hover a{
                 <td style="width:230px;"><%= course_name %></td>
                 <td style="width:140px;">
                 	<a href="${pageContext.request.contextPath}/lecturersController?action=EDIT&email=${lect.email}&courseName=<%=course_name%>" class="delete"><b>Edit</b></a>
-                	<a href="${pageContext.request.contextPath}/DeleteLectureServlet?action=DELETE&email=${lect.email} onclick="show()" class="delete"><b>Delete</b></a>
+                	<a href="${pageContext.request.contextPath}/DeleteLectureServlet?action=DELETE&email=${lect.email}"  class="delete"><b>Delete</b></a>
                 </td>
             </tr>
             </table>

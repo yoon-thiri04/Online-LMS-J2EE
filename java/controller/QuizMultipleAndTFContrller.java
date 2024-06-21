@@ -25,7 +25,6 @@ public class QuizMultipleAndTFContrller extends HttpServlet {
     quizDAO qdao=new quizDAO();
     public QuizMultipleAndTFContrller() {
         super();
-        
     }
 
 	
@@ -34,6 +33,7 @@ public class QuizMultipleAndTFContrller extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		String action1=request.getParameter("action1");
         String quizz_id=request.getParameter("quizz_id");
       
 		Quizes quiz=new Quizes();
@@ -111,29 +111,26 @@ public class QuizMultipleAndTFContrller extends HttpServlet {
 				e.printStackTrace();
 				}
 			qdao.updateTotal(total, id);
-			
-		   
 		    }
 		
 		}else {
 			if(qdao.updateQuiz(Integer.parseInt(quizz_id), quiz)) {
 				System.out.print("succes");
 			}
-			
-			
 		}
 		 if("Save Quiz".equals(action)) {
-				
+				if("Edit".equalsIgnoreCase(action1)) {
+					dispatcher=request.getRequestDispatcher("/QuizesLecture.jsp");
+					dispatcher.forward(request, response);
+				}
+				else {
 				dispatcher=request.getRequestDispatcher("/QuizTypeChoose.jsp");
 				dispatcher.forward(request, response);
-			}
+			 }
+				}
 			    else {
 			    	dispatcher=request.getRequestDispatcher("/QuizesLecture.jsp");
 					dispatcher.forward(request, response);
-				
-			    }
-			
+			    }	
 	}
-
-	
 	}

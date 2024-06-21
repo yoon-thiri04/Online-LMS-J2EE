@@ -20,19 +20,13 @@ public class coursesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	RequestDispatcher dispatcher = null;
        courseDAO coursedao = null;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public coursesController() {
+        public coursesController() {
         coursedao = new courseDAO();
-        // TODO Auto-generated constructor stub
+      
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String action = request.getParameter("action");
 		if(action == null) {
 		action = "LIST";
@@ -43,7 +37,7 @@ public class coursesController extends HttpServlet {
 			try {
 				listCourse(request, response);
 			} catch (SQLException | ServletException | IOException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 			
@@ -62,7 +56,7 @@ public class coursesController extends HttpServlet {
 			try {
 				listCourse(request, response);
 			} catch (SQLException | ServletException | IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			
@@ -106,6 +100,7 @@ public class coursesController extends HttpServlet {
 	    course.setDescription(request.getParameter("description"));
 	    course.setStart_date(request.getParameter("startDate"));	
 	    course.setEnrollment_deadline(request.getParameter("deadLine"));
+	    course.setMerged("No");
 	    	 try {
 	        if (course.getCourse_id() == 0) {
 	            if (coursedao.save(course)) {
@@ -120,7 +115,7 @@ public class coursesController extends HttpServlet {
 	        listCourse(request, response);
 	    } catch (SQLException e) {
 	        e.printStackTrace();
-	        // Handle the SQLException appropriately
+	       
 	    }
 	}
 }

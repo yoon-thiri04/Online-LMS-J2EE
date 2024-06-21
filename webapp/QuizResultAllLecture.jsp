@@ -2,32 +2,32 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ page import="dao.*" %>
-<%@ page import="model.Material"  import="util.DBConnection" import ="java.sql.Connection" import="java.sql.*"%>
+<%@ page import="model.Quiz"  import="util.DBConnection" import ="java.sql.Connection" import="java.sql.*"%>
 <%@ page import="java.util.List" %>
     <% 
 session = request.getSession(); 
 String userEmail = (String) session.getAttribute("userEmail"); 
 lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);%>
+
 <%
 int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
-submitDAO sdao=new submitDAO();
-List<Material> matList=sdao.get(course_id,"Assignment");
-pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
-
+quizDAO qdao=new quizDAO();
+List<Quiz> quizList = qdao.get(course_id);
+pageContext.setAttribute("qList", quizList,PageContext.PAGE_SCOPE);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Submission of all Assignment Lecture</title>
+<title>Result of all Quiz Icons</title>
 
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 </head>
 <script>
-function redirectToDetails(id, title) {
-    window.location.href = "SubmissionLectureController?action=View&id="+id;
+function viewDetails(id) {
+    window.location.href = "QuizResultController?action=LectureView&quiz_id="+id;
 }
 
 </script>
@@ -247,29 +247,28 @@ html{
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
-          <li><a href="QuizResultAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz Result</a></li>
-            
+         <li><a href="QuizResultAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz Result</a></li>
             <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
       </ul>
   </div>
   <div id="title">
-    <p>Assignment Submissions</p>
+    <p>Student Quiz Result</p>
    
     </div>
     <div class="main-body">
     
 	
-	<c:forEach items="${mList}" var="ml">
+	<c:forEach items="${qList}" var="quiz">
 	
 		<div class="card-single">
     			<div>
-    				<h2>${ ml.title}</h2>
-    				 <c:set var="id" value="${ml.id}" />
+    				<h2>${quiz.title}</h2>
+    				 <c:set var="id" value="${quiz.quiz_id}" />
     				  <% int idValue = (Integer)pageContext.getAttribute("id");
     				  
     				   int tot=0;
-                       String sql= "select count(*) as total from submission where id="+idValue;
+                       String sql= "select count(*) as total from quizresult where quiz_id="+idValue;
 	                   Connection connection = DBConnection.openConnection();
 	                   Statement statement = connection.createStatement();
 	                   ResultSet resultSet = statement.executeQuery(sql);
@@ -277,8 +276,8 @@ html{
 	                   tot =resultSet.getInt("total");
     }
 %>
-    				<p>Submission made - <%=tot %></p>
-    				<button type="button" class="viewmaterial" onclick="redirectToDetails(${ml.id})">View Details</button>
+    				<p>Quiz Completion- <%=tot %></p>
+    				<button type="button" class="viewmaterial" onclick="viewDetails(${quiz.quiz_id})">View Details</button>
 </div>
     			
     	</div>

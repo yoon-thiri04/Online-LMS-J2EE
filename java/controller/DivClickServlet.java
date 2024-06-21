@@ -32,19 +32,49 @@ public class DivClickServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int course_id=Integer.parseInt(request.getParameter("id"));
-		request.setAttribute("course_id",course_id);
-		dispatcher=request.getRequestDispatcher("/EnrollForm.jsp");
-		dispatcher.forward(request, response);
-	}
+		boolean deadlineReached=false;
+		String deadline=null;
+		 try {
+		        int quiz_id = Integer.parseInt(request.getParameter("quiz_id"));
+		        String sql = "SELECT deadline FROM quiz WHERE id=?";
+		        Connection connection = DBConnection.openConnection();
+		        PreparedStatement preparedstatement = connection.prepareStatement(sql);
+		        preparedstatement.setInt(1, quiz_id);
+		        ResultSet resultSet = preparedstatement.executeQuery(); 
+		        if(resultSet.next()) {
+		        	deadline=resultSet.getString("deadline");
+		        }
+		        
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		    Date tdyDate=new Date();
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	        String date = sdf.format(tdyDate);
+	        Date TodayEnrollDate = null;
+			try {
+				TodayEnrollDate = sdf.parse(date);
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+	        Date DeadlineDate = null;
+			try {
+				DeadlineDate = sdf.parse(deadline);
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+			if(TodayEnrollDate.compareTo(DeadlineDate)<=0) {
+				response.getWriter().write(String.valueOf(deadlineReached));
+			}
+			else {
+				deadlineReached=true;
+				response.getWriter().write(String.valueOf(deadlineReached));
+		    }
+		}
+		
+	
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean deadlineReached=false;
 		String deadline=null;

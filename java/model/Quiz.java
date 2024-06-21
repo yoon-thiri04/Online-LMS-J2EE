@@ -4,7 +4,7 @@ public class Quiz {
    int quiz_id;
    String title;
    int course_id;
-   String time_allowed;
+   
    int total_quizes;
    String deadline;
 public int getQuiz_id() {
@@ -19,12 +19,7 @@ public int getCourse_id() {
 public void setCourse_id(int course_id) {
 	this.course_id = course_id;
 }
-public String getTime_allowed() {
-	return time_allowed;
-}
-public void setTime_allowed(String time_allowed) {
-	this.time_allowed = time_allowed;
-}
+
 public int getTotal_quizes() {
 	return total_quizes;
 }

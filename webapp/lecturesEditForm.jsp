@@ -5,12 +5,16 @@
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Random" import="dao.*" import="model.Lect"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
    session = request.getSession(); 
 String userEmail = (String) session.getAttribute("userEmail"); 
 UserDAO udao=new UserDAO();
-String username=udao.getName(userEmail);%> 
+String username=udao.getName(userEmail);
+courseDAO cdao=new courseDAO();
+%> 
 
 <!DOCTYPE html>
 <html>
@@ -310,6 +314,8 @@ select{
          Lecture Add Form
       </div>
       <form action="Edit" method="post" enctype="multipart/form-data">
+      <input type="hidden" value="${lecture.course_id}" name="prev_course_id"/>
+      <c:set var="course_id" value="${lecture.course_id }"/>
          <div class="form-row">
             <div class="input-data">
                <input type="text" name="name" value="${lecture.name}"required>
@@ -335,17 +341,18 @@ select{
             </div>
          </div>
          <%
-// Initialize variables
+int course_id=(int)pageContext.getAttribute("course_id");
+String title=cdao.getTitle(course_id);
 Connection conn = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
-
+String merge="No";
 try {
-    // Load the JDBC driver
+   
     Class.forName("com.mysql.cj.jdbc.Driver");
     conn = DriverManager.getConnection("jdbc:mysql://localhost:/onlinelearningSystem","root","yoonthiri@2004");
 
-    String query = "SELECT title FROM courses";
+    String query = "SELECT title FROM courses where merged='No'";
     stmt = conn.prepareStatement(query);
     rs = stmt.executeQuery();
 
@@ -359,9 +366,11 @@ try {
 				   <br/>
 				   <span id="imageName"></span>  
 			</div>
+			
 			<div class="selectbox" >
                <label for="" style="margin-bottom:;">Course Title</label>              
 				<select name="course_name"  required>
+				    <option><%=title%></option>
                   <% while (rs.next()) { %>
                       <option><%= rs.getString("title") %></option>
                   <% } %>

@@ -80,16 +80,16 @@ public List<Material> get(int course_id,String m_type) throws SQLException{
 	
 		return list;
 }
-public List<Submission> get(int id,int course_id) throws SQLException{
+public List<Submission> get(int id) throws SQLException{
 	List <Submission> list = null;
 	Submission submit = null;
 	try {
 		list = new ArrayList<Submission>();
-		String sql = "select submission_id,id,course_id,title,student_email,student_name,submission_datetime,status,score,comment,f_type from submission where id=? and course_id=?";
+		String sql = "select submission_id,id,course_id,title,student_email,student_name,submission_datetime,status,score,comment,f_type from submission where id=?";
 		connection = DBConnection.openConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, id);
-		preparedStatement.setInt(2, course_id);
+		
 		resultSet = preparedStatement.executeQuery();
 		while(resultSet.next()) {
 			submit=new Submission();

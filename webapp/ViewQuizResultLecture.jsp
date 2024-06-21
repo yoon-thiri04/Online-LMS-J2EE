@@ -1,33 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="util.DBConnection"
     import="java.sql.Connection" import="dao.*" 
-    import="java.sql.*" import="model.Submission" import="dao.announceDAO" import="dao.UserDAO" import="java.util.*"%>
+    import="java.sql.*" import="model.*"  import="java.util.*" import="java.time.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 
-session = request.getSession(); 
-String userEmail = (String) session.getAttribute("stuEmail"); 
-UserDAO udao=new UserDAO();
-String username=udao.getName(userEmail);
-submitDAO sdao=new submitDAO();
-int mat_id=Integer.parseInt(request.getParameter("mat_id"));
-Submission mySubmission=sdao.getmySumission(mat_id, userEmail);
-pageContext.setAttribute("mySubmission", mySubmission);
+session = request.getSession();
+String username=null;
+String userEmail = (String) session.getAttribute("userEmail"); 
+
+lectureDAO udao=new lectureDAO();
+username=udao.getNameLecture(userEmail);
+
+int quiz_id=(int)request.getAttribute("quiz_id");
+String quiz_title=null;
+String sql= "select title from quiz where id="+quiz_id;
+Connection connection = DBConnection.openConnection();
+Statement statement = connection.createStatement();
+ResultSet resultSet = statement.executeQuery(sql);
+if(resultSet.next()){
+quiz_title=resultSet.getString("title");
+}
+
+int result_id=(int)request.getAttribute("result_id");
+quizDAO qdao=new quizDAO();
+QuizResult result=qdao.getQuizResult(result_id);
+pageContext.setAttribute("result", result);
+
 int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
 String title=null;
-Connection connection=DBConnection.openConnection();
-String sql = "SELECT title FROM courses WHERE course_id = ?";
-PreparedStatement statement = connection.prepareStatement(sql);
-statement.setInt(1, course_id);
-
-ResultSet resultSet = statement.executeQuery();
-
-if(resultSet.next()) {
-    
-     title = resultSet.getString("title");
-    } else {
-    System.out.println("No course found with course_id " + course_id);
-}
+Connection connection1=DBConnection.openConnection();
+String sql1 = "SELECT title FROM courses WHERE course_id="+course_id;
+Statement statement1 = connection1.createStatement();
+ResultSet resultSet1 = statement1.executeQuery(sql1);
+if(resultSet1.next()) {
+     title = resultSet1.getString("title");
+ }
 
 %> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
@@ -122,7 +130,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  margin-left:470px;
+  margin-left:450px;
   margin-top:70px;
   margin-bottom:99px;
   height:470px;
@@ -134,8 +142,8 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 }
 .container .text{
   text-align: center;
-  font-size: 41px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 500;
   background:white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -214,9 +222,9 @@ color:blue;
  
   <div style="height:60px;">------------</div>
 	    <div id="popup" class="container popup">
-    	<a href="Material.jsp?course_id=<%=(int)session.getAttribute("course_id") %>" class="close">&times;</a>
+    	<a href="QuizResultController?action=LectureView&quiz_id=<%=result.getQuiz_id() %>" class="close">&times;</a>
     	<div class="text">
-      		Submission Status
+      		Summary of your previous attempt on <%=quiz_title %>
         </div>
         
 		 <div class="grid-item">
@@ -224,50 +232,62 @@ color:blue;
                     <table>
                         <tr>
                           <td><b>Name</b></td>
-                           <td><%=mySubmission.getStudent_name() %></td>
+                          <%
+                          String email=result.getStudent_email();
+                          String stud_name=null;
+                          String sql_a= "select user_name from userlist where email=?";
+                          Connection connection_a = DBConnection.openConnection();
+                          PreparedStatement preparedStatement_a = connection_a.prepareStatement(sql_a);
+                  		  preparedStatement_a.setString(1,email); 
+                  		  ResultSet resultSet_a = preparedStatement_a.executeQuery();
+                          if(resultSet_a.next()){
+                          stud_name=resultSet_a.getString("user_name");
+                          }
+                          %>
+                           <td><%=stud_name %></td>
                            </tr>
+                           <% String start_time=qdao.formatDateTime(result.getStartTime());
+                           String end_time=qdao.formatDateTime(result.getEndTime());
+                           %>
                            <tr>
-                            		<td><b>Submission Status</b></td>
-                            		<td><%=mySubmission.getStatus()%></td>
+                              <td><b>Started On</b></td>
+                            		<td><%=start_time %></td>
+                            	</tr>
+                           <tr>
+                              <td><b>State</b></td>
+                            		<td><%= result.getState() %></td>
                             	</tr>
                             	<tr>
-                            		<td><b>Score</b></td>
-                            		<c:choose>
-    <c:when test="${mySubmission.score eq 0}">
-     <td>-</td>
-    </c:when>
-    <c:otherwise>
-        <td><%=mySubmission.getScore()%></td>
-    </c:otherwise>
-</c:choose>
-                
+                            	<td><b>Completed on</b></td>
+                            		<td><%=end_time
+                            		%></td>
                             	</tr>
-                            	<tr>
-                            		<td><b>File</b></td>
-                            		<td ><a href = "${pageContext.request.contextPath}/SubmissionController?action=DOWNLOAD&id=<%=mySubmission.getSubmission_id() %>&title=<%=mySubmission.getTitle() %>&f_type=<%=mySubmission.getF_type() %>"><%=mySubmission.getTitle() %></a>
-                	</td>
+                           <tr>
+                            	<td><b>Time Taken</b></td>
+                            		<td><%= result.getTime_taken() %></td>
                             	</tr>
+                <%
+        int idValue = result.getQuiz_id();
+		  
+		int tot=0;
+        String sql2= "select total_quizes from quiz where id=?";
+        Connection connection2 = DBConnection.openConnection();
+        PreparedStatement preparedStatement = connection2.prepareStatement(sql2);
+		preparedStatement.setInt(1,idValue); 
+		ResultSet resultSet2 = preparedStatement.executeQuery();
+        if(resultSet2.next()){
+        tot =resultSet2.getInt("total_quizes");
+        }
+        %>
                             	<tr>
-                            		<td><b>Submission Made</b></td>
-                            		<td><%=mySubmission.getSubmission_date() %></td>
+                            		<td><b>Score</b></td> 		
+                                   <td><%=result.getScore() %>/<%=tot %></td>
                             	</tr>
-                            	<tr>
-                            	
-                          <td><b>Submission Comment</b></td>
-                           <td><c:choose>
-    <c:when test="${mySubmission.comment eq Null}">
-     No Comment
-    </c:when>
-    <c:otherwise>
-       <%=mySubmission.getComment() %>
-    </c:otherwise>
-</c:choose></td>
-                           </tr>
                             </table>
                            
                         </div>
                         </div>
-  	<a href="Material.jsp?course_id=<%=(int)session.getAttribute("course_id") %>" class="close-popup"></a>
+  	<a href="QuizStudent.jsp?" class="close-popup"></a>
  
 </body>
 </html>

@@ -36,7 +36,7 @@ public class QuizesController extends HttpServlet {
 			try {
 				editQuiz(request,response);
 			} catch (NumberFormatException | ServletException | IOException | SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			break;
@@ -76,6 +76,7 @@ public class QuizesController extends HttpServlet {
 		String type=request.getParameter("type");
 		Quizes quiz=qdao.getQuiz(Integer.parseInt(quiz_id), type);
 		request.setAttribute("quiz", quiz);
+		request.setAttribute("action", "Edit");	
 		switch(type) {
 		case "true": 
 			dispatcher=request.getRequestDispatcher("/QuizTrueFalse.jsp");

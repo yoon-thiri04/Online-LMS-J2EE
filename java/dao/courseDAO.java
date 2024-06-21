@@ -17,7 +17,7 @@ public class courseDAO {
 	public boolean save(Course course) {
 		boolean flag = false;
 		try {
-			String sql ="insert into courses (title,level,category,description,duration,start_date,enrollment_deadline) values (?,?,?,?,?,?,?)";
+			String sql ="insert into courses (title,level,category,description,duration,start_date,enrollment_deadline,merged) values (?,?,?,?,?,?,?,?)";
 			connection = DBConnection.openConnection();
 			preparedStatement = connection.prepareStatement(sql);
 			
@@ -28,7 +28,7 @@ public class courseDAO {
 			preparedStatement.setString(5, course.getDuration());
 			preparedStatement.setString(6, course.getStart_date());
 			preparedStatement.setString(7,course.getEnrollment_deadline());
-			
+			preparedStatement.setString(8,course.getMerged());
 			
 			int rowInserted = preparedStatement.executeUpdate();
 			if(rowInserted >0) flag = true;
@@ -57,6 +57,7 @@ public class courseDAO {
 				course.setDescription(resultSet.getString("description"));
 				course.setStart_date(resultSet.getString("start_date"));
 				course.setEnrollment_deadline(resultSet.getString("enrollment_deadline"));
+				course.setMerged(resultSet.getString("merged"));
 				list.add(course);
 			}
 		}catch(SQLException e) {
@@ -84,6 +85,7 @@ public class courseDAO {
 				course.setDuration(resultSet.getString("duration"));
 				course.setStart_date(resultSet.getString("start_date"));
 				course.setEnrollment_deadline(resultSet.getString("enrollment_deadline"));
+				course.setMerged(resultSet.getString("merged"));
 				}
 			}catch(SQLException e) {
 			e.printStackTrace();
@@ -114,7 +116,6 @@ public class courseDAO {
 			preparedStatement.setString(3, course.getCategory());
 			preparedStatement.setString(4, course.getDescription());
 			preparedStatement.setString(5, course.getDuration());
-			
 			preparedStatement.setString(6, course.getStart_date());
 			preparedStatement.setString(7,course.getEnrollment_deadline() );
 			preparedStatement.setInt(8, course.getCourse_id());
@@ -125,8 +126,37 @@ public class courseDAO {
 			}
 			return flag;
 		   }
-		
-
-	
+	public String getTitle(int course_id) {
+		String title=null;
+		try {
+			
+			String sql = "select title from courses where course_id="+course_id;
+			connection = DBConnection.openConnection();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sql);
+			if(resultSet.next()) {
+				title=resultSet.getString("title");
+			}
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+		return title;
+	}
+	public int getCourse_id(String title) {
+		int course_id=0;
+		try {
+			String sql = "select course_id from courses where title=?";
+			connection = DBConnection.openConnection();
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, title);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				course_id=resultSet.getInt("course_id");
+			}
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+		return course_id;
+	}
 }
 

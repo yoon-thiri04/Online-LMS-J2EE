@@ -52,10 +52,6 @@ public class MaterialController extends HttpServlet {
       }
     break;
 
-    case "DELETE":
-    deleteMaterial(request, response);
-    break;
-
     
     }
   }
@@ -99,21 +95,7 @@ public class MaterialController extends HttpServlet {
        }
        
      
-     private void deleteMaterial(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-          String id = request.getParameter("id");
-          
-          
-        if(mDAO.delete(Integer.parseInt(id))) {
-          request.setAttribute("MSG", "Successfully Deleted");
-        
-        
-          }
-          
-            
-          }
-            
-     
-  
+   
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  Connection conn=null;
 	     String status=null;

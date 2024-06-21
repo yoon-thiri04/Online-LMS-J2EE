@@ -1,12 +1,16 @@
 package dao;
+import model.QuizResultAnswer;
+import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import util.DBConnection;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Course;
 import model.Quiz;
+import model.QuizResult;
 import model.Quizes;
 public class quizDAO {
 	Connection connection=null;
@@ -16,26 +20,43 @@ public class quizDAO {
         public boolean save(Quiz quiz) {
         	boolean flag = false;
     		try {
-    			String sql ="insert into quiz (course_id,time_allowed,total_quizes,title,deadline) values (?,?,?,?,?)";
+    			String sql ="insert into quiz (course_id,total_quizes,title,deadline) values (?,?,?,?)";
     			connection = DBConnection.openConnection();
     			preparedStatement = connection.prepareStatement(sql);
     			preparedStatement.setInt(1, quiz.getCourse_id());
-    			preparedStatement.setString(2,quiz.getTime_allowed() );
-    			preparedStatement.setInt(3, quiz.getTotal_quizes());
-    			preparedStatement.setString(4, quiz.getTitle());
-    			preparedStatement.setString(5, quiz.getDeadline());
+    			preparedStatement.setInt(2, quiz.getTotal_quizes());
+    			preparedStatement.setString(3, quiz.getTitle());
+    			preparedStatement.setString(4, quiz.getDeadline());
     			int rowInserted = preparedStatement.executeUpdate();
     			if(rowInserted >0) flag = true;
         }catch(SQLException e) {
         	e.printStackTrace();
         }
     		return flag;
-}     public List<Quiz> get(int course_id){
+}     public boolean updateQ(Quiz quiz,int quiz_id) {
+	    boolean flag=false;
+	    try {
+	    	String sql="Update quiz set title = ?, deadline = ? WHERE id = ?";
+	    	connection=DBConnection.openConnection();
+	    	preparedStatement=connection.prepareStatement(sql);
+	    	preparedStatement.setString(1,quiz.getTitle());
+	    	preparedStatement.setString(2, quiz.getDeadline());
+	    	preparedStatement.setInt(3, quiz_id);
+	    	 int rowsAffected = preparedStatement.executeUpdate();
+	    	 if(rowsAffected>0) {
+	    		 flag=true;
+	    	 }
+	    }catch(Exception e) {
+	    	e.printStackTrace();
+	    }
+	    return flag;
+}
+        public List<Quiz> get(int course_id){
 	       Quiz quiz=null;
 	       List <Quiz> list = null;
 	       try {
 	    	   list = new ArrayList<Quiz>();
-				String sql = "select * from quiz where course_id= "+course_id;
+				String sql = "select * from quiz where course_id="+course_id;
 				connection = DBConnection.openConnection();
 				statement = connection.createStatement();
 				resultSet = statement.executeQuery(sql);
@@ -43,20 +64,17 @@ public class quizDAO {
 					quiz=new Quiz();
 					quiz.setQuiz_id(resultSet.getInt("id"));
 					quiz.setCourse_id(resultSet.getInt("course_id"));
-					quiz.setTime_allowed(resultSet.getString("time_allowed"));
 					quiz.setTotal_quizes(resultSet.getInt("total_quizes"));
 					quiz.setTitle(resultSet.getString("title"));
 					quiz.setDeadline(resultSet.getString("deadline"));
 					list.add(quiz);
 				}
 	       }catch(SQLException e) {
-	    	   e.printStackTrace();
-					
-					
-	    	   
+	    	   e.printStackTrace();   
 	       }   
 	       return list;
 }
+
  public boolean delete(int id) {
 	 boolean flag=false;
      try {
@@ -65,14 +83,31 @@ public class quizDAO {
        preparedStatement=connection.prepareStatement(sql);
        int rowDeleted=preparedStatement.executeUpdate();
        if(rowDeleted>0) {
-         flag=true;
+         flag=deleteOverallQuiz(id) && deleteResult(id);
        }
      }catch(SQLException e) {
        e.printStackTrace();
      }
      return flag;
  }
- 
+  public Quiz getQuiz(int quiz_id) {
+	  Quiz quiz=new Quiz();
+	  try {
+		  String sql="select * from quiz where id="+quiz_id;
+		  connection = DBConnection.openConnection();
+          statement = connection.createStatement();
+          resultSet = statement.executeQuery(sql);
+          if(resultSet.next()) {
+        	  quiz.setQuiz_id(resultSet.getInt("id"));
+        	  quiz.setCourse_id(resultSet.getInt("course_id"));
+        	  quiz.setTitle(resultSet.getString("title"));
+        	  quiz.setDeadline(resultSet.getString("deadline"));
+          }
+	  }catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  return quiz;
+  }
   public List<Quizes> getQuizes(int quizId) {
       List<Quizes> list = new ArrayList<>();
       Connection connection = null;
@@ -279,6 +314,52 @@ public class quizDAO {
 	    }
 	    return flag;
 	}
+   
+   public boolean deleteOverallQuiz(int quiz_id) throws SQLException {
+	   boolean flag=false;
+	   String deleteAnswersSQL = "DELETE FROM answer WHERE quizz_id IN (SELECT quiz_id FROM quizz WHERE id = ?)";
+       String deleteQuizSQL = "DELETE FROM quizz WHERE id = ?";
+
+       try (
+    		   Connection conn=DBConnection.openConnection();
+    		   
+    		   PreparedStatement deleteAnswersStmt = conn.prepareStatement(deleteAnswersSQL);
+               PreparedStatement deleteQuizStmt = conn.prepareStatement(deleteQuizSQL)) 
+              {
+              deleteAnswersStmt.setInt(1, quiz_id);
+              int answersDeleted = deleteAnswersStmt.executeUpdate();
+              deleteQuizStmt.setInt(1, quiz_id);
+              
+              int quizzesDeleted = deleteQuizStmt.executeUpdate();
+              if(answersDeleted>=0 && quizzesDeleted>=0) {
+            	  flag=true;
+              }
+       }
+	   return flag;
+   }
+   public boolean deleteResult(int quiz_id) throws SQLException {
+	   boolean flag=false;
+	   
+		   String sql="DELETE FROM quizresultanswer where result_id In(select result_id from quizresult where quiz_id=?)";
+		   String deleteQuizSQL = "DELETE FROM quizresult WHERE quiz_id = ?";
+		   try (
+	    		   Connection conn=DBConnection.openConnection();
+	    		   
+	    		   PreparedStatement deleteAnswersStmt = conn.prepareStatement(sql);
+	               PreparedStatement deleteQuizStmt = conn.prepareStatement(deleteQuizSQL)) 
+	              {
+	              deleteAnswersStmt.setInt(1, quiz_id);
+	              int answersDeleted = deleteAnswersStmt.executeUpdate();
+	              deleteQuizStmt.setInt(1, quiz_id);
+	              
+	              int quizzesDeleted = deleteQuizStmt.executeUpdate();
+	              if(answersDeleted>=0 && quizzesDeleted>=0) {
+	            	  flag=true;
+	              }
+	       }
+		   return flag;
+	 
+   }
    public boolean deleteQuiz(int quiz_id,String type) {
 	   boolean flag=false;
 	   try {
@@ -294,6 +375,207 @@ public class quizDAO {
 	     }  
 	   return flag;
    }
-  
-        
+  public boolean saveQuizResult(QuizResult result) {
+	  boolean flag=false;
+	  try {
+	  String sql ="insert into quizresult (quiz_id,student_email,start_datetime,state) values (?,?,?,?)";
+		connection = DBConnection.openConnection();
+		preparedStatement = connection.prepareStatement(sql);
+	    preparedStatement.setInt(1,result.getQuiz_id());
+	    preparedStatement.setString(2,result.getStudent_email());
+	    preparedStatement.setTimestamp(3, Timestamp.valueOf(result.getStartTime()));
+	    preparedStatement.setString(4,result.getState());
+	    int rowInserted=preparedStatement.executeUpdate();
+	    if(rowInserted>0) {
+	    	flag=true;
+	    }
+	  }catch(SQLException e) {
+		  e.printStackTrace();
+	  }
+	  return flag;
+  }
+  public LocalDateTime getStartTime(int quiz_id) {
+	  LocalDateTime startTime=null;
+	  Timestamp timestamp=null;
+	  try {
+		  String sql="select start_datetime from quizresult where quiz_id="+quiz_id;
+		  connection=DBConnection.openConnection();
+		  statement = connection.createStatement();
+	      resultSet = statement.executeQuery(sql);
+	      if(resultSet.next()){
+	    	   timestamp = resultSet.getTimestamp("start_datetime");
+	      }
+	      if (timestamp != null) {
+              startTime = timestamp.toLocalDateTime();
+	  }
+  }catch(Exception e) {
+	  e.printStackTrace();
+  }
+  return startTime;      
 }
+  public Map<Integer, String> getCorrectAnswers(int quiz_id) {
+	  Map<Integer, String> correctAnswers = new HashMap<>();
+	  try {
+		  String sql="select quiz_id,answer from quizz where id="+quiz_id;
+		  connection=DBConnection.openConnection();
+		  statement=connection.createStatement();
+		  resultSet=statement.executeQuery(sql);
+		  while(resultSet.next()) {
+			  int q_id=resultSet.getInt("quiz_id");
+			  String answer=resultSet.getString("answer");
+			  correctAnswers.put(q_id, answer);
+		  }
+	  }catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  return correctAnswers;
+  }
+  public int getResultId(int quiz_id,String email) {
+	  int result_id=0;
+	  try {
+		  String sql="select result_id from quizresult where quiz_id=? and student_email=?";
+		  connection=DBConnection.openConnection();
+		  PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		  preparedStatement.setInt(1, quiz_id); 
+		  preparedStatement.setString(2, email);
+		  ResultSet resultSet = preparedStatement.executeQuery();
+          if(resultSet.next()) {
+        	  result_id=resultSet.getInt("result_id");
+          }
+	  }catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  return result_id;
+  }
+  public boolean saveStudentAnswer(int result_id,String answer,int quiz_id,String isCorrect) {
+	  boolean flag=false;
+	  try {
+		  String sql="insert into quizresultanswer(result_id,answer,quizz_id,isCorrect)values (?,?,?,?)";
+		  connection = DBConnection.openConnection();
+		  preparedStatement = connection.prepareStatement(sql);
+		  preparedStatement.setInt(1,result_id);
+		  preparedStatement.setString(2,answer);
+		  preparedStatement.setInt(3, quiz_id);
+		  preparedStatement.setString(4, isCorrect);	  
+		  int rowInserted=preparedStatement.executeUpdate();
+		  if(rowInserted>0) {
+			  flag=true;
+		  }
+	  }catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  return flag;
+  }
+  public int calculateScore(Map<Integer,String> userAnswers,Map<Integer,String> correctAnswers,int result_id) {
+	  int score=0;
+	  for (Map.Entry<Integer, String> entry : userAnswers.entrySet()) {
+          int quizId = entry.getKey();
+          String userAnswer = entry.getValue();
+          String correctAnswer = correctAnswers.get(quizId);
+          if (correctAnswer != null && correctAnswer.equals(userAnswer)) {
+        	  saveStudentAnswer(result_id,userAnswer,quizId,"T");
+              ++score;
+          }
+          else {
+        	  saveStudentAnswer(result_id,userAnswer,quizId,"F");
+          }
+      }
+	  return score;
+  }
+  public boolean updateQuizResult(QuizResult result) {
+	  boolean flag=false;
+	  try {
+		  String sql = "UPDATE quizresult SET end_datetime=?, time_taken=?, state=?,score=? where result_id=? ";
+		  connection = DBConnection.openConnection();
+		  preparedStatement = connection.prepareStatement(sql);
+		  preparedStatement.setTimestamp(1, Timestamp.valueOf(result.getEndTime()));
+		  preparedStatement.setString(2, result.getTime_taken());
+		  preparedStatement.setString(3,result.getState());
+		  preparedStatement.setInt(4, result.getScore());
+		  preparedStatement.setInt(5, result.getResult_id());
+		  int rowUpdated=preparedStatement.executeUpdate();
+		  if(rowUpdated>0) {
+			  flag=true;
+		  }
+	  }catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  return flag;
+  }
+  public QuizResult getQuizResult(int result_id) {
+	  QuizResult result=new QuizResult();
+	  Timestamp start_time_stamp=null;
+	  Timestamp end_time_stamp=null;
+	  try {
+		  String sql="select * from quizresult where result_id="+result_id;
+		  connection=DBConnection.openConnection();
+		  statement=connection.createStatement();
+		  resultSet=statement.executeQuery(sql);
+		  if(resultSet.next()) {
+			  result.setResult_id(resultSet.getInt("result_id"));
+			  result.setQuiz_id(resultSet.getInt("quiz_id"));
+			  result.setStudent_email(resultSet.getString("student_email"));
+			  start_time_stamp= resultSet.getTimestamp("start_datetime");
+			  result.setStartTime(start_time_stamp.toLocalDateTime());
+			  end_time_stamp=resultSet.getTimestamp("end_datetime");
+			  result.setEndTime(end_time_stamp.toLocalDateTime());
+			  result.setTime_taken(resultSet.getString("time_taken"));
+			  result.setState(resultSet.getString("state"));
+			  result.setScore(resultSet.getInt("score"));
+		  }
+	  }catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  return result;
+  }
+  public Map<Integer,QuizResultAnswer> getAnswers(int result_id) {
+	  Map<Integer,QuizResultAnswer> Answer=new HashMap<>();
+	 try {
+		 String sql="select answer,quizz_id,isCorrect from quizresultanswer where result_id="+result_id;
+		 connection=DBConnection.openConnection();
+		 statement=connection.createStatement();
+		 resultSet=statement.executeQuery(sql);
+		 while(resultSet.next()) {
+			 QuizResultAnswer result=new QuizResultAnswer(resultSet.getString("answer"),resultSet.getString("isCorrect"));
+			 Answer.put(resultSet.getInt("quizz_id"), result);
+		 }
+	 }catch(Exception e) {
+		 e.printStackTrace();
+	 }
+	 return Answer;
+  }
+  public List<QuizResult> getQuizResultList(int quiz_id){
+	  List<QuizResult> list=new ArrayList<>();
+	  QuizResult result=null;
+	  Timestamp start_time_stamp=null;
+	  Timestamp end_time_stamp=null;
+	  try {
+		  String sql="select * from quizresult where quiz_id="+quiz_id;
+		  connection=DBConnection.openConnection();
+		  statement=connection.createStatement();
+		  resultSet=statement.executeQuery(sql);
+		  while(resultSet.next()) {
+			  result=new QuizResult();
+			  result.setResult_id(resultSet.getInt("result_id"));
+			  result.setQuiz_id(resultSet.getInt("quiz_id"));
+			  result.setStudent_email(resultSet.getString("student_email"));
+			  start_time_stamp=resultSet.getTimestamp("start_datetime");
+			  result.setStartTime(start_time_stamp.toLocalDateTime());
+			  end_time_stamp=resultSet.getTimestamp("end_datetime");
+			  result.setEndTime(end_time_stamp.toLocalDateTime());
+			  result.setTime_taken(resultSet.getString("time_taken"));
+			  result.setState(resultSet.getString("state"));
+			  result.setScore(resultSet.getInt("score"));
+			  list.add(result);
+		  }
+	  }catch(Exception e) {
+		  e.printStackTrace();
+	  }
+	  return list;
+  }
+  public static String formatDateTime(LocalDateTime dateTime) {
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	    return dateTime.format(formatter);
+	}
+}
+  
