@@ -34,9 +34,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-/**
- * Servlet implementation class SubmissionController
- */
 @WebServlet("/SubmissionController")
 @MultipartConfig(maxFileSize = 52428800)
 public class SubmissionController extends HttpServlet {
