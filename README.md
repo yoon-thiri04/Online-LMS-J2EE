@@ -22,7 +22,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 
 **Capabilities:**
 - Upload course materials (any file type, including .java, .pptx, .mp4, etc.).
-- Select material types (Assignment, Lecture Book, etc.).
+- Enter material types (Assignment, Lecture Book, etc.).
 - Create quizzes (future update).
 - Score assignments submitted by enrolled students.
 - Change password.
