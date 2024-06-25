@@ -185,5 +185,5 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - **Enrollment Deadlines:** Courses have enrollment deadlines, after which students cannot enroll.
 - **Quiz Creation and Management:** Instructors will be able to create and manage quizzes.
 - **Quiz Attempt and Result Viewing:** Students will be able to attempt quizzes and view their results.Instructors can also track each student's quiz result and review student's quiz answers.
-
+---
 
