@@ -176,6 +176,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 | quizz_id  | int          | YES  |     | NULL    |       |
 | isCorrect | varchar(5)   | YES  |     | NULL    |       |
 
+---
 ## Features
 - **Course Management:** Admins can add courses and assign instructors.
 - **User Management:** Admins can view the list of registered users, courses, and instructors.
