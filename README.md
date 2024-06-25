@@ -15,7 +15,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - Assign instructors to courses (default password: lect@123!).
 - View and manage registered users, courses, and instructors (both total counts and detailed lists).
 - Change password.
-
+---
 ### Instructor
 **Default Login Credentials:** Provided by Admin.
 - Default Password: lect@123!
@@ -24,26 +24,53 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - Upload course materials (any file type, including .java, .pptx, .mp4, etc.).
 - Enter material types (Assignment, Lecture Book, etc.).
 - Create quizzes (future update).
+- Provide Announcements.
 - Score assignments submitted by enrolled students.
 - Change password.
 - Create and manage quizzes.
 - View each student's Quiz Result inculding Started and Ended Datetime,Time taken,etc..
 - Also be able to review each enrolled Student's quiz answers.
-
+---
 ### Registered User
 **Capabilities:**
 - Register on the platform.
 - Browse available courses.
 - Enroll in courses before the enrollment deadline.
-
+---
 ### Student
 **Capabilities:**
 - Download course materials.
+- View Announcements.
 - Submit assignments.
 - View submission status and scores.
 - Attempt quizzes.
 - View quiz results.
 - Review their own quiz answers for the previous attempt.
+---
+# Database Model
+## userlist
+| Field     | Type         | Null | Key | Default | Extra |
+|-----------|--------------|------|-----|---------|-------|
+| user_name | varchar(350) | YES  |     | NULL    |       |
+| password  | varchar(250) | YES  |     | NULL    |       |
+| email     | varchar(250) | YES  |     | NULL    |       |
+
+## student
+| Field    | Type         | Null | Key | Default | Extra          |
+|----------|--------------|------|-----|---------|----------------|
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(100) | YES  |     | NULL    |                |
+| email    | varchar(250) | YES  |     | NULL    |                |
+| password | varchar(100) | YES  |     | NULL    |                |
+
+## enrollment
+| Field     | Type         | Null | Key | Default | Extra |
+|-----------|--------------|------|-----|---------|-------|
+| name      | varchar(100) | YES  |     | NULL    |       |
+| email     | varchar(250) | YES  |     | NULL    |       |
+| course_id | int          | YES  |     | NULL    |       |
+| date      | date         | YES  |     | NULL    |       |
+
 
 ## Features
 - **Course Management:** Admins can add courses and assign instructors.
