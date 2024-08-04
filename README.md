@@ -187,6 +187,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - **Quiz Attempt and Result Viewing:** Students will be able to attempt quizzes and view their results.Instructors can also track each student's quiz result and review student's quiz answers.
 ---
 
+
 ## Project Features to Add:
 Material Type - Categorized ❗❗
 !! Material Type - Split --> 1. Lecture 2.Assignment
