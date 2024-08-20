@@ -129,7 +129,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 | course_id    | int         | YES  | MUL | NULL    |                |
 | total_quizes | int         | YES  |     | NULL    |                |
 | title        | varchar(50) | YES  |     | NULL    |                |
-| deadline     | date        | YES  |     | NULL    |                |
+| deadline     | datetime    | YES  |     | NULL    |                |
 
 ## quizz
 | Field    | Type         | Null | Key | Default | Extra          |
