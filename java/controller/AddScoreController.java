@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class AddScoreController
- */
 @WebServlet("/AddScoreController")
 public class AddScoreController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,14 +21,10 @@ public class AddScoreController extends HttpServlet {
     RequestDispatcher dispatcher=null;
     public AddScoreController() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	private void listSubmission(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -47,7 +40,7 @@ public class AddScoreController extends HttpServlet {
 			dispatcher=request.getRequestDispatcher("/SubmissionLecture.jsp");
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
      }

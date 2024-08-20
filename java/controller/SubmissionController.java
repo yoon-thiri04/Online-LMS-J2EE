@@ -34,9 +34,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-/**
- * Servlet implementation class SubmissionController
- */
 @WebServlet("/SubmissionController")
 @MultipartConfig(maxFileSize = 52428800)
 public class SubmissionController extends HttpServlet {
@@ -104,9 +101,7 @@ public class SubmissionController extends HttpServlet {
         }
      }
  
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Connection conn=null;
 	     PreparedStatement pstmt = null;

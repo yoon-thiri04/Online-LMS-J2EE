@@ -14,10 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dao.courseDAO;
 import model.Course;
+<<<<<<< HEAD
 import util.DBConnection;
 /**
  * Servlet implementation class coursesController
  */
+=======
+
+>>>>>>> 0c3c00e681c3e3804cad5b55fc7fd26cf4bc5689
 @WebServlet("/coursesController")
 public class coursesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
