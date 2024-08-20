@@ -188,13 +188,15 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 ---
 
 ## Project Features to Add:
-Material Type - Categorized ❗❗
-!! Material Type - Split --> 1. Lecture 2.Assignment
-!! Login - Name drop
-!!!!!!! Password check 
-!! Pop Up format for View Details Result
-!! Change Pwd
-!! Lecture - password drop 
-!! Quiz - Timer
-!! RE-CHOOSE Delete
-!! Lectures Dashboard - Quiz/ Assignment/
+
+- !!!!!!! Password check 
+- !! Pop Up format for View Details Result
+- !! Change Pwd
+- !! Lecture - password drop 
+- !! Quiz - Timer
+- !! Admin - Run Course, other
+- !! Course- Lecture Link up --- >date
+- !!Profile Card Student
+- !! Nav bar delete
+- !! Fond size, color
+- !! Submit all and finished
