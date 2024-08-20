@@ -1,12 +1,18 @@
 package dao;
 import model.QuizResultAnswer;
+
 import java.util.*;
+import java.util.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import util.DBConnection;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import model.Course;
 import model.Quiz;
@@ -162,7 +168,6 @@ public class quizDAO {
           connection = DBConnection.openConnection();
           statement = connection.createStatement();
           resultSet = statement.executeQuery(sql);
-
           while (resultSet.next()) {
               answers.add(resultSet.getString("answer"));
               
@@ -225,10 +230,8 @@ public class quizDAO {
 		String sql = "UPDATE quiz SET total_quizes = ? where id = ?";
 		connection = DBConnection.openConnection();
 		preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setInt(1, total);
-		
-		preparedStatement.setInt(2,quiz_id);
-		
+		preparedStatement.setInt(1, total);		
+		preparedStatement.setInt(2,quiz_id);		
 		int rowUpdated = preparedStatement.executeUpdate();
 		if (rowUpdated>0) {
 			flag = true;
@@ -577,5 +580,38 @@ public class quizDAO {
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	    return dateTime.format(formatter);
 	}
+  public boolean DeadlineReached(int quiz_id) {
+ 	 boolean deadlineReached = false;
+	    String deadline = null;
+	    
+	    try {
+	        
+	        String sql = "SELECT deadline FROM quiz WHERE id=?";
+	        Connection connection = DBConnection.openConnection();
+	        PreparedStatement preparedstatement = connection.prepareStatement(sql);
+	        preparedstatement.setInt(1, quiz_id);
+	        ResultSet resultSet = preparedstatement.executeQuery();	        
+	        if (resultSet.next()) {
+	            deadline = resultSet.getString("deadline");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    String[] parts = deadline.split(" ");
+        LocalDate deadlineDate = LocalDate.parse(parts[0]);  // Split date
+        LocalTime deadlineTime = LocalTime.parse(parts[1]);  // Split time
+
+        LocalDateTime deadlineDateTime = LocalDateTime.of(deadlineDate, deadlineTime);
+        LocalDateTime now = LocalDateTime.now();
+
+        // Compare current date and time with the deadline
+        if (now.isBefore(deadlineDateTime)) {
+            deadlineReached = false;
+        }
+        else {
+        	deadlineReached= true;
+        }
+	    return deadlineReached;
+  }
 }
   

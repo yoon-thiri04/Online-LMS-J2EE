@@ -1,34 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
- <%@ page import="dao.*" %>
-<%@ page import="model.Material" %>
-<%@ page import="java.util.List" import="java.sql.*" import="util.*"%>
-
-
-<%
-session = request.getSession(); 
-String userEmail = (String) session.getAttribute("stuEmail"); 
-UserDAO udao=new UserDAO();
-String username=udao.getName(userEmail);
-    int course_id = Integer.parseInt(request.getParameter("course_id"));
-    session.setAttribute("course_id",course_id);
-    uploadDao mDAO = new uploadDao();
-    List<Material> matList = mDAO.getfor(course_id);
-    pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
-   
+    <%@ page import="util.DBConnection" import ="java.sql.Connection" import="java.util.Date" import="java.text.*" import="java.sql.*"  
+import="dao.UserDAO" import="java.util.List" import="model.Course" import="model.EnrollStudent"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ <% 
+     session = request.getSession(); 
+    String userEmail = (String) session.getAttribute("userEmail"); 
+    UserDAO udao=new UserDAO();
+    String username=udao.getName(userEmail);
+    
 %>
-
+<%
+	List<EnrollStudent> RunStudent=(List)request.getAttribute("RunStudent");
+//pageContext.setAttribute("run_course", run_course,PageContext.PAGE_SCOPE);
+%>
 <!DOCTYPE html>
-
 <html>
 <head>
-<meta charset="UTF-8" />
-<title>Material Student</title>
+<meta charset="ISO-8859-1">
+<title>Running Courses</title>
+</head>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-<style> 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
+<style> @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
 *{
   margin: 0;
   padding: 0;
@@ -187,6 +181,7 @@ label #cancel{
   font-size:20px;
   margin-left:280px;
   color:red;
+ padding-top:100px;
 }
 .row table {
 padding-left:0px;
@@ -239,69 +234,51 @@ color:;
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
+	      <a href="#"><b>Smart Learn</b></a>
 	    </div>
-	    
+
 	    <div class="header-icons">
 	    	<div class="account">
-		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
-	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
-	            </ul>
-	    	</div>
-	    	<div class="profile">
-		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h4><%= username %></h4>
-		    </div>
+	        	<i class="fa-solid fa-circle-user"></i>
+	        	<h3><%=username %></h3>
+	      	</div>
 	    </div>
 	</header>
-	<div style="height:60px;">------------</div>
-  <div class="sidebar">
-    <ul>
-      <li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses</a></li>
-      <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
-      <li><a href="Assignment.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
-       <li><a href="QuizStudent.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
-      <li><a href="Announcements.jsp"><i class="fa-solid fa-calendar-week"></i>Announcements</a></li>
-      <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
-      <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
-    </ul>  
-  </div>
+	<div class="sidebar">
+    	<ul>
+			<li><a href="Admin.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
+		    <li><a href="CourseAdmin.jsp"><i class="fa-solid fa-book-open"></i>Courses</a></li>
+		    <li><a href="lectures.jsp"><i class="fa-solid fa-chalkboard-user"></i>Lecturers</a></li>
+		    <li><a href="AdminUserlist.jsp"><i class="fa-solid fa-users"></i>Register Users</a></li>
+			<li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+		</ul>
+	</div>
   
   <div class="container">
        <div class="row">
           <table>
           <tr>
           <th style="padding-right:80px;padding-bottom:15px; padding-top:10px" >
-            <h4>Class Materials</h4>
+            <h4>Running Courses</h4>
             </th>
+           
             <th style="padding-right:80px;padding-bottom:15px;" ></th>
             <th >
             </th>
           </tr>
-            
+            <c:forEach items="${RunStudent}" var="r">
            <tr>
            
-            <td class="th"><h4>Title</h4></td>
-            <td class="th"><h4>Description</h4></td>
-            <td class="th"><h4>Operations</h4></td>
-         
-           </tr>
-            <c:forEach items="${mList}" var="ml">
-            <c:set var="mat_id" value="${ml.id}" />
+            <td class="th"><h4>${ r.name}</h4></td>
+            <td class="th"><h4>${ r.email}</h4></td>
+             <td class="th"><h4>${ r.date}</h4></td>
             
-              <tr class="twotd">
-				<td>${ml.title}</td>
-                <td>${ml.type}</td>   
-                <td>
-                	<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">Download</a>
-                </td>
-             </tr>
-            </c:forEach>
-          </table>
+            
+           </tr>
+           </c:forEach>
+</table>
           </div>
-</div>
+          </div>
 
 </body>
 </html>

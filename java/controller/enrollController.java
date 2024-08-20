@@ -1,5 +1,6 @@
 package controller;
 import dao.EnrollStudentDAO;
+import dao.courseDAO;
 import model.Course;
 import model.EnrollStudent;
 import util.DBConnection;
@@ -29,6 +30,7 @@ import javax.servlet.http.HttpSession;
 public class enrollController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     EnrollStudentDAO edao=new EnrollStudentDAO();
+    courseDAO cdao=new courseDAO();
     RequestDispatcher dispatcher=null;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -43,9 +45,35 @@ public class enrollController extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
           }
+        case "View" : 
+        	
+			try {
+				ShowEnrollment(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
         break;
         }}
-    private void DeleteEnrollment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    
+	private void ShowEnrollment(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+		 int course_id=Integer.parseInt(request.getParameter("course_id"));
+    	 List<EnrollStudent> RunStudent=cdao.getEnrollStudent(course_id);
+    	 request.setAttribute("RunStudent",RunStudent);
+         dispatcher=request.getRequestDispatcher("/RunStudent.jsp");
+         dispatcher.forward(request, response);
+		
+	}
+
+	
+	private void DeleteEnrollment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String stu_email=request.getParameter("email");   
         HttpSession session=request.getSession(false);
         int course_id=(int) session.getAttribute("course_id");

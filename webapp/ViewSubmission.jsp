@@ -214,7 +214,7 @@ color:blue;
  
   <div style="height:60px;">------------</div>
 	    <div id="popup" class="container popup">
-    	<a href="Material.jsp?course_id=<%=(int)session.getAttribute("course_id") %>" class="close">&times;</a>
+    	<a href="Assignment.jsp" class="close">&times;</a>
     	<div class="text">
       		Submission Status
         </div>
@@ -267,7 +267,6 @@ color:blue;
                            
                         </div>
                         </div>
-  	<a href="Material.jsp?course_id=<%=(int)session.getAttribute("course_id") %>" class="close-popup"></a>
- 
+  	
 </body>
 </html>

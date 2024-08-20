@@ -306,6 +306,20 @@ public class lectureDAO {
 		    
 		    return lect;
 		}
-
+   public int material_count(int course_id) throws SQLException {
+	   PreparedStatement preparedStatement = null;
+	   int mat_count=0;
+	   String sql = "SELECT count(*) as total FROM material where course_id=? and m_type <> 'Assignment' ";
+	   Connection connection = DBConnection.openConnection();
+	    preparedStatement = connection.prepareStatement(sql);
+	   preparedStatement.setInt(1,course_id);
+	   
+	   ResultSet resultSet = preparedStatement.executeQuery(); 
+	   
+	   if(resultSet.next()){
+		mat_count=resultSet.getInt("total");
+	   }
+	   return mat_count;
+   }
 
 }

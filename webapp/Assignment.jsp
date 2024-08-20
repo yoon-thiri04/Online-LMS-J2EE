@@ -4,28 +4,38 @@
  <%@ page import="dao.*" %>
 <%@ page import="model.Material" %>
 <%@ page import="java.util.List" import="java.sql.*" import="util.*"%>
-
-
 <%
-session = request.getSession(); 
-String userEmail = (String) session.getAttribute("stuEmail"); 
-UserDAO udao=new UserDAO();
-String username=udao.getName(userEmail);
-    int course_id = Integer.parseInt(request.getParameter("course_id"));
-    session.setAttribute("course_id",course_id);
+    session = request.getSession(); 
+    String userEmail = (String) session.getAttribute("stuEmail"); 
+    UserDAO udao = new UserDAO();
+    String username = udao.getName(userEmail);
+    int course_id = (int) session.getAttribute("course_id");
     uploadDao mDAO = new uploadDao();
-    List<Material> matList = mDAO.getfor(course_id);
-    pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
-   
+    List<Material> matList = mDAO.getforAssignment(course_id);
+    pageContext.setAttribute("mList", matList, PageContext.PAGE_SCOPE);
+
+    
 %>
+
 
 <!DOCTYPE html>
 
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Material Student</title>
+<title>Assignment Student</title>
+<script>
+function add(mat_id) {
+                window.location.href="SubmissionForm.jsp?mat_id="+mat_id;
+}
+function miss(){
+	alert("You missed Assignment!You are not available to make submission.");
+}
+function viewSubmission(id){
+	window.location.href="ViewSubmission.jsp?mat_id="+id;
 
+}
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <style> 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
@@ -260,9 +270,10 @@ color:;
   <div class="sidebar">
     <ul>
       <li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses</a></li>
-      <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
-      <li><a href="Assignment.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+      <li><a href="Material.jsp?course_id=<%=course_id%>"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
+      <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
        <li><a href="QuizStudent.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
+       
       <li><a href="Announcements.jsp"><i class="fa-solid fa-calendar-week"></i>Announcements</a></li>
       <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
       <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
@@ -274,8 +285,9 @@ color:;
           <table>
           <tr>
           <th style="padding-right:80px;padding-bottom:15px; padding-top:10px" >
-            <h4>Class Materials</h4>
+            <h4>Assignment</h4>
             </th>
+           
             <th style="padding-right:80px;padding-bottom:15px;" ></th>
             <th >
             </th>
@@ -284,7 +296,10 @@ color:;
            <tr>
            
             <td class="th"><h4>Title</h4></td>
-            <td class="th"><h4>Description</h4></td>
+            <td class="th"><h4>Deadline</h4></td>
+            
+            <td class="th"><h4>Status</h4></td>
+            
             <td class="th"><h4>Operations</h4></td>
          
            </tr>
@@ -293,9 +308,85 @@ color:;
             
               <tr class="twotd">
 				<td>${ml.title}</td>
-                <td>${ml.type}</td>   
+                <td>${ml.deadline}</td>
+                
+                <%
+boolean submissionExists = false;
+PreparedStatement statement = null;
+ResultSet resultSet = null;
+PreparedStatement statement1 = null;
+ResultSet resultSet1 = null;
+Connection connection=DBConnection.openConnection();
+int mat_id=(int)pageContext.getAttribute("mat_id");
+int score=0;
+try {
+    String query = "SELECT EXISTS (SELECT 1 FROM submission WHERE student_email = ?  AND id = ?)";
+    statement = connection.prepareStatement(query);
+    statement.setString(1, userEmail);
+    statement.setInt(2,mat_id );
+    resultSet = statement.executeQuery();
+
+    if (resultSet.next()) {
+        submissionExists = resultSet.getBoolean(1);
+    }
+} finally {
+    
+    if (resultSet != null) {
+        resultSet.close();
+    }
+    if (statement != null) {
+        statement.close();
+    }
+}
+if (submissionExists) {
+    String query1 = "SELECT score FROM submission WHERE student_email = ? AND id = ?";
+    statement1 = connection.prepareStatement(query1);
+    statement1.setString(1, userEmail);
+    statement1.setInt(2, mat_id);
+    resultSet1 = statement1.executeQuery();
+
+    if (resultSet1.next()) {
+       score = resultSet1.getInt("score");
+    }
+}
+pageContext.setAttribute("submissionExists", submissionExists);
+pageContext.setAttribute("score", score);
+Boolean deadlineReached = mDAO.DeadlineReached(mat_id);
+pageContext.setAttribute("deadlineReached",deadlineReached);
+%>
+                <td>
+                 
+            <c:choose>
+                <c:when test="${not submissionExists}">
+                   <a href="#"> Not Submitted Yet</a>
+                </c:when>
+                <c:otherwise>
+                    <c:choose>
+                        <c:when test="${submissionExists and pageContext.getAttribute('score') == 0}">
+                            <a href="#">Submitted For Evaluation</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="#">Evaluated</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
+    
+             </td>    
                 <td>
                 	<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">Download</a>
+                	<c:choose>
+    <c:when test="${not submissionExists && not deadlineReached}">
+        <a href="#" onclick="add(${ml.id})" class="button1">Add Submission</a>
+    </c:when>
+    <c:when test="${not submissionExists && deadlineReached}">
+        <a href="#" class="button1" onclick="miss()">Missing Submission</a>
+    </c:when>
+    <c:when test="${submissionExists}">
+        <a href="#" onclick="viewSubmission(${ml.id})" class="button1">View Submission</a>
+    </c:when>
+    
+</c:choose>
                 </td>
              </tr>
             </c:forEach>

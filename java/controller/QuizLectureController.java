@@ -72,7 +72,16 @@ public class QuizLectureController extends HttpServlet {
 		
 		Quiz quiz=qDAO.getQuiz(Integer.parseInt(id));
 		request.setAttribute("quizEdit", quiz);
+		String deadline = quiz.getDeadline(); 
+        // Split deadline into date and time
+        String deadlineDate = deadline.split(" ")[0]; // Get the date part "yyyy-MM-dd"
+        String deadlineTime = deadline.split(" ")[1]; // Get the time part "HH:mm"
+
+        // Set attributes for JSP
+        request.setAttribute("deadlineDate", deadlineDate);
+        request.setAttribute("deadlineTime", deadlineTime);
 		request.setAttribute("action1", "EDIT");
+		
 		dispatcher=request.getRequestDispatcher("/QuizLecture.jsp");
 		dispatcher.forward(request, response);
 		
@@ -84,8 +93,11 @@ public class QuizLectureController extends HttpServlet {
 		Quiz quiz=new Quiz();
 		
 		quiz.setTitle(request.getParameter("title"));
+		String deadlineDate = request.getParameter("deadline");
+		String deadlineTime = request.getParameter("deadlineTime");
+		String deadline = deadlineDate + " " + deadlineTime;
+		quiz.setDeadline(deadline);
 		
-		quiz.setDeadline(request.getParameter("deadline"));
 		quiz.setTotal_quizes(0);
 		HttpSession session=request.getSession(false);
 	    int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
@@ -99,7 +111,11 @@ public class QuizLectureController extends HttpServlet {
 			Quiz quiz=new Quiz();
 			int quiz_id=Integer.parseInt(request.getParameter("quiz_id"));
 			quiz.setTitle(request.getParameter("title"));
-			quiz.setDeadline(request.getParameter("deadline"));
+			
+			String deadlineDate = request.getParameter("deadline");
+			String deadlineTime = request.getParameter("deadlineTime");
+			String deadline = deadlineDate + " " + deadlineTime;
+			quiz.setDeadline(deadline);
 			if(qDAO.updateQ(quiz, quiz_id)) {
 				dispatcher=request.getRequestDispatcher("/QuizLecture.jsp");
 		        dispatcher.forward(request, response);

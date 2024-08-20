@@ -466,7 +466,8 @@ form .form-row .textarea{
     <div class="sidebar">
         <ul>
         <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
-          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
+          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Course Materials</a></li>
+          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-book-open"></i>Assignment</a></li>
           <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
@@ -491,7 +492,7 @@ form .form-row .textarea{
     	<table>
         	<tr>
           		<td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Material Title</h4></td>
-				<td style="padding-right:80px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Material Type</h4></td>
+				<td style="padding-right:80px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Description</h4></td>
                 <td style="padding-right:125px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
             </tr>
             <c:forEach items="${mList}" var="ml">
@@ -525,7 +526,7 @@ form .form-row .textarea{
             	<div class="input-data">
                 	<input type="text" name="mtype" required>
                  	<div class="underline"></div>
-                 	<label for="">Material Type</label>
+                 	<label for="">Description</label>
               	</div>
       		</div>
             <div class="form-row" > 

@@ -13,7 +13,6 @@ UserDAO udao=new UserDAO();
 String username=udao.getName(userEmail);
 
     int course_id = (int)session.getAttribute("course_id");
- 
     quizDAO qdao=new quizDAO();
     List<Quiz> quizList = qdao.get(course_id);
     pageContext.setAttribute("qList", quizList,PageContext.PAGE_SCOPE);  
@@ -26,21 +25,11 @@ String username=udao.getName(userEmail);
 <title>Student Quiz</title>
 </head>
 <script>
+function miss(){
+	alert("Quiz Deadline is Reached. You missed to attempt!!")
+}
 function start(quiz_id) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "${pageContext.request.contextPath}/DivClickServlet?quiz_id="+quiz_id, true);
-    xhr.send();
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var deadlineReached = xhr.responseText.trim(); 
-            if (deadlineReached==="true") {
-              alert("Quiz Deadline Date is reached!You can't have access to attempt.");
-            } else {
                 window.location.href="${pageContext.request.contextPath}/QuizStartController?quiz_id="+quiz_id;
-            }
-        }
-    };
 }
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
@@ -350,7 +339,8 @@ try {
 
 pageContext.setAttribute("result_id",result_id);
 pageContext.setAttribute("quizResultExists", quizResultExists);
-
+Boolean deadlineReached=qdao.DeadlineReached(quiz_id);
+pageContext.setAttribute("deadlineReached",deadlineReached);
 %>
          <c:choose>
                 <c:when test="${not quizResultExists}">
@@ -363,9 +353,13 @@ pageContext.setAttribute("quizResultExists", quizResultExists);
                  </c:choose>
                   <td>
                 	 <c:choose>
-        <c:when test="${not quizResultExists}">
-            <a href="#" onclick="start(<%=quiz_id%>)" class="button1">Start Now</a>
-        </c:when>
+        
+        <c:when test="${not quizResultExists && not deadlineReached}">
+       <a href="#" onclick="start(<%=quiz_id%>)" class="button1">Start Now</a>
+    </c:when>
+    <c:when test="${not quizResultExists && deadlineReached}">
+        <a href="#" class="button1" onclick="miss()">Missed</a>
+    </c:when>
         <c:otherwise>
             <a href="QuizResultController?action=REVIEW&quiz_id=${quiz.quiz_id}&result_id=<%=pageContext.getAttribute("result_id") %>&title=${quiz.title}" class="button1">Review Quiz</a>
             <a href="QuizResultController?action=RESULT&quiz_id=${quiz.quiz_id}&result_id=${result_id}" class="button1">View Result</a>
@@ -375,8 +369,6 @@ pageContext.setAttribute("quizResultExists", quizResultExists);
              </tr>
             
             </c:forEach>
-               
-              
           </table>
           </div>
          

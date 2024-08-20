@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%><%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ page import="dao.*" %>
-<%@ page import="model.Quiz" %>
+<%@ page import="model.Material" %>
 <%@ page import="java.util.List" import="javax.servlet.http.HttpServlet"%>
 <% 
 session = request.getSession(); 
@@ -9,13 +10,11 @@ String userEmail = (String) session.getAttribute("userEmail");
 lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);%>
 <%
-
     int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
-    quizDAO qdao=new quizDAO();
-    List<Quiz> quizList = qdao.get(course_id);
-    pageContext.setAttribute("qList", quizList,PageContext.PAGE_SCOPE);
-    String action1 = (String) request.getAttribute("action1");
-    System.out.println(action1);
+    uploadDao mDAO = new uploadDao();
+    List<Material> matList = mDAO.getforAssignment(course_id);
+    pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -32,8 +31,8 @@ String username=udao.getNameLecture(userEmail);%>
   }
 </script>
 <meta charset="UTF-8" />
-<title>Quiz lecture</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+<title>Assignment lecture</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 </head>
 <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
 *{
@@ -160,12 +159,12 @@ font-size:20px;
 #Addbtn{
 	display:flex;
 	align-items:center;
-	margin-left:480px;
+	margin-left:400px;
 	margin-top:20px;
 	margin-bottom:25px;
 	background-color:#3D56B2;
 	height:40px;
-	width:160px;
+	width:90px;
 	padding-left:5px;
 	padding-right:5px;
 	border:1px solid black;
@@ -250,56 +249,6 @@ a {
    color: #fff;
    text-decoration: none;
 }
-.popup1 {
-   position: fixed;
-   padding: 10px;
-   max-width: 820px;
-   border-radius: 0.5em;
-   top: 50%;
-   left: 50%;
-   color: #000;
-   transform: translate(-50%, -50%);
-   visibility: hidden;
-   opacity: 0;
-   transition: opacity .5s, visibility 0s linear .5s;
-   z-index: 1;
-}
-.popup1:target {
-   visibility: visible;
-   opacity: 1;
-   transition-delay: 0s;
-}
-.popup1 .close {
-   position: absolute;
-   right: 10px;
-   top: 5px;
-   padding: 5px;
-   color: #000;
-   transition: color .3s;
-   font-size: 2em;
-   line-height: 1.5;
-   font-weight: 700;
-}
-.popup1 .close:hover {
-   color: #f00;
-}
-.close-popup1 {
-   background-color: rgba(0,0,0,.7);
-   cursor: default;
-   position: fixed;
-   top:0;
-   left:0;
-   right:0;
-   bottom:0;
-   opacity: 0;
-   visibility: hidden;
-   transition: opacity .5s, visibility 0s linear .5s;
-}
-.popup1:target + .close-popup1 {
-   opacity: 1;
-   visibility: visible;
-   transition-delay: 0s;
-}
 .popup {
    position: fixed;
    padding: 10px;
@@ -368,7 +317,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", en
 }
 .container .text{
   text-align: center;
-  font-size: 41px;
+  font-size: 30px;
   font-weight: 600;
   background: white;
   -webkit-background-clip: text;
@@ -497,21 +446,11 @@ form .form-row .textarea{
     width: 40%!important;
   }
 }
- .container .text1{
-  margin-top:5px;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 600;
-  background: white;
-  color:black;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
  
 </style>
 </head>
 <body>
-  <header class="header">
+ <header class="header">
     <div class="logo">
         <a href="#"><b>Smart Learn</b></a>
       </div>
@@ -527,9 +466,9 @@ form .form-row .textarea{
     <div class="sidebar">
         <ul>
         <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
-          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
-          <li><a href="#"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
-          
+          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Course Materials</a></li>
+          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-book-open"></i>Assignment</a></li>
+          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
@@ -540,10 +479,10 @@ form .form-row .textarea{
   </div>
   
   <div id="title">
-    <p>Quiz</p>
+    <p>Assignment</p>
     <div id="Addbtn">
       <a href="#popup" class="btn">
-        <h3>Create Quiz</h3><i class="fa-solid fa-user-plus"></i>
+        <h3>Add</h3><i class="fa-solid fa-user-plus"></i>
         </a>
       </div>
       
@@ -552,132 +491,60 @@ form .form-row .textarea{
     <div class="row">
     	<table>
         	<tr>
-          		<td style="padding-right:60px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Quiz Title</h4></td>
-				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Total Quizzes</h4></td>
-				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Deadline Date</h4></td>
-                
+          		<td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Title</h4></td>
+				<td style="padding-right:80px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Deadline Date</h4></td>
                 <td style="padding-right:125px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
             </tr>
-             <c:forEach items="${qList}" var="quiz">
+            <c:forEach items="${mList}" var="ml">
             <tr class="twotd">
-            	<td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.title}</td>
-                <td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.total_quizes}</td>
-                <td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.deadline}</td>
-                
-                <td style="padding-right:60px;margin-right:180px; border:2px solid black ;background-color:#fff ;"> 
-                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=View&id=${quiz.quiz_id}" class="button1">View Quizzes</a> 
-                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=EDIT&id=${quiz.quiz_id}" class="button1">Edit Quiz</a>          
-                    <a href = "${pageContext.request.contextPath}/QuizLectureController?action=DELETE&id=${quiz.quiz_id}"  class="button1 delete">Delete</a>
+            	<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${ml.title}</td>
+                <td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${ml.deadline}</td>
+                <td style="padding-right:125px;margin-right:180px; border:2px solid black ;background-color:#fff ;"> 
+                	<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">Download</a>               
+                    <a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}&type=${ml.type}"  class="button1 delete">Delete</a>
                 </td>
             </tr>
-            </c:forEach>
+            </c:forEach>   
 		</table>
 	</div>
-   <script type="text/javascript">
-   window.onload = function() {
-       var action = "<%= action1 %>"; // Ensure this is correctly passed
-       console.log("Action:", action); // Log action to console
 
-       if (action === "EDIT") {
-           var popup = document.getElementById("popup1");
-           if (popup) {
-               console.log("Popup found, displaying it."); // Log found popup
-               popup.style.visibility = "visible";
-               popup.style.opacity = "1";
-           } else {
-               console.log("Popup not found.");
-           }
-       }
-
-       var closeButton = document.querySelector("#popup1 .close");
-       if (closeButton) {
-           closeButton.addEventListener("click", function(event) {
-               event.preventDefault(); 
-               var popup = document.getElementById("popup1");
-               if (popup) {
-                   popup.style.opacity = "0";
-                   setTimeout(function() {
-                       popup.style.visibility = "hidden";
-                   }, 500);
-               }
-           });
-       }
-   }
-</script>
-	<div id="popup1" class="container popup1" style="visibility: hidden; opacity: 0; transition: opacity 0.5s ease;" >
-    	<a href="#" class="close">&times;</a>
-    	<div class="text">
-      		Quiz Update  Form
-        </div>
-        <div class="text1">
-      		Quiz Scores are fixed 1 mark per quiz.
-        </div>
-		<form action="QuizLectureController" method="post" > 
-      		<input type="hidden" value="${quizEdit.quiz_id}" name="quiz_id">
-      		<div class="form-row">
-	        	<div class="input-data">
-		            <input type="text" name="title" value="${quizEdit.title}" required>
-		            <div class="underline"></div>
-		            <label for="">Quiz Title</label>
-	            </div>
-         	</div> 
-       <div class="form-row">
-	        	<div class="input-data">
-               <label for="" style="margin-bottom:;">End Date</label>
-                </div>  
-                <input type="date" name="deadline" value="${deadlineDate}" required>       
-				  </div >
-				  <div class="form-row">
-	        	<div class="input-data">
-               <label for="" style="margin-bottom:;">End Time</label>
-                </div>  
-                <input type="time" name="deadlineTime" value="${deadlineTime}" required>       
-				  </div >
-           <div class="form-row submit-btn">
-				<div class="input-data">
-	                <div class="inner"></div>
-	                <input type="submit" name="submitbtn" value="update">
-                </div>
-          </div>
-		</form>
-	</div>
 	<div id="popup" class="container popup">
     	<a href="#" class="close">&times;</a>
     	<div class="text">
-      		Quiz Creation Form
+      		Assignment Add Form
         </div>
-        <div class="text1">
-      		Quiz Scores are fixed 1 mark per quiz.
-        </div>
-		<form action="QuizLectureController" method="post" > 
+		<form action="MaterialLectureController" method="post" enctype="multipart/form-data"> 
+      		
+      		<input type="hidden" name="mtype" value="Assignment">
       		
       		<div class="form-row">
 	        	<div class="input-data">
-		            <input type="text" name="title"  required>
+		            <input type="text" name="title" required>
 		            <div class="underline"></div>
-		            <label for="">Quiz Title</label>
+		            <label for=""> Title</label>
 	            </div>
-         	</div> 
-       <div class="form-row">
-	        	<div class="input-data">
-               <label for="" style="margin-bottom:;">End Date</label>
-                </div>  
-                <input type="date" name="deadline"  required>       
-				  </div >
-				  <div class="form-row">
-	        	<div class="input-data">
-               <label for="" style="margin-bottom:;">End Time </label>
-                </div>  
-                <input type="time" name="deadlineTime"  required>       
-				  </div>      
+         	</div>
+            <div class="form-row"> 
+            	<div class="input-data">
+                	<input type="date" name="deadline" required>
+                 	<div class="underline"></div>
+                 	<label for="">Deadline</label>
+              	</div>
+      		</div>                 	
+            <div class="form-row" > 
+            	<div class="photoupload">
+             		
+             		<input type="file" name="file"/>
+        		</div>
+           </div>
            <div class="form-row submit-btn">
 				<div class="input-data">
 	                <div class="inner"></div>
-	                <input type="submit" name="submitbtn" value="create">
+	                <input type="submit" value="Upload">
                 </div>
           </div>
 		</form>
-		</div>
+	</div>
   	
 </body>
 </html>

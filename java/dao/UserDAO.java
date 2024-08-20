@@ -106,6 +106,21 @@ public String getName(String email) {
 	    } 
 	    return username;
 }
+public boolean isExist(String email) {
+	
+	boolean flag = false;
+    try {
+        String sql = "SELECT password FROM userlist WHERE email=?";
+        connection = DBConnection.openConnection();
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, email);
+        resultSet = preparedStatement.executeQuery();
+        flag = resultSet.next(); // If there is any result, set flag to true
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } 
+	return flag;
+}
 
 }
 

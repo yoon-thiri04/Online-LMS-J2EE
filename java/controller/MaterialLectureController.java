@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import dao.uploadDao;
 import model.Material;
@@ -72,6 +73,14 @@ public class MaterialLectureController extends HttpServlet {
        dispatcher=request.getRequestDispatcher("/MaterialLecture.jsp");
        dispatcher.forward(request, response);
        }
+     private void listAssignment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    	 HttpSession session=request.getSession(false);
+         int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
+       List<Material> mat=mDAO.getforAssignment(course_id);
+       request.setAttribute("mList", mat);
+       dispatcher=request.getRequestDispatcher("/AssignmentLecture.jsp");
+       dispatcher.forward(request, response);
+       }
     
      private void downMaterial(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
        int id=Integer.parseInt(request.getParameter("id"));
@@ -116,25 +125,32 @@ public class MaterialLectureController extends HttpServlet {
           String type=request.getParameter("type");
           
         mDAO.delete(Integer.parseInt(id),type) ;
-          request.setAttribute("MSG", "Successfully Deleted");
+        if(type.equalsIgnoreCase("Assignment")) {
+        	listAssignment(request,response);
+        }
+        else {
+        request.setAttribute("MSG", "Successfully Deleted");
         listMaterial(request, response);
-          
-          
-            
+        }
+             
           }
             
-     
- 
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      Connection conn=null;
      String status=null;
+     String deadline;
      PreparedStatement pstmt = null;
      String title=request.getParameter("title");
      String type=request.getParameter("mtype");
+     
+     
      if(type.equalsIgnoreCase("assignment")) {
     	 status="Not Submitted Yet";
+    	 deadline=request.getParameter("deadline");
      }else {
     	 status="-";
+    	 deadline=null;
      }
      HttpSession session=request.getSession(false);
      int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
@@ -153,18 +169,26 @@ public class MaterialLectureController extends HttpServlet {
                  try {
                   
                     conn = DBConnection.openConnection();
-                     pstmt = conn.prepareStatement("INSERT INTO material(course_id,title,m_type,m_video,f_type,status) values (?,?,?,?,?,?)" );
+                     pstmt = conn.prepareStatement("INSERT INTO material(course_id,title,m_type,m_video,f_type,status,deadline) values (?,?,?,?,?,?,?)" );
                      pstmt.setInt(1,course_id);
                      pstmt.setString(2, title);
                      pstmt.setString(3, type);
                      pstmt.setBlob(4, fileContent);
                      pstmt.setString(5, f_type);
                      pstmt.setString(6, status);
+                     pstmt.setString(7, deadline);
                      pstmt.executeUpdate();
                  } catch (Exception ex) {
                      ex.printStackTrace(); 
                      }
-                 listMaterial(request,response);
+                 
+                 if(type.equalsIgnoreCase("Assignment")) {
+                 	listAssignment(request,response);
+                 }
+                 else {
+                 
+                 listMaterial(request, response);
+                 }
 
                  
                  }

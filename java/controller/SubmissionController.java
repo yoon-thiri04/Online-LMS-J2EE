@@ -162,7 +162,7 @@ public class SubmissionController extends HttpServlet {
                 
                 if(sdao.updateStatus(status, id)) {
                 
-                response.sendRedirect("Material.jsp?course_id="+course_id);
+                response.sendRedirect("Assignment.jsp");
                 }
                }
             

@@ -30,16 +30,7 @@ quiz_title=resultSet.getString("title");
  <!DOCTYPE html>
 <html>
 <head>   
-<script>
-function toAll(){
-    window.location.href="QuizesLecture.jsp";
-     
-}
-function toChoose(){
-    window.location.href="QuizTypeChoose.jsp";
-     
-}
-</script> 
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
@@ -402,10 +393,7 @@ label{
 	                <div class="inner"></div>
 	                <input type="submit" name="action" value="Save Quiz"/>
                 </div>
-                <div class="input-data">
-	                <div class="inner" ></div>
-	                 <input type="" onclick="toChoose()" value=" Re-Choose"/>
-                </div>
+                
                 <div class="input-data">
 	                <div class="inner" ></div>
 	                 <input type="submit" name="action"  value="Save & End"/>

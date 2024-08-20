@@ -6,9 +6,8 @@
     String username=null;
     
     String userEmail = (String) session.getAttribute("stuEmail"); 
-    lectureDAO udao=new lectureDAO();
-    username=udao.getNameLecture(userEmail);
-
+    UserDAO udao=new UserDAO();
+    username=udao.getName(userEmail);
     int course_id = (int)session.getAttribute("course_id");
     String course_title=null;
     Connection connection=DBConnection.openConnection();

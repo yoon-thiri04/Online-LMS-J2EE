@@ -11,7 +11,8 @@ public class Material {
      private int course_id;
      private String ftype;
      private String status;
-     private int score;
+     
+     private String deadline;
   public String getFtype() {
     return ftype;
   }
@@ -55,11 +56,12 @@ public String getStatus() {
 public void setStatus(String status) {
 	this.status = status;
 }
-public int getScore() {
-	return score;
+
+public String getDeadline() {
+	return deadline;
 }
-public void setScore(int score) {
-	this.score = score;
+public void setDeadline(String deadline) {
+	this.deadline = deadline;
 }
  
 }

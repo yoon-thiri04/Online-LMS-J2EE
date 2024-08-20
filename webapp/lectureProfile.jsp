@@ -27,14 +27,28 @@ String sql= "select count(*) as total1 from enrollment where course_id="+course_
     }
 %>
 
-<% int mat=0;
-String sql1= "select count(*) as total2 from material where course_id="+course_id;
-	Connection connection1 = DBConnection.openConnection();
-	Statement statement1 = connection1.createStatement();
-	ResultSet resultSet1 = statement1.executeQuery(sql1);
-    if(resultSet1.next()){
-	mat =resultSet1.getInt("total2");
-    }
+<% int mat=udao.material_count(course_id);
+    
+   int quiz=0;
+   String sql_q= "select count(*) as quiz from quiz where course_id="+course_id;
+	Connection connection_q = DBConnection.openConnection();
+	Statement statement_q = connection_q.createStatement();
+	ResultSet resultSet_q = statement_q.executeQuery(sql_q);
+   if(resultSet_q.next()){
+	quiz=resultSet_q.getInt("quiz");
+   }
+   int assignment=0;
+   PreparedStatement preparedStatement = null;
+   String sql_assign = "SELECT count(*) as assignment FROM material where course_id=? and m_type = 'Assignment' ";
+   Connection connection_as = DBConnection.openConnection();
+    preparedStatement = connection_as.prepareStatement(sql_assign);
+   preparedStatement.setInt(1,course_id);
+   
+   ResultSet resultSet_as = preparedStatement.executeQuery(); 
+   
+   while(resultSet_as.next()){
+	assignment=resultSet_as.getInt("assignment");
+   }
 %>
 <%
 	String filename="";
@@ -404,7 +418,26 @@ body {
     			<div>
     				<span class="fa-solid fa-book-open"></span>
     			</div>
-    		</div>
+    	</div>
+    	<div class="card-single">
+    			<div>
+    				<h1><%=assignment%></h1>
+    				<span>Total Assignments</span>
+    			</div>
+    			<div>
+    				<span class="fa-solid fa-book-open"></span>
+    			</div>
+    	</div>
+    	<div class="card-single">
+    			<div>
+    				<h1><%=quiz%></h1>
+    				<span>Total Quizzes</span>
+    			</div>
+    			<div>
+    				<span class="fa-solid fa-book-open"></span>
+    			</div>
+    	</div>
+    	
 </div>	
 </div>
 </body>

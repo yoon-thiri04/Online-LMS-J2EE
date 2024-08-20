@@ -23,15 +23,12 @@ String username=udao.getName(userEmail);%>
 	        window.location.href = "Material.jsp?course_id=" + course_id;
 	}
 </script>
-  <script>
-	function enroll1(course_id) {
-	    // Redirect to the enrollform.jsp with the course_id as a query parameter
-	    window.location.href = "Announcements.jsp?course_id=" + course_id;
-	}
-</script>
 <!-- Font Awesome Cdn Link -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-<style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 *{
   margin: 0;
   padding: 0;
@@ -333,7 +330,6 @@ img{
 		      lectureDAO lecturerdao=new lectureDAO();
 		
 		      List<CourseInstructor> courses = new ArrayList<>();
-		
 		      courses = lecturerdao.get(courseId);
 		      pageContext.setAttribute("lectd", courses,PageContext.PAGE_SCOPE); 
 

@@ -96,8 +96,8 @@ body{
   color: #fff;
   border-radius: 10px;
   padding: 30px 40px;
-  height:390px;
-  margin-top:100px;
+  height:350px;
+  margin-top:130px;
   margin-bottom:126px;
 }
 .wrapper h1{
@@ -210,23 +210,17 @@ color:black;}
     	<form action="${pageContext.request.contextPath}/LoginController" method="post" >
       	<h1>Login</h1>
       	<div class="input-box">
-        	<input type="text" placeholder="Username" name="name" required>
-        	<ion-icon name="person"></ion-icon>
-      	</div>
-       	<c:if test="${not empty requestScope.Invalid}">
-        	<div class="error-message1">${requestScope.Invalid}</div>
-        </c:if>
-      	<div class="input-box">
-        	<input type="password" placeholder="Password" name="password" required>
-        	<ion-icon name="lock-closed"></ion-icon>
-      	</div>
-       	<div class="input-box">
         	<input type="email" placeholder="Email" name="email" required>
         	<ion-icon name="lock-closed"></ion-icon>
       	</div>
        	<c:if test="${not empty requestScope.Incorrect}">
         	<div class="error-message">${requestScope.Incorrect}</div>
         </c:if>
+      	<div class="input-box">
+        	<input type="password" placeholder="Password" name="password" required>
+        	<ion-icon name="lock-closed"></ion-icon>
+      	</div>
+       	
      
       	<button type="submit" class="btn">Login</button>
       	<div class="register-link">

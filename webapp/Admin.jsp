@@ -1,7 +1,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="util.DBConnection" import ="java.sql.Connection" import="java.sql.*"  import="dao.UserDAO"%>
+<%@ page import="util.DBConnection" import ="java.sql.Connection" import="java.util.Date" import="java.text.*" import="java.sql.*"  
+import="dao.UserDAO" import="java.util.ArrayList"%>
 <% 
     
      session = request.getSession(); 
@@ -37,7 +38,37 @@ String sql2= "select count(*) as total from courses";
     if(resultSet2.next()){
 	courses =resultSet2.getInt("total");
  }
-   
+    int runCourses =0;
+    int otherCourses= 0;
+    String deadline = null;
+    try {
+        String sql_ = "SELECT enrollment_deadline FROM courses";
+        Connection connection3 = DBConnection.openConnection();
+        Statement statement3 = connection3.createStatement();
+        ResultSet resultSet3 = statement3.executeQuery(sql_);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date tdyDate = new Date();
+        String date = sdf.format(tdyDate);
+        Date TodayEnrollDate = sdf.parse(date);
+
+        while (resultSet3.next()) {
+            
+            deadline = resultSet3.getString("enrollment_deadline");
+            Date DeadlineDate = sdf.parse(deadline);
+
+            if (TodayEnrollDate.compareTo(DeadlineDate) <= 0) {
+            	otherCourses+=1;
+            	
+            } else {
+            	runCourses+=1;
+            }
+
+        }
+    }catch(Exception e){
+    	e.printStackTrace();
+    }
+ 
 %>
 <!DOCTYPE html>
 <html>
@@ -47,7 +78,8 @@ String sql2= "select count(*) as total from courses";
   <link rel="stylesheet" href="style.css" />
   <!-- Font Awesome Cdn Link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-<style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+  
+  <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 *{
   margin: 0;
   padding: 0;
@@ -225,7 +257,30 @@ ul li:hover a{
     		<div class="card-single">
     			<div>
     				<h1><%out.println(courses);%></h1>
-    				<span>Total Courses</span>
+    				<span>Total Course</span>
+    				
+    			</div>
+    			<div>
+    				<span class="fa-solid fa-book-open"></span>
+    			</div>
+    		</div>
+    		
+    		<div class="card-single">
+    			<div>
+    				<h1><%=runCourses%></h1>
+    				<span>Running Course</span>
+    				<a href="coursesController?action=SELECTION&type=run">View</a>
+    				
+    			</div>
+    			<div>
+    				<span class="fa-solid fa-book-open"></span>
+    			</div>
+    		</div>
+    		<div class="card-single">
+    			<div>
+    				<h1><%=otherCourses%></h1>
+    				<span>Other Course</span>
+    				<a href="coursesController?action=SELECTION&type=other">View</a>
     			</div>
     			<div>
     				<span class="fa-solid fa-book-open"></span>

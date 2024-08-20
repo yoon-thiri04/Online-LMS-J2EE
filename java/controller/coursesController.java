@@ -1,9 +1,11 @@
 package controller;
-
+import java.sql.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dao.courseDAO;
 import model.Course;
+import util.DBConnection;
 /**
  * Servlet implementation class coursesController
  */
@@ -50,6 +53,10 @@ public class coursesController extends HttpServlet {
 		case "DELETE":
 		deleteCourse(request, response);
 		break;
+		
+		case "SELECTION":
+		runCourse(request,response);
+		break;
 
 		default:
 			
@@ -65,6 +72,56 @@ public class coursesController extends HttpServlet {
 	}
 
 	
+	private void runCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<Integer> runCourseList = new ArrayList<>();
+	    ArrayList<Integer> otherCourseList = new ArrayList<>();
+	    String deadline = null;
+	    try {
+	        String sql_ = "SELECT course_id, enrollment_deadline FROM courses";
+	        Connection connection3 = DBConnection.openConnection();
+	        Statement statement3 = connection3.createStatement();
+	        ResultSet resultSet3 = statement3.executeQuery(sql_);
+
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	        Date tdyDate = new Date();
+	        String date = sdf.format(tdyDate);
+	        Date TodayEnrollDate = sdf.parse(date);
+
+	        while (resultSet3.next()) {
+	            int courseId = resultSet3.getInt("course_id");
+	            deadline = resultSet3.getString("enrollment_deadline");
+	            Date DeadlineDate = sdf.parse(deadline);
+
+	            if (TodayEnrollDate.compareTo(DeadlineDate) <= 0) {
+	            	otherCourseList.add(courseId);
+	            } else {
+	            	runCourseList.add(courseId);
+	            }
+
+	        }
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	    
+	    String course_type=request.getParameter("type");
+	    if (course_type.equalsIgnoreCase("run")) {
+	    	List<Course> run_course= coursedao.getRunCourse(runCourseList);
+	    	request.setAttribute("run_course", run_course);
+			dispatcher = request.getRequestDispatcher("/RunCourses.jsp");
+			dispatcher.forward(request, response);
+	    }
+	    
+	    else {
+	    	List<Course> other_course= coursedao.getRunCourse(otherCourseList);
+	    	
+	    	request.setAttribute("other_course", other_course);
+			dispatcher = request.getRequestDispatcher("/OtherCourses.jsp");
+			dispatcher.forward(request, response);
+	    
+	    }
+		
+	}
+
 	private void listCourse(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		List<Course> courselist = coursedao.get();
 			request.setAttribute("courselist", courselist);
@@ -117,6 +174,8 @@ public class coursesController extends HttpServlet {
 	        e.printStackTrace();
 	       
 	    }
+	    	 
+	    	
 	}
 }
 

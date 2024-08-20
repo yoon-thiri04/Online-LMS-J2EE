@@ -43,50 +43,38 @@ public class LoginController extends HttpServlet {
         super();
         
     }
-    
-   
-    
-   
-	 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String  name=request.getParameter("name");
+		
 		String password=request.getParameter("password");
 		String email=request.getParameter("email");
 		sdao=new studDAO();
 		idao=new lectureDAO();
 	    udao=new UserDAO();
-	    if(name.equalsIgnoreCase("Admin")&& password.equalsIgnoreCase("admin@123!")) {
+	    if(udao.isExist(email)) {
+	    	if(sdao.isExist(email)) {
+				String pwd=sdao.getPwd1(email);
+				if (pwd != null && pwd.equals(password)) {
+					
+					HttpSession session=request.getSession();
+					session.setAttribute("stuEmail", email);
+					session.setAttribute("userEmail", email);
+					dispatcher=request.getRequestDispatcher("sourceHomeLogin.jsp");
+					dispatcher.forward(request, response);
+					}
+				else {
+					request.setAttribute("Incorrect","Your Password and User name doesn't match" );
+					dispatcher=request.getRequestDispatcher("login.jsp");
+					dispatcher.forward(request, response);
+				}
+	    	}
+	    	else {
 	    	HttpSession session=request.getSession();
 	    	session.setAttribute("userEmail", email);
 	    	dispatcher=request.getRequestDispatcher("Admin.jsp");
 			dispatcher.forward(request, response);
+	    	}
 	    }
-	   if(sdao.isExist(email) ) {
-			
-			String pwd=sdao.getPwd1(email);
-			if (pwd != null && pwd.equals(password)) {
-				int course_id=sdao.getCourseID(email);
-				HttpSession session=request.getSession();
-				session.setAttribute("stuEmail", email);
-				session.setAttribute("userEmail", email);
-				session.setAttribute("course_id", course_id);
-				session.setAttribute("email", email);
-				dispatcher=request.getRequestDispatcher("sourceHomeLogin.jsp");
-				dispatcher.forward(request, response);
-				}
-			else {
-				request.setAttribute("Incorrect","Your Password and User name doesn't match" );
-				dispatcher=request.getRequestDispatcher("login.jsp");
-				dispatcher.forward(request, response);
-			}
-		
-		
-		}
+	  
 		else if(idao.isExist(email) ) {
 			
 		    String pwd = idao.getPwd(email);

@@ -9,6 +9,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import dao.uploadDao;
 import model.Material;
@@ -47,16 +49,65 @@ public class MaterialController extends HttpServlet {
       try {
         downMaterial(request, response);
       } catch (ServletException | IOException | SQLException e) {
-        // TODO Auto-generated catch block
+        
         e.printStackTrace();
       }
     break;
+    case "ADD":
+    	try {
+            AddAssignment(request, response);
+          } catch (Exception e) {
+            
+            e.printStackTrace();
+          }
 
     
     }
   }
   
-     private void downMaterial(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
+  private void AddAssignment(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	    boolean deadlineReached = false;
+	    String deadline = null;
+	    
+	    try {
+	        int mat_id = Integer.parseInt(request.getParameter("mat_id"));
+	        String sql = "SELECT deadline FROM material WHERE id=?";
+	        Connection connection = DBConnection.openConnection();
+	        PreparedStatement preparedstatement = connection.prepareStatement(sql);
+	        preparedstatement.setInt(1, mat_id);
+	        ResultSet resultSet = preparedstatement.executeQuery();
+	        
+	        if (resultSet.next()) {
+	            deadline = resultSet.getString("deadline");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    Date tdyDate = new Date();
+	    String date = sdf.format(tdyDate);
+
+	    Date todayEnrollDate = null;
+	    Date deadlineDate = null;
+
+	    try {
+	        todayEnrollDate = sdf.parse(date);
+	        deadlineDate = sdf.parse(deadline);
+	    } catch (ParseException e1) {
+	        e1.printStackTrace();
+	    }
+	    
+	    if (todayEnrollDate != null && deadlineDate != null) {
+	        if (todayEnrollDate.compareTo(deadlineDate) > 0) {
+	            deadlineReached = true;
+	        }
+	    }
+	    HttpSession session = request.getSession();
+	    session.setAttribute("deadlineReached", deadlineReached);
+  }
+
+	private void downMaterial(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
        int id=Integer.parseInt(request.getParameter("id"));
        
        String mtitle=request.getParameter("title");
