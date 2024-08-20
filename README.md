@@ -198,5 +198,5 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !! Course- Lecture Link up --- >date
 - !!Profile Card Student
 - !! Nav bar delete
-- !! Fond size, color
+- !! Font size, color
 - !! Submit all and finished
