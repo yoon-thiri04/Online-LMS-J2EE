@@ -193,7 +193,6 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !! Pop Up format for View Details Result
 - !! Change Pwd
 - !! Quiz - Timer
-- !! Course- Lecture Link up --- >date
 - !!Profile Card Student
 - !! Nav bar delete
 - !! Font size, color
