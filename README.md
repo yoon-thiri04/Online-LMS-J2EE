@@ -192,7 +192,6 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !!!!!!! Password check 
 - !! Pop Up format for View Details Result
 - !! Change Pwd
-- !! Lecture - password drop 
 - !! Quiz - Timer
 - !! Admin - Run Course, other
 - !! Course- Lecture Link up --- >date
