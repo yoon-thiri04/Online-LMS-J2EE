@@ -18,7 +18,7 @@ public class courseDAO {
 	public boolean save(Course course) {
 		boolean flag = false;
 		try {
-			String sql ="insert into courses (title,level,category,description,duration,start_date,enrollment_deadline,merged) values (?,?,?,?,?,?,?,?)";
+			String sql ="insert into courses (title,level,category,description,duration,merged) values (?,?,?,?,?,?)";
 			connection = DBConnection.openConnection();
 			preparedStatement = connection.prepareStatement(sql);
 			
@@ -27,9 +27,8 @@ public class courseDAO {
 			preparedStatement.setString(3, course.getCategory());
 			preparedStatement.setString(4,course.getDescription());
 			preparedStatement.setString(5, course.getDuration());
-			preparedStatement.setString(6, course.getStart_date());
-			preparedStatement.setString(7,course.getEnrollment_deadline());
-			preparedStatement.setString(8,course.getMerged());
+			
+			preparedStatement.setString(6,course.getMerged());
 			
 			int rowInserted = preparedStatement.executeUpdate();
 			if(rowInserted >0) flag = true;
@@ -68,7 +67,26 @@ public class courseDAO {
 			return list;
 		
 	}
-	
+	public boolean updateDate(Course c) {
+		boolean flag=false;
+	    try {
+	    	String sql="Update courses set start_date= ?, enrollment_deadline = ? WHERE course_id = ?";
+	    	connection=DBConnection.openConnection();
+	    	preparedStatement=connection.prepareStatement(sql);
+	    	preparedStatement.setString(1,c.getStart_date());
+	    	preparedStatement.setString(2, c.getEnrollment_deadline());
+	    	preparedStatement.setInt(3, c.getCourse_id());
+	    	int rowsAffected = preparedStatement.executeUpdate();
+	    	 if(rowsAffected>0) {
+	    		 flag=true;
+	    	 }
+	}
+	    catch(Exception e) {
+	    	e.printStackTrace();
+	    	
+	    }
+	    return flag;
+	}
 	public Course get(int course_id) {
 		   Course course = null;
 		   try {
@@ -84,8 +102,6 @@ public class courseDAO {
 				course.setCategory(resultSet.getString("category"));
 				course.setDescription(resultSet.getString("description"));
 				course.setDuration(resultSet.getString("duration"));
-				course.setStart_date(resultSet.getString("start_date"));
-				course.setEnrollment_deadline(resultSet.getString("enrollment_deadline"));
 				course.setMerged(resultSet.getString("merged"));
 				}
 			}catch(SQLException e) {

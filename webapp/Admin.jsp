@@ -280,7 +280,7 @@ ul li:hover a{
     			<div>
     				<h1><%=otherCourses%></h1>
     				<span>Other Course</span>
-    				<a href="coursesController?action=SELECTION&type=other">View</a>
+    				<a href="${pageContext.request.contextPath}/coursesController?action=SELECTION&type=other">View</a>
     			</div>
     			<div>
     				<span class="fa-solid fa-book-open"></span>

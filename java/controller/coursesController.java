@@ -1,5 +1,6 @@
 package controller;
 import java.sql.*;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -14,14 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dao.courseDAO;
 import model.Course;
-<<<<<<< HEAD
+
 import util.DBConnection;
 /**
  * Servlet implementation class coursesController
  */
-=======
 
->>>>>>> 0c3c00e681c3e3804cad5b55fc7fd26cf4bc5689
 @WebServlet("/coursesController")
 public class coursesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -159,8 +158,7 @@ public class coursesController extends HttpServlet {
 	    course.setLevel(request.getParameter("level"));
 	    course.setCategory(request.getParameter("category"));
 	    course.setDescription(request.getParameter("description"));
-	    course.setStart_date(request.getParameter("startDate"));	
-	    course.setEnrollment_deadline(request.getParameter("deadLine"));
+	    
 	    course.setMerged("No");
 	    	 try {
 	        if (course.getCourse_id() == 0) {

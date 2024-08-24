@@ -238,10 +238,11 @@ ul li:hover a{
             <tr>
                 <td class="th" style="width:160px;"><h3>Name</h3></td>
                 <td class="th" style="width:70px;"><h3>Photo</h3></td>
-                <td class="th" style="width:170px;"><h3>Password</h3></td>
                 <td class="th" style="width:240px;"><h3>Email</h3></td>
                 <td class="th" style="width:180px;"><h3>Qualification</h3></td>
                 <th class="th" style="width:230px;"><h3>Course Title</h3></th>
+                <th class="th" style="width:230px;"><h3>Started On</h3></th>
+                <th class="th" style="width:230px;"><h3>Enrollment Deadline</h3></th>
                 <td class="th" style="width:140px;"><h3>Action</h3></td>
             </tr>
             
@@ -250,22 +251,28 @@ ul li:hover a{
             <tr>
                 <td style="width:160px;">${lect.name}</td>
                 <td style="padding-top:5px;width:70px;"><img src="${lect.filename}" width="51" height="50"/></td>
-                <td style="width:170px;">${lect.password}</td>
+               
                 <td style="width:240px;">${lect.email}</td>
                 <td style="width:180px;">${lect.qualification }</td>
                 <c:set var="course_id" value="${lect.course_id}"></c:set>
                  <% int course_id = (Integer)pageContext.getAttribute("course_id");
     				  
     				  String course_name=null;
-                       String sql= "select title from courses where course_id="+course_id;
-	                   Connection connection = DBConnection.openConnection();
-	                   Statement statement = connection.createStatement();
-	                   ResultSet resultSet = statement.executeQuery(sql);
-                       if(resultSet.next()){
+    				  String start_date=null;
+    				  String enrollment_deadline=null;
+                      String sql= "select title,start_date,enrollment_deadline from courses where course_id="+course_id;
+	                  Connection connection = DBConnection.openConnection();
+	                  Statement statement = connection.createStatement();
+	                  ResultSet resultSet = statement.executeQuery(sql);
+                      if(resultSet.next()){
 	                  course_name=resultSet.getString("title");
+	                  start_date=resultSet.getString("start_date");
+	                  enrollment_deadline=resultSet.getString("enrollment_deadline");
     }
 %>
                 <td style="width:230px;"><%= course_name %></td>
+                <td style="width:230px;"><%= start_date %></td>
+                <td style="width:230px;"><%= enrollment_deadline %></td>
                 <td style="width:140px;">
                 	<a href="${pageContext.request.contextPath}/lecturersController?action=EDIT&email=${lect.email}&courseName=<%=course_name%>" class="delete"><b>Edit</b></a>
                 	<a href="${pageContext.request.contextPath}/DeleteLectureServlet?action=DELETE&email=${lect.email}"  class="delete"><b>Delete</b></a>

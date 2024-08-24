@@ -192,14 +192,10 @@ form .form-row .textarea{
   transform: scale(1);
 }
 .form-row .selectbox{
-	width:200px;
+	width:150px;
 	color:white;
 }
-.form-row .photoupload{
-	width:360px;
-	margin-left:20px;
-	color:white;
-}
+
 .submit-btn .input-data{
   overflow: hidden;
   height: 45px!important;
@@ -280,9 +276,6 @@ label{
    visibility: visible;
    transition-delay: 0s;
 }
-select{
-	width:320px;
-}
 </style>
 </head>
 <body>
@@ -313,9 +306,9 @@ select{
                <label for="">Name</label>
             </div>
             <div class="input-data">
-               <input type="password" name="password" required>
+               <input type="text" name="qualification" required>
                <div class="underline"></div>
-               <label for="">Password</label>
+               <label for="">Qualification</label>
             </div>
          </div>
          <div class="form-row">
@@ -325,11 +318,26 @@ select{
                <label for="">Email</label>
             </div>
             <div class="input-data">
-               <input type="text" name="qualification" required>
+               <input type="date" name="startDate" style="width:320px;" required>
                <div class="underline"></div>
-               <label for="">Qualification</label>
+               <label for="" style="margin-bottom:;">Start on</label>
             </div>
+            
          </div>
+          <div class="form-row" > 
+            
+			<div class="input-data">
+               <input type="date" name="deadLine" style="width:320px;" required>
+               <div class="underline"></div>
+               <label for="" style="margin-bottom:;">Enrollment Deadline</label>
+            </div>
+			<div class="photoupload">
+			   <label for="">lecturer's photo</label>
+				   <input type="file" name="file"/>
+				   <br/>
+				   <span id="imageName"></span>  
+			</div>
+       </div>
          <%
 
 Connection conn = null;
@@ -347,21 +355,17 @@ try {
 
     
 %>
-         <div class="form-row" > 
-            <div class="photoupload">
-			   <label for="">lecturer's photo</label>
-				   <input type="file" name="file"/>
-				   <br/>
-				   <span id="imageName"></span>  
-			</div>
-			<div class="selectbox">
+        
+         
+         <div class="selectbox">
                <label for="" style="margin-bottom:;">Course Title</label>              
 				<select name="course_name" required>
                   <% while (rs.next()) { %>
                       <option><%= rs.getString("title") %></option>
                   <% } %>
-                </select> </div >
-         </div>
+                </select> 
+                </div >
+        
          <%
 } catch (Exception e) {
     e.printStackTrace();
@@ -381,6 +385,7 @@ try {
             </div>
       </form>
       </div>
+     
       <a href="#" class="close-popup"></a>
 </body>
 </html>

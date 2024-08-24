@@ -480,8 +480,6 @@ label{
     			<td class="th" style="width:130px;"><h3>Category</h3></td>
     			<td class="th" style="width:380px;"><h3>Description</h3></td>
     			<td class="th" style="width:100px;"><h3>Duration</h3></td>
-    			<td class="th" style="width:200px;"><h3>Start Date</h3></td>
-    			<td class="th" style="width:250px;"><h3>Enrollment Deadline Date</h3></td>
     			<td class="th" style="width:140px;"><h3>Action</h3></td>
     		</tr> 
 		    <c:forEach items="${courselist}" var="course">
@@ -500,8 +498,7 @@ label{
 		            </span>
 		        </td>
 		        <td>${course.duration}</td>
-		        <td>${course.start_date}</td>
-		        <td>${course.enrollment_deadline}</td>
+		       
 		        <td> 
 		        	<a href = "${pageContext.request.contextPath}/coursesController?action=EDIT&course_id=${course.course_id}" class="actionbtn">Edit</a> 
 					<a href = "${pageContext.request.contextPath}/coursesController?action=DELETE&course_id=${course.course_id}" onclick="show()" class="actionbtn">Delete</a>

@@ -334,23 +334,8 @@ label{
                <div class="underline"></div>
                <label for="">Duration</label>
             </div>
-        
-              
-	         <div class="input-data">
-	         
-               <input type="date" name="startDate" style="width:320px;" required>
-               <div class="underline"></div>
-               <label for="" style="margin-bottom:;">Start on</label>
-            </div>
-         
           </div>
-          <div class="form-row"> 
-	         <div class="input-data">
-               <input type="date" name="deadLine" style="width:320px;" required>
-               <div class="underline"></div>
-               <label for="" style="margin-bottom:;">Enrollment Deadline</label>
-            </div>
-         </div>
+          
             <div class="form-row submit-btn">
                <div class="input-data">
                   <div class="inner"></div>

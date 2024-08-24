@@ -75,8 +75,7 @@ public class RegisterController extends HttpServlet {
       request.setAttribute("errorMessage","Passwords do not match");
       request.setAttribute("username", request.getParameter("username"));
       request.setAttribute("email",request.getParameter("email"));
-      request.setAttribute("address", request.getParameter("address"));
-      dispatcher=request.getRequestDispatcher("indexRegister.jsp");
+       dispatcher=request.getRequestDispatcher("indexRegister.jsp");
       dispatcher.forward(request, response);
     }
     

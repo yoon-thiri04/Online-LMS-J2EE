@@ -10,8 +10,10 @@ import="dao.UserDAO" import="java.util.List" import="model.Course"%>
     String username=udao.getName(userEmail);
     
 %>
-
+<%
 	
+//pageContext.setAttribute("run_course", run_course,PageContext.PAGE_SCOPE);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -257,13 +259,13 @@ color:;
           <table>
           <tr>
           <th style="padding-right:80px;padding-bottom:15px; padding-top:10px" >
-            <h4>Running Courses</h4>
+            <h4>Other Courses</h4>
             </th>
             <th style="padding-right:80px;padding-bottom:15px;" ></th>
             <th >
             </th>
           </tr>
-            <c:forEach items="${run_course}" var="rc">
+            <c:forEach items="${other_course}" var="rc">
            <tr>
            
             <td class="th"><h4>${ rc.course_title}</h4></td>

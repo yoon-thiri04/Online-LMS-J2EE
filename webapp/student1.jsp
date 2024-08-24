@@ -155,7 +155,7 @@ ul li:hover a{
 }
 /*Main body*/
 .main-body {
-	margin-left:290px;
+	margin-left:150px;
 	margin-top:30px;
     margin-right:30px;
 }
@@ -164,15 +164,13 @@ ul li:hover a{
 .mainmain{
     display: flex;
     flex-wrap: wrap;
-  margin-left:300px;
+    margin-left:150px;
 }
 
 .grid-container{
-    
-     flex: 0 0 calc(33.333% - 60px);
+    flex: 0 0 calc(33.333% - 60px);
     margin-top:30px;
     margin-bottom:50px;
-     
     
 }
 
@@ -181,15 +179,12 @@ ul li:hover a{
     box-shadow: 10px 4px 8px 0 rgba(0, 0, 0, 0.2), 2px 2px 2px 0 rgba(229, 194, 41, 0.264);
     border-radius: 15px 50px ;
     transition: all .3s cubic-bezier(.445, .05, .55, .95);
-   
     border: 1px solid #f0eded;
     transition: all 1s ease 0s;
     cursor: pointer;
    margin-right:30px;
     display:flex;
-    
-    
-    width:1000px;
+    width:1200px;
 }
 .grid-item:hover{
     box-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
@@ -204,10 +199,11 @@ ul li:hover a{
 	text-align:left;
 	padding-left:30px;
 	padding-right:50px;
-}}
+	font-size:18px;
+}
 .grid-item table{
 	margin-bottom:10px;
-	padding:20px;
+	padding:5px;
 	width:800px;
 }
 .grid-item table tr{
@@ -297,14 +293,7 @@ img{
 	    </div>
 	</header>
 	<div style="height:60px;">------------</div>
-	<div class="sidebar">
-		<ul>
-			<li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses </a></li>
-			
-			<li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
-			<li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
-		</ul>
-	</div>
+	
 	
 	<div class="main-body">
 	<h1>Your Enrolled Courses </h1>
@@ -354,25 +343,28 @@ img{
                             <img src="<%=file%>" alt="Image"/>
                         </div>
                         <div>
-                            <h2 class="title">${lect.title}</h2>
+                            <h2 class="title">Course - ${lect.title}</h2>
                             <table>
                             	<tr>
-                            		<td><b>Name:</b></td>
+                            		<td><b>Instructor</b></td>
                             		<td>${lect.instructor_name}</td>
                             	</tr>
                             	<tr>
-                            		<td><b>Level:</b></td>
+                            		<td><b>Level</b></td>
                             		<td>${lect.level}</td>
                             	</tr>
                             	<tr>
-                            		<td><b>Category:</b></td>
+                            		<td><b>Category</b></td>
                             		<td>${lect.category}</td>
                             	</tr>
                             	<tr>
-                            		<td><b>Duration:</b></td>
+                            		<td><b>Duration</b></td>
                             		<td>${lect.duration}</td>
                             	</tr>
-                            	
+                            	<tr>
+                            		<td><b>Description</b></td>
+                            		<td>${lect.description}</td>
+                            	</tr>
                             </table>
                             <div style="display:flex;align-item:center;gap:20px;">
                             	<button type="button" class="viewmaterial" onclick="enroll(${lect.course_id})">View Materials</button>

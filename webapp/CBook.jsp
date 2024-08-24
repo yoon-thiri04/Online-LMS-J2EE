@@ -32,6 +32,7 @@ pageContext.setAttribute("lectd", courses,PageContext.PAGE_SCOPE);
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
 <title>C#</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -52,7 +53,7 @@ function loginFirst() {
     text-decoration: none;
     text-transform: capitalize;
     transition: .2s linear;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Poppins, Helvetica, sans-serif;
 }
 /*header*/
 .header{
@@ -70,7 +71,7 @@ function loginFirst() {
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -149,60 +150,59 @@ function loginFirst() {
 	font-size:150px;
 	color:white;
 }
+/*Main body*/
+.available {
+	text-align:center;
+	padding-top:30px;
+}
 /*cards*/
 .mainmain{
     display: flex;
     flex-wrap: wrap;
-    margin-left:60px;
+    margin-left:120px;
+    
 }
 
 .grid-container{
-    
-     flex: 0 0 calc(33.333% - 60px);
-    margin-top:80px;
-    margin-bottom:80px;
-     
-    
+    flex: 0 0 calc(33.333% - 60px);
+    margin-top:20px;
+    margin-left:60px;
+   
+}
+.grid-container .enrollBTN {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .grid-item{
-	border: 2px solid white;
-    box-shadow: 10px 4px 8px 0 rgba(0, 0, 0, 0.2), 2px 2px 2px 0 rgba(229, 194, 41, 0.264);
     border-radius: 15px 50px ;
     transition: all .3s cubic-bezier(.445, .05, .55, .95);
-    background-image:url("yui.jpg");
-    background-size:fixed;
-    border: 1px solid #f0eded;
-    transition: all 1s ease 0s;
     cursor: pointer;
-   margin-right:50px;
+    margin-right:30px;
+    margin-bottom:10px;
     display:flex;
-    
-    
-    width:660px;
+    width:1200px;
 }
 .grid-item:hover{
     box-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
     border: 1px solid #111;
-    transform: translateY(-3px);
+    translate: -0px -5px ;
 }
 .grid-item .title{
-	margin-top:20px;
-	margin-left:11px;
-	margin-bottom:10px;
-}
-.grid-item table {
-	padding-bottom:20px;
+	margin-left:30px;
+	
 }
 .grid-item table td{
 	text-align:left;
-	padding-left:10px;
-}
+	padding-left:30px;
+	font-size:17px;
+	padding-bottom:5px;
+	
 }
 .grid-item table{
-	margin-bottom:10px;
-	padding:20px;
 	width:800px;
+	
 }
 .course{
   	padding-top:30px;
@@ -213,8 +213,8 @@ function loginFirst() {
   	margin-bottom:30px;
 }
 img{
-	width:180px;
-	height:180px;
+	width:240px;
+	height:240px;
 	border-radius:100px;
 	margin-top:50px;
 	margin-left:30px;
@@ -250,20 +250,24 @@ img{
 /*Enroll Button*/
 .viewmaterial {
     padding: 10px 30px;
-    color:black;
+    color:white;
+    font-size:18px;
     text-decoration: none;
+    box-shadow: 5px 5px 3px rgb(140, 130, 231);
+    transition: border-radius ease 0.5s, background-color ease 0.5s, box-shadow ease 0.5s;
+    font-weight:bold;
     border: 1px solid #999;
-    border-radius: 4px;
-    margin-bottom:20px;
-    margin-left:30px;
+    border-radius: 5px;
     transition: all 0.3s ease 0s;
-    background:white;
+    background:#387ADF;
 }
 
 .viewmaterial:hover {
     color: #fff;
     background: #748dff;
     border: 1px solid #748dff;
+    box-shadow: 5px 5px 3px rgb(234, 68, 234);
+    border-radius:10px;
 }
 </style>
 </head>
@@ -298,6 +302,9 @@ img{
 	    </div>
     </div>
    <div class="mainmain">
+   <div class="available">
+	<h1>Available courses</h1>
+	</div>
 <%
 try {
     // Establishing the connection
@@ -337,24 +344,31 @@ try {
                 String enroll_deadline=courseResultSet1.getString("enrollment_deadline");
                
 %>
+
                 <div class="grid-container">
                     <div id="b1" class="grid-item">
                         <div>
                             <img src="<%=filename%>" alt="Image">
+                           
                         </div>
                         <div>
+                        <div class="enrollBTN">
                             <h2 class="title"><%=title%></h2>
+                            <div style="display:flex;align-item:center;gap:20px;padding:40px;">
+                            	<button  class="viewmaterial" onclick="loginFirst()" type="button">Enroll</button>
+                            </div>
+                            </div>
                             <table>
                             	<tr>
-                            		<td><b>Name:</b></td>
+                            		<td><b>Instructor</b></td>
                             		<td><%=lectureName%></td>
                             	</tr>
                             	<tr>
-                            		<td><b>Level:</b></td>
+                            		<td><b>Level</b></td>
                             		<td><%=level%></td>
                             	</tr>
                             	<tr>
-                            		<td><b>Category:</b></td>
+                            		<td><b>Category</b></td>
                             		<td><%=category%></td>
                             	</tr>
                             	<tr>
@@ -366,19 +380,17 @@ try {
                             		<td><%=enroll_deadline%></td>
                             	</tr>
                             	<tr>
-                            		<td><b>Duration:</b></td>
+                            		<td><b>Duration</b></td>
                             		<td><%=duration%></td>
                             	</tr>
                             	<tr style="height:30px;">
-                            		<td style="display:flex;"><b>Description:</b></td>
+                            		<td style="display:flex;"><b>Description</b></td>
                             		<td><%=description%></td>
                             	</tr>
                             	
    
                             </table>
-                            <div style="display:flex;align-item:center;gap:20px;">
-                            	<button  class="viewmaterial" onclick="loginFirst()" type="button">Enroll</button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

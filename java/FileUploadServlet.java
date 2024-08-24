@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import dao.UserDAO;
+import dao.courseDAO;
 import dao.uploadDao;
+import model.Course;
 import model.User;
 
 @WebServlet("/FileUploadServlet")
@@ -67,10 +69,18 @@ public class FileUploadServlet extends HttpServlet {
        
         
         String name = request.getParameter("name");
-        String password = request.getParameter("password");
+        String password = "lect@123!";
         String email = request.getParameter("email");
         String qualification = request.getParameter("qualification");
         
+        courseDAO cdao=new courseDAO();
+        Course course=new Course();
+        course.setStart_date(request.getParameter("startDate"));	
+	    course.setEnrollment_deadline(request.getParameter("deadLine"));
+	    course.setCourse_id(course_id);
+	    if(cdao.updateDate(course)) {
+	    	System.out.print("Success update");
+	    }
         Part part = request.getPart("file");
         String fileName = extractFileName(part);
        

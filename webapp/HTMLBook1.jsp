@@ -113,7 +113,7 @@ function loginFirst() {
 }
 /*Java Photo*/
 #ja{
-	background-image:url("html.jpg");
+	background-image:url("leonardo.jpg");
 	background-repeat:no-repeat;
 	background-size:100%;
 	height:650px;
@@ -272,8 +272,7 @@ img{
 	    <div id="javatext">
 	    	<h1>HTML</h1>
 	    	<p>
-	    		 HTML (Hypertext Markup Language) is the standard markup language used to create and design web pages. It provides a structure for web content by using a system of tags and attributes to define the various elements on a webpage, such as text, images, links, forms, and multimedia.
-	    	</p><br><br>
+	    		</p><br><br>
 	    </div>
     </div>
    <div class="mainmain">

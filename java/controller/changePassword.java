@@ -52,24 +52,52 @@ public class changePassword extends HttpServlet {
 	    String newPwd = request.getParameter("newPwd");
 	    String retype = request.getParameter("reTypePwd");
         
-	    try {
+	   
+	    
 	    	
 	    	if (sdao.isExist(email)) {
-	            changedao.updatePwd_stud(name, newPwd);
-	            changedao.updatePwd_User(name, newPwd);
+	    		if(newPwd.equals(retype)) {
+	            try {
+					changedao.updatePwd_stud(name, newPwd);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            try {
+					changedao.updatePwd_User(name, newPwd);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	            request.setAttribute("Success", "Successfully Updated!");
-	            dispatcher = request.getRequestDispatcher("student1.jsp");
+	            dispatcher = request.getRequestDispatcher("login.jsp");
 	            dispatcher.forward(request, response);
-	        } else if (idao.isExist(email)) {
-	            changedao.updatePwd_lect(name, newPwd);
+	    		}
+	    		else {
+	    			request.setAttribute("notMatch","Passwords do not match");
+	    			dispatcher=request.getRequestDispatcher("changePwd.jsp");
+	    		    dispatcher.forward(request, response);
+	    			
+	        }}
+	    	else if (idao.isExist(email)) {
+	        	if(newPwd.equals(retype)) {
+	            try {
+					changedao.updatePwd_lect(name, newPwd);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	            request.setAttribute("Success", "Successfully Updated!");
-	            dispatcher = request.getRequestDispatcher("lectureProfile.jsp");
+	            dispatcher = request.getRequestDispatcher("login.jsp");
 	            dispatcher.forward(request, response);
-	        } 
-	    } catch (ClassNotFoundException e) {
-	        e.printStackTrace(); // for logging purposes
-	         response.sendRedirect("error.jsp");
-	    }
+	        
+	        }else {
+	        	request.setAttribute("notMatch","Passwords do not match");
+    			dispatcher=request.getRequestDispatcher("changePwdLecture.jsp");
+    		    dispatcher.forward(request, response);
+	        }
+	    } 
 	    
 	}
-}
+	}
+

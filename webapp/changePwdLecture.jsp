@@ -156,10 +156,10 @@ body{
 		<form action="${pageContext.request.contextPath}/changePassword" method="post">
 			<h2>Change Password</h2>
 			<div class="input-box">
-				<input type="text" name="name" value=<%=username%> required/>
+				<input type="text" name="name" value="<%=username%>" required/>
 			</div>
 			<div class="input-box">
-				<input type="text" name="email" value=<%=userEmail%> required/>
+				<input type="text" name="email" value="<%=userEmail%>" required/>
 			</div>
 			<div class="input-box">
 				<input type="password" name="newPwd" class="newPassword" placeholder="New Password" required/>
@@ -172,6 +172,7 @@ body{
      		</c:if>
 			<input type="submit" value="change" class="button"/>
 		</form>
+		<button onclick="history.back()">Back</button>
 	</div>
 </body>
 </html>
