@@ -55,6 +55,8 @@ function loginFirst() {
     transition: .2s linear;
     font-family: Poppins, Helvetica, sans-serif;
 }
+body{
+}
 /*header*/
 .header{
   	display: flex;
@@ -63,7 +65,7 @@ function loginFirst() {
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #387ADF;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -165,9 +167,26 @@ function loginFirst() {
 
 .grid-container{
     flex: 0 0 calc(33.333% - 60px);
-    margin-top:20px;
-    margin-left:60px;
-   
+    margin-top:30px;
+    margin-bottom:50px;
+    margin-left:80px;
+}
+
+.grid-item{
+	border: 2px solid white;
+    box-shadow: 10px 4px 8px 0 rgba(0, 0, 0, 0.2), 2px 2px 2px 0 rgba(229, 194, 41, 0.264);
+    border-radius: 15px 50px ;
+    transition: all .3s cubic-bezier(.445, .05, .55, .95);
+    border: 1px solid #f0eded;
+    transition: all 1s ease 0s;
+    cursor: pointer;
+    margin-right:30px;
+    display:flex;
+    width:1200px;
+}
+.grid-item:hover{
+    box-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+    border: 1px solid #111;
 }
 .grid-container .enrollBTN {
     display: flex;
@@ -196,12 +215,13 @@ function loginFirst() {
 .grid-item table td{
 	text-align:left;
 	padding-left:30px;
-	font-size:17px;
+	font-size:16px;
 	padding-bottom:5px;
 	
 }
 .grid-item table{
 	width:800px;
+	margin-bottom:30px;
 	
 }
 .course{
@@ -297,7 +317,7 @@ img{
 	    <div id="javatext">
 	    	<h1>C#</h1>
 	    	<p>
-	    		C# (pronounced "C sharp") is a programming language developed by Microsoft within its .NET framework. It was first introduced in 2000 as part of Microsoft's initiative to create a modern, object-oriented programming language that would be easy to learn and use, while also being powerful and versatile.
+	    		Java(pronounced "C sharp") is a programming language developed by Microsoft within its .NET framework. It was first introduced in 2000 as part of Microsoft's initiative to create a modern, object-oriented programming language that would be easy to learn and use, while also being powerful and versatile.
 	    	</p><br><br>
 	    </div>
     </div>
@@ -353,7 +373,7 @@ try {
                         </div>
                         <div>
                         <div class="enrollBTN">
-                            <h2 class="title"><%=title%></h2>
+                            <h2 class="title"><%=title%> <i class="fa-solid fa-code"></i></h2>
                             <div style="display:flex;align-item:center;gap:20px;padding:40px;">
                             	<button  class="viewmaterial" onclick="loginFirst()" type="button">Enroll</button>
                             </div>

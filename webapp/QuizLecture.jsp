@@ -43,7 +43,7 @@ String username=udao.getNameLecture(userEmail);%>
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family:Arial,Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color:#E6E6E6;
@@ -67,7 +67,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family:'Comic Sans MS',cursive;
+	
 }
 
 .logo{
@@ -90,6 +90,7 @@ body{
 .header-icons .account{
 	display:flex;
 	align-items:center;
+	font-size:19px;
 }
 .header-icons .account i{
   font-size:29px;
@@ -127,7 +128,7 @@ ul li:hover a{
 #title{
 	height:60px;
 	width:1250px;
-	margin-left:250px;
+	margin-left:550px;
 	margin-top:10px;
 	display:flex;
 	align-items:center;
@@ -135,7 +136,8 @@ ul li:hover a{
 #title p{
 	font-weight:bold;
 	font-size:25px;
-	width:500px;
+	width:700px;
+	
 }
 /*Add Button*/
 .btn{
@@ -151,94 +153,89 @@ ul li:hover a{
 	margin-left:10px;
 	color:white;
 }
-#mybtn i{
-font-size:20px;
-	margin-left:10px;
-	margin-bottom:30px;
-	color:white;
-}
+
 #Addbtn{
 	display:flex;
 	align-items:center;
-	margin-left:480px;
+	margin-left:500px;
 	margin-top:20px;
 	margin-bottom:25px;
 	background-color:#3D56B2;
 	height:40px;
-	width:160px;
+	width:120px;
 	padding-left:5px;
 	padding-right:5px;
 	border:1px solid black;
-  transition: all 0.5s ease 0s;
-  border-radius:20px;
+    transition: all 0.5s ease 0s;
+    border-radius:10px;
 }
 #Addbtn h3{
   color:white;
 }
-#mybtn{
-	
-	align-items:center;
-	margin-left:20px;
-	margin-top:20px;
-	margin-bottom:25px;
-	background-color:#3D56B2;
-	height:40px;
-	width:300px;
-	padding-left:10px;
-	padding-right:10px;
-	border:1px solid black;
-  transition: all 0.5s ease 0s;
-  border-radius:20px;
-}
-#mybtn h3{
-  color:white;
-  margin-bottom:30px;
-}
+
 .main-body{
   width: 83%;
  
 }
-.row{
-  font-size:20px;
-  margin-left:280px;
+.block{
+	background-color:white/*#71c7ec*/;
+	height:140px;
+	width:900px;
+	border-radius:30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:20px;
+	box-shadow: 0px 0px 5px 0px #6B6B6B;
+	transition: all .4s ease;
 }
-.row table {
-padding-left:0px;
- background:transparent;
- padding-bottom:0px;
- color:black  ;
- 
-}
- .row table th {
- font-size:20px;
- 
- padding:10px;
- }
-.row table td{
-font-size:18px;
-padding:10px;
-}
-.row table .twotd td{
- font-size:17px;
-}
- 
-.row table .twotd td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:4px;
-  background-color:#3D56B2;
-  color:white;
-  margin-right:3px;
-}
-.row table .twotd td .button1.edit{
-padding-left:8px;
-padding-right:8px;
-}
-.row table .twotd td .button1:hover{
-background-color:  #14279B ;
-color:white;
+.block:hover{
+	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
 }
 
+.block .assign{
+	
+	display:inline-block;
+	margin-top:10px;
+	margin-left:50px;
+	margin-right:30px;
+	font-size:20px;
+	width:500px;
+  	white-space: nowrap; /* Prevents text from wrapping to the next line */
+  	overflow: hidden; /* Hides the overflow text */
+  	text-overflow: ellipsis;
+  	padding-right:20px;
+}
+.block p{
+	margin-left:50px;
+	margin-top:5px;
+}
+.fa-arrow-up-right-from-square{
+    font-size:25px;
+	color:black;
+	margin-right:50px;
+}
+.fa-arrow-up-right-from-square:hover{
+color:#14279B;
+}
+.fa-pen-to-square{
+	margin-left:30px;
+	margin-right:40px;
+	font-size:25px;
+	color:black;
+}
+.fa-pen-to-square:hover{
+	color:#14279B;
+}
+.fa-trash-can{
+	font-size:25px;
+	
+	color:black;
+}
+.fa-trash-can:hover{
+	color:#14279B;
+}
+.fa-
 /*Pop up*/
 html, body {
    padding: 0;
@@ -324,14 +321,14 @@ a {
    right: 10px;
    top: 5px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);
@@ -359,16 +356,15 @@ a {
   border-radius: 0.5em;
   background: hsla(280, 84%, 41%, 1);
 
-background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
+  background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
+  background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
 
-background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
+  background: -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
 filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
 }
 .container .text{
   text-align: center;
-  font-size: 41px;
+  font-size: 38px;
   font-weight: 600;
   background: white;
   -webkit-background-clip: text;
@@ -527,9 +523,9 @@ form .form-row .textarea{
     <div class="sidebar">
         <ul>
         <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
-          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
-          <li><a href="#"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
-          
+          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
+          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+          <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
@@ -540,39 +536,39 @@ form .form-row .textarea{
   </div>
   
   <div id="title">
-    <p>Quiz</p>
+    
     <div id="Addbtn">
       <a href="#popup" class="btn">
-        <h3>Create Quiz</h3><i class="fa-solid fa-user-plus"></i>
+        <h3>Create</h3><i class="fa-solid fa-paint-roller"></i>
         </a>
       </div>
       
     </div>
     
-    <div class="row">
-    	<table>
-        	<tr>
-          		<td style="padding-right:60px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Quiz Title</h4></td>
-				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Total Quizzes</h4></td>
-				<td style="padding-right:60px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Deadline Date</h4></td>
-                
-                <td style="padding-right:125px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
-            </tr>
-             <c:forEach items="${qList}" var="quiz">
-            <tr class="twotd">
-            	<td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.title}</td>
-                <td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.total_quizes}</td>
-                <td style="padding-right:60px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${quiz.deadline}</td>
-                
-                <td style="padding-right:60px;margin-right:180px; border:2px solid black ;background-color:#fff ;"> 
-                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=View&id=${quiz.quiz_id}" class="button1">View Quizzes</a> 
-                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=EDIT&id=${quiz.quiz_id}" class="button1">Edit Quiz</a>          
-                    <a href = "${pageContext.request.contextPath}/QuizLectureController?action=DELETE&id=${quiz.quiz_id}"  class="button1 delete">Delete</a>
-                </td>
-            </tr>
-            </c:forEach>
+	<c:forEach items="${qList}" var="quiz">
+	<div class="block">
+		<table style="width:800px;">
+			<tr>
+				<td>
+					<div class="assign">
+						<b>${quiz.title}</b></div>
+					<p>Deadline : ${quiz.deadline}</p>
+					<p>Total Quizzes : ${quiz.total_quizes}</p>		
+				</td>
+				
+				<td>
+					
+                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=EDIT&id=${quiz.quiz_id}" class="button1" title="Edit">
+                	<i class="fa-solid fa-pen-to-square"></i></a> 
+                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=View&id=${quiz.quiz_id}" class="button1" title="View">
+                	<i class="fa-solid fa-arrow-up-right-from-square"></i></a>         
+					<a href = "${pageContext.request.contextPath}/QuizLectureController?action=DELETE&id=${quiz.quiz_id}"  class="button1 delete" title="Delete">
+					<i class="fa-sharp fa-solid fa-trash-can"></i></a>
+				</td>
+			<tr>
 		</table>
 	</div>
+	</c:forEach>
    <script type="text/javascript">
    window.onload = function() {
        var action = "<%= action1 %>"; // Ensure this is correctly passed

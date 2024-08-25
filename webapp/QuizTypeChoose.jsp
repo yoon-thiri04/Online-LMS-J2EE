@@ -47,23 +47,14 @@ function toAll(){
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background-color:#DDF2FD;
+   background-color:#E6E6E6;
    color:black;
    
    line-height: 1.5;
-   background: hsla(145, 83%, 74%, 1);
-
-background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", endColorstr="#93CBF1", GradientType=1 );
-   
+    
 }
 /*header*/
 .header{
@@ -74,7 +65,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #427D9D;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -82,7 +73,6 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
 }
 
 .logo{
@@ -120,33 +110,19 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 }
 /*Pop Up Form*/
 .container{
-	color:white;
-  max-width: 700px;
-  background: #DDF2FD/*#fff*/;
-  
-  width: 700px;
+  color:white;
+  max-width: 820px;
+  background: #3D56B2;
+  width: 600px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  margin-left:450px;
-  margin-top:80px;
-  margin-bottom:170px;
+  margin-left:460px;
+  margin-top:90px;
+  margin-bottom:99px;
   height:400px;
-  background: hsla(270, 94%, 25%, 1);
-  background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-  background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-  background:  -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
- filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
-}
-.container .text{
-  text-align: center;
-  font-size: 41px;
-  font-weight: 600;
-  background:white;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color:white;
-}
+ }
+
 .container form{
   padding: 30px 0 0 0;
   color:white;
@@ -173,7 +149,6 @@ form .form-row .textarea{
   width: 100%;
   height: 100%;
   border: none;
-  font-size: 17px;
   border-bottom: 2px solid rgba(0,0,0, 0.12);
   -webkit-background-clip: text;
   color:white;
@@ -181,7 +156,7 @@ form .form-row .textarea{
 .input-data input:focus ~ label, .textarea textarea:focus ~ label,
 .input-data input:valid ~ label, .textarea textarea:valid ~ label{
   transform: translateY(-20px);
-  font-size: 14px;
+  font-size: 17px;
 }
 .textarea textarea{
   resize: none;
@@ -192,7 +167,7 @@ form .form-row .textarea{
   position: absolute;
   pointer-events: none;
   bottom: 10px;
-  font-size: 16px;
+  font-size: 17px;
   transition: all 0.3s ease;
   color:white;
 }
@@ -201,12 +176,7 @@ form .form-row .textarea{
   bottom: 40px;
   background: #fff;
 }
-.input-data .underline{
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  width:320px;
-}
+
 .input-data .underline:before{
   position: absolute;
   content: "";
@@ -234,7 +204,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #42047e, #32c4c0, #9bf8f4, #6f7bf7);
+  background:-webkit-linear-gradient(right, #42047e, #32c4c0, #6f7bf7, #42047e);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -255,7 +225,7 @@ form .form-row .textarea{
 }
 @media (max-width: 700px) {
 .container .text{
-  font-size: 30px;
+  font-size: 38px;
 }
 .container form{
   padding: 10px 0 0 0;
@@ -276,46 +246,19 @@ label{
 /*closecross*/
 .popup .close {
    position: absolute;
-   right: 400px;
-   top: 150px;
+   right: 510px;
+   top: 165px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
-.close-popup {
-   background-color: rgba(0,0,0,.7);
-   cursor: default;
-   position: fixed;
-  
-   top:0;
-   left:0;
-   right:20;
-   bottom:0;
-   opacity: 0;
-   visibility: hidden;
-   transition: opacity .5s, visibility 0s linear .5s;
-}
-.popup:target + .close-popup {
-   opacity: 1;
-   visibility: visible;
-   transition-delay: 0s;
-}
-.form-row .date{
-  width:360px;
-  margin-left:20px;
-  color:white;
-}
-.form-row .photoupload{
-  width:360px;
-  margin-left:20px;
-  color:white;
-}
+
 .container .text{
   text-align: center;
   font-size: 28px;
@@ -357,10 +300,10 @@ label{
 	    <div id="popup" class="container popup">
     	<a href="QuizesLecture.jsp" class="close">&times;</a>
     	<div class="text">
-      		Create Quizzes (At least 5 Quizzes for each Quiz)
+      		<h3>Create Quiz</h3>
         </div>
         <div class="text1">
-      		You have created <%=total %> quizzes for <%=quiz_title %>.
+      		<h3>You have created <%=total %> quizzes for <%=quiz_title %>.</h3>
         </div>
 		<form action="QuizTypeController" method="post" >
 		         
@@ -383,11 +326,12 @@ label{
                 </div>
                 <div class="input-data">
 	                <div class="inner" ></div>
-	                 <input type="" onclick="toAll()" value=" End Quiz"/>
+	                 <input type="" onclick="toAll()" value="End Quiz"/>
                 </div>
           </div>
 		</form>
 	</div>
+	<div style="height:55px;"></div>
   	<a href="QuizesLecture.jsp" class="close">&times;</a>
     
 </body>

@@ -47,7 +47,7 @@ quiz_title=resultSet.getString("title");
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family:Arial,Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color:#E6E6E6;
@@ -71,7 +71,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family:'Comic Sans MS',cursive;
+	
 }
 
 .logo{
@@ -128,7 +128,7 @@ ul li:hover a{
 	border-left:2px solid rgb(100,100,100);
 }
 .grid-container{
-    margin-left:400px;
+    margin-left:350px;
     margin-top:20px;
     margin-bottom:20px;
     padding-bottom:20px;
@@ -187,7 +187,7 @@ flex: 0 0 calc(27.33% - 20px);
 #title{
 	height:60px;
 	width:1050px;
-	margin-left:400px;
+	margin-left:350px;
 	margin-top:20px;
 	display:flex;
 	align-items:center;
@@ -215,17 +215,17 @@ flex: 0 0 calc(27.33% - 20px);
 #Addbtn{
 	display:flex;
 	align-items:center;
-	margin-left:200px;
+	margin-left:270px;
 	margin-top:20px;
 	margin-bottom:25px;
 	background-color:#3D56B2;
 	height:40px;
-	width:90px;
+	width:100px;
 	padding-left:5px;
 	padding-right:5px;
 	border:1px solid black;
-  transition: all 0.5s ease 0s;
-  border-radius:20px;
+    transition: all 0.5s ease 0s;
+    border-radius:10px;
 }
 #Addbtn h3{
   color:white;
@@ -262,8 +262,10 @@ a {
 	<div class="sidebar">
 		<ul>
 			 <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
-          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
-          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
+          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Materials</a></li>
+          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+      
+          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
@@ -278,7 +280,7 @@ a {
     Total Quizzes(<%=total %>)</p>
     <div id="Addbtn">
       <a href="QuizTypeChoose.jsp" class="btn">
-        <h3>Add</h3><i class="fa-solid fa-user-plus"></i>
+        <h3>Add</h3><i class="fa-solid fa-paint-roller"></i>
         </a>
       </div>
       

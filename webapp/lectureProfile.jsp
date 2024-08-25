@@ -111,13 +111,13 @@ String sql= "select count(*) as total1 from enrollment where course_id="+course_
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
   
 }
 body {
    background-color:#E6E6E6;
    color:black;
-   /*font-family: 'Comic Sans MS', cursive;*/
+  
    line-height: 1.5;
 }
 /*header*/
@@ -137,7 +137,7 @@ body {
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -371,7 +371,9 @@ body {
 	<div class="sidebar">
     	 <ul>
       <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
-          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
+          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Course Materials</a></li>
+          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-book-open"></i>Assignment</a></li>
+          
           <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
           
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>

@@ -42,7 +42,7 @@ String username=udao.getNameLecture(userEmail);%>
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family:Arial,Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color:#E6E6E6;
@@ -66,7 +66,6 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family:'Comic Sans MS',cursive;
 }
 
 .logo{
@@ -89,6 +88,7 @@ body{
 .header-icons .account{
 	display:flex;
 	align-items:center;
+	font-size:19px;
 }
 .header-icons .account i{
   font-size:29px;
@@ -126,7 +126,7 @@ ul li:hover a{
 #title{
 	height:60px;
 	width:1250px;
-	margin-left:250px;
+	margin-left:320px;
 	margin-top:10px;
 	display:flex;
 	align-items:center;
@@ -134,7 +134,8 @@ ul li:hover a{
 #title p{
 	font-weight:bold;
 	font-size:25px;
-	width:500px;
+	width:390px;
+	
 }
 /*Add Button*/
 .btn{
@@ -150,12 +151,7 @@ ul li:hover a{
 	margin-left:10px;
 	color:white;
 }
-#mybtn i{
-font-size:20px;
-	margin-left:10px;
-	margin-bottom:30px;
-	color:white;
-}
+
 #Addbtn{
 	display:flex;
 	align-items:center;
@@ -168,76 +164,68 @@ font-size:20px;
 	padding-left:5px;
 	padding-right:5px;
 	border:1px solid black;
-  transition: all 0.5s ease 0s;
-  border-radius:20px;
+    transition: all 0.5s ease 0s;
+    border-radius:10px;
 }
 #Addbtn h3{
   color:white;
 }
-#mybtn{
-	
-	align-items:center;
-	margin-left:20px;
-	margin-top:20px;
-	margin-bottom:25px;
-	background-color:#3D56B2;
-	height:40px;
-	width:300px;
-	padding-left:10px;
-	padding-right:10px;
-	border:1px solid black;
-  transition: all 0.5s ease 0s;
-  border-radius:20px;
-}
-#mybtn h3{
-  color:white;
-  margin-bottom:30px;
-}
+
 .main-body{
   width: 83%;
  
 }
-.row{
-  font-size:20px;
-  margin-left:280px;
+.block{
+	background-color:white/*#71c7ec*/;
+	height:100px;
+	width:900px;
+	border-radius:30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:20px;
+	box-shadow: 0px 0px 5px 0px #6B6B6B;
+	transition: all .4s ease;
 }
-.row table {
-padding-left:0px;
- background:transparent;
- padding-bottom:0px;
- color:black  ;
- 
-}
- .row table th {
- font-size:20px;
- 
- padding:10px;
- }
-.row table td{
-font-size:18px;
-padding:10px;
-}
-.row table .twotd td{
- font-size:17px;
-}
- 
-.row table .twotd td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:4px;
-  background-color:#3D56B2;
-  color:white;
-  margin-right:3px;
-}
-.row table .twotd td .button1.edit{
-padding-left:8px;
-padding-right:8px;
-}
-.row table .twotd td .button1:hover{
-background-color:  #14279B ;
-color:white;
+.block:hover{
+	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
 }
 
+.block .assign{
+	
+	display:inline-block;
+	margin-top:10px;
+	margin-left:50px;
+	margin-right:30px;
+	font-size:20px;
+	width:500px;
+  	white-space: nowrap; /* Prevents text from wrapping to the next line */
+  	overflow: hidden; /* Hides the overflow text */
+  	text-overflow: ellipsis;
+  	padding-right:20px;
+}
+.block p{
+	margin-left:50px;
+	margin-top:5px;
+}
+
+.fa-download{
+	margin-left:30px;
+	margin-right:40px;
+	font-size:25px;
+	color:black;
+}
+.fa-download:hover{
+	color:#14279B;
+}
+.fa-trash-can{
+	font-size:25px;
+	margin-right:50px;
+	color:black;
+}
+.fa-trash-can:hover{
+	color:#14279B;
+}
 /*Pop up*/
 html, body {
    padding: 0;
@@ -446,6 +434,7 @@ form .form-row .textarea{
     width: 40%!important;
   }
 }
+
  
 </style>
 </head>
@@ -466,9 +455,9 @@ form .form-row .textarea{
     <div class="sidebar">
         <ul>
         <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
-          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Course Materials</a></li>
-          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-book-open"></i>Assignment</a></li>
-          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
+          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
+          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
@@ -479,35 +468,34 @@ form .form-row .textarea{
   </div>
   
   <div id="title">
-    <p>Assignment</p>
+    <p></p>
     <div id="Addbtn">
       <a href="#popup" class="btn">
-        <h3>Add</h3><i class="fa-solid fa-user-plus"></i>
+        <h3>Add</h3><i class="fa-solid fa-arrow-up-from-bracket"></i>
         </a>
       </div>
       
     </div>
-    
-    <div class="row">
-    	<table>
-        	<tr>
-          		<td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Title</h4></td>
-				<td style="padding-right:80px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Deadline Date</h4></td>
-                <td style="padding-right:125px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
-            </tr>
-            <c:forEach items="${mList}" var="ml">
-            <tr class="twotd">
-            	<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${ml.title}</td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${ml.deadline}</td>
-                <td style="padding-right:125px;margin-right:180px; border:2px solid black ;background-color:#fff ;"> 
-                	<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">Download</a>               
-                    <a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}&type=${ml.type}"  class="button1 delete">Delete</a>
-                </td>
-            </tr>
-            </c:forEach>   
+     <c:forEach items="${mList}" var="ml">
+            <div class="block">
+		<table style="width:800px;">
+			<tr>
+				<td>
+					<div class="assign">
+						<b>${ml.title}</b></div>
+					<p>Deadline Date : ${ml.deadline}</p>	
+				</td>
+				<td>
+					<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">              
+                    <i class="fa-sharp fa-solid fa-download fa-sm"></i></a>
+					<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}&type=${ml.type}"  class="button1 delete">
+                 <i class="fa-sharp fa-solid fa-trash-can"></i></a>
+				</td>
+			<tr>
 		</table>
 	</div>
-
+    </c:forEach>
+    
 	<div id="popup" class="container popup">
     	<a href="#" class="close">&times;</a>
     	<div class="text">

@@ -36,10 +36,10 @@ String username=udao.getName(userEmail);%>
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background: #FBFAD3;
+  background: #E6E6E6;
 }
 /*header*/
 .header{
@@ -50,7 +50,7 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #36622B;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -58,7 +58,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -122,7 +122,7 @@ body{
 	position:fixed;
 	width: 230px;
 	height:100%;
-	background:#729D39;
+	background:#3D56B2;
 }
 
 .sidebar ul a{
@@ -182,7 +182,7 @@ ul li:hover a{
     border: 1px solid #f0eded;
     transition: all 1s ease 0s;
     cursor: pointer;
-   margin-right:30px;
+    margin-right:30px;
     display:flex;
     width:1200px;
 }
@@ -199,7 +199,7 @@ ul li:hover a{
 	text-align:left;
 	padding-left:30px;
 	padding-right:50px;
-	font-size:18px;
+	font-size:16px;
 }
 .grid-item table{
 	margin-bottom:10px;
@@ -267,7 +267,7 @@ img{
 
 .viewmaterial:hover {
     color: #fff;
-    background: #36622B;
+    background:#14279B;
     border: 1px solid #748dff;
 }
 </style>
@@ -343,7 +343,7 @@ img{
                             <img src="<%=file%>" alt="Image"/>
                         </div>
                         <div>
-                            <h2 class="title">Course - ${lect.title}</h2>
+                            <h2 class="title">Course - ${lect.title} <i class="fa-solid fa-code"></i></h2>
                             <table>
                             	<tr>
                             		<td><b>Instructor</b></td>

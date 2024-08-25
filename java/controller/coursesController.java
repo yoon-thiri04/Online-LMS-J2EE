@@ -176,8 +176,6 @@ public class coursesController extends HttpServlet {
 	        e.printStackTrace();
 	       
 	    }
-	    	 
-	    	
 	}
 }
 

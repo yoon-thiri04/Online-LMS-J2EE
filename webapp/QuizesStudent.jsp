@@ -35,10 +35,12 @@ String username=udao.getName(userEmail);
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background:#FBFAD3;
+  background-color:#E6E6E6;
+  color:black;
+  line-height:1.5;
 }
 /*header*/
 .header{
@@ -49,7 +51,7 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #36622B;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -57,7 +59,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -115,13 +117,10 @@ body{
 	font-size:29px;
 	margin-right:15px;
 	color:white;
-}
-
-
-.grid-container{
-    margin-left:370px;
+}.grid-container{
+    margin-left:350px;
     margin-top:20px;
-    margin-bottom:30px;
+    margin-bottom:20px;
     padding-bottom:20px;
    }
 .grid-item .quest h5{
@@ -129,18 +128,17 @@ margin-bottom:10px;
 font-size:16px;
 }
 .grid-item{
-   display:flex;
+display:flex;
 	border: 2px solid white;
     box-shadow: 5px 30px 56.1276px rgb(50 50 55 / 12%);
     border: 1px solid #111;
     border-radius: 15px 30px ;
     transition: all .3s cubic-bezier(.445, .05, .55, .95);
-   
     transition: all 1s ease 0s;
     cursor: pointer;
     padding-left:50px;
     padding-top:20px;
-    height:260px;
+    height:290px;
     width:880px;
 }
 .grid-item #cAns{
@@ -155,6 +153,25 @@ margin-top:20px;
      padding:0.7rem;
      margin-left:auto;
 flex: 0 0 calc(27.33% - 20px);
+}
+.grid-item .ahref a{
+   
+    padding-bottom: 10px ;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
+    color:black;
+    text-decoration: none;
+    border: 1px solid #999;
+    border-radius: 4px;
+    transition: all 0.3s ease 0s;
+    background:white;
+}
+
+.grid-item .ahref a:hover {
+    color: #fff;
+    background: #748dff;
+    border: 1px solid #748dff;
 }
 
 /*Table Title*/
@@ -196,10 +213,9 @@ margin-left:980px;
 margin-bottom:40px;
 }
 .input-data  .pretty-button {
-        background-color: #4CAF50; 
+        background-color: #14279B; 
         border: none; 
         font-weight:bold;
-        font-family: font-family: Arial, Helvetica, sans-serif;
         color: white; 
         padding: 15px 32px; 
         text-align: center; 
@@ -213,18 +229,18 @@ margin-bottom:40px;
     }
 
 .input-data .pretty-button:hover {
-        background-color: #388E3C;
+        background-color: #387ADF;
     }
 
-   
 .input-data  .pretty-button:focus {
         outline: none; 
         box-shadow: 0 0 5px #4CAF50;
         }
         
+        
 .input-data  .pretty-button:active {
-        background-color: #3e8e41;
-        box-shadow: 0 5px #666; /* Shadow effect when button is pressed */
+        background-color: #14279B;
+        box-shadow: 0 5px #666; 
         transform: translateY(4px); /* Move the button down a bit */
     }
     html, body {
@@ -238,22 +254,27 @@ a {
    text-decoration: none;
 }
 .container{
+	color:white;
   max-width: 500px;
-  background-color: #059212;
-  width: 400px;
-  height: 25%;
+  background: #3D56B2;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
+  margin-left:80px;
+  margin-top:40px;
+  
+  height:250px;
+  font-size:18px;
+  text-align:center;
   }
 .popup {
    position: fixed;
    padding: 10px;
-   max-width: 50%;
-   border-radius: 0.5em;
+   
+   border-radius: 10px;
    top: 50%;
-   left: 50%;
-   color: #000;
+   left: 45%;
+   color: white;
    transform: translate(-50%, -50%);
    visibility: hidden;
    opacity: 0;
@@ -270,14 +291,14 @@ a {
    right: 10px;
    top: 5px;
    padding: 5px;
-   color: #000;
+   color: white;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);
@@ -301,22 +322,34 @@ a {
 	color: white;
 }
 .b12{
-	margin-left:30px;
-	width: 150px;
+	margin-left:45px;
+	width: 200px;
 	height: 40px;
+	font-size:18px;
+	font-weight:600;
 	color:white;
-	background-color: #4CAF50;
-	border-radius:10px;
+	background-color:#9DBDFF;
+	border-radius:5px;
+	
 }
 .b13{
 	width: 150px;
 	color:white;
 	height: 40px;
-	background-color: #4CAF50;
-	border-radius:10px;
+	background-color:#9DBDFF;
+	border-radius:5px;
 	margin-left:40px;
+	font-weight:600;
 	padding-top:8px;
 	text-align:center;
+	}
+.b13:hover{
+background-color:#D1E9F6;
+color:black;
+}
+.b12:hover{
+background-color:#D1E9F6;
+color:black;
 }
 .but1{
 display: flex;}
@@ -382,10 +415,9 @@ display: flex;}
         <a href="#popuphere" class="pretty-button">Submit</a>
     </div>
         <div id="popuphere" class="container popup">
-    	<a href="#" class="close">&times;</a>
     	<p class="b11">Once you submit, you will no longer be able to change your answers for this attempt.</p><br><br>
         <div class=" but1">
-        <input type="submit" class="b12" value="Submit All And Finished">
+        <input type="submit" class="b12" value="Submit">
         <a href="#" class="b13">Cancel</a>
           </div>
           </div>

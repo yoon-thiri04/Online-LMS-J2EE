@@ -217,7 +217,6 @@ margin-left:900px;
         background-color: #14279B; 
         border: none; 
         font-weight:bold;
-        font-family: font-family: Arial, Helvetica, sans-serif;
         color: white; 
         padding: 15px 32px; 
         text-align: center; 
@@ -270,56 +269,7 @@ background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%
 background: -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
 filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
 }
-.popup {
-   position: fixed;
-   padding: 10px;
-   max-width: 820px;
-   border-radius: 0.5em;
-   top: 50%;
-   left: 50%;
-   color: #000;
-   transform: translate(-50%, -50%);
-   visibility: hidden;
-   opacity: 0;
-   transition: opacity .5s, visibility 0s linear .5s;
-   z-index: 1;
-}
-.popup:target {
-   visibility: visible;
-   opacity: 1;
-   transition-delay: 0s;
-}
-.popup .close {
-   position: absolute;
-   right: 10px;
-   top: 5px;
-   padding: 5px;
-   color: #000;
-   transition: color .3s;
-   font-size: 2em;
-   line-height: 1.5;
-   font-weight: 700;
-}
-.popup .close:hover {
-   color: #f00;
-}
-.close-popup {
-   background-color: rgba(0,0,0,.7);
-   cursor: default;
-   position: fixed;
-   top:0;
-   left:0;
-   right:0;
-   bottom:0;
-   opacity: 0;
-   visibility: hidden;
-   transition: opacity .5s, visibility 0s linear .5s;
-}
-.popup:target + .close-popup {
-   opacity: 1;
-   visibility: visible;
-   transition-delay: 0s;
-}
+
 .input-container .correct-input {
             background-color: green;
             color: white;

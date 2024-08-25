@@ -5,22 +5,17 @@
 <head>
 <link rel="stylesheet" type="text/css" href="Font/css/fontawesome.min.css">
 <link rel="stylesheet" type="text/css" href="Font/css/all.min.css">
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='contact.css'>
-        <script src='main.js'></script>
-        <link rel="stylesheet" 
-        href="https://fonts.googleapis.com/css?family=fantasy&effect=outline|shadow-multiple">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
 <style>
+*{
+font-family: Poppins, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: Poppins, Helvetica, sans-serif;
+}
 #wrapper{
   background-color: #D0D9FC ;
   width: 100%;         
@@ -36,6 +31,7 @@ body{
   background-color:#dfe6fd;
   user-select: none;
   scroll-behavior: smooth;
+  
 }
 
 #image{
@@ -56,11 +52,9 @@ body{
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
 }
 
 .logo{
@@ -80,9 +74,6 @@ body{
   align-items: center;
   margin-right:10px;
 }
-/*.header-icons .account{
-	margin-right:50px;
-}*/
 .header-icons .account ul{
   display: flex;
   align-items: center;
@@ -107,54 +98,7 @@ body{
 .header-icons .account ul li a:hover{
     color: orange;
 }
-/*.head{
-    background: #152081;
-    display: flex;
-    justify-content:space-around;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
 
-.logo span{
-  color:white;
-  font-size:25px;
-  width:50%;
-}
-
-.menu{
-  margin-left:800px;
-}
-
-.head .menu ul{
-    display: flex;
-    gap: 40px;
-}
-
-.head .menu ul li{
-   list-style-type: none;
-}
-
-.head .menu ul li a{
-    color: #c5c2c2;
-    text-decoration: none;
-    font-size: 17px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    line-height: 30px;
-}
-
-.head .menu ul li a:hover{
-    color: #FFFFFF;
-    border-bottom:2px solid #FFFFFF;
-}
-*/
-*{
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;      
-}
 
 span{
   color:black;
@@ -385,14 +329,6 @@ form {
     margin-right: 0.7rem;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
-}
-
 .wrapper {
     max-width: 100%;
   margin-right:160px;
@@ -531,7 +467,6 @@ section a:hover{
 a {
     text-decoration: none;
     color:#838383;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 4;
 }
 
@@ -550,15 +485,13 @@ a {
     flex: wrap;
     gap: 3rem;
    margin-left: 430px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    line-height: 5rem;
+       line-height: 5rem;
 }
   
 .footer1{
     font-size: 20px;
     margin-left: 10px;
-   /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
-}
+  }
 </style>
 <meta charset="ISO-8859-1">
 <title>Home</title>

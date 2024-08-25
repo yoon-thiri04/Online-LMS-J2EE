@@ -8,8 +8,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="Font/css/fontawesome.min.css">
-<link rel="stylesheet" type="text/css" href="Font/css/all.min.css">
 <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel='stylesheet' type='text/css' media='screen' href='contact.css'>
         <script src='main.js'></script>
@@ -26,6 +24,8 @@
       referrerpolicy="no-referrer"
     />
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
+
 *{
   margin: 0;
   padding: 0;
@@ -33,8 +33,9 @@
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
+
 /*header*/
 .header{
   	display: flex;
@@ -249,12 +250,6 @@ i.quote{
   margin-right:190px;
 }
 
-/*.name{
-  font-size:17px;
-  font-weight:600;
-  color:blue;
-}*/
-
 .job{
   color:blue;
   font-size:16px;
@@ -371,13 +366,6 @@ form {
     margin-right: 0.7rem;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
-}
 
 .wrapper {
     max-width: 100%;
@@ -470,12 +458,6 @@ section a:hover{
   margin:auto;
 }
 
-/*.about-us img{
-  flex:0 50%;
-  max-width:20%;
-  height:auto;
-}*/
-
 .about{
   padding:35px;
 }
@@ -517,7 +499,7 @@ section a:hover{
 a {
     text-decoration: none;
     color:#838383;
-    font-family: Arial, Helvetica, sans-serif;
+    
     font-size: 4;
 }
 

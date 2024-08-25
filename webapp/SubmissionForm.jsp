@@ -20,10 +20,10 @@ String username=udao.getName(userEmail);
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background-color:#DDF2FD;
+   background-color:#E6E6E6;
    color:black;
    
    line-height: 1.5;
@@ -47,7 +47,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #427D9D;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -55,7 +55,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -93,24 +93,18 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 }
 /*Pop Up Form*/
 .container{
-	color:white;
+  color:white;
   max-width: 700px;
-  background: #DDF2FD/*#fff*/;
-  
-  width: 700px;
+  background: #3D56B2;
+  width: 800px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  margin-left:470px;
+  margin-left:430px;
   margin-top:70px;
   margin-bottom:99px;
   height:470px;
-  background: hsla(270, 94%, 25%, 1);
-  background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -moz-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#42047e", endColorstr="#07f49e", GradientType=1 ); 
-}
+ }
 .container .text{
   text-align: center;
   font-size: 41px;
@@ -207,7 +201,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #42047e, #32c4c0, #9bf8f4, #6f7bf7);
+  background:-webkit-linear-gradient(right, #42047e, #32c4c0, #6f7bf7, #42047e);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -248,17 +242,17 @@ label{
 /*closecross*/
 .popup .close {
    position: absolute;
-   right: 400px;
+   right: 420px;
    top: 150px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);

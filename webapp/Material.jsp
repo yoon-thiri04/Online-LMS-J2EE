@@ -36,10 +36,10 @@ String username=udao.getName(userEmail);
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background:#FBFAD3;
+  background:#E6E6E6;
 }
 /*header*/
 .header{
@@ -50,7 +50,7 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #36622B;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -58,7 +58,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -122,7 +122,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#729D39;
+  background:#3D56B2;
   /*transition:all .5s ease;*/
 }
 .sidebar header{
@@ -183,56 +183,56 @@ label #cancel{
 .main-body{
   width: 83%;
 }
-.row{
-  font-size:20px;
-  margin-left:280px;
-  color:red;
+.container{
+margin-top:40px;
 }
-.row table {
-padding-left:0px;
- background:transparent;
- padding-bottom:0px;
- color:black  ;
- 
+.block{
+	background-color:white/*#71c7ec*/;
+	height:100px;
+	width:900px;
+	border-radius:30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:20px;
+	box-shadow: 0px 0px 5px 0px #6B6B6B;
+	transition: all .4s ease;
 }
-.row table .th {
-	padding-right:90px;
-	border:2px solid black;
-	background-color:#C6E377 ;
-	height:60px;
+.block:hover{
+	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
 }
-.row table td{
-font-size:18px;
-padding:15px;
+
+.block .assign{
+	
+	display:inline-block;
+	margin-top:10px;
+	margin-left:50px;
+	margin-right:30px;
+	font-size:20px;
+	width:500px;
+  	white-space: nowrap; /* Prevents text from wrapping to the next line */
+  	overflow: hidden; /* Hides the overflow text */
+  	text-overflow: ellipsis;
+  	padding-right:20px;
 }
- .row table td:hover{
-  background-color:#C6E377 ;
-  }
-.row table .twotd td{
- font-size:17px;
- height:50px;
- padding-right:80px;
- border:2px solid black;
- background-color:#fff;
- cursor: pointer;
+.block p{
+	margin-left:50px;
+	margin-top:5px;
 }
- 
-.row table .twotd td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:4px;
-  background-color:#36622B;
-  color:white;
-  margin-right:3px;
+h1{
+margin-left:320px;
+margin-top:10px;
 }
-.row table .twotd td .button1.edit{
-padding-left:8px;
-padding-right:8px;
+.fa-download{
+	margin-left:30px;
+	margin-right:40px;
+	font-size:25px;
+	color:black;
 }
-.row table .twotd td .button1:hover{
-background-color: #C6E377  ;
-color:;
+.fa-download:hover{
+	color:#14279B;
 }
+
 
 </style>
 </head>
@@ -263,44 +263,36 @@ color:;
       <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
       <li><a href="Assignment.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
        <li><a href="QuizStudent.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
-      <li><a href="Announcements.jsp"><i class="fa-solid fa-calendar-week"></i>Announcements</a></li>
+      <li><a href="Announcements.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
       <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
       <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
     </ul>  
   </div>
   
   <div class="container">
-       <div class="row">
-          <table>
-          <tr>
-          <th style="padding-right:80px;padding-bottom:15px; padding-top:10px" >
-            <h4>Class Materials</h4>
-            </th>
-            <th style="padding-right:80px;padding-bottom:15px;" ></th>
-            <th >
-            </th>
-          </tr>
-            
-           <tr>
-           
-            <td class="th"><h4>Title</h4></td>
-            <td class="th"><h4>Description</h4></td>
-            <td class="th"><h4>Operations</h4></td>
-         
-           </tr>
-            <c:forEach items="${mList}" var="ml">
+  
+   <c:forEach items="${mList}" var="ml">
             <c:set var="mat_id" value="${ml.id}" />
             
-              <tr class="twotd">
-				<td>${ml.title}</td>
-                <td>${ml.type}</td>   
-                <td>
-                	<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">Download</a>
-                </td>
-             </tr>
+  <div class="block">
+		<table style="width:800px;">
+			<tr>
+				<td>
+					<div class="assign">
+						<b>${ml.title}</b></div>
+					<p>${ml.type}</p>	
+				</td>
+				<td>
+					<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1"><i class="fa-sharp fa-solid fa-download fa-sm"></i></a>
+					
+				</td>
+			<tr>
+		</table>
+	</div>
+	
             </c:forEach>
-          </table>
-          </div>
+       
+          
 </div>
 
 </body>

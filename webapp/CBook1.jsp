@@ -72,6 +72,9 @@ function view(course_id) {
     transition: .2s linear;
     font-family: Arial, Helvetica, sans-serif;
 }
+body{
+background:#E6E6E6;
+}
 /*header*/
 .header{
   	display: flex;
@@ -193,10 +196,8 @@ function view(course_id) {
     border: 1px solid #f0eded;
     transition: all 1s ease 0s;
     cursor: pointer;
-   margin-right:50px;
+    margin-right:50px;
     display:flex;
-    
-    
     width:660px;
 }
 .grid-item:hover{

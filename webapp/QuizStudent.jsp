@@ -33,7 +33,7 @@ function start(quiz_id) {
 }
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-<style> @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
+<style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
 *{
   margin: 0;
   padding: 0;
@@ -41,10 +41,10 @@ function start(quiz_id) {
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background:#FBFAD3;
+  background:#E6E6E6;
 }
 /*header*/
 .header{
@@ -55,15 +55,13 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #36622B;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
 	font-size:40px;
-	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	color:white;	
 }
 
 .logo{
@@ -127,7 +125,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#729D39;
+  background:#3D56B2;
   /*transition:all .5s ease;*/
 }
 .sidebar header{
@@ -136,7 +134,7 @@ body{
   text-align:center;
   line-height:70px;
   background:#0A6EBD  ;
-  user-select:none;
+ 
 }
 .sidebar ul a{
   display:block;
@@ -188,55 +186,74 @@ label #cancel{
 .main-body{
   width: 83%;
 }
-.row{
-  font-size:20px;
-  margin-left:280px;
-  color:red;
+.container{
+margin-top:40px;
 }
-.row table {
-padding-left:0px;
- background:transparent;
- padding-bottom:0px;
- color:black  ;
- 
+.block{
+	background-color:white/*#71c7ec*/;
+	height:150px;
+	width:900px;
+	border-radius:30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:15px;
+	margin-bottom:20px;
+	box-shadow: 0px 0px 5px 0px #6B6B6B;
+	transition: all .4s ease;
 }
-.row table .th {
-	padding-right:80px;
-	border:2px solid black;
-	background-color:#C6E377 ;
-	height:60px;
+.block:hover{
+	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
 }
-.row table td{
-font-size:18px;
-padding:10px;
+
+.block .assign{
+	
+	display:inline-block;
+	margin-top:10px;
+	margin-left:40px;
+	margin-right:30px;
+	font-size:20px;
+	width:500px;
+  	white-space: nowrap; /* Prevents text from wrapping to the next line */
+  	overflow: hidden; /* Hides the overflow text */
+  	text-overflow: ellipsis;
+  	padding-right:20px;
 }
- .row table td:hover{
-  background-color:#C6E377 ;
-  }
-.row table .twotd td{
- font-size:17px;
- height:50px;
- 
- border:2px solid black;
- background-color:#fff;
- cursor: pointer;
+.block p{
+	margin-left:40px;
+	margin-top:5px;
 }
- 
-.row table .twotd td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:4px;
-  background-color:#36622B;
-  color:white;
-  margin-right:3px;
+h1{
+margin-left:320px;
+margin-top:10px;
 }
-.row table .twotd td .button1.edit{
-padding-left:8px;
-padding-right:8px;
+.fa-right-to-bracket{
+    margin-left:30px;
+	margin-right:20px;
+	font-size:25px;
+	color:black;
 }
-.row table .twotd td .button1:hover{
-background-color: #C6E377  ;
-color:;
+.fa-right-to-bracker:hover{
+color:#14279B;
+}
+
+.fa-arrow-up-right-from-square{
+	font-size:25px;
+	color:black;
+	margin-left:30px;
+	
+}
+.fa-arrow-up-right-from-square:hover{
+	color:#14279B;
+}
+
+
+.fa-triangle-exclamation{
+   font-size:25px;
+	margin-left:30px;
+	color:red;
+}
+.fa-triangle-exclamation:hover{
+color:pink;
 }
 
 </style>
@@ -258,7 +275,7 @@ color:;
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
 		        <h4><%= username %></h4>
-		   </div>
+		    </div>
 	    </div>
 	</header>
 	<div style="height:60px;">------------</div>
@@ -266,44 +283,27 @@ color:;
     <ul>
       <li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses</a></li>
       <li><a href="Material.jsp?course_id=<%=course_id%>"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
-      <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
-      <li><a href="Announcements.jsp"><i class="fa-solid fa-calendar-week"></i>Announcements</a></li>
+      <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+       <li><a href="QuizStudent.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
+      <li><a href="Announcements.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
       <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
       <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
     </ul>  
   </div>
-  <div class="container">
-       <div class="row">
-          <table>
-          <tr>
-          <th style="padding-right:80px;padding-bottom:15px; padding-top:10px" >
-            <h3>Quiz</h3>
-            </th>
-           
-            <th style="padding-right:80px;padding-bottom:15px;" ></th>
-            <th >
-            </th>
-          </tr>
-            
-           <tr>
-           
-            <td class="th"><h4>Quiz Title</h4></td>
-            <td class="th"><h4>Total Quizzes</h4></td>
-            
-            <td class="th"><h4>Deadline Date</h4></td>
-            <td class="th"><h4>State</h4></td>
-            <td class="th"><h4>Operations</h4></td>
-         
-           </tr>
-            <c:forEach items="${qList}" var="quiz">
-            <c:set var="quiz_id" value="${quiz.quiz_id}" />
-            
-           <tr class="twotd">
-				<td>${quiz.title}</td>
-                <td>${quiz.total_quizes}</td>
-                
-                <td>${quiz.deadline}</td>
-                 <%
+<div class="container">
+ 
+  <c:forEach items="${qList}" var="quiz">
+  <c:set var="quiz_id" value="${quiz.quiz_id}" />
+  
+  <div class="block">
+		<table style="width:800px;">
+			<tr>
+				<td>
+					<div class="assign">
+						<b>${quiz.title}</b></div>
+					<p>Deadline : ${quiz.deadline}</p>
+					<p>Total Quizzes : ${quiz.total_quizes}</p>	
+						<%
 boolean quizResultExists = false;
 int result_id=0;
 PreparedStatement statement = null;
@@ -342,41 +342,35 @@ pageContext.setAttribute("quizResultExists", quizResultExists);
 Boolean deadlineReached=qdao.DeadlineReached(quiz_id);
 pageContext.setAttribute("deadlineReached",deadlineReached);
 %>
-         <c:choose>
+					<c:choose>
                 <c:when test="${not quizResultExists}">
-                <td>Not Started</td>
+                <p> State : <a href="#" >Not Started</a></p>
                 </c:when>
                 <c:otherwise>
-                 <td>Finished</td>
+                 <p> State : <a href="#">Finished</a></p>
                  </c:otherwise>
-                 
                  </c:choose>
-                  <td>
-                	 <c:choose>
-        
-        <c:when test="${not quizResultExists && not deadlineReached}">
-       <a href="#" onclick="start(<%=quiz_id%>)" class="button1">Start Now</a>
-    </c:when>
-    <c:when test="${not quizResultExists && deadlineReached}">
-        <a href="#" class="button1" onclick="miss()">Missed</a>
-    </c:when>
-        <c:otherwise>
-            <a href="QuizResultController?action=REVIEW&quiz_id=${quiz.quiz_id}&result_id=<%=pageContext.getAttribute("result_id") %>&title=${quiz.title}" class="button1">Review Quiz</a>
-            <a href="QuizResultController?action=RESULT&quiz_id=${quiz.quiz_id}&result_id=${result_id}" class="button1">View Result</a>
-        </c:otherwise>
-    </c:choose>
-    </td>
-             </tr>
-            
-            </c:forEach>
-          </table>
-          </div>
-         
-        
-    
+				</td>
+				
+				<td>
+					<c:choose>
+                      <c:when test="${not quizResultExists && not deadlineReached}">
+                       <a href="#" onclick="start(<%=quiz_id%>)" class="button1" title="Take Quiz"><i class="fa-solid fa-right-to-bracket"></i></a>
+                      </c:when>
+                      <c:when test="${not quizResultExists && deadlineReached}">
+                       <a href="#" class="button1" onclick="miss()"><i class="fa-solid fa-triangle-exclamation"></i></a>
+                      </c:when>
+                     <c:otherwise>
+                       <a href="QuizResultController?action=REVIEW&quiz_id=${quiz.quiz_id}&result_id=<%=pageContext.getAttribute("result_id") %>&title=${quiz.title}" class="button1" title="Review" ><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                       <a href="QuizResultController?action=RESULT&quiz_id=${quiz.quiz_id}&result_id=${result_id}" class="button1"><i class="fa-solid fa-arrow-up-right-from-square" title="View Result" ></i></a>
+                     </c:otherwise>
+                    </c:choose>
+                	
+				</td>
+			</tr>
+		</table>
+	</div>
+          </c:forEach>      
 </div>
-                
-<body>
-
 </body>
 </html>
