@@ -190,7 +190,8 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 ## Project Features to Add:
 
 - !!!!!!! Password check 
-- !! Pop Up format for View Details Result
+- !! Pop Up format for View Details Result **no**
+- !! Background gradient or background color for all pop up 
 - !! Change Pwd Btn
 - !! Quiz - Timer
 - !! Profile Card Student
