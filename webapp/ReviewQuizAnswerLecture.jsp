@@ -36,7 +36,7 @@
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+ font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background:#E6E6E6;
@@ -59,7 +59,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -119,17 +119,6 @@ body{
 	color:white;
 }
 
-
-.grid-container{
-    margin-left:370px;
-    margin-top:20px;
-    margin-bottom:30px;
-    padding-bottom:20px;
-   }
-.grid-item .quest h5{
-margin-bottom:10px;
-font-size:16px;
-}
 .correct-answer{
     border: 2px solid white;
     box-shadow: 5px 30px 56.1276px rgb(50 50 55 / 12%);
@@ -142,22 +131,32 @@ font-size:16px;
     padding-top:20px;
     margin-top:10px;
     height:70px;
-    
     width:880px;
 }
+.grid-container{
+    margin-left:350px;
+    margin-top:20px;
+    margin-bottom:20px;
+    padding-bottom:10px;
+    
+   }
+.grid-item .quest h5{
+margin-bottom:10px;
+font-size:16px;
+}
 .grid-item{
-   display:flex;
+    display:flex;
 	border: 2px solid white;
     box-shadow: 5px 30px 56.1276px rgb(50 50 55 / 12%);
     border: 1px solid #111;
+    
     border-radius: 15px 30px ;
     transition: all .3s cubic-bezier(.445, .05, .55, .95);
-    background-color:#F1EEDC;
     transition: all 1s ease 0s;
     cursor: pointer;
     padding-left:50px;
-    padding-top:20px;
-    height:280px;
+    padding-top:15px;
+    height:300px;
     width:880px;
 }
 .grid-item #cAns{
@@ -203,7 +202,7 @@ flex: 0 0 calc(27.33% - 20px);
         border: 2px solid #ccc;
         border-radius: 4px;
         font-size: 16px;
-        font-family: Arial, sans-serif;
+        
     }
     input[type="text"]:focus {
         border-color: #4CAF50;
@@ -254,21 +253,6 @@ a {
    color: #fff;
    text-decoration: none;
 }
-.container{
-  max-width: 500px;
-  width: 500px;
-  padding: 25px 40px 10px 40px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-  border-radius: 0.5em;
-  background: hsla(280, 84%, 41%, 1);
-
-background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
-}
 
 .input-container .correct-input {
             background-color: green;
@@ -307,7 +291,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", en
 	</header>
 	
   <div id="title">
-    <p><%=course_title%><br><%=request.getAttribute("title") %> - Total Quizzes(<%=request.getAttribute("total") %>)
+    <p><%=course_title%><br><%=request.getAttribute("title") %>  Total Quizzes - <%=request.getAttribute("total") %>
     <br>
     </p>      
     </div>
@@ -378,14 +362,14 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", en
                             flag="Incorrect";
                     %>
                         </c:if>
-                   <input type="radio" name="quiz_${quiz.quiz_id}" value="False" disabled> False<br><br>
+                   <input type="radio" name="quiz_${quiz.quiz_id}" value="False" class="incorrect-input" disabled> False<br><br>
                  </c:when>
             <c:when test="${result != null && result.answer == 'False'}">
             <input type="radio" name="quiz_${quiz.quiz_id}" value="True" disabled> True<br><br>
           
               <c:if test="${result.isCorrect == 'T'}">
                     <div class="correct">
-                        <input type="radio" name="quiz_${quiz.quiz_id}" value="False" checked disabled><strong> False</strong><br><br>
+                        <input type="radio" name="quiz_${quiz.quiz_id}" value="False"  checked disabled><strong> False</strong><br><br>
                     </div>
                     <% Mark=1.00;
                     score+=1;
@@ -402,7 +386,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", en
                 </c:if>
               </c:when>
               <c:otherwise>
-              <input type="radio" name="quiz_${quiz.quiz_id}" value="True" checked disabled>True<br><br>
+              <input type="radio" name="quiz_${quiz.quiz_id}" value="True" checked disabled class="incorrect-input">True<br><br>
               <input type="radio" name="quiz_${quiz.quiz_id}" value="False" checked disabled> False<br><br> 
               <% Mark=0.00;
                     flag="Incorrect";

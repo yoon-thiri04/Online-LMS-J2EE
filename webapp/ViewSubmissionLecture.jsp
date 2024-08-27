@@ -15,18 +15,18 @@ String username=udao.getNameLecture(userEmail);
 int sub_id=Integer.parseInt(request.getParameter("s_id"));
 submitDAO sdao=new submitDAO();
 Submission mySubmission=sdao.getmySumission(sub_id);
-pageContext.setAttribute("mySubmission", mySubmission);
+int mat_id=mySubmission.getId();
 
+pageContext.setAttribute("mySubmission", mySubmission);
 int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
 String title=null;
 Connection connection=DBConnection.openConnection();
-String sql = "SELECT title FROM courses WHERE course_id = ?";
+String sql = "SELECT title FROM material WHERE id = ?";
 PreparedStatement statement = connection.prepareStatement(sql);
-statement.setInt(1, course_id);
+statement.setInt(1, mat_id);
 ResultSet resultSet = statement.executeQuery();
 
 if(resultSet.next()) {
-    
      title = resultSet.getString("title");
     } else {
     System.out.println("No course found with course_id " + course_id);
@@ -43,23 +43,12 @@ if(resultSet.next()) {
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+ font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background-color:#DDF2FD;
+   background-color:#E6E6E6;
    color:black;
-   
-   line-height: 1.5;
-   background: hsla(145, 83%, 74%, 1);
-
-background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", endColorstr="#93CBF1", GradientType=1 );
-   
+   line-height: 1.5;  
 }
 /*header*/
 .header{
@@ -70,7 +59,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #427D9D;
+    background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -78,7 +67,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -116,33 +105,28 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 }
 /*Pop Up Form*/
 .container{
-	color:white;
+  color:white;
   max-width: 700px;
-  background: #DDF2FD/*#fff*/;
-  
+  background: #3D56B2;
   width: 800px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  margin-left:470px;
+  margin-left:430px;
   margin-top:70px;
   margin-bottom:99px;
   height:470px;
-  background: hsla(260, 94%, 25%, 1);
-  background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -moz-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#42047e", endColorstr="#07f49e", GradientType=1 ); 
-}
+ }
 .container .text{
   text-align: center;
-  font-size: 41px;
+  font-size: 35px;
   font-weight: 600;
   background:white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color:white;
 }
+
 .grid-item .title{
 	margin-top:30px;
 	margin-left:11px;
@@ -170,17 +154,17 @@ color:black;
 color:blue;
 }.popup .close {
    position: absolute;
-   right: 400px;
+   right: 450px;
    top: 150px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);

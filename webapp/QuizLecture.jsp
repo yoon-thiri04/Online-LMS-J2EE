@@ -271,14 +271,14 @@ a {
    right: 10px;
    top: 5px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup1 .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup1 {
    background-color: rgba(0,0,0,.7);
@@ -522,17 +522,17 @@ form .form-row .textarea{
     <div style="height:60px;">------------</div>
     <div class="sidebar">
         <ul>
-        <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
+         <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
           <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
           <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
-          <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
+          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
           <li><a href="QuizResultAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz Result</a></li>
-            <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
+          <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
-      </ul>
+     </ul>
   </div>
   
   <div id="title">

@@ -36,10 +36,10 @@
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background:#FBFAD3;
+  background:#E6E6E6;
 }
 /*header*/
 .header{
@@ -51,7 +51,7 @@ body{
   	width:100%;
  	padding: 20px;
  	margin-top:-20px;
-  	background: #36622B;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -59,7 +59,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -136,28 +136,38 @@ font-size:16px;
     border: 1px solid #111;
     border-radius: 15px 15px ;
     cursor: pointer;
-    background-color:#F6FAB9; 
+    background-color:#FEFDED; 
     padding-left:50px;
     font-size:large;
     padding-top:20px;
     margin-top:10px;
     height:70px;
-    
     width:880px;
 }
+.grid-container{
+    margin-left:350px;
+    margin-top:20px;
+    margin-bottom:20px;
+    padding-bottom:10px;
+    
+   }
+.grid-item .quest h5{
+margin-bottom:10px;
+font-size:16px;
+}
 .grid-item{
-   display:flex;
+    display:flex;
 	border: 2px solid white;
     box-shadow: 5px 30px 56.1276px rgb(50 50 55 / 12%);
     border: 1px solid #111;
+    
     border-radius: 15px 30px ;
     transition: all .3s cubic-bezier(.445, .05, .55, .95);
-    background-color:#E6FF94;
     transition: all 1s ease 0s;
     cursor: pointer;
     padding-left:50px;
-    padding-top:20px;
-    height:280px;
+    padding-top:15px;
+    height:300px;
     width:880px;
 }
 .grid-item #cAns{
@@ -203,7 +213,7 @@ flex: 0 0 calc(27.33% - 20px);
         border: 2px solid #ccc;
         border-radius: 4px;
         font-size: 16px;
-        font-family: Arial, sans-serif;
+       
     }
     input[type="text"]:focus {
         border-color: #4CAF50;
@@ -214,10 +224,9 @@ margin-left:900px;
 
 }
 .input-data  .pretty-button {
-        background-color: #4CAF50; 
+         background-color: #14279B;  
         border: none; 
         font-weight:bold;
-        font-family: font-family: Arial, Helvetica, sans-serif;
         color: white; 
         padding: 15px 32px; 
         text-align: center; 
@@ -231,95 +240,20 @@ margin-left:900px;
     }
 
 .input-data .pretty-button:hover {
-        background-color: #388E3C;
+         background-color: #387ADF;
     }
 
    
 .input-data  .pretty-button:focus {
-        outline: none; 
+         outline: none; 
         box-shadow: 0 0 5px #4CAF50;
         }
         
 .input-data  .pretty-button:active {
-        background-color: #3e8e41;
-        box-shadow: 0 5px #666; /* Shadow effect when button is pressed */
+         background-color: #14279B;
+        box-shadow: 0 5px #666; 
         transform: translateY(4px); /* Move the button down a bit */
     }
-    html, body {
-   padding: 0;
-   margin: 0;
-   width: 100%;
-   height: 100%;
-}
-a {
-   color: #fff;
-   text-decoration: none;
-}
-.container{
-  max-width: 500px;
-  width: 500px;
-  padding: 25px 40px 10px 40px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-  border-radius: 0.5em;
-  background: hsla(280, 84%, 41%, 1);
-
-background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
-}
-.popup {
-   position: fixed;
-   padding: 10px;
-   max-width: 820px;
-   border-radius: 0.5em;
-   top: 50%;
-   left: 50%;
-   color: #000;
-   transform: translate(-50%, -50%);
-   visibility: hidden;
-   opacity: 0;
-   transition: opacity .5s, visibility 0s linear .5s;
-   z-index: 1;
-}
-.popup:target {
-   visibility: visible;
-   opacity: 1;
-   transition-delay: 0s;
-}
-.popup .close {
-   position: absolute;
-   right: 10px;
-   top: 5px;
-   padding: 5px;
-   color: #000;
-   transition: color .3s;
-   font-size: 2em;
-   line-height: 1.5;
-   font-weight: 700;
-}
-.popup .close:hover {
-   color: #f00;
-}
-.close-popup {
-   background-color: rgba(0,0,0,.7);
-   cursor: default;
-   position: fixed;
-   top:0;
-   left:0;
-   right:0;
-   bottom:0;
-   opacity: 0;
-   visibility: hidden;
-   transition: opacity .5s, visibility 0s linear .5s;
-}
-.popup:target + .close-popup {
-   opacity: 1;
-   visibility: visible;
-   transition-delay: 0s;
-}
 .input-container .correct-input {
             background-color: green;
             color: white;
@@ -357,7 +291,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", en
 	</header>
 	
   <div id="title">
-    <p><%=course_title%><br><%=request.getAttribute("title") %> - Total Quizzes(<%=request.getAttribute("total") %>)</p>      
+    <p><%=course_title%><br><%=request.getAttribute("title") %>  Total Quizzes - <%=request.getAttribute("total") %></p>      
     </div>
     
     <% int quizNo=0;

@@ -28,7 +28,6 @@ body {
    
    line-height: 1.5;
    background: hsla(145, 83%, 74%, 1);
-
 background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
 
 background: -moz-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);

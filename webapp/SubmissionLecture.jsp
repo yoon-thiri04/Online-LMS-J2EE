@@ -57,7 +57,7 @@ function viewSubmission(id){
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family:Arial,Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color:#E6E6E6;
@@ -81,7 +81,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family:'Comic Sans MS',cursive;
+	
 }
 
 .logo{
@@ -142,12 +142,12 @@ ul li:hover a{
 	height:60px;
 	width:1250px;
 	margin-left:250px;
-	margin-top:10px;
+	margin-top:20px;
 	display:flex;
 	align-items:center;
 }
 #title p{
-	font-weight:bold;
+	font-weight:500;
 	font-size:25px;
 	width:500px;
 }
@@ -178,7 +178,7 @@ ul li:hover a{
 	padding-right:5px;
 	border:1px solid black;
   transition: all 0.5s ease 0s;
-  border-radius:20px;
+  border-radius:10px;
 }
 #Addbtn h3{
   color:white;
@@ -446,8 +446,10 @@ label{
         <ul>
         <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
           
-          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
-          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
+          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Course Materials</a></li>
+          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+      
+          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
           
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
@@ -459,10 +461,11 @@ label{
   </div>
   
   <div id="title">
+  
     <p>Submissions of <%=title %></p>
     <div id="Addbtn">
       <a href="SubmissionAllLecture.jsp" class="btn">
-        <h3>Go Back</h3>
+        <h3> Back</h3>
         </a>
       </div>
     </div>

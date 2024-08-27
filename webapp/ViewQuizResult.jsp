@@ -48,14 +48,14 @@ if(resultSet1.next()) {
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background-color:#DDF2FD;
+   background-color:#E6E6E6;
    color:black;
-   
-   line-height: 1.5;
-   background: hsla(145, 83%, 74%, 1);
+   line-height: 1.5;  
+
+   /*background: hsla(145, 83%, 74%, 1);
 
 background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
 
@@ -64,18 +64,18 @@ background: -moz-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%
 background: -webkit-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
 
 filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", endColorstr="#93CBF1", GradientType=1 );
-   
+  */ 
 }
 /*header*/
 .header{
-	position:fixed;
+	/*position:fixed;*/
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #427D9D;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -83,7 +83,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -121,27 +121,21 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 }
 /*Pop Up Form*/
 .container{
-	color:white;
+  color:white;
   max-width: 700px;
-  background: #DDF2FD/*#fff*/;
-  
+  background: #3D56B2;
   width: 800px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  margin-left:450px;
-  margin-top:70px;
+  margin-left:420px;
+  margin-top:30px;
   margin-bottom:99px;
-  height:470px;
-  background: hsla(260, 94%, 25%, 1);
-  background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -moz-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#42047e", endColorstr="#07f49e", GradientType=1 ); 
-}
+  height:450px;
+ }
 .container .text{
   text-align: center;
-  font-size: 34px;
+  font-size: 29px;
   font-weight: 500;
   background:white;
   -webkit-background-clip: text;
@@ -175,17 +169,17 @@ color:black;
 color:blue;
 }.popup .close {
    position: absolute;
-   right: 400px;
-   top: 150px;
+   right: 450px;
+   top: 160px;
    padding: 5px;
-   color: #000;
+   color: white;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color:skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);
@@ -219,15 +213,15 @@ color:blue;
     </div>
   </header>
  
-  <div style="height:60px;">------------</div>
+  <div style="height:60px;"></div>
 	    <div id="popup" class="container popup">
     	<a href="QuizStudent.jsp" class="close">&times;</a>
     	<div class="text">
-      		Summary of your previous attempt on <%=quiz_title %>
+      		Summary of your previous attempt 
         </div>
         
 		 <div class="grid-item">
-               <h2 class="title"><%=title%></h2>
+               <h2 class="title"><%=quiz_title%></h2>
                     <table>
                         <tr>
                           <td><b>Name</b></td>

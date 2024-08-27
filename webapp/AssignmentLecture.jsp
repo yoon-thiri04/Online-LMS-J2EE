@@ -261,14 +261,14 @@ a {
    right: 10px;
    top: 5px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);

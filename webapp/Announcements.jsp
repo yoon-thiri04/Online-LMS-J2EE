@@ -235,7 +235,7 @@ padding:10px;
 		<ul>
 			<li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses </a></li>
 			<li><a href="Material.jsp?course_id=<%=course_id%>"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
-             <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+             <li><a href="Assignment.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
              <li><a href="QuizStudent.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
 			<li><a href="Announcements.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
 			<li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>

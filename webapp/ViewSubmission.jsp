@@ -46,9 +46,9 @@ if(resultSet.next()) {
 body {
    background-color:#E6E6E6;
    color:black;
-   
-   line-height: 1.5;
-   background: hsla(145, 83%, 74%, 1);
+   line-height: 1.5;  
+
+   /*background: hsla(145, 83%, 74%, 1);
 
 background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
 
@@ -57,7 +57,7 @@ background: -moz-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%
 background: -webkit-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
 
 filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", endColorstr="#93CBF1", GradientType=1 );
-   
+  */ 
 }
 /*header*/
 .header{
@@ -128,7 +128,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
  }
 .container .text{
   text-align: center;
-  font-size: 41px;
+  font-size: 35px;
   font-weight: 600;
   background:white;
   -webkit-background-clip: text;

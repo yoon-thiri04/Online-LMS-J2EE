@@ -11,9 +11,9 @@
     String username = udao.getName(userEmail);
     int course_id = (int) session.getAttribute("course_id");
     uploadDao mDAO = new uploadDao();
+    
     List<Material> matList = mDAO.getforAssignment(course_id);
     pageContext.setAttribute("mList", matList, PageContext.PAGE_SCOPE);
-
     
 %>
 
