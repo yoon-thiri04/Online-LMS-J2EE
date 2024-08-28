@@ -126,7 +126,7 @@ ul li:hover a{
 #title{
 	height:60px;
 	width:1250px;
-	margin-left:250px;
+	margin-left:270px;
 	margin-top:20px;
 	display:flex;
 	align-items:center;

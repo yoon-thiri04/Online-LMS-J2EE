@@ -183,7 +183,7 @@ flex: 0 0 calc(27.33% - 20px);
 	align-items:center;
 }
 #title p{
-	font-weight:bold;
+	font-weight:500;
 	font-size:25px;
 	width:500px;
 	margin-top:120px;	

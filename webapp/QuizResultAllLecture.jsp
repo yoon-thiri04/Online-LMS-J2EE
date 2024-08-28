@@ -42,7 +42,7 @@ function viewDetails(id) {
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family:Arial,Helvetica, sans-serif;
+ font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color:#E6E6E6;
@@ -66,7 +66,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family:'Comic Sans MS',cursive;
+	
 }
 
 .logo{
@@ -126,13 +126,13 @@ ul li:hover a{
 #title{
 	height:60px;
 	width:1250px;
-	margin-left:250px;
-	margin-top:10px;
+	margin-left:270px;
+	margin-top:20px;
 	display:flex;
 	align-items:center;
 }
 #title p{
-	font-weight:bold;
+	font-weight:500;
 	font-size:25px;
 	width:500px;
 }.main-body {

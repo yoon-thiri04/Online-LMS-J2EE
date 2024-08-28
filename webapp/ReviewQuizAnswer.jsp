@@ -120,16 +120,7 @@ body{
 }
 
 
-.grid-container{
-    margin-left:370px;
-    margin-top:20px;
-    margin-bottom:30px;
-    padding-bottom:20px;
-   }
-.grid-item .quest h5{
-margin-bottom:10px;
-font-size:16px;
-}
+
 .correct-answer{
     border: 2px solid white;
     box-shadow: 5px 30px 56.1276px rgb(50 50 55 / 12%);
@@ -194,7 +185,7 @@ flex: 0 0 calc(27.33% - 20px);
 	align-items:center;
 }
 #title p{
-	font-weight:bold;
+	font-weight:500;
 	font-size:25px;
 	width:500px;
 	margin-top:120px;	

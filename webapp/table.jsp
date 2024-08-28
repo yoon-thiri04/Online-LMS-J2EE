@@ -15,7 +15,7 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
-.responsive-table li:nth-child(even){background-color: 	#71c7ec;}
+
 h2 {
   font-size: 26px;
   margin: 20px 0;

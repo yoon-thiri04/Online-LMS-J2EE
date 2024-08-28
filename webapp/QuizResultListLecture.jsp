@@ -11,6 +11,7 @@ String userEmail = (String) session.getAttribute("userEmail");
 lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);%>
 <%
+quizDAO qdao=new quizDAO();
 int course_id = Integer.parseInt(session.getAttribute("course_id").toString());
 
 int quiz_id = Integer.parseInt(request.getParameter("quiz_id"));
@@ -67,7 +68,7 @@ function viewSubmission(id){
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family:Arial,Helvetica, sans-serif;
+ font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color:#E6E6E6;
@@ -91,7 +92,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family:'Comic Sans MS',cursive;
+	
 }
 
 .logo{
@@ -158,7 +159,7 @@ ul li:hover a{
 	align-items:center;
 }
 #title p{
-	font-weight:bold;
+	font-weight:500;
 	font-size:25px;
 	width:500px;
 }
@@ -179,7 +180,7 @@ ul li:hover a{
 #Addbtn{
 	display:flex;
 	align-items:center;
-	margin-left:500px;
+	margin-left:300px;
 	margin-top:20px;
 	margin-bottom:25px;
 	background-color:#3D56B2;
@@ -189,7 +190,7 @@ ul li:hover a{
 	padding-right:5px;
 	border:1px solid black;
   transition: all 0.5s ease 0s;
-  border-radius:20px;
+  border-radius:10px;
 }
 #Addbtn h3{
   color:white;
@@ -198,45 +199,49 @@ ul li:hover a{
   width: 83%;
  
 }
-.row{
-  font-size:20px;
-  margin-left:280px;
+.block{
+	background-color:white/*#71c7ec*/;
+	height:150px;
+	width:900px;
+	border-radius:30px;
+	margin-left:270px;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:20px;
+	box-shadow: 0px 0px 5px 0px #6B6B6B;
+	transition: all .4s ease;
 }
-.row table {
-padding-left:0px;
- background:transparent;
- padding-bottom:0px;
- color:black  ;
+.block:hover{
+	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
+}
+
+.block .assign{
+	display:inline-block;
+	margin-top:10px;
+	margin-left:50px;
+	margin-right:30px;
+	font-size:20px;
+	width:500px;
+  	white-space: nowrap; /* Prevents text from wrapping to the next line */
+  	overflow: hidden; /* Hides the overflow text */
+  	text-overflow: ellipsis;
+  	padding-right:20px;
+}
+.block p{
+	margin-left:50px;
+	margin-top:5px;
+}
+.fa-arrow-up-right-from-square{
+     margin-left:30px;
+	margin-right:20px;
+	font-size:25px;
+	color:black;
  
 }
- .row table th {
- font-size:20px;
- padding:15px;
- }
-.row table td{
-font-size:18px;
-padding:15px;
+.fa-arrow-up-right-from-square:hover{
+color:#14279B;
 }
-.row table .twotd td{
- font-size:17px;
-}
- 
-.row table .twotd td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:4px;
-  background-color:#3D56B2;
-  color:white;
-  margin-right:3px;
-}
-.row table .twotd td .button1.edit{
-padding-left:8px;
-padding-right:8px;
-}
-.row table .twotd td .button1:hover{
-background-color:  #14279B ;
-color:white;
-}
+
   .popup {
    position: fixed;
    padding: 10px;
@@ -469,24 +474,18 @@ label{
   </div>
   
   <div id="title">
-    <p>Student Result of <%=title %><br> Total Quizzes : <%=total %></p>
+    <p>Quiz Result of <%=title %></p>
     <div id="Addbtn">
       <a href="QuizResultAllLecture.jsp" class="btn">
-        <h3>Go Back</h3>
+        <h3>Back</h3>
         </a>
       </div>
     </div>
     
-    <div class="row">
-    	<table>
-        	<tr>
-          		<td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Name</h4></td>
-				<td style="padding-right:80px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Email</h4></td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>State</h4></td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
-            </tr>
+    
             <c:forEach items="${resultList}" var="result">
             <c:set var="stud_email" value="${result.student_email}" />
+            
             <%
         String email=(String)pageContext.getAttribute("stud_email");
 		String stud_name=null;
@@ -499,19 +498,31 @@ label{
         stud_name=resultSet1.getString("user_name");
         }
         %>
-           
-            <tr class="twotd">
-            	<td style="padding-right:100px; border:2px solid black ;background-color:#fff ;cursor: pointer;"><%=stud_name %></td>
-                <td style="padding-right:100px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${result.student_email}</td>
-                <td style="padding-right:100px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${result.state}</td>
-                <td style="padding-right:100px; border:2px solid black ;background-color:#fff ;"> 
-                	<a href = "QuizResultController?action=REVIEWLECT&quiz_id=${result.quiz_id}&result_id=${result.result_id}&title=<%=title %>" class="button1">Review Quiz</a>
-                	<a href="QuizResultController?action=RESULTLECT&quiz_id=${result.quiz_id}&result_id=${result.result_id}" class="button1">View Result</a>         
-                    </td>
-            </tr>
-            </c:forEach>   
+           <div class="block">
+		<table style="width:800px;">
+			<tr>
+				<td>
+					<div class="assign">
+						<b><%=stud_name %></b></div>
+					<p>Email : ${result.student_email}</p>
+					<p>State : ${result.state}</p>	
+					<p> Score : ${result.score}</p>
+					
+				</td>
+				
+				<td>
+					<a href = "QuizResultController?action=REVIEWLECT&quiz_id=${result.quiz_id}&result_id=${result.result_id}&title=<%=title %>" title="Review Answer">
+					<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                	<a href="QuizResultController?action=RESULTLECT&quiz_id=${result.quiz_id}&result_id=${result.result_id}" title="View Result">
+                	<i class="fa-solid fa-arrow-up-right-from-square"></i></a>         
+                    
+              
+				</td>
+			<tr>
 		</table>
 	</div>
+            
+            </c:forEach>
 
 
 	

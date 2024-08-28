@@ -141,7 +141,7 @@ ul li:hover a{
 #title{
 	height:60px;
 	width:1250px;
-	margin-left:250px;
+	margin-left:270px;
 	margin-top:20px;
 	display:flex;
 	align-items:center;
@@ -168,7 +168,7 @@ ul li:hover a{
 #Addbtn{
 	display:flex;
 	align-items:center;
-	margin-left:600px;
+	margin-left:300px;
 	margin-top:20px;
 	margin-bottom:25px;
 	background-color:#3D56B2;
@@ -187,45 +187,62 @@ ul li:hover a{
   width: 83%;
  
 }
-.row{
-  font-size:20px;
-  margin-left:250px;
+.block{
+	background-color:white/*#71c7ec*/;
+	height:150px;
+	width:900px;
+	border-radius:30px;
+	margin-left:270px;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:20px;
+	box-shadow: 0px 0px 5px 0px #6B6B6B;
+	transition: all .4s ease;
 }
-.row table {
-padding-left:0px;
- background:transparent;
- padding-bottom:0px;
- color:black  ;
- 
+.block:hover{
+	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
 }
- .row table th {
- font-size:20px;
- padding:5px;
- }
-.row table td{
-font-size:18px;
-padding:5px;
+
+.block .assign{
+	
+	display:inline-block;
+	margin-top:10px;
+	margin-left:50px;
+	margin-right:30px;
+	font-size:20px;
+	width:500px;
+  	white-space: nowrap; /* Prevents text from wrapping to the next line */
+  	overflow: hidden; /* Hides the overflow text */
+  	text-overflow: ellipsis;
+  	padding-right:20px;
 }
-.row table .twotd td{
- font-size:17px;
+.block p{
+	margin-left:50px;
+	margin-top:5px;
 }
- 
-.row table .twotd td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:4px;
-  background-color:#3D56B2;
-  color:white;
-  margin-right:3px;
+.fa-download{
+	margin-left:30px;
+	margin-right:40px;
+	font-size:25px;
+	color:black;
 }
-.row table .twotd td .button1.edit{
-padding-left:8px;
-padding-right:8px;
+.fa-download:hover{
+	color:#14279B;
 }
-.row table .twotd td .button1:hover{
-background-color:  #14279B ;
-color:white;
+.fa-arrow-up-right-from-square{
+    font-size:25px;
+	color:black;
+	margin-right:40px;
 }
+.fa-arrow-up-right-from-square:hover{
+color:#14279B;
+}
+.fa-plus{
+
+font-size:25px;
+	color:black;
+}
+
   .popup {
    position: fixed;
    padding: 10px;
@@ -469,51 +486,46 @@ label{
         </a>
       </div>
     </div>
-    
-    <div class="row">
-    	<table>
-        	<tr>
-          		<td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2;color:white;"><h4>Name</h4></td>
-				<td style="padding-right:80px; border:2px solid black; background-color:#3D56B2 ;color:white;"><h4>Email</h4></td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>File Name</h4></td>
-                <td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Date</h4></td>
-                <td style="padding-right:20px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Score</h4></td>
-                
-                 <td style="padding-right:80px; border:2px solid black ;background-color:#3D56B2 ;color:white;"><h4>Operations</h4></td>
-           
-           
-            </tr>
+        	
             <c:forEach items="${sList}" var="sub">
+            
             <c:set var="sub_id" value="${sub.submission_id}" />
             <c:set var="id" value="${sub.id}" />
             
-            <tr class="twotd">
-            	<td style="padding-right:50px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.student_name}</td>
-                <td style="padding-right:50px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.student_email}</td>
-                <td style="padding-right:50px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.title}</td>
-                <td style="padding-right:50px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${sub.submission_date}</td>
-                
-                <td style="padding-right:20px; border:2px solid black ;background-color:#fff ;cursor: pointer;"><c:choose>
+            <div class="block">
+		<table style="width:800px;">
+			<tr>
+				<td>
+					<div class="assign">
+						<b>${sub.student_name}</b></div>
+					<p>Email : ${sub.student_email}</p>
+					<p>Submission Date : ${sub.submission_date}</p>	
+					<c:choose>
     <c:when test="${sub.score eq 0}">
-    -
+    <p>Score : <a href="#">Not Evaluated Yet</a></p>
     </c:when>
     <c:otherwise>
-        ${sub.score}
+       <p> Score : ${sub.score}</p>
     </c:otherwise>
-</c:choose></td>
-                
-                <td style="padding-right:10px; border:2px solid black ;background-color:#fff ;"> 
-                	<a href = "${pageContext.request.contextPath}/SubmissionLectureController?action=DOWNLOAD&id=${sub.submission_id}&title=${sub.title}&f_type=${sub.f_type}" class="button1">Download</a>
-                	<a href="#" onclick="viewSubmission(${sub.submission_id})" class="button1">View Submission</a>
-       
-                	 <c:if test="${sub.score eq 0}">
-                	<a href = "#popup" class="button1">Add Score</a>               
-                        </c:if>         
-                    </td>
-            </tr>
-            </c:forEach>   
+</c:choose>	
+				</td>
+				
+				<td>
+					<a href = "${pageContext.request.contextPath}/SubmissionLectureController?action=DOWNLOAD&id=${sub.submission_id}&title=${sub.title}&f_type=${sub.f_type}">
+					 <i class="fa-sharp fa-solid fa-download fa-sm"></i>
+					</a>
+                	<a href="#" onclick="viewSubmission(${sub.submission_id})" title="View">
+                	<i class="fa-solid fa-arrow-up-right-from-square"></i></a>         
+					<c:if test="${sub.score eq 0}">
+                	<a href = "#popup" class="button1" title="Evaluate Score"><i class="fa-solid fa-plus"></i></a>               
+                    </c:if>  
+				</td>
+			<tr>
 		</table>
 	</div>
+            
+            </c:forEach>   
+		
 <div id="popup" class="container popup">
     <a href="#" class="close">&times;</a>
     <div class="text">

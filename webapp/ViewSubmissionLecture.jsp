@@ -148,7 +148,7 @@ body {
 }
 
 .grid-item table td a{
-color:black;
+color:skyblue;
 }
 .grid-item table td a:hover{
 color:blue;
