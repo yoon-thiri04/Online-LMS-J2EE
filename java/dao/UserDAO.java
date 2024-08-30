@@ -121,6 +121,21 @@ public boolean isExist(String email) {
     } 
 	return flag;
 }
-
+public int getTotal(String email) {
+	int total=0;
+	try {
+        String sql = "SELECT count(*) as total FROM enrollment WHERE email=?";
+        connection = DBConnection.openConnection();
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, email);
+        resultSet = preparedStatement.executeQuery();
+        if( resultSet.next()) {
+        total = resultSet.getInt("total");// If there is any result, set flag to true
+    } }catch (SQLException e) {
+        e.printStackTrace();
+    } 
+    return total;
 }
+}
+
 

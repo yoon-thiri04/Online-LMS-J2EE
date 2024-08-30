@@ -41,16 +41,14 @@
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  
+  font-family: Poppins, Helvetica, sans-serif;
 }
-body {
-   background-color:#E6E6E6;
-   color:black;
-   /*font-family: 'Comic Sans MS', cursive;*/
-   line-height: 1.5;
+body{
+  background-color:#E6E6E6;
+  color:black;
+  line-height:1.5;
 }
-/*header*/
+/*Header*/
 .header{
 	position:fixed;
   	display: flex;
@@ -67,7 +65,7 @@ body {
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -87,56 +85,47 @@ body {
   align-items: center;
   margin-right:10px;
 }
-
 .header-icons .account{
-  display: flex;
-  align-items: center;
+	display:flex;
+	align-items:center;
 }
 .header-icons .account i{
   font-size:29px;
-	margin-right:15px;
+  margin-right:15px;
 }
-/* Side menubar section */
+/*sidebar*/
 .sidebar{
-	position:fixed;
-	width: 230px;
-	height:100%;
-	background:#3D56B2;
+  position:fixed;
+  width: 230px;
+  height:100%;
+  background:#3D56B2 ;
 }
-
 .sidebar ul a{
-	display:block;
-	width:100%;
-	line-height:65px;
-	font-size:15px;
-	color:white;
-	padding-left:20px;
-	box-sizing:border-box;
-	border-top:1px solid rgba(255,255,255,.1);
-	border-bottom:1px solid black;
-	transition:.4s;
+  display:block;
+  width:100%;
+  line-height:65px;
+  font-size:15px;
+  color:white;
+  padding-left:20px;
+  box-sizing:border-box;
+  border-top:1px solid rgba(255,255,255,.1);
+  border-bottom:1px solid black;
+  transition:.4s;
 }
-
 ul li:hover a{
-	padding-left:50px;
+  padding-left:50px;
 }
-
 .sidebar ul a i{
-	margin-right:16px;
+  margin-right:16px;
 }
-
-.side_navbar a:hover{
-  background: rgb(235, 235, 235);
-}
-
 .side_navbar .active{
-  border-left: 2px solid rgb(100, 100, 100);
+	border-left:2px solid rgb(100,100,100);
 }
 /*Table Title*/
 #title{
 	height:60px;
 	width:1250px;
-	margin-left:250px;
+	margin-left:300px;
 	margin-top:10px;
 	display:flex;
 	align-items:center;
@@ -144,7 +133,8 @@ ul li:hover a{
 #title p{
 	font-weight:bold;
 	font-size:25px;
-	width:800px;
+	width:400px;
+	
 }
 /*Add Button*/
 .btn{
@@ -155,9 +145,15 @@ ul li:hover a{
 	align-items:center;
 	transition:all 0.5s ease 0s;
 }
-.btn i{
+#Addbtn i{
 	font-size:20px;
 	margin-left:10px;
+	color:white;
+}
+#mybtn i{
+font-size:20px;
+	margin-left:10px;
+	margin-bottom:30px;
 	color:white;
 }
 #Addbtn{
@@ -172,60 +168,65 @@ ul li:hover a{
 	padding-left:5px;
 	padding-right:5px;
 	border:1px solid black;
-  	transition: all 0.5s ease 0s;
-  	border-radius:20px;
+    transition: all 0.5s ease 0s;
+    border-radius:10px;
 }
 #Addbtn h3{
   color:white;
 }
-/*Main body*/
-.main-body {
-	margin-left:250px;
-	margin-top:0px;
+
+.main-body{
+  width: 83%;
+ 
 }
-.row{
+.block{
+	background-color:white/*#71c7ec*/;
+	height:140px;
+	width:900px;
+	border-radius:30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:20px;
+	box-shadow: 0px 0px 5px 0px #6B6B6B;
+	transition: all .4s ease;
+}
+.block:hover{
+	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
+}
+
+.block .assign{
+	
+	display:inline-block;
+	margin-top:10px;
+	margin-left:50px;
+	margin-right:30px;
 	font-size:20px;
-  	margin-left:30px;
+	width:500px;
+  	white-space: nowrap; /* Prevents text from wrapping to the next line */
+  	overflow: hidden; /* Hides the overflow text */
+  	text-overflow: ellipsis;
+  	padding-right:20px;
 }
-.row table {
-	padding-left:0px;
- 	background:transparent;
- 	padding-bottom:0px;
- 	color:black  ;
- 	width:90%;
+.block p{
+	margin-left:50px;
+	margin-top:5px;
 }
-.row table .th{
-	border:2px solid black;
-	background-color:#3D56B2;
-	height:60px;
-	color:white;
-	padding-right:50px;
+h1{
+margin-left:320px;
+margin-top:10px;
 }
-.row table td{
-	font-size:18px;
-	padding:10px;
-	height:50px;
-	border:2px solid black;
+
+.fa-trash-can{
+	margin-left:30px;
+	margin-right:40px;
+	font-size:25px;
+	color:black;
 }
-#tbo{
-  	background-color:white;
+.fa-trash-can:hover{
+	color:red;
 }
-.row table .twotd td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:4px;
-  background-color:#3D56B2;
-  color:white;
-  margin-right:3px;
-}
-.row table .twotd td .button1.edit{
-padding-left:8px;
-padding-right:8px;
-}
-.row table .twotd td .button1:hover{
-background-color:  #14279B ;
-color:white;
-}
+
 /*Pop up*/
 html, body {
    padding: 0;
@@ -289,13 +290,12 @@ a {
 }
 /*Pop Up Form*/
 .container{
-  max-width: 550px;
-  width: 550px;
+  max-width: 500px;
+  width: 500px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
   background: hsla(280, 84%, 41%, 1);
-
 background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
 
 background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
@@ -305,41 +305,43 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", en
 }
 .container .text{
   text-align: center;
-  font-size: 35px;
-  font-weight: 600;
+  font-size: 38px;
+  font-weight: 700;
   background: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom:20px;
 }
 .container form .form-row{
   display: flex;
   margin: 32px 0;
-  /*margin-left:50px;*/
 }
 form .form-row .input-data{
   width: 100%;
   height: 40px;
   margin: 0 20px;
   position: relative;
+  color:white;
 }
 form .form-row .textarea{
-color:white;
   height: 70px;
+  color:white;
+  
 }
-form .form-row .date{
-	margin-left:20px;
+.form-row .photoupload{
+  width:360px;
+  margin-left:20px;
+  color:white;
 }
 .input-data input,
 .textarea textarea{
   display: block;
-  width: 360px;
+  width: 100%;
   height: 100%;
   border: none;
-  color:white;
   font-size: 17px;
   border-bottom: 2px solid rgba(0,0,0, 0.12);
   -webkit-background-clip: text;
+  color:white;
 }
 .input-data input:focus ~ label, .textarea textarea:focus ~ label,
 .input-data input:valid ~ label, .textarea textarea:valid ~ label{
@@ -349,8 +351,8 @@ form .form-row .date{
 }
 .textarea textarea{
   resize: none;
-  color:white;
   padding-top: 10px;
+  color:white;
 }
 .input-data label{
   position: absolute;
@@ -362,7 +364,6 @@ form .form-row .date{
 }
 .textarea label{
   width: 100%;
- 
   bottom: 40px;
   background: white;
 }
@@ -370,7 +371,7 @@ form .form-row .date{
   position: absolute;
   bottom: 0;
   height: 2px;
-  width: 360px;
+  width: 100%;
 }
 .input-data .underline:before{
   position: absolute;
@@ -398,8 +399,8 @@ form .form-row .date{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #56d8e4, #9f01ea, #26c5f3, #b429f9);
-  transition: all 0.4s;
+ background:-webkit-linear-gradient(right, #42047e, #32c4c0, #6f7bf7, #42047e);
+ transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
   left: 0;
@@ -433,9 +434,6 @@ form .form-row .date{
     width: 40%!important;
   }
 }
-label{
-  cursor:pointer;
-}  
 
 </style>
 </head>
@@ -472,42 +470,39 @@ label{
 	</div>
 	
 	<div id="title">
-    <p><%=title %> Announcements </p>
+    <p></p>
     <div id="Addbtn">
       <a href="#popup" class="btn">
-        <h3>Add</h3><i class="fa-solid fa-user-plus"></i>
+        <h3>Add</h3><i class="fa-solid fa-arrow-up-from-bracket"></i>
         </a>
       </div>
     </div>
-    
-    <div class="main-body">
-		<div class="row">
-        	<table>
-          		<tr>
-					<td class="th"><h4>Announcement Title</h4></td>
-            		<td class="th"><h4>Content</h4></td>
-            		<td class="th"><h4>Date</h4></td>
-            		<td class="th"><h4>Operations</h4></td>
-           		</tr>
-           		<tbody id="tbo">
-            	<c:forEach items="${aList}" var="al">
-              	<tr class="twotd">
-					<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${al.title}</td>
-                	<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${al.content}</td>
-                	<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${al.date}</td>              
-                	<td style="padding-right:105px;border:2px solid black ;background-color:#fff ;">
-                		<a href = "${pageContext.request.contextPath}/AnnounceController?action=DELETE&announcement_id=${al.announcement_id}" class="button1 delete">Delete</a>
-                	</td>
-              	</tr>
-              	</c:forEach>
-              	</tbody>
-			</table>
+     <c:forEach items="${aList}" var="al">
+           
+            
+  <div class="block">
+		<table style="width:800px;">
+			<tr>
+				<td>
+					<div class="assign">
+						<b>${al.title}</b>
+						</div>
+						<p>Content : ${al.content}</p>
+					<p>Date : ${al.date}</p>
+				</td>
+				<td>
+					<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}&type=${ml.type}"  class="button1 delete">
+                <i class="fa-sharp fa-solid fa-trash-can"></i></a>
+				</td>
+			<tr>
+		</table>
 	</div>
-</div>
+            </c:forEach>
+    
 	<div id="popup" class="container popup">
     	<a href="#" class="close">&times;</a>
     	<div class="text">
-      		Announcements Add Form
+      		Add Announcement
         </div>
 		<form action="${pageContext.request.contextPath}/AnnounceController" method="post"> 
       		<input type="hidden" name="announcement_id" value="${announcement.id}"/>
@@ -529,13 +524,14 @@ label{
  
             <div class="form-row" >
             	<div class="date"> 
-            		<input type="date" name="date"/>
+            	<input type="date" name="date"/>
+            		
             	</div>
            </div>
            <div class="form-row submit-btn">
 				<div class="input-data">
 	                <div class="inner"></div>
-	                <input type="submit" value="Upload">
+	                <input type="submit" value="Add">
                 </div>
           </div>
 		</form>

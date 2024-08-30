@@ -407,7 +407,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #56d8e4, #9f01ea, #26c5f3, #b429f9);
+  background:-webkit-linear-gradient(right, #42047e, #32c4c0, #6f7bf7, #42047e);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{

@@ -12,7 +12,9 @@
 session = request.getSession(); 
 String userEmail = (String) session.getAttribute("stuEmail"); 
 UserDAO udao=new UserDAO();
-String username=udao.getName(userEmail);%>
+String username=udao.getName(userEmail);
+int total=udao.getTotal(userEmail);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +23,16 @@ String username=udao.getName(userEmail);%>
 <script>
 	function enroll(course_id) {
 	        window.location.href = "Material.jsp?course_id=" + course_id;
+	}
+</script>
+<script>
+	function changePwd() {
+	        window.location.href = "changePwd.jsp";
+	}
+</script>
+<script>
+	function logout() {
+	        window.location.href = "login.jsp";
 	}
 </script>
 <!-- Font Awesome Cdn Link -->
@@ -270,6 +282,120 @@ img{
     background:#14279B;
     border: 1px solid #748dff;
 }
+
+#body{
+	display:flex;
+}
+
+a {
+  background-color: transparent;
+}
+
+img {
+  border-style: none;
+}
+
+button {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  overflow: visible;
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+.container{
+	margin-left:270px;
+	display:grid;
+	align-item:center;
+	margin-top:30px;
+	grid-template-columns:350px 500px;
+	padding-top:1.5em;
+	gap:70px;
+}
+.card {
+  border-radius: 0.8em;
+  background-color: #fefefe;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    0 100px 80px rgba(0, 0, 0, 0.07);
+  position:;
+  width:1000px;
+  align-item:center;
+  padding-right:2em;
+  padding-left:3em;
+  padding-bottom:0.3em;
+ 
+}
+.card__text{
+	padding-top:55px;
+	padding-bottom:1.5em;
+}
+.card__text p{
+	padding:15px;
+	border:1px solid black;
+	margin-bottom:1em;
+	margin-top:0.1em;
+	color:#000;
+}
+.card__text label{
+	font-size:15px;
+	color:#000;
+}
+.card__image {
+  width: 300px;
+  height: 300px; 
+}
+.card__text h2 {
+	margin-top:0.1em;
+  	margin-bottom: 0.3em;
+  	font-size: 2em;
+  	color:#000;
+  	text-align:center;
+}
+.logoutbtn{
+    color:black;
+    text-decoration: none;
+    border: 1px solid #36622B;
+    border-radius: 4px;
+    transition: all 0.3s ease 0s;
+    background:white;
+	padding:10px;
+    margin-top:20px;
+	display:inline;
+}
+.logoutbtn:hover{
+	 color: #fff;
+    background:#14279B;
+    border: 1px solid #748dff;
+}
+#title{
+	height:60px;
+	width:1050px;
+	margin-left:150px;
+	margin-top:20px;
+	display:flex;
+	align-items:center;
+}
+#title p{
+	font-weight:bold;
+	font-size:25px;
+	width:500px;
+}
+.card_text #change{
+margin-left:100px;
+
+}
 </style>
 </head>
 <body>
@@ -293,11 +419,31 @@ img{
 	    </div>
 	</header>
 	<div style="height:60px;">------------</div>
-	
-	
-	<div class="main-body">
-	<h1>Your Enrolled Courses </h1>
+	<div id="body">
+		<div class="container">
+			<div class="card">
+				<img src="studentpf.jpg" class="card__image" />
+			</div>
+		    <div class="card__text">
+		    	
+				<label>Name</label><br>
+				<p><%=username %></p>
+				<label>Email</label>
+				<p><%=userEmail %></p>
+				<label>Your Total Enrolled Courses </label>
+				<p><%=total %></p>
+				<div id="change">
+				<button class="logoutbtn" onclick="changePwd()">Change Password <i class="fa-solid fa-sliders"></i></button>
+				<button class="logoutbtn" onclick="logout()">Logout</button>
+				</div>
+			</div>
+		</div>	
 	</div>
+	
+	<div id="title">
+    <p>Your Enrolled Courses<br>
+ </p>
+    </div>
 	<div class="mainmain">
 	<%
 		ResultSet resultSet=null;

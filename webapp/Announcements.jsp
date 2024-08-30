@@ -44,10 +44,10 @@
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background: #FBFAD3;
+  background:#E6E6E6;
 }
 /*header*/
 .header{
@@ -58,7 +58,7 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #36622B;
+  	background: #14279B;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -66,7 +66,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -130,7 +130,7 @@ body{
 	position:fixed;
 	width: 230px;
 	height:100%;
-	background:#729D39;
+	background:#3D56B2;
 }
 
 .sidebar ul a{
@@ -165,39 +165,46 @@ ul li:hover a{
 .main-body{
   width: 83%;
 }
-.row{
-  font-size:20px;
-  margin-left:280px;
-}
-.row h2{
-	margin-top:20px;
+.block{
+	background-color:white/*#71c7ec*/;
+	height:150px;
+	width:900px;
+	border-radius:30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:15px;
 	margin-bottom:20px;
+	box-shadow: 0px 0px 5px 0px #6B6B6B;
+	transition: all .4s ease;
 }
-.row table {
-	padding-left:20px;
- 	background:transparent;
- 	color:black  ;
- 	width:100%;
-}
-.row table .th {
-	padding-right:80px;
-	border:2px solid black;
-	background-color:#C6E377 ;
-	height:60px;
- }
-.row table td{
-font-size:18px;
-padding:10px;
-}
-.row table .twotd td{
- font-size:17px;
- padding-right:80px;
- border:2px solid black;
- background-color:#fff;
- cursor: pointer;
- height:50px;
+.block:hover{
+	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
 }
 
+.block .assign{
+	
+	display:inline-block;
+	margin-top:20px;
+	margin-left:40px;
+	margin-right:30px;
+	font-size:20px;
+	width:500px;
+  	white-space: nowrap; /* Prevents text from wrapping to the next line */
+  	overflow: hidden; /* Hides the overflow text */
+  	text-overflow: ellipsis;
+  	padding-right:20px;
+}
+.block p{
+	margin-left:40px;
+	margin-top:5px;
+}
+h1{
+margin-left:320px;
+margin-top:10px;
+}
+.container{
+margin-top:40px;
+}
 </style>
 </head>
 <body>
@@ -233,33 +240,32 @@ padding:10px;
 	<div style="height:60px;">------------</div>
 	<div class="sidebar">
 		<ul>
-			<li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses </a></li>
-			<li><a href="Material.jsp?course_id=<%=course_id%>"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
-             <li><a href="Assignment.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
-             <li><a href="QuizStudent.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
-			<li><a href="Announcements.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
-			<li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
-			<li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
-		</ul>
+			 <li><a href="student1.jsp"><i class="fa-solid fa-link"></i>Enrolled Courses</a></li>
+      <li><a href="Material.jsp?course_id=<%=course_id%>"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
+      <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+       <li><a href="QuizStudent.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
+      <li><a href="Announcements.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
+      <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
+      <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+    </ul>
 	</div>
-  <div class="main-body">
-       <div class="row">
-       		<h2><%=title %> Announcements</h2>
-          	<table>
-           		<tr>  
-		            <td class="th"><h4>Announcement Title</h4></td>
-		            <td class="th"><h4>Content</h4></td>
-		            <td class="th"><h4>Date</h4></td>    
-            	</tr>
-            	<c:forEach items="${aList}" var="al">
-              	<tr class="twotd">
-					<td>${al.title}</td>
-                	<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${al.content}</td>
-                	<td style="padding-right:80px; border:2px solid black ;background-color:#fff ;cursor: pointer;">${al.date}</td>
-               	</tr>
-              	</c:forEach>
-          	</table>
-		</div>
-	</div>      
+   <div class="container">
+	<c:forEach items="${aList}" var="al">
+	 <div class="block">
+		<table style="width:800px;">
+			<tr>
+				<td>
+					<div class="assign">
+						<b>${al.title}</b>
+						</div>
+						<p>Content : ${al.content}</p>
+					<p>Date : ${al.date}</p>
+					
+				</td>
+			<tr>
+		</table>
+	</div>
+    </c:forEach>
+      </div>           
 </body>
 </html>
