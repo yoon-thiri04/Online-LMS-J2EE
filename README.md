@@ -202,7 +202,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !! Change design of the course for each Course
 - !! Animations 
 - !! Design material, assignment, quiz, **Done**
-- !! Design for register, student, LIst
+- !! Design for register, student, LIst **Done**
 - !! Course background images
 - !! Result and review Design **Done**
 - !! Login page **Done**
