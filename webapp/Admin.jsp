@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="util.DBConnection" import ="java.sql.Connection" import="java.util.Date" import="java.text.*" import="java.sql.*"  
-import="dao.UserDAO" import="java.util.ArrayList"%>
+import="dao.UserDAO" import="dao.courseDAO" import="java.util.ArrayList" import="java.util.List" import="model.Course"%>
 <% 
     
      session = request.getSession(); 
@@ -68,7 +68,10 @@ String sql2= "select count(*) as total from courses";
     }catch(Exception e){
     	e.printStackTrace();
     }
- 
+    
+    courseDAO coursedao=new courseDAO();
+    List<Course> run_course= coursedao.getRunCourse();
+    pageContext.setAttribute("run_course", run_course);
 %>
 <!DOCTYPE html>
 <html>
@@ -80,14 +83,14 @@ String sql2= "select count(*) as total from courses";
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
   
   <style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-*{
+  *{
   margin: 0;
   padding: 0;
   border: none;
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color: #DDF2FD;
@@ -95,16 +98,18 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 .header{
   display: flex;
+  position:fixed;
   align-items: center;
   justify-content: space-between;
   height: 60px;
   padding: 20px;
   background:#427D9D;
   color:white;
+  width:100%;
 }
 .logo{
   display: flex;
@@ -129,6 +134,13 @@ body{
 .header-icons .account i{
   	font-size:29px;
 	margin-right:15px;
+}
+.header-icons .account img{
+  width: 35px;
+  height: 35px;
+  margin-right:10px;
+  cursor: pointer;
+  border-radius: 50%;
 }
 /* Side menubar section */
 .sidebar{
@@ -200,12 +212,76 @@ ul li:hover a{
 .card-single:hover div:first-child h1{
 	color:white;
 }
+
 .card-single:hover div:last-child span{
 	color:white;
 }
 
 .account i{
 	font-size:40px;
+}
+#title{
+	height:60px;
+	width:1250px;
+	margin-left:50px;
+	
+	display:flex;
+	align-items:center;
+}
+/*table head*/
+#alltable{
+	margin-left:50px;
+}
+#tablehead .th{
+	background-color:#9BBEC8;
+	height:60px;
+	text-align:center;
+	color:black;
+}
+/*table body or Lectures'list*/
+#tbo{
+	margin-left:0px;
+	text-align:center;
+	background-color:white;
+}
+#tbo td{
+	background-color:white;
+	
+}
+#tbo td .action{
+  	display:inline-block;
+  	padding:5px 0;
+  	
+  	margin-right:3px;
+  	color:black;
+  	transition: all 0.3s ease 0s;
+}
+#tbo td .view:hover{
+	color:blue;
+}
+.fa-arrow-up-right-from-square{
+	font-size:20px;
+}
+
+/*Table*/
+.col1{
+	width:350px;
+	padding: 10px 10px;
+}
+.col2{
+	width:160px;
+}
+.col3{
+	width:250px;
+}
+.col4{
+	width:250px;
+}
+
+
+table, th, td{
+	border: 0.1px solid black;
+	border-collapse: collapse;
 }
 </style>
 </head>
@@ -222,7 +298,9 @@ ul li:hover a{
 	        	<h3><%=username %></h3>
 	      	</div>
 	    </div>
+	    
 	</header>
+	<div style="height:60px;">---------------</div>
 	<div class="sidebar">
     	<ul>
 			<li><a href="Admin.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
@@ -232,8 +310,9 @@ ul li:hover a{
 			<li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
 		</ul>
 	</div>
+	
 	<div class="main-body">
-    	<h2>Admin Dashboard</h2>
+    	<h2>Dashboard</h2>
     	<div class="dashboard">
     	
     		<div class="card-single">
@@ -265,30 +344,37 @@ ul li:hover a{
     			</div>
     		</div>
     		
-    		<div class="card-single">
-    			<div>
-    				<h1><%=runCourses%></h1>
-    				<span>Running Course</span>
-    				<a href="coursesController?action=SELECTION&type=run">View</a>
-    				
-    			</div>
-    			<div>
-    				<span class="fa-solid fa-book-open"></span>
-    			</div>
-    		</div>
-    		<div class="card-single">
-    			<div>
-    				<h1><%=otherCourses%></h1>
-    				<span>Other Course</span>
-    				<a href="${pageContext.request.contextPath}/coursesController?action=SELECTION&type=other">View</a>
-    			</div>
-    			<div>
-    				<span class="fa-solid fa-book-open"></span>
-    			</div>
-    		</div>
-    		
     	</div>
-      	
+    	<div id="title">
+		<h2>Our Running Courses</h2>
+		
+    </div>
+      	<div id="alltable">
+        	<table id="tablehead">
+            	<tr>
+	                <td class="th col1"><h3>Course Name</h3></td>
+	                <td class="th col2"><h3>Lecturer</h3></td>
+	                <td class="th col3"><h3>Total Enrolled Students </h3></td>
+	                <td class="th col4"><h3>Action</h3></td>
+	                
+            	</tr>
+            </table>   
+                    
+            <c:forEach items="${run_course}" var="rc">
+            <table id="tbo">
+            <tr> 
+                   <td class="td col1">${ rc.course_title}</td> 
+	                <td class="td col2">${ rc.lecture_name}</td>
+	                <td class="td col3">${ rc.student_count}</td>
+	                
+	                <td class="td col4"><a href="enrollController?action=View&course_id=${rc.course_id}" class="action view">
+	                View  <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+	                </td>
+	                
+            </tr>
+            </table>
+            </c:forEach>
+               </div>
 	</div>
       
 </body>

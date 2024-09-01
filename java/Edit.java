@@ -18,6 +18,7 @@ import javax.servlet.http.Part;
 
 import dao.courseDAO;
 import dao.uploadDao;
+import model.Course;
 import model.Lect;
 import util.DBConnection;
 
@@ -51,16 +52,20 @@ public class Edit extends HttpServlet {
      // Retrieve form parameters
 	 
 	 Connection con=DBConnection.openConnection();
-	 
+	 courseDAO cdao=new courseDAO();
+	 Course course=new Course();
 	 int prev_course_id=Integer.parseInt(request.getParameter("prev_course_id"));
      String name = request.getParameter("name"); 
      String password = request.getParameter("password");
      String email = request.getParameter("email");
      String qualification = request.getParameter("qualification");
      String course_name=request.getParameter("course_name");
-     
+     course.setStart_date(request.getParameter("startDate"));	
+	 course.setEnrollment_deadline(request.getParameter("deadLine"));
+	 course.setCourse_title(course_name);
+	 
      int course_id = cdao.getCourse_id(course_name); 
-     
+     course.setCourse_id(course_id);
      Part part = request.getPart("file");
      String fileName = extractFileName(part);
     
@@ -79,32 +84,35 @@ public class Edit extends HttpServlet {
      File fileSaveDir1 = new File(savePath);
       dbFileName = UPLOAD_DIR + File.separator + fileName;
      part.write(savePath + File.separator);
-     boolean updated = false;
-     boolean course_updated=false;
      
+     boolean course_updated;
      if(course_id == prev_course_id) {
     	 try {
-			updated = updateLecture1( name, password, email, qualification, dbFileName, savePath,course_id);
+			updateLecture1( name, password, email, qualification, dbFileName, savePath,course_id);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
-    	 if(updated) {
+    	 
+    	 cdao.updateDate(course);
+    	 
          response.sendRedirect("lectures.jsp");
-    	 }
+    	 
      }
     
      else {
     	 try {
-			updated = updateLecture2( name, password, email, qualification, dbFileName, savePath,course_id);
+			updateLecture2( name, password, email, qualification, dbFileName, savePath,course_id);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
+    	 
     	 course_updated=upload.updateCourseMerged(course_id, "Yes") && upload.updateCourseMerged(prev_course_id, "No");
-         if(updated && course_updated) {
+         cdao.updateDate(course);
+        
          response.sendRedirect("lectures.jsp");
-         }
+         
      }
  }
 

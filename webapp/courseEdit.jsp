@@ -93,7 +93,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 }
 /*Pop Up Form*/
 .container{
-  max-width: 800px;
+ max-width: 800px;
   background: #DDF2FD/*#fff*/;
   width: 800px;
   padding: 25px 40px 10px 40px;
@@ -307,37 +307,27 @@ label{
                <div class="underline"></div>
                <label for="">Category</label>
             </div>
-           <div class="input-data">
-               <input type="text" name="duration" value = "${course.duration}" required>
-               <div class="underline"></div>
-               <label for="">Duration</label>
-            </div>
-         </div>
-         <div class="form-row">
-           <div class="input-data">
+          <div class="input-data">
                <input type="text" name="description" value = "${course.description}" required>
                <div class="underline"></div>
                <label for="">Description</label>
             </div>
-            <div class="input-data">
-	         
-               <input type="date" name="startDate" value="${course.start_date}"  required>
-               <div class="underline"></div>
-               <label for="">Start on</label>
-            </div>
-          </div>
-          <div class="form-row"> 
-	         <div class="input-data">
-               <input type="date" name="deadLine" style="width:320px;" value="${course.enrollment_deadline}" required>
-               <div class="underline"></div>
-               <label for="">Enrollment Deadline</label>
-            </div>
          </div>
+         <div class="form-row">
+           
+             <div class="input-data">
+               <input type="text" name="duration" value = "${course.duration}" required>
+               <div class="underline"></div>
+               <label for="">Duration</label>
+            </div>
+            
+          </div>
+          
            <input type="hidden" name="course_id" value="${course.course_id}"/>
             <div class="form-row submit-btn">
                <div class="input-data">
                   <div class="inner"></div>
-                  <input type="submit" value="Save">
+                  <input type="submit" value="Update">
                </div>
             </div>
 </form>

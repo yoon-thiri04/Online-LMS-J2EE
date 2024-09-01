@@ -18,8 +18,6 @@ request.setAttribute("userlist", userList);
     UserDAO udao=new UserDAO();
     String username=udao.getName(userEmail);
 %>
-<span style="font-family: verdana, geneva, sans-serif;">
-
 
 <%
   lectureDAO dao= new lectureDAO();
@@ -44,7 +42,7 @@ request.setAttribute("userlist", userList);
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color: #DDF2FD;
@@ -52,7 +50,7 @@ body{
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 .header{
   display: flex;
@@ -128,74 +126,58 @@ ul li:hover a{
   border-left: 2px solid rgb(100, 100, 100);
 }
 /*Main body*/
-.main-body {
-	margin-left:260px;
-	margin-top:30px;
+#title{
+	height:60px;
+	width:1250px;
+	margin-left:300px;
+	margin-top:10px;
+	display:flex;
+	align-items:center;
 }
-.row{
-	font-size:20px;
-  	margin-top:20px;
-  	margin-left:30px;
+/*table head*/
+#alltable{
+	margin-left:300px;
 }
-.row table {
-	padding-left:0px;
- 	background:transparent;
- 	padding-bottom:0px;
- 	color:black  ;
- 	width:80%;
-}
-.row table .th{
-	border:2px solid black;
+#tablehead .th{
 	background-color:#9BBEC8;
 	height:60px;
+	text-align:center;
 	color:black;
 }
-.row table td{
-	font-size:18px;
-	padding:10px;
-	height:50px;
-	border:2px solid black;
-}
+/*table body or Lectures'list*/
 #tbo{
-  	background-color:white;
+	margin-left:0px;
+	text-align:center;
+	background-color:white;
 }
-/*.row table .twotd td{
- 	font-size:17px;
-} 
-.row table .twotd td .button1{
-  	display:inline-block;
-  	padding:5px;
-  	border-radius:4px;
-  	background-color:#90C6F6;
-  	color:black;
-  	margin-right:3px;
-}
-.row table .twotd td .button1.edit{
-	padding-left:8px;
-	padding-right:8px;
-}
-.row table .twotd td .button1:hover{
-	background-color:  #3B9AF5 ;
-	color:white;
-}
-#tbo td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:10px;
-  background-color:#90C6F6;
-  color:black;
-  margin-right:3px;
+#tbo td{
+	background-color:white;
+	
 }
 
-#tbo td .edit{
-  padding-left:8px;
-  padding-right:8px;
-  color:green;
+/*Add button*/
+
+/*Table*/
+.col1{
+	width:100px;
+	padding: 5px 5px;
+}
+.col2{
+	width:250px;
+}
+.col3{
+	width:250px;
+}
+.col4{
+	width:300px;
 }
 
-#tbo td .delete{
-  color:red;
-}*/
+
+table, th, td{
+	border: 0.1px solid black;
+	border-collapse: collapse;
+}
+
 </style>
 </head>
 <body>
@@ -222,39 +204,39 @@ ul li:hover a{
 		</ul>
 	</div>
 	
-    <div class="main-body">
-    	<h2>Register Users</h2>
-		<div class="row">
-        	<table>
-            	<tr>
-                	<td class="th"><h4>Name</h4></td>
-                	<td class="th"><h4>Password</h4></td>
-                	<td class="th"><h4>Email</h4></td>
-                </tr>
-                	<!--<form action ="enrollInstructor.jsp"> 
-       <td>
-    <button class="icon-btn add-btn">
-      <div class="add-icon"></div>
-      <div class="btn-txt">Add</div>     
-    </button>
-    </td>
-    
-    </form>-->
-            <tbody id="tbo">
-				<c:forEach items="${userlist}" var="user"> 
-            		<tr>
-         				<td>${user.user_name}</td>
-        				<td>${user.password}</td>
-        				<td>${user.email}</td> 
-        			</tr>               
-      			</c:forEach>
-            </tbody>
-
-    	</table>
+    <div id="title">
+		<h2>Register Users</h2>
+		
     </div>
-    </div>
+	
   
-    
+    <div id="alltable">
+        	<table id="tablehead">
+            	<tr>
+	                <td class="th col1"><h3>Profile</h3></td>
+	                <td class="th col2"><h3>User Name</h3></td>
+	                <td class="th col3"><h3>Email </h3></td>
+	                <td class="th col4"><h3>Total Enrolled Courses</h3></td>
+	                
+            	</tr>
+            </table>            
+            <c:forEach items="${userlist}" var="user"> 
+            <table id="tbo">
+            <tr> 
+                   <td class="td col1"><img src="avatar.jpeg" width="80" height="60"/></td> 
+	                <td class="td col2">${user.user_name}</td>
+	                <td class="td col3">${user.email}</td>
+	                <c:set var="email" value="${user.email}"></c:set>
+	               <%
+	               String email=(String) pageContext.getAttribute("email");
+	               int total=udao.getTotal(email); 
+	               %>
+	                <td class="td col4"><%=total %></td>
+	                
+            </tr>
+            </table>
+            </c:forEach>
+               </div>
 
 </body>
 </html>

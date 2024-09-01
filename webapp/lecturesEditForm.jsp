@@ -30,7 +30,7 @@ courseDAO cdao=new courseDAO();
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body {
    background-color:#DDF2FD;
@@ -65,7 +65,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 .header b{
 	font-size:40px;
 	color:white;
-	font-family: 'Comic Sans MS', cursive;
+	
 }
 
 .logo{
@@ -197,14 +197,10 @@ form .form-row .textarea{
   transform: scale(1);
 }
 .form-row .selectbox{
-	width:200px;
+	width:150px;
 	color:white;
 }
-.form-row .photoupload{
-	width:360px;
-	margin-left:20px;
-	color:white;
-}
+
 .submit-btn .input-data{
   overflow: hidden;
   height: 45px!important;
@@ -285,9 +281,6 @@ label{
    visibility: visible;
    transition-delay: 0s;
 }
-select{
-	width:320px;
-}
 </style>
 </head>
 <body>
@@ -311,7 +304,7 @@ select{
 <div class="container popup">
 <a href="lectures.jsp" class="close">&times;</a>	   
       <div class="text">
-         Lecture Add Form
+         Lecture Edit Form
       </div>
       <form action="Edit" method="post" enctype="multipart/form-data">
       <input type="hidden" value="${lecture.course_id}" name="prev_course_id"/>
@@ -323,9 +316,9 @@ select{
                <label for="">Name</label>
             </div>
             <div class="input-data">
-               <input type="password" name="password" value="${lecture.password}" required>
+               <input type="text" name="qualification" value="${lecture.qualification}" required>
                <div class="underline"></div>
-               <label for="">Password</label>
+               <label for="">Qualification</label>
             </div>
          </div>
          <div class="form-row">
@@ -335,11 +328,25 @@ select{
                <label for="">Email</label>
             </div>
             <div class="input-data">
-               <input type="text" name="qualification" value="${lecture.qualification}" required>
+               <input type="date" name="startDate" style="width:320px;" value="${course.start_date}" required>
                <div class="underline"></div>
-               <label for="">Qualification</label>
+               <label for="" style="margin-bottom:;">Start on</label>
             </div>
          </div>
+         <div class="form-row" > 
+            
+			<div class="input-data">
+               <input type="date" name="deadLine" style="width:320px;" value="${course.enrollment_deadline }" required>
+               <div class="underline"></div>
+               <label for="" style="margin-bottom:;">Enrollment Deadline</label>
+            </div>
+			<div class="photoupload">
+			   <label for="">lecturer's photo</label>
+				   <input type="file" name="file"/>
+				   <br/>
+				   <span id="imageName"></span>  
+			</div>
+       </div>
          <%
 int course_id=(int)pageContext.getAttribute("course_id");
 String title=cdao.getTitle(course_id);
@@ -359,14 +366,7 @@ try {
     StringBuilder options = new StringBuilder();
     
 %>
-         <div class="form-row" > 
-            <div class="photoupload">
-			   <label for="">lecturer's photo</label>
-				   <input type="file" name="file" />
-				   <br/>
-				   <span id="imageName"></span>  
-			</div>
-			
+        
 			<div class="selectbox" >
                <label for="" style="margin-bottom:;">Course Title</label>              
 				<select name="course_name"  required>
@@ -376,7 +376,7 @@ try {
                   <% } %>
                 </select>
             </div >
-         </div>
+         
          <%
 } catch (Exception e) {
     e.printStackTrace();

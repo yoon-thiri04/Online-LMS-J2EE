@@ -1,40 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Statement" import="java.sql.PreparedStatement "%>
-<%@page import="java.sql.Connection"%>
-<%@page import="util.DBConnection" %>
-<%@page import="java.util.List" %>
-<%@page import="model.Lect" %>
-<%@page import="dao.*" import="dao.courseDAO" import="java.util.ArrayList" import="model.CourseInstructor"%>
-<%
-session = request.getSession(); 
-String userEmail = (String) session.getAttribute("stuEmail"); 
-UserDAO udao=new UserDAO();
-String username=udao.getName(userEmail);
-int total=udao.getTotal(userEmail);
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8" />
   <title>Courses Enrolled</title>
-<script>
-	function enroll(course_id) {
-	        window.location.href = "Material.jsp?course_id=" + course_id;
-	}
-</script>
-<script>
-	function changePwd() {
-	        window.location.href = "changePwd.jsp";
-	}
-</script>
-<script>
-	function logout() {
-	        window.location.href = "login.jsp";
-	}
-</script>
+
 <!-- Font Awesome Cdn Link -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
@@ -414,7 +384,7 @@ margin-left:100px;
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h4><%= username %></h4>
+		        <h4>User name</h4>
 		    </div>
 	    </div>
 	</header>
@@ -427,11 +397,11 @@ margin-left:100px;
 		    <div class="card__text">
 		    	
 				<label>Name</label><br>
-				<p><%=username %></p>
+				<p>User Name</p>
 				<label>Email</label>
-				<p><%=userEmail %></p>
+				<p>kjjdfs@gmail.com</p>
 				<label>Your Total Enrolled Courses </label>
-				<p><%=total %></p>
+				<p>6</p>
 				<div id="change">
 				<button class="logoutbtn" onclick="changePwd()">Change Password <i class="fa-solid fa-sliders"></i></button>
 				<button class="logoutbtn" onclick="logout()">Logout <i class="fa-solid fa-right-to-bracket"></i></button>
@@ -445,67 +415,28 @@ margin-left:100px;
  </p>
     </div>
 	<div class="mainmain">
-	<%
-		ResultSet resultSet=null;
-		PreparedStatement preparedstatement=null;
-		
-		int courseId=0;
-		try {
-		    Class.forName("com.mysql.jdbc.Driver");
-		    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:/onlinelearningsystem", "root", "yoonthiri@2004");
-		    Statement st = con.createStatement();
-		    String sql = "SELECT course_id FROM enrollment where email=?";
-		    preparedstatement = con.prepareStatement(sql);
-		    preparedstatement.setString(1, userEmail);
-		    resultSet = preparedstatement.executeQuery(); 
-		    
-		    while (resultSet.next()) {
-		    	
-		      courseId=resultSet.getInt("course_id");
-		      lectureDAO lecturerdao=new lectureDAO();
-		
-		      List<CourseInstructor> courses = new ArrayList<>();
-		      courses = lecturerdao.get(courseId);
-		      pageContext.setAttribute("lectd", courses,PageContext.PAGE_SCOPE); 
-
-		%>
-		<%
-				String file="";	
-				try {
-					PreparedStatement preparedStatement = null;
-					Connection con1 = DBConnection.openConnection();
-					Statement st1 = con1.createStatement();
-					String sql1 = "SELECT filename FROM lectures where course_id=?";
-					preparedStatement = con1.prepareStatement(sql1);
-				    preparedStatement.setInt(1,courseId);
-					ResultSet rs1 = preparedStatement.executeQuery();
-					if (rs1.next()) {
-						 file=rs1.getString("filename");
-		%>
-				 <c:forEach items="${lectd}" var="lect">
+	
+				 
 					<div class="grid-container">
                     <div id="b1" class="grid-item">
                         <div style="width:250px;">
-                            <img src="<%=file%>" alt="Image"/>
+                            <img src="avatar.jpeg" alt="Image"/>
                         </div>
                         <div>
-                            <h2 class="title">Course - ${lect.title} <i class="fa-solid fa-code"></i></h2>
+                            <h2 class="title">Advanced Java Enterprise Edition <i class="fa-solid fa-code"></i></h2>
                             <table>
                             	<tr>
                             		<td><b>Instructor</b></td>
-                            		<td>${lect.instructor_name}</td>
+                            		<td>Mu Mu Swe</td>
                             	</tr>
                             	<tr>
                             		<td><b>Level</b></td>
-                            		<td>${lect.level}</td>
+                            		<td>Advanced</td>
                             	</tr>
-                            	<tr>
-                            		<td><b>Category</b></td>
-                            		<td>${lect.category}</td>
-                            	</tr>
+                            	
                             	<tr>
                             		<td><b>Duration</b></td>
-                            		<td>${lect.duration}</td>
+                            		<td>4 months</td>
                             	</tr>
                             	
                             </table>
@@ -515,16 +446,94 @@ margin-left:100px;
                         </div>
                     </div>
                 </div>
-				</c:forEach>    
-			<%
-				} 
-					}catch (Exception e) {
-				    out.println(e);
-				    }
-				}}catch (Exception e) {
-				    out.println(e);
-				}
-			%>	
+                <div class="grid-container">
+                    <div id="b1" class="grid-item">
+                        <div style="width:250px;">
+                            <img src="avatar.jpeg" alt="Image"/>
+                        </div>
+                        <div>
+                            <h2 class="title">Advanced Java Enterprise Edition <i class="fa-solid fa-code"></i></h2>
+                            <table>
+                            	<tr>
+                            		<td><b>Instructor</b></td>
+                            		<td>Mu Mu Swe</td>
+                            	</tr>
+                            	<tr>
+                            		<td><b>Level</b></td>
+                            		<td>Advanced</td>
+                            	</tr>
+                            	
+                            	<tr>
+                            		<td><b>Duration</b></td>
+                            		<td>4 months</td>
+                            	</tr>
+                            	
+                            </table>
+                            <div style="display:flex;align-item:center;gap:20px;">
+                            	<button type="button" class="viewmaterial" onclick="enroll(${lect.course_id})">View Materials</button>
+                            	   </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div id="b1" class="grid-item">
+                        <div style="width:250px;">
+                            <img src="avatar.jpeg" alt="Image"/>
+                        </div>
+                        <div>
+                            <h2 class="title">Advanced Java Enterprise Edition <i class="fa-solid fa-code"></i></h2>
+                            <table>
+                            	<tr>
+                            		<td><b>Instructor</b></td>
+                            		<td>Mu Mu Swe</td>
+                            	</tr>
+                            	<tr>
+                            		<td><b>Level</b></td>
+                            		<td>Advanced</td>
+                            	</tr>
+                            	
+                            	<tr>
+                            		<td><b>Duration</b></td>
+                            		<td>4 months</td>
+                            	</tr>
+                            	
+                            </table>
+                            <div style="display:flex;align-item:center;gap:20px;">
+                            	<button type="button" class="viewmaterial" onclick="enroll(${lect.course_id})">View Materials</button>
+                            	   </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="grid-container">
+                    <div id="b1" class="grid-item">
+                        <div style="width:250px;">
+                            <img src="avatar.jpeg" alt="Image"/>
+                        </div>
+                        <div>
+                            <h2 class="title">Advanced Java Enterprise Edition <i class="fa-solid fa-code"></i></h2>
+                            <table>
+                            	<tr>
+                            		<td><b>Instructor</b></td>
+                            		<td>Mu Mu Swe</td>
+                            	</tr>
+                            	<tr>
+                            		<td><b>Level</b></td>
+                            		<td>Advanced</td>
+                            	</tr>
+                            	
+                            	<tr>
+                            		<td><b>Duration</b></td>
+                            		<td>4 months</td>
+                            	</tr>
+                            	
+                            </table>
+                            <div style="display:flex;align-item:center;gap:20px;">
+                            	<button type="button" class="viewmaterial" onclick="enroll(${lect.course_id})">View Materials</button>
+                            	   </div>
+                        </div>
+                    </div>
+                </div>
+				
 </div>
 
 </body>

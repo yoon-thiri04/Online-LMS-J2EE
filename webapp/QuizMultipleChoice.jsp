@@ -48,7 +48,8 @@ quiz_title=resultSet.getString("title");
   font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background-color:#E6E6E6;
+   background: url(https://i.pinimg.com/736x/fd/78/c7/fd78c7534ed69af190d268a14e2f6a9a.jpg);
+		background-size: cover;
    color:black;
    line-height: 1.5;  
 }

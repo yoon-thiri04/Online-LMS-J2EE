@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import model.Course;
@@ -87,6 +89,7 @@ public class courseDAO {
 	    }
 	    return flag;
 	}
+	
 	public Course get(int course_id) {
 		   Course course = null;
 		   try {
@@ -102,6 +105,8 @@ public class courseDAO {
 				course.setCategory(resultSet.getString("category"));
 				course.setDescription(resultSet.getString("description"));
 				course.setDuration(resultSet.getString("duration"));
+				course.setStart_date(resultSet.getString("start_date"));
+				course.setEnrollment_deadline(resultSet.getString("enrollment_deadline"));
 				course.setMerged(resultSet.getString("merged"));
 				}
 			}catch(SQLException e) {
@@ -125,7 +130,7 @@ public class courseDAO {
 	public boolean update(Course course) {
 		   boolean flag = false;
 		   try {
-			String sql = "UPDATE courses SET title = ?, level = ?, category = ?, description = ?, duration = ?,start_date =?,enrollment_deadline=? where course_id = ?";
+			String sql = "UPDATE courses SET title = ?, level = ?, category = ?, description = ?, duration = ? where course_id = ?";
 			connection = DBConnection.openConnection();
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, course.getTitle());
@@ -133,9 +138,8 @@ public class courseDAO {
 			preparedStatement.setString(3, course.getCategory());
 			preparedStatement.setString(4, course.getDescription());
 			preparedStatement.setString(5, course.getDuration());
-			preparedStatement.setString(6, course.getStart_date());
-			preparedStatement.setString(7,course.getEnrollment_deadline() );
-			preparedStatement.setInt(8, course.getCourse_id());
+			
+			preparedStatement.setInt(6, course.getCourse_id());
 			int rowUpdated = preparedStatement.executeUpdate();
 			if (rowUpdated>0) flag = true;
 			}catch(SQLException e) {
@@ -143,6 +147,7 @@ public class courseDAO {
 			}
 			return flag;
 		   }
+	
 	public String getTitle(int course_id) {
 		String title=null;
 		try {
@@ -240,5 +245,38 @@ public class courseDAO {
 		
 			return list;
 		
+	}
+	public List<Course> getRunCourse(){
+		ArrayList<Integer> runCourseList = new ArrayList<>();
+		List<Course> run_course=null;
+	    String deadline = null;
+	    try {
+	        String sql_ = "SELECT course_id, enrollment_deadline FROM courses";
+	        Connection connection3 = DBConnection.openConnection();
+	        Statement statement3 = connection3.createStatement();
+	        ResultSet resultSet3 = statement3.executeQuery(sql_);
+
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	        Date tdyDate = new Date();
+	        String date = sdf.format(tdyDate);
+	        Date TodayEnrollDate = sdf.parse(date);
+
+	        while (resultSet3.next()) {
+	            int courseId = resultSet3.getInt("course_id");
+	            deadline = resultSet3.getString("enrollment_deadline");
+	            Date DeadlineDate = sdf.parse(deadline);
+
+	            if (TodayEnrollDate.compareTo(DeadlineDate) <= 0) {
+	            	//nth
+	            } else {
+	            	runCourseList.add(courseId);
+	            }
+
+	        }
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	    	run_course= getRunCourse(runCourseList);
+	   return run_course;
 	}
 }

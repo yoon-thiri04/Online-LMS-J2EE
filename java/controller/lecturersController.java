@@ -15,7 +15,9 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.Session;
 
 import dao.EnrollStudentDAO;
+import dao.courseDAO;
 import dao.lectureDAO;
+import model.Course;
 import model.EnrollStudent;
 import model.Lect;
 
@@ -63,11 +65,7 @@ public class lecturersController extends HttpServlet {
     		getLect(request, response);
     		break;
 
-    		case "DELETE":
-    		deleteLect(request, response);
-    		break;
-
-    		}
+    		    		}
    
 }
 
@@ -75,18 +73,18 @@ public class lecturersController extends HttpServlet {
 
 	private void getLect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email=request.getParameter("email");
-		String course_name=request.getParameter("course_name");
+		int course_id=Integer.parseInt(request.getParameter("course_id"));
+		Course c=new Course();
+		courseDAO cdao=new courseDAO();
+		c=cdao.get(course_id);
 		Lect lecture=lecturerdao.getLecturerByEmail(email);
 		request.setAttribute("lecture", lecture);
-		request.setAttribute("course_name",course_name );
+		request.setAttribute("course",c );
 		dispatcher=request.getRequestDispatcher("/lecturesEditForm.jsp");
 		dispatcher.forward(request, response);
 		
 	}
-	private void deleteLect(HttpServletRequest request, HttpServletResponse response) {
-		
-		
-	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -1,34 +1,11 @@
-<%@ page import="java.sql.*" import="dao.UserDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="dao.lectureDAO"
-import="java.util.*" import="model.*" import="util.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<%
-session = request.getSession(); 
-String userEmail = (String) session.getAttribute("userEmail"); 
-UserDAO udao=new UserDAO();
-String username=udao.getName(userEmail);
-  %>
-  <%lectureDAO lectdao=new lectureDAO();
-  List<Lect> lectList = lectdao.get();
-pageContext.setAttribute("lectlist", lectList,PageContext.PAGE_SCOPE); 
-%>
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-  function show(){
-    var a=confirm("Are you sure to delete?");
-    if(a==true){
-      document.write("");
-    }
-    else{
-      document.write("");
-    }
-  }
-</script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-<style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 *{
   margin: 0;
   padding: 0;
@@ -36,12 +13,12 @@ pageContext.setAttribute("lectlist", lectList,PageContext.PAGE_SCOPE);
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Poppins, Helvetica, sans-serif;
+   font-family: Poppins, Helvetica, sans-serif;
 }
 body {
    background-color:#DDF2FD;
    color:black;
-  
+   
    line-height: 1.5;
 }
 /*header*/
@@ -57,34 +34,29 @@ body {
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
 	font-size:40px;
 	color:white;
-	
+	font-family: 'Comic Sans MS', cursive;
 }
-
 .logo{
-  display: flex;
-  align-items: center;
+  	display: flex;
+  	align-items: center;
 }
-
 .logo a{
-  color: #000;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+  	color: #000;
+  	font-size: 18px;
+  	font-weight: 600;
+  	margin: 2rem 8rem 2rem 2rem;
 }
-
 .header-icons{
-  display: flex;
-  align-items: center;
-  margin-right:10px;
+  	display: flex;
+  	align-items: center;
+  	margin-right:10px;
 }
-
 .header-icons .account{
-  display: flex;
-  align-items: center;
+  	display: flex;
+  	align-items: center;
 }
 .header-icons .account i{
   	font-size:29px;
@@ -97,7 +69,6 @@ body {
 	height:100%;
 	background:#164863;
 }
-
 .sidebar ul a{
 	display:block;
 	width:100%;
@@ -110,23 +81,18 @@ body {
 	border-bottom:1px solid black;
 	transition:.4s;
 }
-
 ul li:hover a{
 	padding-left:50px;
 }
-
 .sidebar ul a i{
 	margin-right:16px;
 }
-
 .side_navbar a:hover{
   background: rgb(235, 235, 235);
 }
-
 .side_navbar .active{
   border-left: 2px solid rgb(100, 100, 100);
 }
-
 /*Table Title*/
 #title{
 	height:60px;
@@ -143,7 +109,6 @@ ul li:hover a{
 #tablehead .th{
 	background-color:#9BBEC8;
 	height:60px;
-	
 	text-align:center;
 	color:black;
 }
@@ -160,7 +125,9 @@ ul li:hover a{
 #tbo td .action{
   	display:inline-block;
   	padding:5px 0;
-  	
+  	/*border-radius:5px;
+  	border:2px solid black;
+  	background-color:#164863;*/
   	margin-right:3px;
   	color:black;
   	transition: all 0.3s ease 0s;
@@ -201,7 +168,7 @@ ul li:hover a{
 	padding-right:5px;
 	border:1px solid black;
 	transition: all 0.5s ease 0s;
-	border-radius:10px;
+	border-radius:20px;
 }
 #Addbtn h3{
 	color:white;
@@ -241,19 +208,19 @@ table, th, td{
 </head>
 <body>
     <header class="header">
-    <div class="logo">
-      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-    </div>
-    <div class="header-icons">
-    	<div class="account">
-	        <i class="fa-solid fa-circle-user"></i>
-	        <h3><%= username %></h3>
+    	<div class="logo">
+      		<a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
     	</div>
-    </div>
-  </header>
+    	<div class="header-icons">
+    		<div class="account">
+	        	<i class="fa-solid fa-circle-user"></i>
+	        	<h3>User name</h3>
+    		</div>
+    	</div>
+  	</header>
  
-  <div style="height:60px;">------------</div>
-  <div class="sidebar">
+  	<div style="height:60px;">------------</div>
+  		<div class="sidebar">
 	    	<ul>
 				<li><a href="Admin.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
 			    <li><a href="CourseAdmin.jsp"><i class="fa-solid fa-book-open"></i>Courses</a></li>
@@ -262,15 +229,15 @@ table, th, td{
 				<li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
 			</ul>
 		</div>
-	<div id="title">
-		<h2>Lectures</h2>
-		<div id="Addbtn">
-			<a href="LecturesAddForm.jsp" class="btn">
-				<h3>Add</h3><i class="fa-solid fa-user-plus"></i>
-	    	</a>
-	    </div>
-    </div>
-    <div id="alltable">
+		<div id="title">
+			<h2>Lecturers</h2>
+			<div id="Addbtn">
+				<a href="LecturesAddForm.jsp" class="btn">
+					<h3>Add</h3><i class="fa-solid fa-user-plus"></i>
+	    		</a>
+	    	</div>
+    	</div>
+    	<div id="alltable">
         	<table id="tablehead">
             	<tr>
 	                <td class="th col1"><h3>Photo</h3></td>
@@ -283,47 +250,21 @@ table, th, td{
 	                <td class="th col8"><h3>Action</h3></td>
             	</tr>
             </table>
-            
-            <c:forEach items="${lectlist}" var="lect">
             <table id="tbo">
-            <tr>
-               
-                
-                <td class="td col1"><img src="${lect.filename}" width="51" height="50"/></td>
-	                <td class="td col2">${lect.name}</td>
-	                <td class="td col3">${lect.email}</td>
-	                <td class="td col4">${lect.qualification }</td>
-	                
-	                <c:set var="course_id" value="${lect.course_id}"></c:set>
-	                <% int course_id = (Integer)pageContext.getAttribute("course_id");
-    				  
-    				  String course_name=null;
-    				  String start_date=null;
-    				  String enrollment_deadline=null;
-                      String sql= "select title,start_date,enrollment_deadline from courses where course_id="+course_id;
-	                  Connection connection = DBConnection.openConnection();
-	                  Statement statement = connection.createStatement();
-	                  ResultSet resultSet = statement.executeQuery(sql);
-                      if(resultSet.next()){
-	                  course_name=resultSet.getString("title");
-	                  start_date=resultSet.getString("start_date");
-	                  enrollment_deadline=resultSet.getString("enrollment_deadline");
-    }
-%>
-	                <td class="td col5"><%= course_name %></td>
-	                <td class="td col6"><%= start_date %></td>
-	                <td class="td col7"><%= enrollment_deadline %></td>
-	                <td class="td col8">               
-                    <a href="${pageContext.request.contextPath}/lecturersController?action=EDIT&email=${lect.email}&course_id=<%=course_id%>" class="action edit">
-                    Edit <i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="${pageContext.request.contextPath}/DeleteLectureServlet?action=DELETE&email=${lect.email}&course_id=<%=course_id%>"  class="action delete">
-                    Delete <i class="fa-solid fa-trash"></i></a>
-	                
-                </td>
-            </tr>
+	            <tr>
+	                <td class="td col1"><img src="cat.jfif" width="51" height="50"/></td>
+	                <td class="td col2">Toe Toe Naing</td>
+	                <td class="td col3">toetoenaing@gmail.com</td>
+	                <td class="td col4">Bc.Sc</td>
+	                <td class="td col5">Getting Start with Java Getting Start with Java</td>
+	                <td class="td col6">2024-10-10</td>
+	                <td class="td col7">2024-10-2</td>
+	                <td class="td col8">
+	                	<a href="${pageContext.request.contextPath}/lecturersController?action=EDIT&email=&courseName=" class="action edit">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+	                	<a href="${pageContext.request.contextPath}/DeleteLectureServlet?action=DELETE&email="  class="action delete">Delete <i class="fa-solid fa-trash"></i></a>
+	                </td>
+	            </tr>
             </table>
-            </c:forEach>
                </div>
-    
 </body>
 </html>

@@ -25,7 +25,7 @@ body {
 }
 /*header*/
 .header{
-	position:fixed;
+	position:relative;
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -75,6 +75,7 @@ body {
 	width: 230px;
 	height:100%;
 	background:#3D56B2;
+	top: 84px;
 }
 
 .sidebar ul a{
@@ -195,7 +196,7 @@ button::-moz-focus-inner,
 body {
   margin: 0;
 }
-.container{
+/*.container{
 	margin-left:370px;
 	display:grid;
 	align-item:center;
@@ -203,7 +204,17 @@ body {
 	grid-template-columns:350px 500px;
 	padding-top:1.5em;
 	gap:70px;
-}
+}*/
+
+.container{
+	margin-left:270px;
+	display:grid;
+	align-item:center;
+	margin-top:30px;
+	grid-template-columns:350px 500px;
+	padding-top:1.5em;
+	gap:70px;
+
 .card {
   border-radius: 0.8em;
   background-color: #fefefe;
@@ -219,6 +230,7 @@ body {
   padding-bottom:0.3em;
   color:#14279B;
   padding-top:2.7em;
+
 }
 .card__text{
 	padding-top:1.5em;
@@ -236,8 +248,10 @@ body {
 	color:#14279B;
 }
 .card__image {
-  width: 300px;
-  height: 300px; 
+  width: 250px;
+  height: 250px;
+  margin-top: 60px;
+  margin-left: 30px; 
 }
 .card__text h2 {
 	margin-top:0.1em;
@@ -263,6 +277,92 @@ body {
 	background-color:white;
 	padding:10px;
 }
+
+.upload{
+	grid-column: 1/2 ;
+	border-radius: 0.8em;
+  background-color: #fefefe;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    0 100px 80px rgba(0, 0, 0, 0.07);
+ 	
+  width:600px;
+  height: 450px;
+  
+
+  color:#14279B;
+ border: 2px dashed ;
+ 
+ margin-left : 220px;
+
+}
+
+.card__image1 {
+	width: 200px;
+	height: 200px;
+  margin-left: 210px;
+  margin-top: 50px;
+
+}
+
+/*Table Title*/
+#title{
+	height:10px;
+	margin-left: 229px;
+	
+	/*margin-top: 2px;*/
+	display:flex;
+	align-items:center;
+}
+#title p{
+	font-weight:bold;
+	font-size:25px;
+	width:500px;
+}
+#t1{
+  height:60px;
+  margin-left: 222px;
+ 
+ /* margin-top:10px;*/
+  display:flex;
+  align-items:center;
+}
+/*Add Button*/
+.btn{
+	width:210px;
+	height:70px;
+	color:black;
+	display:flex;
+	align-items:center;
+	transition:all 0.5s ease 0s;
+}
+#Addbtn i{
+	font-size:20px;
+	margin-left:10px;
+	color:white;
+}
+
+#Addbtn{
+	display:flex;
+	align-items:center;
+	
+	margin-top:20px;
+  margin-left: 25px;
+	margin-bottom:25px;
+	background-color:#3D56B2;
+	height:40px;
+	width:120px;
+	padding-left:5px;
+	padding-right:5px;
+	border:1px solid black;
+    transition: all 0.5s ease 0s;
+    border-radius:10px;
+}
+#Addbtn h3{
+  color:white;
+}
+
 </style>
 </head>
 <body>
@@ -278,8 +378,8 @@ body {
 	      	</div>
 	    </div>
 	</header>
-	<div style="height:60px;">---------------</div>
-	<div class="sidebar">
+	<!--<div style="height:60px;">---------------</div>-->
+	<!--<div class="sidebar">
     	 <ul>
       <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
       <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
@@ -288,7 +388,7 @@ body {
     <li><a href="changePwd.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
       <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
     </ul>
-	</div>
+	</div>-->
 	<div id="body">
 		<div class="container">
 			<div class="card">
@@ -304,47 +404,29 @@ body {
 				<p>Introduction To Java</p>
 				<button class="logoutbtn"><b>Logout</b></button>
 			</div>
+
+
+		<div class="upload">
+    	<div >
+      
+        <img src="img/upre.png" class="card__image1" />
+     </div>
+     <div id="title">
+    
+    		Drag & drop to upload </div><br><br>
+    	<div id=t1>
+    		<div id="Addbtn">
+    
+      	<a href="#" class="btn">
+        <h3>Upload</h3><i class="fa-solid fa-paint-roller"></i>
+        </a>
+      </div>
+      
+    </div>
+
 		</div>	
 	</div>
-<!--<div class="main-body">
-		<div class="card-single">
-    			<div>
-    				<h1>485</h1>
-    				<span>EnrolledStudents</span>
-    			</div>
-    			<div>
-    				<span class="fa-solid fa-users"></span>
-    			</div>
-    	</div>
-	    <div class="card-single">
-    			<div>
-    				<h1>58</h1>
-    				<span>Course Materials</span>
-    			</div>
-    			<div>
-    				<span class="fa-solid fa-book-open"></span>
-    			</div>
-    		</div>
-    	<div class="card-single">
-    			<div>
-    				<h1>58</h1>
-    				<span>Course Materials</span>
-    			</div>
-    			<div>
-    				<span class="fa-solid fa-book-open"></span>
-    			</div>
-    		</div>
-    	<div class="card-single">
-    			<div>
-    				<h1>58</h1>
-    				<span>Course Materials</span>
-    			</div>
-    			<div>
-    				<span class="fa-solid fa-book-open"></span>
-    			</div>
-    		</div>
-    		<div style="height:30px;"></div>
-</div>-->
 
+</div>
 </body>
 </html>

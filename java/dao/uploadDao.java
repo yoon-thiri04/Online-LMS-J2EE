@@ -175,6 +175,25 @@ public class uploadDao {
      	        }
      	    }
      	    return deadlineReached;
-         }
+         }public boolean deleteEnrollment(int course_id) {
+ 	        boolean flag=false;
+ 	        try {
+ 	          String sql="delete from enrollment where course_id=?";
+ 	          connection=DBConnection.openConnection();
+ 	          preparedStatement=connection.prepareStatement(sql);
+ 		         
+ 	          
+ 	          preparedStatement.setInt(1,course_id);
+ 	          int rowDeleted=preparedStatement.executeUpdate();
+ 	          if(rowDeleted>0) {
+ 	            flag=true;
+ 	          }
+ 	        }catch(SQLException e) {
+ 	          e.printStackTrace();
+ 	        }
+ 	        return flag;
+ 	      }
+
+         
       }
       
