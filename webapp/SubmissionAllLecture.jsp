@@ -45,7 +45,7 @@ function redirectToDetails(id, title) {
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background-color:#E6E6E6;
+  background-color: #DDF2FD;
   color:black;
   line-height:1.5;
 }
@@ -58,15 +58,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:39px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -78,7 +77,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -86,6 +85,7 @@ body{
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
 	display:flex;
 	align-items:center;
@@ -99,7 +99,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#3D56B2 ;
+  background:#164863;
 }
 .sidebar ul a{
   display:block;
@@ -145,7 +145,6 @@ ul li:hover a{
 	flex: 0 0 calc(27.333% - 20px); /* Adjust the width according to your preference */
     margin: 10px;
     padding: 20px;
-    
     box-sizing: border-box;
 	justify-content:space-between;
 	background:#fff;
@@ -163,15 +162,15 @@ ul li:hover a{
 	
 }
 .card-single  p{
-	color:#14279B;
+	color:#000;
 	
 }
 .card-single div:first-child span,h2{
-	color:#14279B;
+	color:#000;
 	padding-bottom:3px;
 }
 .card-single:hover {
-	background-color:#3D56B2;
+	background-color:#427D9D;
 }
 .card-single:hover p {
 	color:white
@@ -192,19 +191,6 @@ html{
   	box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-:root {
-  --small-green-circle: #78eea6;
-  --main-accent-color: #9b45e4;
-  --secondary-accent-color: #e13a9d;
-}
-
-
  
 .viewmaterial {
     padding: 10px 30px;
@@ -212,7 +198,6 @@ html{
     text-decoration: none;
     border: 1px solid #36622B;
     border-radius: 4px;
-    
     margin-top:30px;
     transition: all 0.3s ease 0s;
     background:white;
@@ -220,19 +205,20 @@ html{
 
 .viewmaterial:hover {
     color: #fff;
-    background:#3D56B2;
+    background:#427D9D;
     border: 1px solid #748dff;
 }
 </style>
 <body>
    <header class="header">
     <div class="logo">
-        <a href="#"><b>Smart Learn</b></a>
-      </div>
+    
+<a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+         </div>
       <div class="header-icons">
         <div class="account">
             <i class="fa-solid fa-circle-user"></i>
-            <h4><%= username %></h4>
+            <h3><%= username %></h3>
         </div>
       </div>
   </header>

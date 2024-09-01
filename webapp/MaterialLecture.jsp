@@ -15,6 +15,8 @@ String username=udao.getNameLecture(userEmail);%>
     List<Material> matList = mDAO.getfor(course_id);
     pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
    
+    int total=mDAO.getTotalMat(course_id);
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -473,7 +475,15 @@ form .form-row .textarea{
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
       </ul>
   </div>
-  
+  <% if (total==0){ 
+  %>
+  <div id="Addbtn">
+      <a href="#popup" class="btn">
+        <h3>Add</h3><i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </a>
+      </div>
+  <img src="zero.jpg" class="card__image" />
+  <%} else{ %>
   <div id="title">
     <p></p>
     <div id="Addbtn">
@@ -507,6 +517,7 @@ form .form-row .textarea{
 		</table>
 	</div>
             </c:forEach>
+            <%} %>
 	<div id="popup" class="container popup">
     	<a href="#" class="close">&times;</a>
     	<div class="text">

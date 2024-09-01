@@ -66,7 +66,9 @@ public class enrollController extends HttpServlet {
 	private void ShowEnrollment(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		 int course_id=Integer.parseInt(request.getParameter("course_id"));
     	 List<EnrollStudent> RunStudent=cdao.getEnrollStudent(course_id);
+    	 String course_name=request.getParameter("course_name");
     	 request.setAttribute("RunStudent",RunStudent);
+    	 request.setAttribute("c_name", course_name);
          dispatcher=request.getRequestDispatcher("/RunStudent.jsp");
          dispatcher.forward(request, response);
 		

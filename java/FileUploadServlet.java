@@ -69,7 +69,7 @@ public class FileUploadServlet extends HttpServlet {
        
         
         String name = request.getParameter("name");
-        String password = "lect@123!";
+       
         String email = request.getParameter("email");
         String qualification = request.getParameter("qualification");
         
@@ -104,7 +104,7 @@ public class FileUploadServlet extends HttpServlet {
             PreparedStatement pst = con.prepareStatement("insert into lectures values(?,?,?,?,?,?,?)");
            
             pst.setString(1, name);
-            pst.setString(2, password);
+            pst.setString(2, "lect@123!");
             pst.setString(3, email);
             pst.setString(4, qualification);
             pst.setString(5, dbFileName);

@@ -32,12 +32,7 @@ public class RegisterController extends HttpServlet {
     // TODO Auto-generated method stub
     response.getWriter().append("Served at: ").append(request.getContextPath());
   }
-  private void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<User> userList = userdao.get();
-		request.setAttribute("userlist", userList);
-		dispatcher = request.getRequestDispatcher("/AdminUserlist.jsp");
-		dispatcher.forward(request, response);
-	}
+  
 
   /**
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -68,14 +63,14 @@ public class RegisterController extends HttpServlet {
       session.setAttribute("email",email);
       sdao.save1(stu1);
       sdao.save(stu);
-      dispatcher=request.getRequestDispatcher("sourceHome.jsp");
+      dispatcher=request.getRequestDispatcher("login.jsp");
       dispatcher.forward(request, response);
     }
     else {
       request.setAttribute("errorMessage","Passwords do not match");
       request.setAttribute("username", request.getParameter("username"));
       request.setAttribute("email",request.getParameter("email"));
-       dispatcher=request.getRequestDispatcher("indexRegister.jsp");
+       dispatcher=request.getRequestDispatcher("index.jsp");
       dispatcher.forward(request, response);
     }
     

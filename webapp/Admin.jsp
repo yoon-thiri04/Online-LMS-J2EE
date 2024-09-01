@@ -346,7 +346,7 @@ table, th, td{
     		
     	</div>
     	<div id="title">
-		<h2>Our Running Courses</h2>
+		<h2>Running Courses</h2>
 		
     </div>
       	<div id="alltable">
@@ -367,7 +367,7 @@ table, th, td{
 	                <td class="td col2">${ rc.lecture_name}</td>
 	                <td class="td col3">${ rc.student_count}</td>
 	                
-	                <td class="td col4"><a href="enrollController?action=View&course_id=${rc.course_id}" class="action view">
+	                <td class="td col4"><a href="enrollController?action=View&course_id=${rc.course_id}&course_name=${rc.course_title}" class="action view">
 	                View  <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 	                </td>
 	                

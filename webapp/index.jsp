@@ -1,17 +1,14 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
- 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Login</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+<title>Register</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 *{
  margin: 0;
  padding: 0;
@@ -20,6 +17,12 @@
  font-family: Poppins, Helvetica, sans-serif;
 }
 
+body{
+		margin: 0;
+		padding: 0;
+		background-color: #DDF2FD;
+		
+	}
 /*header*/
 .header{
   	display: flex;
@@ -54,18 +57,17 @@
   margin-right:10px;
 }
 
-
 .header-icons .account{
-	margin-right:50px;
+  margin-right:50px;
 }
 .header-icons .account ul{
-  display: flex;
-  align-items: center;
-  gap:40px;
+    display: flex;
+    align-items: center;
+    gap:40px;
 }
 
 .header-icons .account ul li{
-	list-style-type: none;
+  list-style-type: none;
 }
 
 .header-icons .account ul li a{
@@ -78,12 +80,9 @@
     padding-right: 20px;
     line-height: 30px;
 }
+
 .header-icons .account ul li a:hover{
     color: orange;
-}
-	body {
-   background-color: #DDF2FD;
-  
 }
 	.title{
 		text-align: center;
@@ -93,21 +92,20 @@
 		margin: 0;
 		padding: 0;
 		color: #262626;
+		
 	}
 	.container{
 		width: 50%;
-		height: 450px;
+		height: 500px;
 		background: #fff;
 		margin: 0 auto;
-		font-size:18px;
-		border: 0.5px solid white;
+		border: 1px solid white;
 		box-shadow: 0 15px 40px rgba(0,0,0,.5);
-		
 	}
 	.container .left{
 		float: left;
 		width:50%;
-	    height: 450px;
+	    height: 500px;
 	    background: url(https://st3.depositphotos.com/6837936/19487/v/450/depositphotos_194871882-stock-illustration-e-learning-online-education-design.jpg);
 		background-size: cover;
 		box-sizing: border-box;
@@ -120,7 +118,7 @@
 	}
 	.formBox{
 		width: 100%;
-		padding: 80px 40px;
+		padding: 30px 40px;
 		box-sizing: border-box;
 		height: 400px;
 		background: #fff;
@@ -134,16 +132,17 @@
 	}
 	.formBox input{
 		width: 100%;
-		margin-bottom: 25px;
+		margin-bottom: 15px;
 		
 	}
-	.formBox input[type="text"],.formBox input[type="password"]{
+	.formBox input[type="text"],.formBox input[type="password"],.formBox input[type="email"]{
 		border: none;
 		border-bottom: 2px solid black;
 		outline: none;
 		height: 40px;
 	}
-	.formBox input[type="text"]:focus,.formBox input[type="password"]:focus{
+	
+	.formBox input[type="text"]:focus,.formBox input[type="password"],.formBox input[type="email"]:focus{
 		border-bottom: 2px solid #262626;
 	
 	}
@@ -159,81 +158,76 @@
 	.formBox input[type="submit"]:hover{
 		background: #2c3e50;
 	} .register-link{
-  font-size: 15px;
+ font-size: 15px;
   text-align: center;
-  margin: 15px 0 15px;
+  margin: 20px 0 15px;
 }
 .register-link p a{
   
-  font-size:16px;
   text-decoration: none;
   font-weight: 600;
+  font-size:16px;
   
 }
 .register-link p a:hover{
   text-decoration: underline;
   
 }
-.error-message1{
-font-size:15px;
-color:red;
-margin-bottom:10px;
-}
-.error-message{
-font-size:15px;
-color:red;
-margin-bottom:10px;
-}
 </style>
-
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
 </head>
 <body>
 	<header class="header">
-	    <div class="logo">
-	      
-<a href="sourceHome.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
-	    </div>
-	    
-	    <div class="header-icons">
-	    	<div class="account">
-		        <ul>
-	            	<li><a href="sourceHome.jsp">Home</a></li>
-	                <li><a href="Courses.jsp">Course</a></li>
-	                <li><a href="sourceHome.jsp#aboutUs">About Us</a></li>
-	            </ul>
-	    	</div>
-	    </div>
-	</header>
-	
+      <div class="logo">
+        <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+      </div>
+      
+      <div class="header-icons">
+        <div class="account">
+            <ul>
+                <li><a href="home.jsp">Home</a></li>
+                  <li><a href="course.jsp">Course</a></li>
+                  <li><a href="#">About Us</a></li>
+              </ul>
+        </div>
+      </div>
+  </header>
 
-<div class="title"><h1>Welcome Back!</h1></div>
+<div class="title"><h1>Start Learning with us!</h1></div>
 		<div class="container">
 			<div class="left"></div>
 			<div class="right">
 				<div class="formBox">
-					<form action="${pageContext.request.contextPath}/LoginController" method="post">
+					<form action="RegisterController" method="post">
+						<p>Name</p>
+						<input type="text" name="username" placeholder="Name" value="<%= request.getAttribute("username") != null? request.getAttribute("username") : "" %>"  required>
+
+						<p>Email</p>
+						<input type="email" name="email" placeholder="Email" value="<%= request.getAttribute("email") != null? request.getAttribute("email") : "" %>"  required>
 						
-        				<p>Email</p>
-						<input type="text" name="email" placeholder="Email">
-						<c:if test="${not empty requestScope.Invalid}">
-        						<div class="error-message1">${requestScope.Invalid}</div>
-        				</c:if>
+						
+						
 						<p>Password</p>
-						<input type="password" name="password" placeholder="Password">
-						<c:if test="${not empty requestScope.Incorrect}">
-        					<div class="error-message">${requestScope.Incorrect}</div>
-        				</c:if>
-						<input type="submit" name="submit" value="Login">
-						<div class="register-link">
-        					<p>Don't have an account? <a href="index.jsp">Register</a></p>
-      					</div>
+						<input type="password" name="password" placeholder="Password" required>
+						
+						<p>Confirm Password</p>
+						<input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+											
+						<input type="submit" name="submit" value="Register">
+						
+      					<%String error=(String)request.getAttribute("errorMessage");
+                          if ( error != null && !error.isEmpty()){ %>
+                          <div style="color: red;">
+                            <%= error %>
+                           </div> <% } %>
+      						<div class="register-link">
+        					<p>Already have an account? <a href="login.jsp">Login</a></p>
+      					</div>	
+      						
 					</form>
 				</div>
 			</div>
 		</div>
-
 
 
 </body>

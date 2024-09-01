@@ -56,7 +56,7 @@ public class Edit extends HttpServlet {
 	 Course course=new Course();
 	 int prev_course_id=Integer.parseInt(request.getParameter("prev_course_id"));
      String name = request.getParameter("name"); 
-     String password = request.getParameter("password");
+     
      String email = request.getParameter("email");
      String qualification = request.getParameter("qualification");
      String course_name=request.getParameter("course_name");
@@ -88,7 +88,7 @@ public class Edit extends HttpServlet {
      boolean course_updated;
      if(course_id == prev_course_id) {
     	 try {
-			updateLecture1( name, password, email, qualification, dbFileName, savePath,course_id);
+			updateLecture1( name, email, qualification, dbFileName, savePath,course_id);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -102,7 +102,7 @@ public class Edit extends HttpServlet {
     
      else {
     	 try {
-			updateLecture2( name, password, email, qualification, dbFileName, savePath,course_id);
+			updateLecture2( name, email, qualification, dbFileName, savePath,course_id);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -154,21 +154,21 @@ public class Edit extends HttpServlet {
      return lecture;
  }
 
- private boolean updateLecture1(String name, String password, String email, String qualification, String filename, String path,int course_id) throws SQLException {
+ private boolean updateLecture1(String name, String email, String qualification, String filename, String path,int course_id) throws SQLException {
 	    boolean updated = false;
 	    Connection connection = null;
 	    try {
 	        connection = DBConnection.openConnection();
-	        String sql = "UPDATE lectures SET name=?, password=?, email=?, qualification=?, filename=?, path=?,course_id=? WHERE email=?";
+	        String sql = "UPDATE lectures SET name=?, email=?, qualification=?, filename=?, path=?,course_id=? WHERE email=?";
 	        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
 	            pstmt.setString(1, name); // Updated lecture name
-	            pstmt.setString(2, password);
-	            pstmt.setString(3, email);
-	            pstmt.setString(4, qualification);
-	            pstmt.setString(5, filename);
-	            pstmt.setString(6, path);
-	            pstmt.setInt(7, course_id);
-	            pstmt.setString(8, email);
+	            
+	            pstmt.setString(2, email);
+	            pstmt.setString(3, qualification);
+	            pstmt.setString(4, filename);
+	            pstmt.setString(5, path);
+	            pstmt.setInt(6, course_id);
+	            pstmt.setString(7, email);
 	            
 	            int rowsAffected = pstmt.executeUpdate();
 	            updated=rowsAffected>0;
@@ -187,21 +187,21 @@ public class Edit extends HttpServlet {
 	}
 
 	    
-private boolean updateLecture2(String name, String password, String email, String qualification, String filename, String path,int course_id) throws SQLException {
+private boolean updateLecture2(String name, String email, String qualification, String filename, String path,int course_id) throws SQLException {
     boolean updated = false;
     Connection connection = null;
     try {
         connection = DriverManager.getConnection("jdbc:mysql://localhost/onlinelearningsystem", "root", "yoonthiri@2004");
-        String sql = "UPDATE lectures SET name=?, password=?, email=?, qualification=?, filename=?, path=?,course_id=? WHERE email=?";
+        String sql = "UPDATE lectures SET name=?,  email=?, qualification=?, filename=?, path=?,course_id=? WHERE email=?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, name);
-            pstmt.setString(2, password);
-            pstmt.setString(3, email);
-            pstmt.setString(4, qualification);
-            pstmt.setString(5, filename);
-            pstmt.setString(6, path);
-            pstmt.setInt(7, course_id);
-            pstmt.setString(8, email);
+            
+            pstmt.setString(2, email);
+            pstmt.setString(3, qualification);
+            pstmt.setString(4, filename);
+            pstmt.setString(5, path);
+            pstmt.setInt(6, course_id);
+            pstmt.setString(7, email);
             
             int rowsAffected = pstmt.executeUpdate();
             updated = rowsAffected > 0;

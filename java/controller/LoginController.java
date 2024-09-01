@@ -62,7 +62,7 @@ public class LoginController extends HttpServlet {
 					dispatcher.forward(request, response);
 					}
 				else {
-					request.setAttribute("Incorrect","Your Password and User name doesn't match" );
+					request.setAttribute("Incorrect","Your Password and Email doesn't match" );
 					dispatcher=request.getRequestDispatcher("login.jsp");
 					dispatcher.forward(request, response);
 				}
@@ -87,15 +87,15 @@ public class LoginController extends HttpServlet {
 		        dispatcher.forward(request, response);
 		        
 		    } else {
-				request.setAttribute("Incorrect","Your Password and User name doesn't match" );
+				request.setAttribute("Incorrect","Your Password and Email doesn't match" );
 				dispatcher=request.getRequestDispatcher("login.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
 		else{
 			request.setAttribute("username", request.getParameter("username"));
-			request.setAttribute("Invalid","User name is invalid.Please Register First.");
-			dispatcher=request.getRequestDispatcher("/login.jsp");
+			request.setAttribute("Invalid","Your Email is invalid.Please Register First.");
+			dispatcher=request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		}
 		

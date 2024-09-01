@@ -477,7 +477,7 @@ label{
     <p>Quiz Result of <%=title %></p>
     <div id="Addbtn">
       <a href="QuizResultAllLecture.jsp" class="btn">
-        <h3>Back</h3>
+        <h3>Back</h3><i class="fa-solid fa-up-right-from-square"></i>
         </a>
       </div>
     </div>

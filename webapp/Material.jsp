@@ -16,7 +16,7 @@ String username=udao.getName(userEmail);
     uploadDao mDAO = new uploadDao();
     List<Material> matList = mDAO.getfor(course_id);
     pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
-   
+    int total=mDAO.getTotalMat(course_id);
 %>
 
 <!DOCTYPE html>
@@ -270,7 +270,10 @@ margin-top:10px;
   </div>
   
   <div class="container">
-  
+   <% if(total==0){
+	%>
+	 <img src="zero.jpg" class="card__image" />
+   <%}else{ %>
    <c:forEach items="${mList}" var="ml">
             <c:set var="mat_id" value="${ml.id}" />
             
@@ -283,15 +286,13 @@ margin-top:10px;
 					<p>${ml.type}</p>	
 				</td>
 				<td>
-					<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1"><i class="fa-sharp fa-solid fa-download fa-sm"></i></a>
-					
+					<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1"><i class="fa-sharp fa-solid fa-download fa-sm"></i></a>	
 				</td>
 			<tr>
 		</table>
 	</div>
-	
             </c:forEach>
-       
+       <%} %>
           
 </div>
 

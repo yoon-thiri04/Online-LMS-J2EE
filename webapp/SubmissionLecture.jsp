@@ -60,7 +60,7 @@ function viewSubmission(id){
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background-color:#E6E6E6;
+  background-color: #DDF2FD;
   color:black;
   line-height:1.5;
 }
@@ -73,15 +73,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:39px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -93,7 +92,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -101,6 +100,7 @@ body{
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
 	display:flex;
 	align-items:center;
@@ -114,7 +114,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#3D56B2 ;
+  background:#164863;
 }
 .sidebar ul a{
   display:block;
@@ -171,7 +171,7 @@ ul li:hover a{
 	margin-left:300px;
 	margin-top:20px;
 	margin-bottom:25px;
-	background-color:#3D56B2;
+	background-color:#427D9D;
 	height:40px;
 	width:90px;
 	padding-left:5px;
@@ -202,9 +202,7 @@ ul li:hover a{
 .block:hover{
 	box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
 }
-
 .block .assign{
-	
 	display:inline-block;
 	margin-top:10px;
 	margin-left:50px;
@@ -220,29 +218,24 @@ ul li:hover a{
 	margin-left:50px;
 	margin-top:5px;
 }
-.fa-download{
-	margin-left:30px;
-	margin-right:40px;
-	font-size:25px;
-	color:black;
+.block td .action{
+    display:inline-block;
+    margin-left:10px;
+    margin-right:8px;
+    color:black;
+    font-size:18px;
+    
+    transition: all 0.3s ease 0s;
 }
-.fa-download:hover{
-	color:#14279B;
+td .download:hover{
+  color:#427D9D;
 }
-.fa-arrow-up-right-from-square{
-    font-size:25px;
-	color:black;
-	margin-right:40px;
+td .view:hover{
+  color:#427D9D;
 }
-.fa-arrow-up-right-from-square:hover{
-color:#14279B;
+td .evaluate:hover{
+color:#427D9D;
 }
-.fa-plus{
-
-font-size:25px;
-	color:black;
-}
-
   .popup {
    position: fixed;
    padding: 10px;
@@ -267,14 +260,14 @@ font-size:25px;
    right: 10px;
    top: 5px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);
@@ -300,14 +293,8 @@ font-size:25px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  background: hsla(280, 84%, 41%, 1);
+  background-color:#427D9D;
 
-background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
 }
 .container .text{
   text-align: center;
@@ -405,7 +392,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #56d8e4, #9f01ea, #26c5f3, #b429f9);
+  background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -448,12 +435,12 @@ label{
 <body>
 	<header class="header">
     <div class="logo">
-        <a href="#"><b>Smart Learn</b></a>
-      </div>
+       <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+        </div>
       <div class="header-icons">
         <div class="account">
             <i class="fa-solid fa-circle-user"></i>
-            <h4><%= username %></h4>
+            <h3><%= username %></h3>
         </div>
       </div>
   </header>
@@ -482,7 +469,7 @@ label{
     <p>Submissions of <%=title %></p>
     <div id="Addbtn">
       <a href="SubmissionAllLecture.jsp" class="btn">
-        <h3> Back</h3>
+        <h3> Back</h3><i class="fa-solid fa-up-right-from-square"></i>
         </a>
       </div>
     </div>
@@ -511,13 +498,15 @@ label{
 				</td>
 				
 				<td>
-					<a href = "${pageContext.request.contextPath}/SubmissionLectureController?action=DOWNLOAD&id=${sub.submission_id}&title=${sub.title}&f_type=${sub.f_type}">
-					 <i class="fa-sharp fa-solid fa-download fa-sm"></i>
+					<a href = "${pageContext.request.contextPath}/SubmissionLectureController?action=DOWNLOAD&id=${sub.submission_id}&title=${sub.title}&f_type=${sub.f_type}"
+					class="action download">
+					Download <i class="fa-sharp fa-solid fa-download fa-sm"></i>
 					</a>
-                	<a href="#" onclick="viewSubmission(${sub.submission_id})" title="View">
-                	<i class="fa-solid fa-arrow-up-right-from-square"></i></a>         
+                	<a href="#" onclick="viewSubmission(${sub.submission_id})" title="View" class="action view">
+                	View <i class="fa-solid fa-arrow-up-right-from-square"></i></a>         
 					<c:if test="${sub.score eq 0}">
-                	<a href = "#popup" class="button1" title="Evaluate Score"><i class="fa-solid fa-plus"></i></a>               
+                	<a href = "#popup" title="Evaluate Score" class="action evaluate">
+                	Score <i class="fa-solid fa-plus"></i></a>               
                     </c:if>  
 				</td>
 			<tr>
@@ -529,7 +518,7 @@ label{
 <div id="popup" class="container popup">
     <a href="#" class="close">&times;</a>
     <div class="text">
-        Give Score for Assignment
+        Assign Score
     </div>
     <form action="AddScoreController" method="post" > 
         <input type="hidden" name="sub_id" value="<%=pageContext.getAttribute("sub_id") %>"/>

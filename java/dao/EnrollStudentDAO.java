@@ -60,7 +60,7 @@ public class EnrollStudentDAO {
 			student.setName(resultSet.getString("name"));
 			
 			student.setEmail(resultSet.getString("email"));
-			
+			student.setDate(resultSet.getString("date"));
 			
 			list.add(student);
 		          }

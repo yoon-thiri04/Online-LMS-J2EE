@@ -20,23 +20,11 @@ String username=udao.getName(userEmail);
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background-color:#DDF2FD;
-   color:black;
-   font-family: 'Quicksand', sans-serif;
-   line-height: 1.5;
-   background: hsla(145, 83%, 74%, 1);
-
-background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", endColorstr="#93CBF1", GradientType=1 );
-   
+   background: url(https://i.pinimg.com/736x/fd/78/c7/fd78c7534ed69af190d268a14e2f6a9a.jpg);
+   background-size: cover;
 }
 /*header*/
 .header{
@@ -94,7 +82,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 /*Pop Up Form*/
 .container{
  max-width: 800px;
-  background: #DDF2FD/*#fff*/;
+  background: #427D9D;
   width: 800px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
@@ -103,12 +91,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   margin-top:70px;
   margin-bottom:99px;
   height:500px;
-  background: hsla(270, 94%, 25%, 1);
-  background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -moz-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#42047e", endColorstr="#07f49e", GradientType=1 ); 
-}
+  }
 .container .text{
   text-align: center;
   font-size: 41px;
@@ -242,14 +225,14 @@ label{
    right: 400px;
    top: 150px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);
@@ -308,18 +291,18 @@ label{
                <label for="">Category</label>
             </div>
           <div class="input-data">
-               <input type="text" name="description" value = "${course.description}" required>
-               <div class="underline"></div>
-               <label for="">Description</label>
-            </div>
-         </div>
-         <div class="form-row">
-           
-             <div class="input-data">
                <input type="text" name="duration" value = "${course.duration}" required>
                <div class="underline"></div>
                <label for="">Duration</label>
             </div>
+         </div>
+         <div class="form-row">
+           <div class="input-data">
+               <input type="text" name="description" value = "${course.description}" required>
+               <div class="underline"></div>
+               <label for="">Description</label>
+            </div>
+             
             
           </div>
           

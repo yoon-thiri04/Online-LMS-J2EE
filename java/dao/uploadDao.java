@@ -193,7 +193,23 @@ public class uploadDao {
  	        }
  	        return flag;
  	      }
-
+        public int getTotalMat(int course_id) {
+        	int total=0;
+    		try {
+    			String sql = "select count(*) as total from material where course_id=?";
+    			connection = DBConnection.openConnection();
+    			preparedStatement = connection.prepareStatement(sql);
+    			preparedStatement.setInt(1, course_id);
+    			resultSet=preparedStatement.executeQuery();
+    			if(resultSet.next()) {
+    				total=resultSet.getInt("total");
+    			}
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    		return total;
+    	}
+        }
          
-      }
+      
       

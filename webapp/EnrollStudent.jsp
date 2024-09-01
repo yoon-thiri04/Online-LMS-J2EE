@@ -22,7 +22,8 @@ String username=udao.getNameLecture(userEmail);%>
 <title>Enroll Students</title>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-<style> @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+<style> 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");       
 *{
   margin: 0;
   padding: 0;
@@ -30,14 +31,11 @@ String username=udao.getNameLecture(userEmail);%>
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  
+ font-family: Poppins, Helvetica, sans-serif;
 }
-body {
-   background-color:#E6E6E6;
-   color:black;
-   /*font-family: 'Comic Sans MS', cursive;*/
-   line-height: 1.5;
+body{
+ background-color: #DDF2FD;
+
 }
 /*header*/
 .header{
@@ -48,7 +46,7 @@ body {
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -90,7 +88,7 @@ body {
 	position:fixed;
 	width: 230px;
 	height:100%;
-	background:#3D56B2;
+	background:#164863;
 }
 
 .sidebar ul a{
@@ -122,54 +120,74 @@ ul li:hover a{
   border-left: 2px solid rgb(100, 100, 100);
 }
 /*Main body*/
-.main-body {
-	margin-left:260px;
-	margin-top:20px;
-}
-.row{
-	font-size:20px;
-  	margin-top:20px;
-  	margin-left:30px;
-}
-.row table {
-	padding-left:0px;
- 	background:transparent;
- 	padding-bottom:0px;
- 	color:black  ;
- 	width:80%;
-}
-.row table .th{
-	border:2px solid black;
-	background-color:#3D56B2;
+#title{
 	height:60px;
-	color:white;
+	width:1250px;
+	margin-left:300px;
+	margin-top:10px;
+	display:flex;
+	align-items:center;
 }
-.row table td{
-	font-size:18px;
-	padding:10px;
-	height:50px;
-	border:2px solid black;
+/*table head*/
+#alltable{
+	margin-left:300px;
 }
+#tablehead .th{
+	background-color:#9BBEC8;
+	height:60px;
+	
+	text-align:center;
+	color:black;
+}
+/*table body or Lectures'list*/
 #tbo{
-  	background-color:white;
+	margin-left:0px;
+	text-align:center;
+	background-color:white;
 }
-.row table  td .button1{
-  display:inline-block;
-  padding:5px;
-  border-radius:4px;
-  background-color:#3D56B2;
-  color:white;
-  margin-right:3px;
+#tbo td{
+	background-color:white;
+	
 }
-.row table  td .button1.edit{
-padding-left:8px;
-padding-right:8px;
-}
-.row table  td .button1:hover{
-background-color:   #14279B;
-color:;
+#tbo td .action{
+  	display:inline-block;
+  	padding:5px 0;
+  	
+  	margin-right:3px;
+  	color:black;
+  	transition: all 0.3s ease 0s;
 }
 
+#tbo td .delete:hover{
+	color:red;
+}
+.fa-pen-to-square,.fa-trash{
+	font-size:20px;
+}
+
+/*Table*/
+.col1{
+	width:100px;
+	padding:5px 5px;
+}
+.col2{
+	width:180px;
+}
+.col3{
+	width:260px;
+}
+.col4{
+	width:260px;
+}
+.col5{
+	width:250px;
+	padding:0 5px;
+}
+
+table, th, td{
+	border: 0.1px solid black;
+	border-collapse: collapse;
+}
     </style>
 <body>
 	<header class="header">
@@ -184,44 +202,58 @@ color:;
 	      	</div>
 	    </div>
 	</header>
-	<div style="height:60px;">---------------</div>
-	<div class="sidebar">
-		<ul>
-	      <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
-          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Materials</a></li>
-          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz</a></li>
-          
+	<div style="height:60px;">------------</div>
+    <div class="sidebar">
+        <ul>
+         <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
+          <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Course Materials</a></li>
+          <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Assignment</a></li>
+          <li><a href="QuizLecture.jsp"><i class="fa-solid fa-calendar-week"></i>Quiz</a></li>
           <li><a href="EnrollStudent.jsp"><i class="fa-solid fa-users"></i>Students</a></li>
           <li><a href="AnnouncementLecture.jsp"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
           <li><a href="SubmissionAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Submissions</a></li>
           <li><a href="QuizResultAllLecture.jsp"><i class="fa-solid fa-book-open"></i>Quiz Result</a></li>
-            
-            <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
+          <li><a href="changePwdLecture.jsp"><i class="fa-solid fa-sliders"></i>Change Password</a></li>
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
-      </ul>
-	</div>
-	
-	<div class="main-body">
+     </ul>
+  </div>
+	 <div id="title">
 		<h2>Enrolled Students</h2>
-        	<div class="row">
-          		<table>
-              		<tr>
-                		<td class="th">Name</td>
-						<td class="th">Email</td>
-						<td class="th">Operations</td>
-					</tr>
-				<tbody id="tbo">
-        		<c:forEach items="${stuList}" var="stu">   
-              		<tr>
-		                <td>${stu.name}</td>
-		                <td>${stu.email}</td>
-		                <td><a href = "${pageContext.request.contextPath}/enrollController?action=Delete&email=${stu.email}" class="button1">Delete</a>               
+		
+    </div>
+	
+  
+    <div id="alltable">
+        	<table id="tablehead">
+            	<tr>
+	                <td class="th col1"><h3>Profile</h3></td>
+	                <td class="th col2"><h3>User Name</h3></td>
+	                <td class="th col3"><h3>Email </h3></td>
+	                <td class="th col4"><h3>Enrollment Date</h3></td>
+                    <td class="th col5"><h3>Action</h3></td>
+            	</tr>
+            </table>            
+           <c:forEach items="${stuList}" var="stu">   
+
+            <table id="tbo">
+            <tr> 
+                   <td class="td col1"><img src="avatar.jpeg" width="80" height="60"/></td> 
+	                <td class="td col2">${stu.name}</td>
+	                <td class="td col3">${stu.email}</td>
+	                <td class="td col4">${stu.date}</td>
+	                
+	              
+	                <td class="td col5">
+	                <a href="${pageContext.request.contextPath}/enrollController?action=Delete&email=${stu.email}"  class="action delete">
+                    Delete <i class="fa-solid fa-trash"></i></a>
+	                             
                    </td>
-              		</tr>
-            	</c:forEach>
-            	</tbody>
-          		</table>
-        	</div>
-	</div>
+	                
+            </tr>
+            </table>
+            </c:forEach>
+               </div>
+	
+	
 </body>
 </html>
