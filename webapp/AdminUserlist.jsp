@@ -47,59 +47,58 @@ request.setAttribute("userlist", userList);
 body{
   background-color: #DDF2FD;
 }
-.header b{
-	font-size:40px;
-	color:white;
-	
-}
+/*header*/
 .header{
-  display: flex;
-  position:fixed;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  padding: 20px;
-  background:#427D9D;
-  color:white;
-  width:100%;
+  	position:fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    width:100%;
+   	padding: 20px;
+    background: #427D9D;
+    box-shadow: 0px 0px 10px 0px grey;
+    color:white;
 }
+
+.header b{
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
+}
+
 .logo{
   display: flex;
   align-items: center;
 }
+
 .logo a{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
+
 .header-icons{
   display: flex;
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
   display: flex;
   align-items: center;
-  margin-right:10px;
 }
 .header-icons .account i{
   	font-size:29px;
 	margin-right:15px;
 }
-.header-icons .account img{
-  width: 35px;
-  height: 35px;
-  margin-right:10px;
-  cursor: pointer;
-  border-radius: 50%;
-}
 /* Side menubar section */
 .sidebar{
-	position:fixed;
-	width: 230px;
-	height:100%;
-	background:#164863;
+  position:fixed;
+  width: 230px;
+  height:100%;
+  background:#164863;
 }
 .sidebar ul a{
 	display:block;
@@ -183,8 +182,8 @@ table, th, td{
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="#"><b>Smart Learn</b></a>
-	    </div>
+	       <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+</div>
 
 	    <div class="header-icons">
 	    	<div class="account">

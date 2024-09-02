@@ -38,9 +38,7 @@ String username=udao.getName(userEmail);
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background-color:#E6E6E6;
-  color:black;
-  line-height:1.5;
+  background-color: #DDF2FD;
 }
 /*header*/
 .header{
@@ -51,15 +49,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -71,7 +68,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -123,9 +120,8 @@ body{
     margin-bottom:20px;
     padding-bottom:20px;
    }
-.grid-item .quest h5{
-margin-bottom:10px;
-font-size:16px;
+.grid-item .quest h3{
+font-size:18px;
 }
 .grid-item{
 display:flex;
@@ -145,17 +141,14 @@ display:flex;
 margin-top:20px;
 }
 
-.grid-item:hover{
 
-    transform: translateY(-5px);
-}
 .grid-item .ahref{
      padding:0.7rem;
      margin-left:auto;
 flex: 0 0 calc(27.33% - 20px);
 }
 .grid-item .ahref a{
-   
+
     padding-bottom: 10px ;
     padding-top:10px;
     padding-left:10px;
@@ -202,7 +195,7 @@ flex: 0 0 calc(27.33% - 20px);
         border: 2px solid #ccc;
         border-radius: 4px;
         font-size: 16px;
-        font-family: Arial, sans-serif;
+        
     }
     input[type="text"]:focus {
         border-color: #4CAF50;
@@ -213,7 +206,7 @@ margin-left:980px;
 margin-bottom:40px;
 }
 .input-data  .pretty-button {
-        background-color: #14279B; 
+        background-color: #427D9D;   
         border: none; 
         font-weight:bold;
         color: white; 
@@ -229,7 +222,7 @@ margin-bottom:40px;
     }
 
 .input-data .pretty-button:hover {
-        background-color: #387ADF;
+        background-color: #164863;
     }
 
 .input-data  .pretty-button:focus {
@@ -239,7 +232,7 @@ margin-bottom:40px;
         
         
 .input-data  .pretty-button:active {
-        background-color: #14279B;
+        background-color: #427D9D;
         box-shadow: 0 5px #666; 
         transform: translateY(4px); /* Move the button down a bit */
     }
@@ -256,13 +249,12 @@ a {
 .container{
 	color:white;
   max-width: 500px;
-  background: #3D56B2;
+  background:#427D9D;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
   margin-left:80px;
-  margin-top:40px;
-  
+  margin-top:40px; 
   height:250px;
   font-size:18px;
   text-align:center;
@@ -270,7 +262,6 @@ a {
 .popup {
    position: fixed;
    padding: 10px;
-   
    border-radius: 10px;
    top: 50%;
    left: 45%;
@@ -328,7 +319,7 @@ a {
 	font-size:18px;
 	font-weight:600;
 	color:white;
-	background-color:#9DBDFF;
+	background:#78B7D0;
 	border-radius:5px;
 	
 }
@@ -336,7 +327,7 @@ a {
 	width: 150px;
 	color:white;
 	height: 40px;
-	background-color:#9DBDFF;
+	background:#78B7D0;
 	border-radius:5px;
 	margin-left:40px;
 	font-weight:600;
@@ -344,12 +335,14 @@ a {
 	text-align:center;
 	}
 .b13:hover{
-background-color:#D1E9F6;
+background:#D1E9F6;
 color:black;
+
 }
 .b12:hover{
-background-color:#D1E9F6;
+background:#D1E9F6;
 color:black;
+
 }
 .but1{
 display: flex;}
@@ -357,18 +350,12 @@ display: flex;}
 <body>
 <header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
+	    <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	      </div>
 	    
 	    <div class="header-icons">
-	    	<div class="account">
-		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
-	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
-	            </ul>
-	    	</div>
-	    	<div class="profile">
+	    	
+	    	<div class="prF3F7ECofile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
 		        <h4><%= username %></h4>
 		    </div>

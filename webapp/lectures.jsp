@@ -57,11 +57,10 @@ body {
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -73,7 +72,7 @@ body {
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -81,6 +80,7 @@ body {
   align-items: center;
   margin-right:10px;
 }
+
 
 .header-icons .account{
   display: flex;
@@ -166,7 +166,7 @@ ul li:hover a{
   	transition: all 0.3s ease 0s;
 }
 #tbo td .edit:hover{
-	color:blue;
+	color:#3D56B2;
 }
 #tbo td .delete:hover{
 	color:red;
@@ -242,8 +242,8 @@ table, th, td{
 <body>
     <header class="header">
     <div class="logo">
-      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-    </div>
+      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+       </div>
     <div class="header-icons">
     	<div class="account">
 	        <i class="fa-solid fa-circle-user"></i>

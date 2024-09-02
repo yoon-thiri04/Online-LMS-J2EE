@@ -45,19 +45,7 @@ quiz_title=resultSet.getString("title");
   font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background-color:#E6E6E6;
-   color:black;
-   
-   line-height: 1.5;
-   /*background: hsla(145, 83%, 74%, 1);
-background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", endColorstr="#93CBF1", GradientType=1 );
- */  
+     background-color: #DDF2FD;
 }
 /*header*/
 .header{
@@ -68,15 +56,13 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background: #427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
-}
-
-.header b{
-	font-size:40px;
-	color:white;
-	
+}.header b{
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -88,7 +74,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -116,7 +102,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 .container{
 	color:white;
   max-width: 820px;
-  background: #3D56B2;
+  background: #427D9D;
   width: 700px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
@@ -125,12 +111,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   margin-top:90px;
   margin-bottom:79px;
   height:440px;
-  /*background: hsla(270, 94%, 25%, 1);
-  background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-  background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-  background:  -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
- filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );*/
-}
+ }
 
 .container form{
   padding: 30px 0 0 0;
@@ -220,7 +201,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #42047e, #32c4c0, #6f7bf7, #42047e);
+    background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -292,8 +273,7 @@ label{
 <body>
 <header class="header">
     <div class="logo">
-      <a href="#"><b>Smart Learn</b></a>
-    </div>
+<a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a></div>
     <div class="header-icons">
     	<div class="account">
 	         <i class="fa-solid fa-circle-user"></i>

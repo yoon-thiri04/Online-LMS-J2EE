@@ -39,7 +39,8 @@
  font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background:#E6E6E6;
+  background-color: #DDF2FD;
+  
 }
 /*header*/
 .header{
@@ -51,15 +52,15 @@ body{
   	width:100%;
  	padding: 20px;
  	margin-top:-20px;
-  	background: #14279B;
+  	background: #427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
 
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -71,7 +72,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -79,6 +80,7 @@ body{
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
 	margin-right:30px;
 }
@@ -125,9 +127,9 @@ body{
     border: 1px solid #111;
     border-radius: 15px 15px ;
     cursor: pointer;
-    background-color:#FEFDED; 
+    background-color:#DDF2FD;
     padding-left:50px;
-    font-size:large;
+    font-size:17px;
     padding-top:20px;
     margin-top:10px;
     height:70px;
@@ -140,16 +142,15 @@ body{
     padding-bottom:10px;
     
    }
-.grid-item .quest h5{
-margin-bottom:10px;
-font-size:16px;
+.grid-item .quest h3{
+font-size:18px;
 }
+
 .grid-item{
     display:flex;
 	border: 2px solid white;
     box-shadow: 5px 30px 56.1276px rgb(50 50 55 / 12%);
     border: 1px solid #111;
-    
     border-radius: 15px 30px ;
     transition: all .3s cubic-bezier(.445, .05, .55, .95);
     transition: all 1s ease 0s;
@@ -162,15 +163,10 @@ font-size:16px;
 .grid-item #cAns{
 margin-top:20px;
 }
-
-.grid-item:hover{
-
-    transform: translateY(-5px);
-}
 .grid-item .ahref{
      padding:0.7rem;
      margin-left:auto;
-flex: 0 0 calc(27.33% - 20px);
+     flex: 0 0 calc(27.33% - 20px);
 }
 
 /*Table Title*/
@@ -213,7 +209,8 @@ margin-left:900px;
 
 }
 .input-data  .pretty-button {
-        background-color: #14279B; 
+        background-color: #427D9D;
+       
         border: none; 
         font-weight:bold;
         color: white; 
@@ -229,17 +226,17 @@ margin-left:900px;
     }
 
 .input-data .pretty-button:hover {
-        background-color: #387ADF;
+        background-color: #164863;
     }
 
    
 .input-data  .pretty-button:focus {
         outline: none; 
-        box-shadow: 0 0 5px #4CAF50;
+        box-shadow: 0 0 5px #427D9D;
         }
         
 .input-data  .pretty-button:active {
-        background-color: #14279B;
+        background-color: #427D9D;
         box-shadow: 0 5px #666; 
         transform: translateY(4px); /* Move the button down a bit */
     }
@@ -255,25 +252,24 @@ a {
 }
 
 .input-container .correct-input {
-            background-color: green;
+            background-color: #387F39;
             color: white;
         }
 .input-container .incorrect-input {
-            background-color: red;
+            background-color: #BF3131;
             color: white;
         }
   .correct {
-            color: green;
+            color: #387F39;
   }
         .incorrect {
-            color: red;
+            color: #BF3131;
         }
 </style>
 <body>
 <header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
+	      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a></div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">

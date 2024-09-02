@@ -47,7 +47,7 @@
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background:#E6E6E6;
+  background-color: #DDF2FD;
 }
 /*header*/
 .header{
@@ -58,15 +58,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background:#427D9D;
+  	
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
-}
-
-.header b{
-	font-size:40px;
-	color:white;
-	
+}.header b{
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -78,14 +77,14 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
-
 .header-icons{
   display: flex;
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
 	margin-right:30px;
 }
@@ -125,33 +124,41 @@ body{
 	margin-right:15px;
 	color:white;
 }
-/* Side menubar section */
+
 .sidebar{
-	position:fixed;
-	width: 230px;
-	height:100%;
-	background:#3D56B2;
+  margin-top:0px;
+  position:fixed;
+  width: 230px;
+  height:100%;
+  background:#164863;
+  /*transition:all .5s ease;*/
 }
-
+.sidebar header{
+  font-size:22px;
+  color:white;
+  text-align:center;
+  line-height:70px;
+  background:#0A6EBD  ;
+  user-select:none;
+}
 .sidebar ul a{
-	display:block;
-	width:100%;
-	line-height:65px;
-	font-size:15px;
-	color:white;
-	padding-left:20px;
-	box-sizing:border-box;
-	border-top:1px solid rgba(255,255,255,.1);
-	border-bottom:1px solid white;
-	transition:.4s;
+  display:block;
+  height:100%;
+  width:100%;
+  line-height:65px;
+  font-size:15px;
+  color:white;
+  padding-left:20px;
+  box-sizing:border-box;
+  border-top:1px solid rgba(255,255,255,.1);
+  border-bottom:1px solid black;
+  transition:.4s;
 }
-
 ul li:hover a{
-	padding-left:50px;
+  padding-left:50px;
 }
-
 .sidebar ul a i{
-	margin-right:16px;
+  margin-right:16px;
 }
 
 .side_navbar a:hover{
@@ -211,8 +218,8 @@ margin-top:40px;
  
   <header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
+	       <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	      </div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
@@ -224,7 +231,7 @@ margin-top:40px;
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h4><%= username %></h4>
+		        <h3><%= username %></h3>
 		    </div>
 	    </div>
 	</header>

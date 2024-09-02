@@ -115,10 +115,7 @@ String sql= "select count(*) as total1 from enrollment where course_id="+course_
   
 }
 body {
-   background-color:#E6E6E6;
-   color:black;
-  
-   line-height: 1.5;
+    background-color: #DDF2FD;
 }
 /*header*/
 .header{
@@ -129,17 +126,15 @@ body {
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+    background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
-
 .logo{
   display: flex;
   align-items: center;
@@ -149,9 +144,8 @@ body {
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
-
 .header-icons{
   display: flex;
   align-items: center;
@@ -171,7 +165,7 @@ body {
 	position:fixed;
 	width: 230px;
 	height:100%;
-	background:#3D56B2;
+	background:#164863;
 }
 
 .sidebar ul a{
@@ -228,14 +222,14 @@ ul li:hover a{
 }
 .card-single div:last-child span{
 	font-size:3rem;
-	color:#14279B;
+	color:#427D9D;
 }
 .card-single div:first-child span,h1{
-	color:#14279B;
+	color:#427D9D;
 	padding-bottom:3px;
 }
 .card-single:hover {
-	background-color:#14279B;
+	background-color:#427D9D;
 }
 .card-single:hover div:first-child span{
 	color:white;
@@ -246,28 +240,10 @@ ul li:hover a{
 .card-single:hover div:last-child span{
 	color:white;
 }
-html{
-	line-height: 1.15;
-  	-webkit-text-size-adjust: 100%;
-  	box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-:root {
-  --small-green-circle: #78eea6;
-  --main-accent-color: #9b45e4;
-  --secondary-accent-color: #e13a9d;
-}
 
 a {
   background-color: transparent;
 }
-
 img {
   border-style: none;
 }
@@ -287,9 +263,7 @@ button::-moz-focus-inner,
   padding: 0;
 }
 
-body {
-  margin: 0;
-}
+
 .container{
 	margin-left:330px;
 	display:flex;
@@ -309,7 +283,7 @@ body {
   padding-right:2em;
   padding-left:2em;
   padding-bottom:0.3em;
-  color:#14279B;
+  color:black;
 }
 
 .card:after {
@@ -357,8 +331,8 @@ body {
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="#"><b>Smart Learn</b></a>
-	    </div>
+	      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	      </div>
 
 	    <div class="header-icons">
 	    	<div class="account">
@@ -370,7 +344,7 @@ body {
 	<div style="height:60px;">---------------</div>
 	<div class="sidebar">
     	 <ul>
-      <li><a href="lectureProfile.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
+      <li><a href="#"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
           <li><a href="MaterialLecture.jsp"><i class="fa-solid fa-book-open"></i>Course Materials</a></li>
           <li><a href="AssignmentLecture.jsp"><i class="fa-solid fa-book-open"></i>Assignment</a></li>
           

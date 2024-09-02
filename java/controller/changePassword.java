@@ -46,25 +46,20 @@ public class changePassword extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    
-        String name = request.getParameter("name");
 	    String email=request.getParameter("email");
 	    String newPwd = request.getParameter("newPwd");
 	    String retype = request.getParameter("reTypePwd");
-        
-	   
-	    
-	    	
+
 	    	if (sdao.isExist(email)) {
 	    		if(newPwd.equals(retype)) {
 	            try {
-					changedao.updatePwd_stud(name, newPwd);
+					changedao.updatePwd_stud(email, newPwd);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	            try {
-					changedao.updatePwd_User(name, newPwd);
+					changedao.updatePwd_User(email, newPwd);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -82,7 +77,7 @@ public class changePassword extends HttpServlet {
 	    	else if (idao.isExist(email)) {
 	        	if(newPwd.equals(retype)) {
 	            try {
-					changedao.updatePwd_lect(name, newPwd);
+					changedao.updatePwd_lect(email, newPwd);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

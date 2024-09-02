@@ -19,7 +19,6 @@ String userEmail = (String) session.getAttribute("userEmail");
 lectureDAO udao=new lectureDAO();
 String username=udao.getNameLecture(userEmail);
     %>
-<span style="font-family: verdana, geneva, sans-serif;">
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,10 +41,6 @@ String username=udao.getNameLecture(userEmail);
     body {
       background: rgb(219, 219, 219);
     }
-    .header b{
-	font-size:40px;
-	color:white;
-}
 .header{
   display: flex;
   align-items: center;
@@ -56,22 +51,29 @@ String username=udao.getNameLecture(userEmail);
   color:white;
   position:fixed;
   width:100%;
+}.header b{
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
+
 .logo{
   display: flex;
   align-items: center;
 }
+
 .logo a{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 1rem;
+ 
 }
 .header-icons{
   display: flex;
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
   display: flex;
   align-items: center;
@@ -84,43 +86,7 @@ String username=udao.getNameLecture(userEmail);
   cursor: pointer;
   border-radius: 50%;
 }
-    /*.profile-card {
-      max-width: 700px;
-      background-color: beige;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin-left:650px;
-      margin-top: 30px;
-      padding-right: 10px;
-      padding-top: 10px;
-      display: flex;
-      flex-align:row;
-      align-items: center;
-    }
-    .profile-picture {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .profile-picture img {
-      border-radius: 50%;
-      max-width: 100%;
-      max-height: 100%;
-    }
-    .profile-card h2 {
-      font-size: 20px;
-      text-align: center;
-    }
-    .profile-card .contact-info {
-    }
-    .profile-card .contact-info table td {
-      height: 10px;
-    }
- */   
+    
 .container{
   display: flex;
   margin-right:200px;
@@ -381,8 +347,8 @@ body {
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="#"><b>Smart Learn</b></a>
-	    </div>
+	      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	      </div>
 
 	    <div class="header-icons">
 	    	<div class="account">

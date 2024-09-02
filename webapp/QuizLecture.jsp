@@ -46,8 +46,7 @@ String username=udao.getNameLecture(userEmail);%>
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background-color:#E6E6E6;
-  color:black;
+  background-color: #DDF2FD;
   line-height:1.5;
 }
 /*Header*/
@@ -59,15 +58,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:39px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -79,7 +77,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -101,7 +99,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#3D56B2 ;
+  background:#164863;
 }
 .sidebar ul a{
   display:block;
@@ -160,7 +158,7 @@ ul li:hover a{
 	margin-left:500px;
 	margin-top:20px;
 	margin-bottom:25px;
-	background-color:#3D56B2;
+	background-color:#427D9D;
 	height:40px;
 	width:120px;
 	padding-left:5px;
@@ -211,31 +209,33 @@ ul li:hover a{
 	margin-top:5px;
 }
 .fa-arrow-up-right-from-square{
-    font-size:25px;
-	color:black;
-	margin-right:50px;
-}
-.fa-arrow-up-right-from-square:hover{
-color:#14279B;
+    font-size:22px;
 }
 .fa-pen-to-square{
-	margin-left:30px;
-	margin-right:40px;
-	font-size:25px;
-	color:black;
-}
-.fa-pen-to-square:hover{
-	color:#14279B;
+	font-size:22px;
 }
 .fa-trash-can{
-	font-size:25px;
-	
-	color:black;
+	font-size:22px;
 }
-.fa-trash-can:hover{
-	color:#14279B;
+
+.action{
+    display:inline-block;
+    padding:10px 5px;
+   
+    color:black;
+    transition: all 0.3s ease 0s;
 }
-.fa-
+.edit:hover{
+  color:#3D56B2;
+}
+.view:hover{
+  color:#3D56B2;
+}
+.delete:hover{
+  color:red;
+}
+
+
 /*Pop up*/
 html, body {
    padding: 0;
@@ -354,14 +354,9 @@ a {
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  background: hsla(280, 84%, 41%, 1);
+  background: #427D9D;
 
-  background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-  background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-  background: -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
-}
+  }
 .container .text{
   text-align: center;
   font-size: 38px;
@@ -437,7 +432,7 @@ form .form-row .textarea{
   content: "";
   height: 2px;
   width: 100%;
-  background: #faff89;
+   background: #07F49E;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
@@ -458,7 +453,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #56d8e4, #9f01ea, #26c5f3, #b429f9);
+   background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -509,8 +504,7 @@ form .form-row .textarea{
 <body>
   <header class="header">
     <div class="logo">
-        <a href="#"><b>Smart Learn</b></a>
-      </div>
+       <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a></div>
       <div class="header-icons">
         <div class="account">
             <i class="fa-solid fa-circle-user"></i>
@@ -547,7 +541,7 @@ form .form-row .textarea{
     
 	<c:forEach items="${qList}" var="quiz">
 	<div class="block">
-		<table style="width:800px;">
+		<table style="width:900px;">
 			<tr>
 				<td>
 					<div class="assign">
@@ -558,12 +552,12 @@ form .form-row .textarea{
 				
 				<td>
 					
-                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=EDIT&id=${quiz.quiz_id}" class="button1" title="Edit">
-                	<i class="fa-solid fa-pen-to-square"></i></a> 
-                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=View&id=${quiz.quiz_id}" class="button1" title="View">
-                	<i class="fa-solid fa-arrow-up-right-from-square"></i></a>         
-					<a href = "${pageContext.request.contextPath}/QuizLectureController?action=DELETE&id=${quiz.quiz_id}"  class="button1 delete" title="Delete">
-					<i class="fa-sharp fa-solid fa-trash-can"></i></a>
+                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=EDIT&id=${quiz.quiz_id}" 
+                	class="action edit" >Edit <i class="fa-solid fa-pen-to-square"></i></a> 
+                	<a href = "${pageContext.request.contextPath}/QuizLectureController?action=View&id=${quiz.quiz_id}" 
+                	class="action view" >View <i class="fa-solid fa-arrow-up-right-from-square"></i></a>         
+					<a href = "${pageContext.request.contextPath}/QuizLectureController?action=DELETE&id=${quiz.quiz_id}"  
+					class="action delete">Delete <i class="fa-sharp fa-solid fa-trash-can"></i></a>
 				</td>
 			<tr>
 		</table>

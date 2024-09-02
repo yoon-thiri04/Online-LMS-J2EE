@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -57,9 +59,8 @@ public class AnnounceController extends HttpServlet {
 	  }
 
 private void deleteAnnouncement(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-     String id = request.getParameter("announcement_id");
-     
-     
+     String id = request.getParameter("id");
+    
    if(andao.delete(Integer.parseInt(id))) {
      request.setAttribute("MSG", "Successfully Deleted");
    }
@@ -74,7 +75,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     String title = request.getParameter("title");
     String course_name = request.getParameter("course_name");
     String content = request.getParameter("contents");
-    String date = request.getParameter("date");
+    Date tdyDate=new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    String date = sdf.format(tdyDate);
+   
     HttpSession session=request.getSession(false);
     int course_id=(int)session.getAttribute("course_id");
 

@@ -33,8 +33,7 @@ courseDAO cdao=new courseDAO();
  font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background: url(https://i.pinimg.com/736x/fd/78/c7/fd78c7534ed69af190d268a14e2f6a9a.jpg);
-   background-size: cover;
+   background-color: #DDF2FD;
 }
 /*header*/
 .header{
@@ -49,12 +48,12 @@ body {
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
+
 .logo{
   display: flex;
   align-items: center;
@@ -64,7 +63,7 @@ body {
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -72,6 +71,7 @@ body {
   align-items: center;
   margin-right:10px;
 }
+
 
 .header-icons .account{
   display: flex;
@@ -193,7 +193,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background: -webkit-linear-gradient(right, #42047e, #32c4c0, #9bf8f4, #6f7bf7);
+   background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -268,8 +268,8 @@ label{
 <body>
 <header class="header">
     <div class="logo">
-      <a href="#"><b>Smart Learn</b></a>
-    </div>
+      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+</div>
     <div class="header-icons">
     	<div class="account">
 	        <i class="fa-solid fa-circle-user"></i>

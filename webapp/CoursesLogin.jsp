@@ -27,7 +27,7 @@ String username=udao.getName(userEmail);
     text-decoration: none;
     text-transform: capitalize;
     transition: .2s linear;
-    font-family: Arial, Helvetica, sans-serif;
+   font-family: Poppins, Helvetica, sans-serif;
 }
 /*header*/
 .header{
@@ -37,15 +37,16 @@ String username=udao.getName(userEmail);
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background: #164863;
+  	
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
 
 .header b{
-	font-size:40px;
-	color:white;
-	font-family: 'Comic Sans MS', cursive;
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -57,7 +58,7 @@ String username=udao.getName(userEmail);
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -65,6 +66,7 @@ String username=udao.getName(userEmail);
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
 	margin-right:30px;
 }
@@ -121,7 +123,6 @@ section a:hover{
 a {
     text-decoration: none;
     color:#838383;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 4;
 }
 
@@ -132,7 +133,6 @@ a {
     gap: 3rem;
     margin-left: 600px;
 }
-  
 .footer{
      font-size: 20px;
     height: 10vh;
@@ -140,15 +140,13 @@ a {
     flex: wrap;
     gap: 3rem;
    margin-left: 430px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    line-height: 5rem;
+   line-height: 5rem;
 }
   
 .footer1{
     font-size: 20px;
     margin-left: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+    }
 /*Youtube ka har*/
 .container{
     background:linear-gradient(45deg, blueviolet, lightgreen);
@@ -222,9 +220,9 @@ a {
 </head>
 <body>
 	<header class="header">
-	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
+	    <div class="logo">     
+ <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	     </div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
@@ -236,7 +234,7 @@ a {
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h4><%= username %></h4>
+		        <h3><%= username %></h3>
 		    </div>
 	    </div>
 	</header>

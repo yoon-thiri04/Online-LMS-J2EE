@@ -39,7 +39,7 @@ String username=udao.getName(userEmail);
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background:#E6E6E6;
+  background:#DDF2FD;
 }
 /*header*/
 .header{
@@ -50,15 +50,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -70,7 +69,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -78,9 +77,7 @@ body{
   align-items: center;
   margin-right:10px;
 }
-.header-icons .account{
-	margin-right:30px;
-}
+
 .header-icons .account ul{
   display: flex;
   align-items: center;
@@ -122,7 +119,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#3D56B2;
+  background:#164863;
   /*transition:all .5s ease;*/
 }
 .sidebar header{
@@ -224,13 +221,16 @@ margin-left:320px;
 margin-top:10px;
 }
 .fa-download{
-	margin-left:30px;
-	margin-right:40px;
 	font-size:25px;
-	color:black;
 }
-.fa-download:hover{
-	color:#14279B;
+.action{
+    display:inline-block;
+    padding:10px 5px;
+    color:black;
+    transition: all 0.3s ease 0s;
+}
+.download:hover{
+color:#3D56B2;
 }
 
 
@@ -239,8 +239,8 @@ margin-top:10px;
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
+	       <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	      </div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
@@ -252,7 +252,7 @@ margin-top:10px;
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h4><%= username %></h4>
+		        <h3><%= username %></h3>
 		    </div>
 	    </div>
 	</header>
@@ -286,7 +286,8 @@ margin-top:10px;
 					<p>${ml.type}</p>	
 				</td>
 				<td>
-					<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1"><i class="fa-sharp fa-solid fa-download fa-sm"></i></a>	
+					<a href = "${pageContext.request.contextPath}/MaterialController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" 
+					class="action download">Download <i class="fa-sharp fa-solid fa-download fa-sm"></i></a>	
 				</td>
 			<tr>
 		</table>

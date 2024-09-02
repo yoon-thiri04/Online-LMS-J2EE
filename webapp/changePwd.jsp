@@ -14,165 +14,213 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Change Password</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 *{
-
- margin: 0;
- padding: 0;
- box-siziing: border-box;
- font-family: "Poppins",sans-serif;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: Poppins, Helvetica, sans-serif;
+}
+body {
+   background-color: #DDF2FD;
+}
+/*header*/
+.header{
+	position:fixed;
+  	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+  	height: 60px;
+  	width:100%;
+ 	padding: 20px;
+  	background: #427D9D;
+  	box-shadow: 0px 0px 10px 0px grey;
+  	color:white;
 }
 
-
-body{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	background: hsla(212, 100%, 50%, 1);
-  	background: linear-gradient(225deg, hsla(212, 100%, 50%, 1) 0%, hsla(203, 62%, 85%, 1) 100%);
-  	background: -moz-linear-gradient(225deg, hsla(212, 100%, 50%, 1) 0%, hsla(203, 62%, 85%, 1) 100%);
-  	background: -webkit-linear-gradient(225deg, hsla(212, 100%, 50%, 1) 0%, hsla(203, 62%, 85%, 1) 100%);
-  	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0077FF", endColorstr="#C0DEF0", GradientType=1 );  	
-	background-size: cover;
-	background-position: center;
+.header b{
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
-.wrapper{
-	width: 350px;
-	height: 350px;
-	background: transparent;
-	border: 2px solid rgba(255, 255, 255, .2);
-	backdrop-filter: blur(20px);
-	box-shadow: 0 0 10px rgba(0,0,0,.2);
-	color: black;
-	border-radius: 10px;
-	padding: 30px 40px;
+.logo{
+  display: flex;
+  align-items: center;
+}
+
+.logo a{
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+ 
+}
+.header-icons{
+  display: flex;
+  align-items: center;
+  margin-right:10px;
+}
+
+.header-icons .account{
+  display: flex;
+  align-items: center;
+}
+.header-icons .account i{
+  font-size:29px;
+	margin-right:15px;
+}
+.header-icons .account img{
+  width: 35px;
+  height: 35px;
+  margin-right:10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.title{
+		text-align: center;
+		padding:35px 0 20px;
+	}
+	.title h1{
+		margin: 0;
+		padding: 0;
+		color: #262626;
+	}
+	.container{
+		width: 50%;
+		height: 450px;
+		background: #fff;
+		margin: 0 auto;
+		font-size:18px;
+		border: 0.5px solid white;
+		box-shadow: 0 15px 40px rgba(0,0,0,.5);
+		
+	}
+	.container .left{
+		float: left;
+		width:50%;
+	    height: 450px;
+	    background: url(https://st3.depositphotos.com/6837936/19487/v/450/depositphotos_194871882-stock-illustration-e-learning-online-education-design.jpg);
+		background-size: cover;
+		box-sizing: border-box;
+	}
+	.container .right{
+		float: left;
+		width:50%;
+	    height: 400px;
+		box-sizing: border-box;
+	}
+	.formBox{
+		width: 100%;
+		padding: 80px 40px;
+		box-sizing: border-box;
+		height: 400px;
+		background: #fff;
+	}
+	.formBox p{
+		margin: 0;
+		padding: 0;
+		font-weight: bold;
+		
+		color: black;
+	}
+	.formBox input{
+		width: 100%;
+		margin-bottom: 25px;
+		
+	}
+	.formBox input[type="text"],.formBox input[type="password"]{
+		border: none;
+		border-bottom: 2px solid black;
+		outline: none;
+		height: 40px;
+	}
+	.formBox input[type="text"]:focus,.formBox input[type="password"]:focus{
+		border-bottom: 2px solid #262626;
 	
+	}
+	.formBox input[type="submit"]{
+		border: none;
+		outline: none;
+		height: 40px;
+		color: #fff;
+		background: #387ADF;
+		cursor: pointer;
+		font-size:17px;
+	}
+	.formBox input[type="submit"]:hover{
+		background: #2c3e50;
+	} .register-link{
+  font-size: 15px;
+  text-align: center;
+  margin: 15px 0 15px;
 }
-.wrapper h2{
-	font-size: 36px;
-	text-align: center;
+.register-link p a{
+  
+  font-size:16px;
+  text-decoration: none;
+  font-weight: 600;
+  
 }
-.wrapper .input-box{
-	position: relative;
-	width: 100%;
-	height:50px;
-	
-	margin: 30px 0;
-	
+.register-link p a:hover{
+  text-decoration: underline;
+  
 }
-.wrapper h2{
-	font-size: 36px;
-	text-align: center;
+.error-message1{
+font-size:15px;
+color:red;
+margin-bottom:10px;
 }
-
-
-.input-box input{
-
-	width: 81%;
-	height: 5px;
-	background: transparent;
-	border: none;
-	outline: none;
-	border: 2px solid rgba(255,255,255,.2);
-	/*border: 1px solid black;*/
-	border-radius: 40px;
-	font-size: 16px;
-	color: black;
-	padding: 20px 45px 20px 20px;
-	
+.error-message{
+font-size:15px;
+color:red;
+margin-bottom:10px;
 }
-
-.input-box input::placeholder{
-	color: black;
-	
-}
-.input-box ion-icon{
-	position: absolute;
-	right: 20px;
-	top : 50%;
-	transform: translateY(-50%);
-	font-size: 20px;
-	
-}
-
-.wrapper .button{
-	width: 100%;
-	height: 45px;
-	background: #fff;
-	border: none;
-	outline: none;
-	border-radius: 40px;
-	box-shadow : 0 0 10px rgba(0,0,0,.1);
-	cursor: pointer;
-	font-size: 16px;
-	color: #333;
-	font-weight: 600;
-	
-	
-}
-
-.error-message {
-    display: none;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid ;
-    background-color: #ff4d4d;
-    color:red;
-    border-radius: 10px;
-    width: 230px;
-    text-align: center;
-}
-
-
-
-/*.newPassword{
-	width: 100%;
-	height: 30px;
-	border-radius: 10px;
-	border: 2px solid;
-	margin-top: 10px;
-}
-
-.retypePassword{
-	width: 100%;
-	height: 30px;
-	border-radius: 10px;
-	border: 2px solid;
-	margin-top: 10px;
-}*/
-	
 </style>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>  
 </head>
 <body>
-	
-	<div class="wrapper">
-		<c:if test="${not empty requestScope.Success}">
-			<div class="error-message1">${requestScope.Success}</div>
-		</c:if>
-		<form action="${pageContext.request.contextPath}/changePassword" method="post">
-			<h2>Change Password</h2>
-			<div class="input-box">
-				<input type="text" name="name" value="<%=username%>"/>
-			</div>
-			<div class="input-box">
-				<input type="text" name="email" value="<%=userEmail%>" required/>
-			</div>
-			<div class="input-box">
-				<input type="password" name="newPwd" class="newPassword" placeholder="New Password" required/>
-			</div>
-			<div class="input-box">
-				<input type="password" name="reTypePwd" class="retypePassword" placeholder="RetypePassword" required/>
-			</div>
-			<c:if test="${not empty requestScope.notMatch}">
+	<header class="header">
+    <div class="logo">
+     <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+     </div>
+    <div class="header-icons">
+    	<div class="account">
+	        <i class="fa-solid fa-circle-user"></i>
+	        <h3><%=username %></h3>
+    	</div>
+    </div>
+  </header>
+   <div style="height:60px;">------------</div>
+	<div class="title"><h1>Change Password</h1></div>
+		<div class="container">
+			<div class="left"></div>
+			<div class="right">
+				<div class="formBox">
+					
+					<form action="${pageContext.request.contextPath}/changePassword" method="post">
+					<input type="hidden" name="email" value="<%=userEmail %>">
+        				<p>New Password</p>
+						<input type="password" name="newPwd" class="newPassword" placeholder="New Password" required/>
+			
+						<p>RetypePassword</p>
+						<input type="password" name="reTypePwd" class="retypePassword" placeholder="RetypePassword" required/>
+			
+						<c:if test="${not empty requestScope.notMatch}">
             	<div class="error-message1">${requestScope.notMatch}</div>
      		</c:if>
-			<input type="submit" value="change" class="button"/>
-		</form>
-		<button onclick="history.back()">Back</button>
-	</div>
+						<input type="submit" name="submit" value="Change">
+					</form>
+				</div>
+			</div>
+		</div>
+	
 </body>
 </html>

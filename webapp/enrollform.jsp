@@ -26,24 +26,11 @@ String username=udao.getName(userEmail);%>
   outline: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
   background-color:#DDF2FD;
-   color:black;
-   
-   line-height: 1.5;
-   background: hsla(145, 83%, 74%, 1);
-
-background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", endColorstr="#93CBF1", GradientType=1 );
-
-}
+ }
 /*header*/
 .header{
 	position:fixed;
@@ -53,15 +40,14 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #387ADF;
+  	background:#164863;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	font-family: 'Comic Sans MS', cursive;
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -73,7 +59,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 1rem;
+ 
 }
 
 .header-icons{
@@ -81,6 +67,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
 	margin-right:50px;
 }
@@ -114,10 +101,12 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
 	margin-left:20px;
 	font-size:20px;
 	cursor:pointer;
+	color:white;
 }
 .header-icons .profile i{
 	font-size:29px;
 	margin-right:15px;
+	color:white;
 }
 /*Pop Up Form*/
 .container{
@@ -130,12 +119,8 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#87F4B5", en
   margin-left:550px;
   margin-top:140px;
   margin-bottom:135px;
-  background: hsla(270, 94%, 25%, 1);
-  background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -moz-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#42047e", endColorstr="#07f49e", GradientType=1 ); 
-}
+  background:#427D9D;
+  }
 .container .text{
   text-align: center;
   font-size: 41px;
@@ -226,7 +211,9 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #42047e, #32c4c0, #9bf8f4, #6f7bf7);
+  
+ background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
+  
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -270,14 +257,14 @@ label{
    right: 500px;
    top: 195px;
    padding: 5px;
-   color: #000;
+   color: #fff;
    transition: color .3s;
    font-size: 2em;
    line-height: 1.5;
    font-weight: 700;
 }
 .popup .close:hover {
-   color: #f00;
+   color: skyblue;
 }
 .close-popup {
    background-color: rgba(0,0,0,.7);
@@ -302,8 +289,8 @@ label{
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
+	       <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	      </div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
@@ -315,7 +302,7 @@ label{
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h4><%= username %></h4>
+		        <h3><%= username %></h3>
 		    </div>
 	    </div>
 	</header>

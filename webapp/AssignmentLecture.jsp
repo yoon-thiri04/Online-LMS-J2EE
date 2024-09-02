@@ -45,9 +45,7 @@ String username=udao.getNameLecture(userEmail);%>
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background-color:#E6E6E6;
-  color:black;
-  line-height:1.5;
+   background-color: #DDF2FD;
 }
 /*Header*/
 .header{
@@ -58,14 +56,15 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background: #427D9D;;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
 
 .header b{
-	font-size:40px;
-	color:white;
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -77,7 +76,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -85,6 +84,7 @@ body{
   align-items: center;
   margin-right:10px;
 }
+
 .header-icons .account{
 	display:flex;
 	align-items:center;
@@ -99,7 +99,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#3D56B2 ;
+  background:#164863;
 }
 .sidebar ul a{
   display:block;
@@ -158,7 +158,7 @@ ul li:hover a{
 	margin-left:400px;
 	margin-top:20px;
 	margin-bottom:25px;
-	background-color:#3D56B2;
+	background-color:#427D9D;
 	height:40px;
 	width:90px;
 	padding-left:5px;
@@ -208,31 +208,27 @@ ul li:hover a{
 	margin-left:50px;
 	margin-top:5px;
 }
-
-.fa-download{
-	margin-left:30px;
-	margin-right:40px;
-	font-size:25px;
-	color:black;
+.action{
+    display:inline-block;
+    padding:5px 0;
+    margin-right:3px;
+    color:black;
+    transition: all 0.3s ease 0s;
 }
-.fa-download:hover{
-	color:#14279B;
+.download:hover{
+  color:#3D56B2;
+}
+.delete:hover{
+  color:red;
+}
+.fa-download{
+	font-size:22px;
+	
 }
 .fa-trash-can{
-	font-size:25px;
-	margin-right:50px;
-	color:black;
+	font-size:22px;
 }
-.fa-trash-can:hover{
-	color:#14279B;
-}
-/*Pop up*/
-html, body {
-   padding: 0;
-   margin: 0;
-   width: 100%;
-   height: 100%;
-}
+
 a {
    color: #fff;
    text-decoration: none;
@@ -294,15 +290,8 @@ a {
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 0.5em;
-  background: hsla(280, 84%, 41%, 1);
-
-background: linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -moz-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-
-background: -webkit-linear-gradient(45deg, hsla(280, 84%, 41%, 1) 0%, hsla(218, 97%, 56%, 1) 100%);
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8711c1", endColorstr="#2472fc", GradientType=1 );
-}
+  background:#427D9D;
+  }
 .container .text{
   text-align: center;
   font-size: 30px;
@@ -378,7 +367,7 @@ form .form-row .textarea{
   content: "";
   height: 2px;
   width: 100%;
-  background: #faff89;
+  background: #07F49E;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
@@ -399,7 +388,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #56d8e4, #9f01ea, #26c5f3, #b429f9);
+  background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -435,18 +424,17 @@ form .form-row .textarea{
   }
 }
 
- 
 </style>
 </head>
 <body>
  <header class="header">
     <div class="logo">
-        <a href="#"><b>Smart Learn</b></a>
-      </div>
+       <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+        </div>
       <div class="header-icons">
         <div class="account">
             <i class="fa-solid fa-circle-user"></i>
-            <h4><%= username %></h4>
+            <h3><%= username %></h3>
         </div>
       </div>
   </header>
@@ -486,10 +474,10 @@ form .form-row .textarea{
 					<p>Deadline Date : ${ml.deadline}</p>	
 				</td>
 				<td>
-					<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" class="button1">              
-                    <i class="fa-sharp fa-solid fa-download fa-sm"></i></a>
-					<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}&type=${ml.type}"  class="button1 delete">
-                 <i class="fa-sharp fa-solid fa-trash-can"></i></a>
+					<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" 
+					class="action download">Download <i class="fa-sharp fa-solid fa-download fa-sm"></i></a>
+					<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}&type=${ml.type}"  
+					class="action delete">Delete <i class="fa-sharp fa-solid fa-trash-can"></i></a>
 				</td>
 			<tr>
 		</table>

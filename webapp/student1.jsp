@@ -51,7 +51,8 @@ int total=udao.getTotal(userEmail);
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background: #E6E6E6;
+  background-color: #DDF2FD;
+  
 }
 /*header*/
 .header{
@@ -62,15 +63,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:39px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -82,7 +82,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -90,6 +90,8 @@ body{
   align-items: center;
   margin-right:10px;
 }
+
+
 .header-icons .account{
 	margin-right:30px;
 }
@@ -134,7 +136,7 @@ body{
 	position:fixed;
 	width: 230px;
 	height:100%;
-	background:#3D56B2;
+	background:#164863;
 }
 
 .sidebar ul a{
@@ -183,7 +185,6 @@ ul li:hover a{
     flex: 0 0 calc(33.333% - 60px);
     margin-top:30px;
     margin-bottom:50px;
-    
 }
 
 .grid-item{
@@ -230,8 +231,8 @@ ul li:hover a{
   	margin-bottom:30px;
 }
 img{
-	width:180px;
-	height:180px;
+	width:150px;
+	height:160px;
 	border-radius:100px;
 	margin-top:50px;
 	margin-left:30px;
@@ -279,7 +280,7 @@ img{
 
 .viewmaterial:hover {
     color: #fff;
-    background:#14279B;
+    background:#427D9D;    
     border: 1px solid #748dff;
 }
 
@@ -314,7 +315,7 @@ body {
   margin: 0;
 }
 .container{
-	margin-left:270px;
+	margin-left:290px;
 	display:grid;
 	align-item:center;
 	margin-top:30px;
@@ -330,10 +331,10 @@ body {
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
     0 100px 80px rgba(0, 0, 0, 0.07);
   position:;
-  width:1000px;
+  width:950px;
   align-item:center;
   padding-right:2em;
-  padding-left:3em;
+  padding-left:2em;
   padding-bottom:0.3em;
  
 }
@@ -376,7 +377,7 @@ body {
 }
 .logoutbtn:hover{
 	 color: #fff;
-    background:#14279B;
+    background:#427D9D;
     border: 1px solid #748dff;
 }
 #title{
@@ -401,8 +402,8 @@ margin-left:100px;
 <body>
 <header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
+	      
+<a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a></div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">

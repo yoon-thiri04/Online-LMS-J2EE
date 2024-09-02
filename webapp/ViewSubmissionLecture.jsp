@@ -46,8 +46,7 @@ if(resultSet.next()) {
  font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background: url(https://i.pinimg.com/736x/fd/78/c7/fd78c7534ed69af190d268a14e2f6a9a.jpg);
-   background-size: cover;
+   background-color: #DDF2FD;
 }
 /*header*/
 .header{

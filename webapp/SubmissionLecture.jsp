@@ -208,7 +208,7 @@ ul li:hover a{
 	margin-left:50px;
 	margin-right:30px;
 	font-size:20px;
-	width:500px;
+	width:400px;
   	white-space: nowrap; /* Prevents text from wrapping to the next line */
   	overflow: hidden; /* Hides the overflow text */
   	text-overflow: ellipsis;
@@ -220,21 +220,28 @@ ul li:hover a{
 }
 .block td .action{
     display:inline-block;
-    margin-left:10px;
-    margin-right:8px;
+    padding:10px 5px;
     color:black;
-    font-size:18px;
-    
     transition: all 0.3s ease 0s;
+    
 }
 td .download:hover{
-  color:#427D9D;
+  color:#3D56B2;
 }
 td .view:hover{
-  color:#427D9D;
+  color:#3D56B2;
 }
 td .evaluate:hover{
-color:#427D9D;
+color:#3D56B2;
+}
+.fa-download{
+	font-size:22px;
+}
+.fa-plus{
+font-size:22px;
+}
+.fa-arrow-up-right-from-square{
+	font-size:22px;
 }
   .popup {
    position: fixed;
@@ -392,7 +399,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
+  background:-webkit-linear-gradient(right, #164863, #32c4c0, #6f7bf7, #164863);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -480,7 +487,7 @@ label{
             <c:set var="id" value="${sub.id}" />
             
             <div class="block">
-		<table style="width:800px;">
+		<table style="width:900px;margin-right:20px;">
 			<tr>
 				<td>
 					<div class="assign">

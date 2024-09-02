@@ -50,12 +50,9 @@ function toAll(){
   font-family: Poppins, Helvetica, sans-serif;
 }
 body {
-   background-color:#E6E6E6;
-   color:black;
-   
-   line-height: 1.5;
-    
+       background-color: #DDF2FD;
 }
+
 /*header*/
 .header{
 	position:fixed;
@@ -65,14 +62,15 @@ body {
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background: #427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
 
 .header b{
-	font-size:40px;
-	color:white;
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -84,7 +82,7 @@ body {
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -112,7 +110,7 @@ body {
 .container{
   color:white;
   max-width: 820px;
-  background: #3D56B2;
+  background: #427D9D;
   width: 600px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
@@ -204,7 +202,7 @@ form .form-row .textarea{
   width: 300%;
   position: absolute;
   left: -100%;
-  background:-webkit-linear-gradient(right, #42047e, #32c4c0, #6f7bf7, #42047e);
+    background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
@@ -286,7 +284,7 @@ label{
 <body>
 <header class="header">
     <div class="logo">
-      <a href="#"><b>Smart Learn</b></a>
+      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
     </div>
     <div class="header-icons">
     	<div class="account">

@@ -50,7 +50,7 @@ quiz_title=resultSet.getString("title");
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background-color:#E6E6E6;
+ background-color: #DDF2FD;
   color:black;
   line-height:1.5;
 }
@@ -63,15 +63,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background: #427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -83,7 +82,13 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
+}
+
+.header-icons{
+  display: flex;
+  align-items: center;
+  margin-right:10px;
 }
 
 .header-icons{
@@ -104,7 +109,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#3D56B2 ;
+  background:#164863;
 }
 .sidebar ul a{
   display:block;
@@ -132,10 +137,10 @@ ul li:hover a{
     margin-top:20px;
     margin-bottom:20px;
     padding-bottom:20px;
+    
    }
-.grid-item .quest h5{
-margin-bottom:10px;
-font-size:16px;
+.grid-item .quest h3{
+font-size:18px;
 }
 .grid-item{
 display:flex;
@@ -150,15 +155,12 @@ display:flex;
     padding-top:20px;
     height:290px;
     width:880px;
+    background:#fff;
 }
 .grid-item #cAns{
 margin-top:20px;
 }
 
-.grid-item:hover{
-
-    transform: translateY(-5px);
-}
 .grid-item .ahref{
      padding:0.7rem;
      margin-left:auto;
@@ -180,7 +182,7 @@ flex: 0 0 calc(27.33% - 20px);
 
 .grid-item .ahref a:hover {
     color: #fff;
-    background: #748dff;
+    background: #427D9D;
     border: 1px solid #748dff;
 }
 /*Table Title*/
@@ -193,7 +195,7 @@ flex: 0 0 calc(27.33% - 20px);
 	align-items:center;
 }
 #title p{
-	font-weight:bold;
+	font-weight:500;
 	font-size:25px;
 	width:500px;
 }
@@ -218,9 +220,9 @@ flex: 0 0 calc(27.33% - 20px);
 	margin-left:270px;
 	margin-top:20px;
 	margin-bottom:25px;
-	background-color:#3D56B2;
+	background-color:#427D9D;
 	height:40px;
-	width:100px;
+	width:95px;
 	padding-left:5px;
 	padding-right:5px;
 	border:1px solid black;
@@ -249,12 +251,12 @@ a {
 <body>
  <header class="header">
     <div class="logo">
-        <a href="#"><b>Smart Learn</b></a>
-      </div>
+        <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+</div>
       <div class="header-icons">
         <div class="account">
             <i class="fa-solid fa-circle-user"></i>
-            <h4><%= username %></h4>
+            <h3><%= username %></h3>
         </div>
       </div>
   </header>
@@ -289,7 +291,7 @@ a {
     <div class="grid-container">
        <div id="b1" class="grid-item">
           <div class="quest"> <h3>Question <%=quizNo %></h3>
-           <h5>Mark 1.00</h5>
+           <h4>Mark 1.00</h4>
             <h3>${quiz.question}</h3>
             <c:forEach items="${quiz.answer}" var="answer">
                 <input type="radio" name="quiz_${quiz.id}" value="${answer}"> ${answer} <br>

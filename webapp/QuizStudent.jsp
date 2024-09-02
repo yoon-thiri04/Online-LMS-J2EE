@@ -44,7 +44,7 @@ function start(quiz_id) {
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background:#E6E6E6;
+  background:#DDF2FD;
 }
 /*header*/
 .header{
@@ -55,13 +55,14 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #14279B;
+  	background: #427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
 .header b{
-	font-size:40px;
-	color:white;	
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -73,7 +74,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -81,6 +82,8 @@ body{
   align-items: center;
   margin-right:10px;
 }
+
+
 .header-icons .account{
 	margin-right:30px;
 }
@@ -125,7 +128,7 @@ body{
   position:fixed;
   width: 230px;
   height:100%;
-  background:#3D56B2;
+  background:#164863;
   /*transition:all .5s ease;*/
 }
 .sidebar header{
@@ -133,7 +136,7 @@ body{
   color:white;
   text-align:center;
   line-height:70px;
-  background:#0A6EBD  ;
+  background:#164863  ;
  
 }
 .sidebar ul a{
@@ -155,16 +158,14 @@ ul li:hover a{
 .sidebar ul a i{
   margin-right:16px;
 }
-/*#check{
-  display:none;
-}*/
-label /*#btn*/,label #cancel{
+
+label #cancel{
   position:absolute;
   cursor:pointer;
  
   border-radius:3px;
 }
-label /*#btn*/{
+label {
   left:35px;
   top:20px;
   font-size:25px;
@@ -227,33 +228,34 @@ margin-left:320px;
 margin-top:10px;
 }
 .fa-right-to-bracket{
-    margin-left:30px;
-	margin-right:20px;
-	font-size:25px;
-	color:black;
-}
-.fa-right-to-bracker:hover{
-color:#14279B;
-}
-
-.fa-arrow-up-right-from-square{
-	font-size:25px;
-	color:black;
-	margin-left:30px;
+	font-size:22px;
 	
 }
-.fa-arrow-up-right-from-square:hover{
-	color:#14279B;
+.fa-arrow-up-right-from-square{
+	font-size:22px;
 }
-
-
 .fa-triangle-exclamation{
-   font-size:25px;
-	margin-left:30px;
+   font-size:22px;
 	color:red;
 }
-.fa-triangle-exclamation:hover{
-color:pink;
+.action{
+    display:inline-block;
+    padding:10px 5px;
+    margin-right:3px;
+    color:black;
+    transition: all 0.3s ease 0s;
+}
+.take:hover{
+  color:#3D56B2;
+}
+.miss:hover{
+  color:red;
+}
+.review:hover{
+  color:#3D56B2;
+}
+.view:hover{
+color:#3D56B2;
 }
 
 </style>
@@ -261,8 +263,7 @@ color:pink;
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
+	      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a></div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
@@ -355,14 +356,20 @@ pageContext.setAttribute("deadlineReached",deadlineReached);
 				<td>
 					<c:choose>
                       <c:when test="${not quizResultExists && not deadlineReached}">
-                       <a href="#" onclick="start(<%=quiz_id%>)" class="button1" title="Take Quiz"><i class="fa-solid fa-right-to-bracket"></i></a>
+                      <a href="#" onclick="start(<%=quiz_id%>)" class="action take">
+                    Take Now <i class="fa-solid fa-right-to-bracket"></i></a>
+                       
                       </c:when>
                       <c:when test="${not quizResultExists && deadlineReached}">
-                       <a href="#" class="button1" onclick="miss()"><i class="fa-solid fa-triangle-exclamation"></i></a>
+                      <a href="#" onclick="miss()" class="action miss">
+                      Missing <i class="fa-solid fa-triangle-exclamation"></i></a>
+                       
                       </c:when>
                      <c:otherwise>
-                       <a href="QuizResultController?action=REVIEW&quiz_id=${quiz.quiz_id}&result_id=<%=pageContext.getAttribute("result_id") %>&title=${quiz.title}" class="button1" title="Review" ><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                       <a href="QuizResultController?action=RESULT&quiz_id=${quiz.quiz_id}&result_id=${result_id}" class="button1"><i class="fa-solid fa-arrow-up-right-from-square" title="View Result" ></i></a>
+                       <a href="QuizResultController?action=REVIEW&quiz_id=${quiz.quiz_id}&result_id=<%=pageContext.getAttribute("result_id") %>&title=${quiz.title}" 
+                       class="action review" title="Review" >Review <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                       <a href="QuizResultController?action=RESULT&quiz_id=${quiz.quiz_id}&result_id=${result_id}" 
+                       class="action view">Result <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                      </c:otherwise>
                     </c:choose>
                 	

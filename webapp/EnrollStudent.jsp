@@ -50,11 +50,10 @@ body{
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	font-family: 'Comic Sans MS', cursive;
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -66,7 +65,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -191,9 +190,9 @@ table, th, td{
     </style>
 <body>
 	<header class="header">
-	    <div class="logo">
-	      <a href="#"><b>Smart Learn</b></a>
-	    </div>
+	    <div class="logo">    
+ <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	      </div>
 
 	    <div class="header-icons">
 	    	<div class="account">

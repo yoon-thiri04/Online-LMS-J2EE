@@ -28,7 +28,7 @@ body{
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
-  	height: 30px;
+  	height: 26px;
  	padding: 20px;
   	background: #427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
@@ -86,7 +86,7 @@ body{
 }
 	.title{
 		text-align: center;
-		padding: 50px 0 20px;
+		padding: 35px 0 20px;
 	}
 	.title h1{
 		margin: 0;

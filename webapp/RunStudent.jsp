@@ -34,11 +34,7 @@ import="dao.UserDAO" import="java.util.List" import="model.Course" import="model
 body{
   background-color: #DDF2FD;
 }
-.header b{
-	font-size:40px;
-	color:white;
-	
-}
+
 .header{
   display: flex;
   position:fixed;
@@ -50,21 +46,31 @@ body{
   color:white;
   width:100%;
 }
+.header b{
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
+}
+
 .logo{
   display: flex;
   align-items: center;
 }
+
 .logo a{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
+
 .header-icons{
   display: flex;
   align-items: center;
   margin-right:10px;
 }
+
+
 .header-icons .account{
   display: flex;
   align-items: center;
@@ -138,14 +144,17 @@ ul li:hover a{
 	margin-left:10px;
 	color:white;
 }
+.btn #Addbtn:hover{
+background-color:164863;
+}
 #Addbtn{
 	display:flex;
 	align-items:center;
-	margin-left:600px;
+	margin-left:10px;
 	margin-top:20px;
 	margin-bottom:25px;
 	background-color:#427D9D;
-	height:40px;
+	height:35px;
 	width:90px;
 	padding-left:5px;
 	padding-right:5px;
@@ -153,6 +162,7 @@ ul li:hover a{
 	transition: all 0.5s ease 0s;
 	border-radius:10px;
 }
+
 #Addbtn h3{
 	color:white;
 }
@@ -217,8 +227,7 @@ table, th, td{
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="#"><b>Smart Learn</b></a>
-	    </div>
+	      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a> </div>
 
 	    <div class="header-icons">
 	    	<div class="account">

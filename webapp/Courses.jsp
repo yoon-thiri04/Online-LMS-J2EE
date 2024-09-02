@@ -15,7 +15,7 @@
 <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
 *{
-    font-family: Arial, Helvetica, sans-serif; 
+   font-family: Poppins, Helvetica, sans-serif; 
     margin:0; padding:0;
     box-sizing: border-box;
     outline: none; border:none;
@@ -25,7 +25,7 @@
 }
 /*header*/
 .header{
-    background-color: #387ADF;
+    background-color: #164863;
  
 	/*position:fixed;*/
   	display: flex;
@@ -34,15 +34,15 @@
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
 
+
 .header b{
-	font-size:40px;
-	color:white;
-	font-family: 'Comic Sans MS', cursive;
+  font-size:37px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -54,7 +54,7 @@
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -62,9 +62,6 @@
   align-items: center;
   margin-right:10px;
 }
-/*.header-icons .account{
-	margin-right:50px;
-}*/
 .header-icons .account ul{
   display: flex;
   align-items: center;
@@ -136,15 +133,13 @@ a {
     flex: wrap;
     gap: 3rem;
    margin-left: 430px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     line-height: 5rem;
 }
   
 .footer1{
     font-size: 20px;
     margin-left: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+    }
 /*Youtube ka har*/
 .container{
     background:linear-gradient(45deg, blueviolet, lightgreen);
@@ -219,8 +214,8 @@ a {
 <body>
 	<header class="header">
 	    <div class="logo">
-	      <a href="sourceHome.jsp"><b>Smart Learn</b></a>
-	    </div>
+	     <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	     </div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
