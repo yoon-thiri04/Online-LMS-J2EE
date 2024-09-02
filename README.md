@@ -209,4 +209,4 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !! Result and review Design **Done**
 - !! Login page **Done** 
 - !! Home page
-- !!
+- !! Profile delete **Mandantory**
