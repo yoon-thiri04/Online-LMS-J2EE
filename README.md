@@ -191,8 +191,6 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 
 - !!!!!!! Password check
 - !! **Primary Color and Logo**
-- !! Pop Up format for View Details Result **no**
-- !! Background image for all pop up 
 - !! **Admin Design -> Lecture, list, Running course**
 - !! Change Pwd Btn
 - !! Quiz - Timer
@@ -212,3 +210,4 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !! Profile delete **Mandantory**
 - !! Wide width
 - !! Hsu Wai Linn **Data Lecturer and course**
+- !!! Empty state Ui
