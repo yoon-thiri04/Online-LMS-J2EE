@@ -206,7 +206,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !! Course background images
 - !! Result and review Design **Done**
 - !! Login page **Done** 
-- !! Home page
+- !! Home page **Mandatory**
 - !! Profile delete **Mandantory**
 - !! Wide width
 - !! Hsu Wai Linn **Data Lecturer and course**
