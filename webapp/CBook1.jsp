@@ -76,22 +76,23 @@ body{
 background:#E6E6E6;
 }
 /*header*/
+/*header*/
 .header{
+	position:fixed;
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #387ADF;
+  	background:#164863;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	
+  font-size:39px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -103,7 +104,7 @@ background:#E6E6E6;
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -111,6 +112,8 @@ background:#E6E6E6;
   align-items: center;
   margin-right:10px;
 }
+
+
 .header-icons .account{
 	margin-right:30px;
 }
@@ -150,6 +153,7 @@ background:#E6E6E6;
 	margin-right:15px;
 	color:white;
 }
+
 /*Java Photo*/
 #ja{
 	background-image:url("C1.jpg");
@@ -253,17 +257,18 @@ img{
     color:#fff;
     font-size:16px;
     text-decoration: none;
-    border: 1px solid #14279B;
+    border: 1px solid #427D9D;
     border-radius: 4px;
     margin-left:30px;
     transition: all 0.3s ease 0s;
-    background:#14279B;
+    background:#427D9D;
 }
 .viewmaterial:hover {
-    color:#14279B ;
+    color: black;
     background:white;
     border: 1px solid #14279B;
 }
+
 .basicduration {
 	margin-top:6px;
 	padding-top:2px;
@@ -301,17 +306,18 @@ img{
 <body>
 <!-- Header -->
 	<header class="header">
-	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>Smart Learn</b></a>
-	    </div>
-	    
-	    <div class="header-icons">
+    <div class="logo">
+     <a href="sourceHomeLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+     </div>
+    <div class="header-icons">
 	    	<div class="account">
 		        <ul>
 	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
 	                <li><a href="CoursesLogin.jsp">Course</a></li>
 	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
+	                <li><a href="login.jsp">Log out</a></li>
 	            </ul>
+	            
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
@@ -319,6 +325,7 @@ img{
 		    </div>
 	    </div>
 	</header>
+
 <!-- About Java -->
     <div id="ja">
 	    <div id="javatext">

@@ -34,37 +34,39 @@ function loginFirst() {
 }
 </script>
 
-<style>
- @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
- 
+<style> @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 *{
-
-	margin: 0;
-    padding: 0;
-    border: none;
-  	outline: none;
-	text-decoration: none;
-	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
-	  
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+   font-family: Poppins, Helvetica, sans-serif;
+}
+body{
+background:#E6E6E6;
 }
 /*header*/
+
+/*header*/
 .header{
+	position:fixed;
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #387ADF;
+  	background:#164863;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-	font-size:40px;
-	color:white;
-	font-family: 'Comic Sans MS', cursive;
+  font-size:39px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
 .logo{
@@ -76,7 +78,7 @@ function loginFirst() {
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  margin: 2rem 8rem 2rem 2rem;
+ 
 }
 
 .header-icons{
@@ -85,6 +87,10 @@ function loginFirst() {
   margin-right:10px;
 }
 
+
+.header-icons .account{
+	margin-right:30px;
+}
 .header-icons .account ul{
   display: flex;
   align-items: center;
@@ -102,13 +108,26 @@ function loginFirst() {
     padding-top: 20px;
     padding-bottom: 10px;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 20px;
     line-height: 30px;
 }
 
 .header-icons .account ul li a:hover{
     color: orange;
 }
+.header-icons .profile{
+	display:flex;
+	align-items:center;
+	margin-left:20px;
+	font-size:20px;
+	cursor:pointer;
+}
+.header-icons .profile i{
+	font-size:29px;
+	margin-right:15px;
+	color:white;
+}
+
 /*Java Photo*/
 #ja{
 	background-image:url("sql1.jpg");
@@ -130,75 +149,100 @@ function loginFirst() {
 	color:white;
 }
 /*cards*/
+
+/*cards*/
 .mainmain{
     display: flex;
     flex-wrap: wrap;
     margin-left:60px;
 }
-
 .grid-container{
-    
-     flex: 0 0 calc(33.333% - 60px);
-    margin-top:80px;
-    margin-bottom:80px;
-     
-    
+    flex: 0 0 calc(33.333% - 60px);
+    margin-top:30px;
+    margin-bottom:50px;
+    margin-left:100px;
+    color:#000;
 }
-
 .grid-item{
 	border: 2px solid white;
     box-shadow: 10px 4px 8px 0 rgba(0, 0, 0, 0.2), 2px 2px 2px 0 rgba(229, 194, 41, 0.264);
     border-radius: 15px 50px ;
     transition: all .3s cubic-bezier(.445, .05, .55, .95);
-    background-image:url("yui.jpg");
-    background-size:fixed;
     border: 1px solid #f0eded;
     transition: all 1s ease 0s;
     cursor: pointer;
-   margin-right:50px;
+    margin-right:30px;
     display:flex;
-    
-    
-    width:660px;
+    width:1200px;
+    margin-bottom:10px;
+    padding-bottom:20px;
+    height:320px;
 }
 .grid-item:hover{
     box-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
     border: 1px solid #111;
-    transform: translateY(-3px);
+    translate: -0px -5px ;
 }
-.grid-item .title{
-	margin-top:20px;
-	margin-left:11px;
-	margin-bottom:10px;
+.grid-container .enrollBTN {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:15px 50px 20px 0;
 }
-.grid-item table {
-	padding-bottom:20px;
+.title{
+	color:#000;
 }
 .grid-item table td{
 	text-align:left;
-	padding-left:10px;
+	font-size:16px;
+	padding-bottom:5px;
+	padding:5px 0;
 }
+.grid-item .table1{
+	width:500px;
 }
-.grid-item table{
-	margin-bottom:10px;
-	padding:20px;
-	width:800px;
+.grid-item .table1 .2nd{
+	background-color:yellow;
+	
 }
-.course{
-  	padding-top:30px;
-  	padding-bottom:20px;
-  	padding-left:300px;
-  	background-color:#D6EAF8;
-  	border-top:1px solid black;
-  	margin-bottom:30px;
+.grid-item .table2{
+	margin-left:50px;
+	width:550px;
+}
+.grid-item .description{
+	text-align: justify;
+	margin-left:50px;
+}
+.grid-item table .table1firstcol{
+	width:130px;
+}
+.grid-item table .table2firstcol{
+	width:100px;
 }
 img{
-	width:180px;
-	height:180px;
+	width:200px;
+	height:200px;
 	border-radius:100px;
-	margin-top:50px;
+	margin-top:30px;
 	margin-left:30px;
 	margin-right:30px;
+}
+/*view materials Button*/
+.viewmaterial {
+    padding: 10px 30px;
+    color:#fff;
+    font-size:16px;
+    text-decoration: none;
+    border: 1px solid #427D9D;
+    border-radius: 4px;
+    margin-left:30px;
+    transition: all 0.3s ease 0s;
+    background:#427D9D;
+}
+.viewmaterial:hover {
+    color: black;
+    background:white;
+    border: 1px solid #14279B;
 }
 .basicduration {
 	margin-top:6px;
@@ -227,46 +271,29 @@ img{
 	font-size:20px;
 	padding-bottom:10px;
 }
-/*Enroll Button*/
-.viewmaterial {
-    padding: 10px 30px;
-    color:black;
-    text-decoration: none;
-    border: 1px solid #999;
-    border-radius: 4px;
-    margin-bottom:20px;
-    margin-left:30px;
-    transition: all 0.3s ease 0s;
-    background:white;
-}
-
-.viewmaterial:hover {
-    color: #fff;
-    background: #748dff;
-    border: 1px solid #748dff;
-}
-</style>
+.available {
+	text-align:center;
+	padding-top:30px;
+	 margin: 0 auto;
+}</style>
 </head>
 <body>
 <!-- Header -->
 	<header class="header">
-	    <div class="logo">
-	      <a href="sourceHome.jsp"><b>Smart Learn</b></a>
-	    </div>
-	    
-	    <div class="header-icons">
+    <div class="logo">
+     <a href="sourceHome.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+     </div>
+    <div class="header-icons">
 	    	<div class="account">
 		        <ul>
 	            	<li><a href="sourceHome.jsp">Home</a></li>
-	                <li><a href="Courses.jsp">Courses</a></li>
-	                <li><a href="login.jsp">Login</a></li>
+	                <li><a href="Courses.jsp">Course</a></li>
 	                <li><a href="sourceHome.jsp#aboutUs">About Us</a></li>
-	            </ul>
+	                <li><a href="login.jsp">Login</a></li>
+	            </ul>  
 	    	</div>
 	    </div>
 	</header>
-
-    
 <!-- About Java -->
     <div id="ja">
 	    <div id="javatext">
@@ -277,6 +304,10 @@ img{
 	    </div>
     </div>
    <div class="mainmain">
+   <div class="available">
+	<h1>Available courses</h1>
+	</div>
+   
 <%
 try {
     // Establishing the connection
@@ -315,60 +346,78 @@ try {
                 String enroll_deadline=courseResultSet1.getString("enrollment_deadline");
                
 %>
-                <div class="grid-container">
-                    <div id="b1" class="grid-item">
-                        <div>
-                            <img src="<%=filename%>" alt="Image">
-                        </div>
-                        <div>
-                            <h2 class="title"><%=title%></h2>
-                            <table>
-                            	<tr>
-                            		<td><b>Name:</b></td>
-                            		<td><%=lectureName%></td>
-                            	</tr>
-                            	<tr>
-                            		<td><b>Level:</b></td>
-                            		<td><%=level%></td>
-                            	</tr>
-                            	<tr>
-                            		<td><b>Category:</b></td>
-                            		<td><%=category%></td>
-                            	</tr>
-                            	<tr>
-                            	 <td><b>Start Date</b></td>
-                            		<td><%=start_date%></td>
-                            	</tr>
-                            	<tr>
-                            	 <td><b>Enroll Deadline</b></td>
-                            		<td><%=enroll_deadline%></td>
-                            	</tr>
-                            	<tr>
-                            		<td><b>Duration:</b></td>
-                            		<td><%=duration%></td>
-                            	</tr>
-                            	<tr style="height:30px;">
-                            		<td style="display:flex;"><b>Description:</b></td>
-                            		<td><%=description%></td>
-                            	</tr>
-                            	
-   
-                            </table>
-                            <div style="display:flex;align-item:center;gap:20px;">
-                            	<button  class="viewmaterial" onclick="loginFirst()" type="button">Enroll</button>
-                            </div>
-                        </div>
+
+<div class="grid-container">
+    	<div id="b1" class="grid-item">
+        	<div>
+            	<img src="<%=filename %>" alt="Image">
+	        </div>
+            <div>
+            	<div class="enrollBTN">
+                	<h2 class="title"><%=title %><i class="fa-solid fa-code"></i></h2>
+                	<c:choose>
+                <c:when test="${not enrollExists}">
+                 <div>
+                    	<button  class="viewmaterial" onclick="loginFirst()" type="button">Enroll</button>
                     </div>
+                            
+                            </c:when>
+                        <c:otherwise>
+                        <div>
+                    	<button  class="viewmaterial" onclick="loginFirst()" type="button">View</button>
+                    </div>
+                        
+                         </c:otherwise>
+                         </c:choose>
+                   
                 </div>
-<%
+			<div style="margin-left:0px;margin-right:40px;width:880px;">
+                <div style="display:flex;">
+	                <table class="table1">
+	                	<tr>
+	                    	<td class="table1firstcol"><b>Instructor</b></td>
+	                        <td class="2nd"><%=lectureName %></td>
+	                    </tr>
+	                    <tr>
+	                 		<td class="table2firstcol"><b>Level</b></td>
+	                    	<td class="2nd" ><%=level %></td>
+	                    </tr>
+	                    <tr>
+	                 		<td class="table2firstcol"><b>Start Date</b></td>
+	                    	<td class="2nd" ><%=start_date%></td>
+	                    </tr>
+	                	<tr>
+	                    	<td class="table1firstcol"><b>Enroll Deadline</b></td>
+	                    	<td class="2nd" ><%=enroll_deadline%></td>
+	                 	</tr>
+	                 	<tr>
+	                 	<td class="table2firstcol"><b>Duration</b></td>	                 		
+	                        <td class="2nd" ><%=duration%></td>
+	                    </tr>
+	                 	
+	                 </table >
+	                 <div style="width:700px;">
+		             	<table class="table2">
+		          	        <tr>
+		                 		<td class="table2firstcol" style="display:flex;"><b>Description</b></td>
+		                    	<td class="22nd" style="line-height:1.5;text-align:justify;"><%=description%></td>
+		                    </tr>
+		                </table>
+		                </div>
+		                </div>
+                 
+			</div>
+			</div>
+			</div>
+			</div>
+                   <%
             }
         }
-       lectureResultSet.close();
+        lectureResultSet.close();
         lectureStatement.close();
         courseResultSet1.close();
         courseStatement1.close();
     }
-    
     courseResultSet.close();
     courseStatement.close();
     con.close();
@@ -377,6 +426,8 @@ try {
     out.println(e);
 }
 %>
+                
+
 
 </div>
 

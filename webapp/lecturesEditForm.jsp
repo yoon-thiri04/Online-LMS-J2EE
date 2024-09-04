@@ -81,12 +81,11 @@ body {
   font-size:29px;
 	margin-right:15px;
 }
-
 /*Pop Up Form*/
 .container{
 color:white;
   max-width: 800px;
- background: #427D9D;
+  background: #427D9D;
   width: 800px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
@@ -95,7 +94,7 @@ color:white;
   margin-top:70px;
   margin-bottom:99px;
   height:500px;
- }
+  }
 .container .text{
   text-align: center;
   font-size: 41px;
@@ -109,8 +108,84 @@ color:white;
 }
 .container form .form-row{
   display: flex;
-  margin: 32px 0;
+  gap: 0px 100px;
+  margin-top: 10px;
 }
+/*closecross*/
+.popup .close {
+   position: absolute;
+   right: 400px;
+   top: 150px;
+   padding: 5px;
+   color: #fff;
+   transition: color .3s;
+   font-size: 2em;
+   line-height: 1.5;
+   font-weight: 700;
+}
+.popup .close:hover {
+   color: skyblue;
+}
+.close-popup {
+   background-color: rgba(0,0,0,.7);
+   cursor: default;
+   position: fixed;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity .5s, visibility 0s linear .5s;
+}
+.popup:target + .close-popup {
+   opacity: 1;
+   visibility: visible;
+   transition-delay: 0s;
+}*/
+.card__text{
+	padding-top:;
+	padding-bottom:;
+}
+.card__text p{
+	padding:5px;
+	border:1px solid #fff;
+	/*margin-bottom:1em;*/
+	margin-top:0.3em;
+	color:#14279B;
+	background-color:transparent;
+	width:300px;
+}
+.card__text label{
+	font-size:15px;
+	color:#fff;
+}
+.card__text h2 {
+	margin-top:0.1em;
+  	margin-bottom: 0.3em;
+  	font-size: 2em;
+  	color:#14279B;
+  	text-align:center;
+}
+option{
+	background-color:#427D9D;
+	width:300px;
+	text-overflow: ellipsis;
+}
+.inputinput{
+	border:none;
+	outline:none;
+	background-color:transparent;
+	width:290px;
+	color:#fff;
+}
+select{
+	background-color:transparent;
+	color:#fff;
+	position:relative;
+	width:290px;
+}
+
 form .form-row .input-data{
   width: 100%;
   height: 40px;
@@ -190,7 +265,7 @@ form .form-row .textarea{
 }
 .submit-btn .input-data .inner{
   height: 100%;
-  width: 300%;
+  width: 250%;
   position: absolute;
   left: -100%;
    background:-webkit-linear-gradient(right, #427D9D, #164863, #DDF2FD, #427D9D);
@@ -283,53 +358,47 @@ label{
  %>
   <div style="height:60px;">------------</div>
   
-<div class="container popup">
+      <div class="container popup">
 <a href="lectures.jsp" class="close">&times;</a>	   
       <div class="text">
          Lecture Edit Form
       </div>
       <form action="Edit" method="post" enctype="multipart/form-data">
-      <input type="hidden" value="${lecture.course_id}" name="prev_course_id"/>
-      <c:set var="course_id" value="${lecture.course_id }"/>
+       <input type="hidden" value="${lecture.course_id}" name="prev_course_id"/>
+        <c:set var="course_id" value="${lecture.course_id }"/>
          <div class="form-row">
-            <div class="input-data">
-               <input type="text" name="name" value="${lecture.name}"required>
-               <div class="underline"></div>
-               <label for="">Name</label>
-            </div>
-            <div class="input-data">
-               <input type="text" name="qualification" value="${lecture.qualification}" required>
-               <div class="underline"></div>
-               <label for="">Qualification</label>
-            </div>
-         </div>
-         <div class="form-row">
-            <div class="input-data">
-               <input type="email" name="email" value="${lecture.email}" required>
-               <div class="underline"></div>
-               <label for="">Email</label>
-            </div>
-            <div class="input-data">
-               <input type="date" name="startDate" style="width:320px;" value="${course.start_date}" required>
-               <div class="underline"></div>
-               <label for="" style="margin-bottom:;">Start on</label>
-            </div>
-         </div>
-         <div class="form-row" > 
-            
-			<div class="input-data">
-               <input type="date" name="deadLine" style="width:320px;" value="${course.enrollment_deadline }" required>
-               <div class="underline"></div>
-               <label for="" style="margin-bottom:;">Enrollment Deadline</label>
-            </div>
-			<div class="photoupload">
-			   <label for="">lecturer's photo</label>
-				   <input type="file" name="file"/>
-				   <br/>
-				   <span id="imageName"></span>  
+            <div class="card__text">
+				<label>Name</label><br>
+				<p><input autocomplete="off" class="inputinput" type="text" name="name" value="${lecture.name}" required></p>
+			</div> 
+            <div class="card__text">
+				<label>Start On</label>
+				<p><input type="date" name="startDate"  class="inputinput" value="${course.start_date}" required></p>
 			</div>
+         </div>
+         <div class="form-row">
+            <div class="card__text">
+				<label>Qualification</label><br>
+				<p><input  autocomplete="off"  class="inputinput"  type="text" name="qualification" value="${lecture.qualification}" required></p>
+			</div>
+			<div class="card__text">
+				<label>Enrollment Deadline</label>
+				<p><input type="date" name="deadLine"  class="inputinput" value="${course.enrollment_deadline }"  required></p>
+			</div>
+         </div>
+          <div class="form-row" > 
+            
+			<div class="card__text">
+				<label>Email</label><br>
+				<p><input  autocomplete="off"  class="inputinput"  type="email" name="email" value="${lecture.email}" required></p>
+			</div>
+			<div class="card__text">
+			   <label for="">lecturer's photo</label>
+				   <p><input style="color:white;" type="file" name="file"/></p>
+			</div>
+			
        </div>
-         <%
+       <%
 int course_id=(int)pageContext.getAttribute("course_id");
 String title=cdao.getTitle(course_id);
 Connection conn = null;
@@ -348,18 +417,18 @@ try {
     StringBuilder options = new StringBuilder();
     
 %>
-        
-			<div class="selectbox" >
-               <label for="" style="margin-bottom:;">Course Title</label>              
-				<select name="course_name"  required>
-				    <option><%=title%></option>
+           <div class="form-row" > 
+         <div class="card__text">
+         	<label for="">Course Title</label>    
+				<p><select name="course_name" required>
+                       <option><%=title%></option>
                   <% while (rs.next()) { %>
                       <option><%= rs.getString("title") %></option>
                   <% } %>
-                </select>
-            </div >
-         
-         <%
+                </select></p> 
+		</div >
+		</div>
+		  <%
 } catch (Exception e) {
     e.printStackTrace();
 } finally {
@@ -368,16 +437,15 @@ try {
     try { if (conn != null) conn.close(); } catch (Exception e) { /* ignored */ }
 }
 %>
-         
-            <div class="form-row submit-btn">
+     
+		<div class="form-row submit-btn">
                <div class="input-data">
                   <div class="inner"></div>
                   <a href="lectures.jsp">
-                  <input type="submit" value="Save"></a>
+                  <input type="submit" value="Add"></a>
                </div>
-            </div>
+               </div>
       </form>
       </div>
-      <a href="#" class="close-popup"></a>
 </body>
 </html>

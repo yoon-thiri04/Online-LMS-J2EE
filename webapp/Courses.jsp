@@ -12,35 +12,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
-
+<style >
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 *{
-   font-family: Poppins, Helvetica, sans-serif; 
-    margin:0; padding:0;
+    margin:0;
+    padding:0;
     box-sizing: border-box;
     outline: none; border:none;
     text-decoration: none;
     text-transform: capitalize;
     transition: .2s linear;
+   font-family: Poppins, Helvetica, sans-serif;
+}
+body{
+background:#E6E6E6;
 }
 /*header*/
+
+/*header*/
 .header{
-    background-color: #164863;
- 
-	/*position:fixed;*/
+	position:fixed;
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
   	height: 60px;
   	width:100%;
  	padding: 20px;
+  	background:#164863;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
-
 .header b{
-  font-size:37px;
+  font-size:39px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -62,6 +65,11 @@
   align-items: center;
   margin-right:10px;
 }
+
+
+.header-icons .account{
+	margin-right:30px;
+}
 .header-icons .account ul{
   display: flex;
   align-items: center;
@@ -73,13 +81,13 @@
 }
 
 .header-icons .account ul li a{
-    color: /*#c5c2c2*/white;
+    color: white;
     text-decoration: none;
     font-size: 17px;
     padding-top: 20px;
     padding-bottom: 10px;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 20px;
     line-height: 30px;
 }
 
@@ -96,7 +104,10 @@
 .header-icons .profile i{
 	font-size:29px;
 	margin-right:15px;
+	color:white;
 }
+
+
 /*Footer*/
 section a:hover{
     color:#D0D9FC;
@@ -114,7 +125,7 @@ section a:hover{
 a {
     text-decoration: none;
     color:#838383;
-    font-family: Arial, Helvetica, sans-serif;
+    
     font-size: 4;
 }
 
@@ -214,21 +225,22 @@ a {
 <body>
 	<header class="header">
 	    <div class="logo">
-	     <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
-	     </div>
+	       <a href="sourceHome.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+</div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
 		        <ul>
-		           <li><a href="sourceHome.jsp">Home</a></li>
-		           <li><a href="Courses.jsp" >Course</a></li>                      
-                   <li><a href="login.jsp" >Login</a></li>
-                   <li><a href="sourceHome.jsp#aboutUs">About Us</a></li>
-	           </ul>
+	            	<li><a href="sourceHome.jsp">Home</a></li>
+	                <li><a href="Courses.jsp">Course</a></li>
+	                <li><a href="sourceHome.jsp#aboutUs">About Us</a></li>
+	                <li><a href="login.jsp">Login</a></li>
+	                
+	            </ul>
 	    	</div>
-	    	
 	    </div>
 	</header>
+	<div style="height:60px;">---------------</div>
 <div class="container">
 
     <h1 class="heading">Our Courses</h1>
@@ -237,16 +249,16 @@ a {
 
         <div class="box">
             <img src="htmlhtml.jpg" alt="">
-            <h3>HTML</h3>
-            <p>HTML (Hypertext Markup Language) is the standard markup language used...</p>
-            <a href="HTMLBook1.jsp" class="btn">View</a>
+            <h3>Web Development Basic</h3>
+            <p>Web Developer is the standard markup language used...</p>
+            <a href="WebDev1.jsp" class="btn">View</a>
         </div>
 
         <div class="box">
             <img src="csscss.jpg" alt="">
-            <h3>CSS</h3>
-            <p>CSS (Cascading Style Sheets) is a style sheet language used to define the ...</p>
-            <a href="CSSBook1.jsp" class="btn">View</a>
+            <h3>PHP</h3>
+            <p>PHP is a style sheet language used to define the ...</p>
+            <a href="PHP.jsp" class="btn">View</a>
         </div>
 
         <div class="box">

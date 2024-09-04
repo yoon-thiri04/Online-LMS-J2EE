@@ -204,11 +204,12 @@ background-color:164863;
 
 /*Table*/
 .col1{
-	width:350px;
+	width:250px;
 	padding: 10px 10px;
 }
 .col2{
-	width:350px;
+	width:300px;
+	padding: 5px 5px;
 }
 .col3{
 	width:350px;

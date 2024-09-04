@@ -17,11 +17,11 @@ String username=udao.getName(userEmail);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style type="text/css"> @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 *{
-    margin:0; padding:0;
+    margin:0;
+    padding:0;
     box-sizing: border-box;
     outline: none; border:none;
     text-decoration: none;
@@ -29,22 +29,22 @@ String username=udao.getName(userEmail);
     transition: .2s linear;
    font-family: Poppins, Helvetica, sans-serif;
 }
+
 /*header*/
 .header{
+	position:fixed;
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background: #164863;
-  	
+  	background:#164863;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
-  font-size:37px;
+  font-size:39px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -66,6 +66,7 @@ String username=udao.getName(userEmail);
   align-items: center;
   margin-right:10px;
 }
+
 
 .header-icons .account{
 	margin-right:30px;
@@ -117,7 +118,7 @@ section a:hover{
     background-color: #111111;
     padding-right: 30px;
     color:azure;
-    text-align:center;
+    text-align:left;
 }
 
 a {
@@ -221,7 +222,7 @@ a {
 <body>
 	<header class="header">
 	    <div class="logo">     
- <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+ <a href="sourceHomeLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
 	     </div>
 	    
 	    <div class="header-icons">
@@ -230,32 +231,33 @@ a {
 	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
 	                <li><a href="CoursesLogin.jsp">Course</a></li>
 	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
+	                <li><a href="Login.jsp">Logout</a></li>
 	            </ul>
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h3><%= username %></h3>
+		        <h4><%= username %></h4>
 		    </div>
 	    </div>
 	</header>
+	<div style="height:60px;">---------------</div>
 <div class="container">
-
     <h1 class="heading">Our Courses</h1>
 
     <div class="box-container">
 
         <div class="box">
             <img src="htmlhtml.jpg" alt="">
-            <h3>HTML</h3>
-            <p>HTML (Hypertext Markup Language) is the standard markup language used...</p>
-            <a href="HTMLBook.jsp" class="btn">View</a>
+            <h3>Web Development</h3>
+            <p>Web Development is the standard markup language used...</p>
+            <a href="WebDev.jsp" class="btn">View</a>
         </div>
 
         <div class="box">
             <img src="csscss.jpg" alt="">
-            <h3>CSS</h3>
-            <p>CSS (Cascading Style Sheets) is a style sheet language used to define the ...</p>
-            <a href="CSS.jsp" class="btn">View</a>
+            <h3>PHP</h3>
+            <p>PHP is a style sheet language used to define the ...</p>
+            <a href="phpBook.jsp" class="btn">View</a>
         </div>
 
         <div class="box">

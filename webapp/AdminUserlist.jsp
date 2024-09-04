@@ -158,18 +158,16 @@ ul li:hover a{
 
 /*Table*/
 .col1{
-	width:100px;
-	padding: 5px 5px;
+	width:250px;
+	padding: 10px 10px;
 }
 .col2{
-	width:250px;
+	width:300px;
 }
 .col3{
 	width:250px;
 }
-.col4{
-	width:300px;
-}
+
 
 
 table, th, td{
@@ -212,25 +210,25 @@ table, th, td{
     <div id="alltable">
         	<table id="tablehead">
             	<tr>
-	                <td class="th col1"><h3>Profile</h3></td>
-	                <td class="th col2"><h3>User Name</h3></td>
-	                <td class="th col3"><h3>Email </h3></td>
-	                <td class="th col4"><h3>Total Enrolled Courses</h3></td>
+	                
+	                <td class="th col1"><h3>User Name</h3></td>
+	                <td class="th col2"><h3>Email </h3></td>
+	                <td class="th col3"><h3>Total Enrolled Courses</h3></td>
 	                
             	</tr>
             </table>            
             <c:forEach items="${userlist}" var="user"> 
             <table id="tbo">
             <tr> 
-                   <td class="td col1"><img src="avatar.jpeg" width="80" height="60"/></td> 
-	                <td class="td col2">${user.user_name}</td>
-	                <td class="td col3">${user.email}</td>
+                   
+	                <td class="td col1">${user.user_name}</td>
+	                <td class="td col2">${user.email}</td>
 	                <c:set var="email" value="${user.email}"></c:set>
 	               <%
 	               String email=(String) pageContext.getAttribute("email");
 	               int total=udao.getTotal(email); 
 	               %>
-	                <td class="td col4"><%=total %></td>
+	                <td class="td col3"><%=total %></td>
 	                
             </tr>
             </table>

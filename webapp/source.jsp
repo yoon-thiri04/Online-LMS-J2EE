@@ -4,8 +4,9 @@
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8">
-    <title>Starbucks Website Landing Page</title> 
+    <title>Home page</title> 
     <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     <style>
     	@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 *
@@ -13,13 +14,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: Poppins, Helvetica, sans-serif;
  
 }
-/*body{
-	background-color:#dfe6fd;
-}*/
-
 a {
     text-decoration: none;
     color: inherit;
@@ -31,48 +28,82 @@ a {
     margin-top:-3px; 
 }
 
-/* Header */
-header {
-    background: #164863;
-    color: #fff;
-    padding: 1.5rem 0;
-    top: 0;
-    z-index: 1000;
-    height:70px;
+/*header*/
+.header{
+	position:fixed;
+  	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+  	height: 60px;
+  	width:100%;
+ 	padding: 20px;
+  	background:#427D9D;
+  	box-shadow: 0px 0px 10px 0px grey;
+  	color:white;
+}
+.header b{
+  font-size:39px;
+  color:white;
+  font-family: 'Amatic SC', cursive;
 }
 
-header .logo a {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    
+.logo{
+  display: flex;
+  align-items: center;
 }
 
-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+.logo a{
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+ 
 }
 
-header nav ul {
-    display: flex;
-    list-style: none;
+.header-icons{
+  display: flex;
+  align-items: center;
+  margin-right:10px;
 }
 
-header nav ul li {
-    margin-left: 2rem;
+
+.header-icons .account{
+	margin-right:30px;
+}
+.header-icons .account ul{
+  display: flex;
+  align-items: center;
+  gap:40px;
 }
 
-header nav ul li a {
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background 0.3s;
+.header-icons .account ul li{
+	list-style-type: none;
 }
 
-header nav ul li a:hover {
-    background: ;
+.header-icons .account ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 20px;
+    line-height: 30px;
+}
+
+.header-icons .account ul li a:hover{
+    color: orange;
+}
+.header-icons .profile{
+	display:flex;
+	align-items:center;
+	margin-left:20px;
+	font-size:20px;
+	cursor:pointer;
+}
+.header-icons .profile i{
+	font-size:29px;
+	margin-right:15px;
+	color:white;
 }
 .content
 {
@@ -563,21 +594,26 @@ footer {
 <body> 
     <section>
         <div class="circle1"></div>
-        <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="#home"><b>Smart Learn</b></a>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">Course</a></li>
-                    <li><a href="#shop">Login</a></li>
-                    <li><a href="#contact">AboutUs</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        <header class="header">
+    <div class="logo">
+     <a href="sourceHomeLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+     </div>
+    <div class="header-icons">
+	    	<div class="account">
+		        <ul>
+	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
+	                <li><a href="CoursesLogin.jsp">Course</a></li>
+	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
+	            </ul>
+	    	</div>
+	    	<div class="profile">
+		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
+		        <h4><%=  %></h4>
+		    </div>
+	    </div>
+	</header>
+
+  
     
     
         <div class="content">
@@ -594,8 +630,6 @@ footer {
        
        
     </section> 
-
-   
 
 
     <section id="featured-products">

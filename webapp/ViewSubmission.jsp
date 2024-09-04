@@ -114,7 +114,7 @@ body {
  }
 .container .text{
   text-align: center;
-  font-size: 35px;
+  font-size: 29px;
   font-weight: 600;
   background:white;
   -webkit-background-clip: text;

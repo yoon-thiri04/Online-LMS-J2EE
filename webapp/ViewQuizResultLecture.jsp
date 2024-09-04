@@ -122,7 +122,7 @@ body {
  }
 .container .text{
   text-align: center;
-  font-size: 30px;
+  font-size: 29px;
   font-weight: 500;
   background:white;
   -webkit-background-clip: text;

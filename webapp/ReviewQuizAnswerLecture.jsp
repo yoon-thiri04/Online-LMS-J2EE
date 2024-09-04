@@ -159,6 +159,7 @@ font-size:18px;
     padding-top:15px;
     height:300px;
     width:880px;
+    background:#fff;
 }
 .grid-item #cAns{
 margin-top:20px;

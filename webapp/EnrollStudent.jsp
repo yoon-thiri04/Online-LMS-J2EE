@@ -166,11 +166,11 @@ ul li:hover a{
 
 /*Table*/
 .col1{
-	width:100px;
-	padding:5px 5px;
+	width:250px;
+	padding:10px 10px;
 }
 .col2{
-	width:180px;
+	width:300px;
 }
 .col3{
 	width:260px;
@@ -180,7 +180,7 @@ ul li:hover a{
 }
 .col5{
 	width:250px;
-	padding:0 5px;
+	
 }
 
 table, th, td{
@@ -225,24 +225,24 @@ table, th, td{
     <div id="alltable">
         	<table id="tablehead">
             	<tr>
-	                <td class="th col1"><h3>Profile</h3></td>
-	                <td class="th col2"><h3>User Name</h3></td>
-	                <td class="th col3"><h3>Email </h3></td>
-	                <td class="th col4"><h3>Enrollment Date</h3></td>
-                    <td class="th col5"><h3>Action</h3></td>
+	               
+	                <td class="th col1"><h3>User Name</h3></td>
+	                <td class="th col2"><h3>Email </h3></td>
+	                <td class="th col3"><h3>Enrollment Date</h3></td>
+                    <td class="th col3"><h3>Action</h3></td>
             	</tr>
             </table>            
            <c:forEach items="${stuList}" var="stu">   
 
             <table id="tbo">
             <tr> 
-                   <td class="td col1"><img src="avatar.jpeg" width="80" height="60"/></td> 
-	                <td class="td col2">${stu.name}</td>
-	                <td class="td col3">${stu.email}</td>
-	                <td class="td col4">${stu.date}</td>
+                    
+	                <td class="td col1">${stu.name}</td>
+	                <td class="td col2">${stu.email}</td>
+	                <td class="td col3">${stu.date}</td>
 	                
 	              
-	                <td class="td col5">
+	                <td class="td col4">
 	                <a href="${pageContext.request.contextPath}/enrollController?action=Delete&email=${stu.email}"  class="action delete">
                     Delete <i class="fa-solid fa-trash"></i></a>
 	                             

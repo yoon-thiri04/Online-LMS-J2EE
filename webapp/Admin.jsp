@@ -249,7 +249,6 @@ ul li:hover a{
 #tbo td .action{
   	display:inline-block;
   	padding:5px 0;
-  	
   	margin-right:3px;
   	color:black;
   	transition: all 0.3s ease 0s;
@@ -267,7 +266,7 @@ ul li:hover a{
 	padding: 10px 10px;
 }
 .col2{
-	width:160px;
+	width:180px;
 }
 .col3{
 	width:250px;

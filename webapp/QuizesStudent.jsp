@@ -135,6 +135,7 @@ display:flex;
     padding-left:50px;
     padding-top:20px;
     height:290px;
+    background:#fff;
     width:880px;
 }
 .grid-item #cAns{
