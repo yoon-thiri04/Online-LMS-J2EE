@@ -68,7 +68,7 @@ body{
   	color:white;
 }
 .header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -288,6 +288,34 @@ button::-moz-focus-inner,
 .phototable{
 	display:flex;
 }
+.empty{
+  margin: 0 auto;
+  margin-top:10%;
+  background-color:#DDF2FD;
+  width:29%;
+  height:280px;
+ 
+}
+.empty img{
+width:270px;
+height:210px;
+margin-top:10px;
+margin-left:80px;
+ img-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+}
+.empty a{
+    background-color:#427D9D;
+	height:40px;
+	width:90px;
+	padding:6px;
+	margin-left:2px;
+    transition: all 0.5s ease 0s;
+    border-radius:10px;
+    align-items:center;
+    font-size:15px;
+    margin-top:10px;
+    color:white;
+}
 </style>
 </head>
 <body>
@@ -311,6 +339,16 @@ button::-moz-focus-inner,
 	    </div>
 	</header>
 	<div style="height:60px;">------------</div>
+	<%if (total==0){ %>
+	<div class="empty">
+	 <img src="logrem.png" />
+	
+	 <p style="text-align:center;">You currently have no enrolled courses.<br>
+	  Explore and browse available courses to get started! <a href="CoursesLogin.jsp"> Browse
+	  <i class="fa-solid fa-magnifying-glass"></i></a> </p>
+	 
+	 </div>
+	<%}else{ %>
 	<div id="title">
     <p>Your Enrolled Courses<br>
  </p>
@@ -398,6 +436,6 @@ button::-moz-focus-inner,
 			%>	
 		</div>
 	
-
+<%} %>
 </body>
 </html>

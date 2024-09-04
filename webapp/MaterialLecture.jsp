@@ -441,7 +441,32 @@ transition: all 0.4s;
     width: 40%!important;
   }
 }
+.empty{
+  margin: 0 auto;
+  margin-top:10%;
+  background-color:#DDF2FD;
+  width:29%;
+  height:280px;
  
+}
+.empty img{
+width:270px;
+height:210px;
+margin-top:10px;
+margin-left:80px;
+ img-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+}
+.empty a{
+    background-color:#427D9D;
+	height:40px;
+	width:90px;
+	padding:6px;
+	margin-left:2px;
+    transition: all 0.5s ease 0s;
+    border-radius:10px;
+    align-items:center;
+    font-size:15px;
+}
 </style>
 </head>
 <body>
@@ -472,15 +497,16 @@ transition: all 0.4s;
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
       </ul>
   </div>
-  <% if (total==0){ 
-  %>
-  <div id="Addbtn">
-      <a href="#popup" class="btn">
-        <h3>Add</h3><i class="fa-solid fa-arrow-up-from-bracket"></i>
-        </a>
-      </div>
-  <img src="zero.jpg" class="card__image" />
-  <%} else{ %>
+  <% if(total==0){
+	%>
+	<div class="empty">
+	 <img src="logrem.png" />
+	
+	 <p style="text-align:center;">Opps! There is no course materials yet. <a href="#popup">Create <i class="fa-solid fa-arrow-up-from-bracket"></i></a> </p>
+	 
+	 </div>
+   <%
+   }else{ %>
   <div id="title">
     <p></p>
     <div id="Addbtn">
@@ -503,7 +529,7 @@ transition: all 0.4s;
 				</td>
 				<td>
 					<a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DOWNLOAD&id=${ml.id}&title=${ml.title}&ftype=${ml.ftype}" 
-					class="action dowload">Edit <i class="fa-sharp fa-solid fa-download fa-sm"></i></a>
+					class="action dowload">Download <i class="fa-sharp fa-solid fa-download fa-sm"></i></a>
 					 <a href = "${pageContext.request.contextPath}/MaterialLectureController?action=DELETE&id=${ml.id}&type=${ml.type}"  
 					 class="action delete">Delete <i class="fa-sharp fa-solid fa-trash-can"></i></a>
 				</td>

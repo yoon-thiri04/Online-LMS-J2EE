@@ -16,6 +16,7 @@ String username=udao.getName(userEmail);
     quizDAO qdao=new quizDAO();
     List<Quiz> quizList = qdao.get(course_id);
     pageContext.setAttribute("qList", quizList,PageContext.PAGE_SCOPE);  
+    int total=quizList.size();
 %>
     
 <!DOCTYPE html>
@@ -258,6 +259,26 @@ margin-top:10px;
 color:#3D56B2;
 }
 
+.empty{
+  margin: 0 auto;
+  margin-top:10%;
+  background-color:#DDF2FD;
+  width:27%;
+  height:280px;
+ 
+}
+.empty img{
+width:270px;
+height:210px;
+margin-top:10px;
+margin-left:80px;
+ img-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+}
+
+.fa-paper-plane{
+font-size:18px;
+font-weight:500;
+}
 </style>
 </head>
 <body>
@@ -292,7 +313,13 @@ color:#3D56B2;
     </ul>  
   </div>
 <div class="container">
- 
+ <%if(total==0){ %>
+ <div class="empty">
+	 <img src="logrem.png" />
+	
+	 <p style="text-align:center;">Opps! There is no Quizzes yet. <i class="fa-solid fa-paper-plane"></i> </p>
+	 </div>
+ <%}else{ %>
   <c:forEach items="${qList}" var="quiz">
   <c:set var="quiz_id" value="${quiz.quiz_id}" />
   
@@ -377,7 +404,8 @@ pageContext.setAttribute("deadlineReached",deadlineReached);
 			</tr>
 		</table>
 	</div>
-          </c:forEach>      
+          </c:forEach> 
+          <%} %>     
 </div>
 </body>
 </html>

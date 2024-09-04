@@ -39,12 +39,12 @@ String username=udao.getName(userEmail);
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background:#164863;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
 .header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -150,7 +150,7 @@ a {
     }
 /*Youtube ka har*/
 .container{
-    background:linear-gradient(45deg, blueviolet, lightgreen);
+   background-color: #DDF2FD;
     padding:15px 9%;
     padding-bottom: 100px;
 }
@@ -242,7 +242,7 @@ a {
 	</header>
 	<div style="height:60px;">---------------</div>
 <div class="container">
-    <h1 class="heading">Our Courses</h1>
+    <h1 class="heading" style="color:black;">Our Courses</h1>
 
     <div class="box-container">
 

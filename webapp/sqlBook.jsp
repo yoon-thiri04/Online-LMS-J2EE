@@ -82,7 +82,8 @@ background:#E6E6E6;
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background:#164863;
+  	background:#427D9D;
+  	
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }

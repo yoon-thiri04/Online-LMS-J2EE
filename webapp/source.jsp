@@ -56,7 +56,6 @@ a {
   color: #000;
   font-size: 18px;
   font-weight: 600;
- 
 }
 
 .header-icons{
@@ -604,12 +603,10 @@ footer {
 	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
 	                <li><a href="CoursesLogin.jsp">Course</a></li>
 	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
+	                <li><a href="login.jsp">Login</a></li>
 	            </ul>
 	    	</div>
-	    	<div class="profile">
-		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h4><%=  %></h4>
-		    </div>
+	    	
 	    </div>
 	</header>
 
@@ -756,7 +753,7 @@ footer {
 	    		</div>
 			</div>   
     	</div>
-    </section>
+   
     </div>
     <script>
             var acc = document.getElementsByClassName("accordion");

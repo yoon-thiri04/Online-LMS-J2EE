@@ -14,6 +14,7 @@ String username=udao.getNameLecture(userEmail);%>
     uploadDao mDAO = new uploadDao();
     List<Material> matList = mDAO.getforAssignment(course_id);
     pageContext.setAttribute("mList", matList,PageContext.PAGE_SCOPE);
+    int total=matList.size();
    
 %>
 <!DOCTYPE html>
@@ -424,6 +425,33 @@ form .form-row .textarea{
   }
 }
 
+.empty{
+  margin: 0 auto;
+  margin-top:10%;
+  background-color:#DDF2FD;
+  width:29%;
+  height:280px;
+ 
+}
+.empty img{
+width:270px;
+height:210px;
+margin-top:10px;
+margin-left:80px;
+ img-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+}
+
+.empty a{
+    background-color:#427D9D;
+	height:40px;
+	width:90px;
+	padding:6px;
+	margin-left:2px;
+    transition: all 0.5s ease 0s;
+    border-radius:10px;
+    align-items:center;
+    font-size:15px;
+}
 </style>
 </head>
 <body>
@@ -454,7 +482,14 @@ form .form-row .textarea{
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
       </ul>
   </div>
-  
+  <% if(total==0){ %>
+  <div class="empty">
+	 <img src="logrem.png" />
+	
+	 <p style="text-align:center;">Opps! There is no assignment yet. <a href="#popup">Create <i class="fa-solid fa-arrow-up-from-bracket"></i></a> </p>
+	 
+	 </div>
+  <%}else{ %>
   <div id="title">
     <p></p>
     <div id="Addbtn">
@@ -483,7 +518,7 @@ form .form-row .textarea{
 		</table>
 	</div>
     </c:forEach>
-    
+    <%} %>
 	<div id="popup" class="container popup">
     	<a href="#" class="close">&times;</a>
     	<div class="text">

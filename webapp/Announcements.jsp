@@ -24,10 +24,8 @@
     }
     announceDAO andao=new announceDAO();
     List<Announcement> announce=andao.getfor(course_id);
-   
-    
     pageContext.setAttribute("aList", announce,PageContext.PAGE_SCOPE);
-   
+    int total=announce.size();
 %>
 
 <!DOCTYPE html>
@@ -212,6 +210,22 @@ margin-top:10px;
 .container{
 margin-top:40px;
 }
+.empty{
+  margin: 0 auto;
+  margin-top:10%;
+  background-color:#DDF2FD;
+  width:27%;
+  height:280px;
+ 
+}
+.empty img{
+width:270px;
+height:210px;
+margin-top:10px;
+margin-left:80px;
+ img-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+}
+
 </style>
 </head>
 <body>
@@ -248,6 +262,13 @@ margin-top:40px;
     </ul>
 	</div>
    <div class="container">
+   <%if (total==0){ %>
+    <div class="empty">
+	 <img src="logrem.png" />
+	
+	 <p style="text-align:center;">Opps! No announcements have been made. <i class="fa-solid fa-bullhorn"></i> </p>
+	 </div>
+   <%}else{ %>
 	<c:forEach items="${aList}" var="al">
 	 <div class="block">
 		<table style="width:800px;">
@@ -264,6 +285,7 @@ margin-top:40px;
 		</table>
 	</div>
     </c:forEach>
+    <%} %>
       </div>           
 </body>
 </html>

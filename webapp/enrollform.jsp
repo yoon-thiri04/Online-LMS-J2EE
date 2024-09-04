@@ -40,7 +40,7 @@ body{
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background:#164863;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -302,7 +302,7 @@ label{
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h3><%= username %></h3>
+		        <h4><%= username %></h4>
 		    </div>
 	    </div>
 	</header>

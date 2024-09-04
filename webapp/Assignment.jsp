@@ -14,6 +14,8 @@
     
     List<Material> matList = mDAO.getforAssignment(course_id);
     pageContext.setAttribute("mList", matList, PageContext.PAGE_SCOPE);
+    int total=matList.size();
+    
     
 %>
 
@@ -265,7 +267,26 @@ margin-top:10px;
    font-size:22px;
    color:red;
 }
+.empty{
+  margin: 0 auto;
+  margin-top:10%;
+  background-color:#DDF2FD;
+  width:27%;
+  height:280px;
+ 
+}
+.empty img{
+width:270px;
+height:210px;
+margin-top:10px;
+margin-left:80px;
+ img-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+}
 
+.fa-stack-overflow{
+font-size:20px;
+font-weight:500;
+}
 </style>
 </head>
 <body>
@@ -304,7 +325,13 @@ margin-top:10px;
     
                 
   <div class="container">
-       
+       <% if(total==0){ %>
+           <div class="empty">
+	 <img src="logrem.png" />
+	
+	 <p style="text-align:center;">Opps! There is no assignment yet. <i class="fa-solid fa-calendar-days"></i> </p>
+	 </div>
+       <%}else{ %>
        <c:forEach items="${mList}" var="ml">
        <c:set var="mat_id" value="${ml.id}" />
        <%
@@ -398,6 +425,7 @@ pageContext.setAttribute("deadlineReached",deadlineReached);
 		</table>
 	</div>
     </c:forEach>
+    <%} %>
             </div>
             
 

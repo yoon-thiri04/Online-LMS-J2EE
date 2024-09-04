@@ -14,6 +14,7 @@ String username=udao.getNameLecture(userEmail);%>
     EnrollStudentDAO edao=new EnrollStudentDAO();
     List<EnrollStudent> stu = edao.get_enroll(course_id);
     pageContext.setAttribute("stuList",stu,PageContext.PAGE_SCOPE); 
+    int total=stu.size();
 %>
 <!DOCTYPE html>
 <html>
@@ -187,6 +188,26 @@ table, th, td{
 	border: 0.1px solid black;
 	border-collapse: collapse;
 }
+.empty{
+  margin: 0 auto;
+  margin-top:10%;
+  background-color:#DDF2FD;
+  width:29%;
+  height:280px;
+ 
+}
+.empty img{
+width:270px;
+height:210px;
+margin-top:10px;
+margin-left:80px;
+ img-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+}
+.empty img,p{
+
+text-align:center;
+}
+
     </style>
 <body>
 	<header class="header">
@@ -216,6 +237,14 @@ table, th, td{
         <li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
      </ul>
   </div>
+  <%if (total==0){ %>
+  <div class="empty">
+	 <img src="logrem.png" />
+	 <p>Opps! There is no enrolled students yet. <i class="fa-solid fa-feather"></i></p>
+	 
+	 </div>
+  <% }else{ 
+  %>
 	 <div id="title">
 		<h2>Enrolled Students</h2>
 		
@@ -252,7 +281,7 @@ table, th, td{
             </table>
             </c:forEach>
                </div>
-	
+	<%} %>
 	
 </body>
 </html>

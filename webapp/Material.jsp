@@ -232,8 +232,26 @@ margin-top:10px;
 .download:hover{
 color:#3D56B2;
 }
+.empty{
+  margin: 0 auto;
+  margin-top:10%;
+  background-color:#DDF2FD;
+  width:27%;
+  height:280px;
+ 
+}
+.empty img{
+width:270px;
+height:210px;
+margin-top:10px;
+margin-left:80px;
+ img-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
+}
 
-
+.fa-stack-overflow{
+font-size:20px;
+font-weight:500;
+}
 </style>
 </head>
 <body>
@@ -252,7 +270,7 @@ color:#3D56B2;
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h3><%= username %></h3>
+		        <h4><%= username %></h4>
 		    </div>
 	    </div>
 	</header>
@@ -272,8 +290,13 @@ color:#3D56B2;
   <div class="container">
    <% if(total==0){
 	%>
-	 <img src="zero.jpg" class="card__image" />
-   <%}else{ %>
+	<div class="empty">
+	 <img src="logrem.png" />
+	
+	 <p style="text-align:center;">Opps! There is no course materials yet. <i class="fa-brands fa-stack-overflow"></i> </p>
+	 </div>
+   <%
+   }else{ %>
    <c:forEach items="${mList}" var="ml">
             <c:set var="mat_id" value="${ml.id}" />
             

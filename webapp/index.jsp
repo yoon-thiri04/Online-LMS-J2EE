@@ -34,7 +34,7 @@ body{
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }.header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -106,8 +106,8 @@ body{
 		float: left;
 		width:50%;
 	    height: 500px;
-	    background: url(https://st3.depositphotos.com/6837936/19487/v/450/depositphotos_194871882-stock-illustration-e-learning-online-education-design.jpg);
-		background-size: cover;
+	    background: url('pflog.jpg');
+	    background-size: cover;
 		box-sizing: border-box;
 	}
 	.container .right{

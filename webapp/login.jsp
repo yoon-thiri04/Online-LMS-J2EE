@@ -108,8 +108,8 @@
 		float: left;
 		width:50%;
 	    height: 450px;
-	    background: url(https://st3.depositphotos.com/6837936/19487/v/450/depositphotos_194871882-stock-illustration-e-learning-online-education-design.jpg);
-		background-size: cover;
+	    background: url('pflog.jpg');
+	    background-size: cover;
 		box-sizing: border-box;
 	}
 	.container .right{
