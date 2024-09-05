@@ -192,5 +192,5 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !!!!!!! Password che
 - !! Quiz - Timer
 
-#### I couldn't do well on my project show 05.9.24. Even I cry😢
+#### I couldn't do well on my project show 05.9.24. Even I cry😢. Everybody out there having their best life, making their best. But for me I actually trying the best I can but still couldn't
 
