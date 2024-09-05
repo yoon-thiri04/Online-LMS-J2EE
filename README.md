@@ -192,5 +192,5 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !!!!!!! Password che
 - !! Quiz - Timer
 
-#### I couldn't do well on my project show 05.9.24. Even I cry😢. Everybody out there having their best life, making their best. But for me I actually trying the best I can but still couldn't up to be the same with them. I feel so sorry and hate myself at the same time. 😢 I just wanna relax like nth have to be tried too hard to be like others. Just music and sleeping enough. I am both physically and mentally tired. I am so done. 
+#### I couldn't do well on my project show 05.9.24. Even I cry😢. Everybody out there having their best life, making their best. But for me I actually trying the best I can but still couldn't up to be the same with them. I feel so sorry and hate myself at the same time. 😢 I just wanna relax like nth have to be tried too hard to be like others. Just music and sleeping enough. I am both physically and mentally tired. I am so done. I wish I was a better person than this
 
