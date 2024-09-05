@@ -56,7 +56,7 @@ body {
 }
 /*header*/
 .header{
-	/*position:fixed;*/
+	position:fixed;
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -69,7 +69,7 @@ body {
 }
 
 .header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -197,7 +197,8 @@ color:blue;
     </div>
   </header>
  
-  <div style="height:60px;"></div>
+  <div style="height:60px;">------------</div>
+   <div style="height:60px;"></div>
 	    <div id="popup" class="container popup">
     	<a href="QuizResultController?action=LectureView&quiz_id=<%=result.getQuiz_id() %>" class="close">&times;</a>
     	<div class="text">

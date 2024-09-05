@@ -56,7 +56,7 @@ body{
 }
 /*header*/
 .header{
-	position:fixed;
+	
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -327,9 +327,10 @@ margin-left:80px;
 	    <div class="header-icons">
 	    	<div class="account">
 		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
+	            	<li><a href="sourceLogin.jsp">Home</a></li>
 	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
+	                <li><a href="sourceLogin.jsp#ourfaq">FAQ</a></li>
+	                <li><a href="login.jsp">Log Out</a></li>
 	            </ul>
 	    	</div>
 	    	<div class="profile">
@@ -338,7 +339,7 @@ margin-left:80px;
 		    </div>
 	    </div>
 	</header>
-	<div style="height:60px;">------------</div>
+
 	<%if (total==0){ %>
 	<div class="empty">
 	 <img src="logrem.png" />

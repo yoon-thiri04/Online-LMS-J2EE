@@ -36,6 +36,7 @@ body{
 }
 
 .header{
+positon:fixed;
   display: flex;
   position:fixed;
   align-items: center;

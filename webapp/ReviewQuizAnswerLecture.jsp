@@ -44,19 +44,17 @@ body{
 }
 /*header*/
 .header{
-	position:fixed;
+	
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
   	height: 60px;
   	width:100%;
  	padding: 20px;
- 	margin-top:-20px;
-  	background: #427D9D;
+  	background:#427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
-
 .header b{
   font-size:37px;
   color:white;
@@ -80,47 +78,14 @@ body{
   align-items: center;
   margin-right:10px;
 }
-
 .header-icons .account{
-	margin-right:30px;
-}
-.header-icons .account ul{
-  display: flex;
-  align-items: center;
-  gap:40px;
-}
-
-.header-icons .account ul li{
-	list-style-type: none;
-}
-
-.header-icons .account ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 20px;
-    line-height: 30px;
-}
-
-.header-icons .account ul li a:hover{
-    color: orange;
-}
-.header-icons .profile{
 	display:flex;
 	align-items:center;
-	margin-left:20px;
-	font-size:20px;
-	cursor:pointer;
 }
-.header-icons .profile i{
-	font-size:29px;
-	margin-right:15px;
-	color:white;
+.header-icons .account i{
+  font-size:29px;
+  margin-right:15px;
 }
-
 .correct-answer{
     border: 2px solid white;
     box-shadow: 5px 30px 56.1276px rgb(50 50 55 / 12%);
@@ -175,7 +140,7 @@ margin-top:20px;
 	height:60px;
 	width:1050px;
 	margin-left:330px;
-	margin-top:20px;
+	
 	display:flex;
 	align-items:center;
 }
@@ -269,24 +234,17 @@ a {
 </style>
 <body>
 <header class="header">
-	    <div class="logo">
-	      <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a></div>
-	    
-	    <div class="header-icons">
-	    	<div class="account">
-		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
-	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
-	            </ul>
-	    	</div>
-	    	<div class="profile">
-		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
-		        <h4><%= username %></h4>
-		    </div>
-	    </div>
-	</header>
-	
+    <div class="logo">
+       <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+      </div>
+      <div class="header-icons">
+        <div class="account">
+            <i class="fa-solid fa-circle-user"></i>
+            <h3><%= username %></h3>
+        </div>
+      </div>
+  </header>
+	 
   <div id="title">
     <p><%=course_title%><br><%=request.getAttribute("title") %>  Total Quizzes - <%=request.getAttribute("total") %>
     <br>

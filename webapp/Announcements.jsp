@@ -238,9 +238,10 @@ margin-left:80px;
 	    <div class="header-icons">
 	    	<div class="account">
 		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
-	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
+	            	<li><a href="sourceLogin.jsp">Home</a></li>
+	                <li><a href="Courses.jsp">Course</a></li>
+	                <li><a href="sourceLogin.jsp#ourfaq">FAQ</a></li>
+	                
 	            </ul>
 	    	</div>
 	    	<div class="profile">

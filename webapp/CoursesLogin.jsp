@@ -32,7 +32,7 @@ String username=udao.getName(userEmail);
 
 /*header*/
 .header{
-	position:fixed;
+	
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -40,7 +40,7 @@ String username=udao.getName(userEmail);
   	width:100%;
  	padding: 20px;
   	background:#427D9D;
-  	box-shadow: 0px 0px 10px 0px grey;
+  	 box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
 .header b{
@@ -107,47 +107,100 @@ String username=udao.getName(userEmail);
 	margin-right:15px;
 	color:white;
 }
-/*Footer*/
-section a:hover{
-    color:#D0D9FC;
-    text-decoration: none;
-}
-.ss-footer{
-    width:100%;
-    height:30vh;
-    background-color: #111111;
-    padding-right: 30px;
-    color:azure;
-    text-align:left;
-}
-
-a {
-    text-decoration: none;
-    color:#838383;
-    font-size: 4;
+        
+        
+        /*footer */
+footer {
+ 	margin-top:0px;
+    background: #164863;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 0;
+    height:250px;
+    font-size:30px;
 }
 
-.icon{
-    font-size: 30px;
+.footer-container {
     display: flex;
-    flex: wrap;
-    gap: 3rem;
-    margin-left: 600px;
+    justify-content: space-around;
+    padding: 20px 0;
 }
-.footer{
-     font-size: 20px;
-    height: 10vh;
-    display: flex;
-    flex: wrap;
-    gap: 3rem;
-   margin-left: 430px;
-   line-height: 5rem;
+
+.footer-section {
+    width: 30%;
 }
-  
-.footer1{
+
+.footer-section h3 {
+    margin-bottom: 15px;
     font-size: 20px;
-    margin-left: 10px;
-    }
+    color: #fff;
+}
+
+.footer-section p, .footer-section ul {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-section img {
+    margin: 0 10px;
+}
+
+.footer-bottom {
+    background-color: #427D9D;
+    padding: 10px 0;
+    text-align:center;
+    color:white;
+   
+}
+.footer-bottom p {
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.frequentlyclass{
+	background-color:#dfe6fd;
+	padding-top:10px;
+	padding-bottom:100px;
+}
+.contact-us{
+	text-align:left;
+	margin-left:150px;
+}
+.quick-links{
+text-align:left;
+}
+.follow-us{
+text-align:left;
+}
 /*Youtube ka har*/
 .container{
    background-color: #DDF2FD;
@@ -212,26 +265,77 @@ a {
     transform: scale(1.03);
 }
 
-@media (max-width:768px){
-    .container{
-        padding:20px;
-    }
-}
+ @media (max-width:768px){
+            .container{
+                padding:20px;
+            }
+            .accordion {
+                background-color: #444;
+                color: #fff;
+                cursor: pointer;
+                padding: 15px;
+                width: 100%;
+                text-align: left;
+                border: none;
+                outline: none;
+                transition: 0.4s;
+                font-size: 22px;
+                border-radius: 5px;
+            }
+
+            .active, .accordion:hover {
+                background-color: #666;
+            }
+
+            .panel {
+                padding: 0 18px;
+                display: none;
+                background-color: white;
+                overflow: hidden;
+                margin-top: 15px;
+                border-radius: 5px;
+            }
+
+            .panel img {
+                height: 80px;
+                margin-bottom: 15px;
+            }
+
+            .panel p {
+                color:#777;
+                font-size: 15px;
+                line-height: 1.8;
+                margin-bottom: 15px;
+            }
+
+            .panel .btn {
+                background:#333;
+                color:#fff;
+                font-size: 17px;
+                border-radius: 5px;
+                padding: 8px 25px;
+            }
+
+            .panel .btn:hover {
+                letter-spacing: 1px;
+            }
+        }
+        
 </style>
 </head>
 <body>
 	<header class="header">
 	    <div class="logo">     
- <a href="sourceHomeLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+ <a href="sourceLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
 	     </div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
 		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
-	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
-	                <li><a href="Login.jsp">Logout</a></li>
+	            	<li><a href="sourceLogin.jsp">Home</a></li>
+	                <li><a href="#">Course</a></li>
+	                <li><a href="sourceLogin.jsp#ourfaq">FAQ</a></li>
+	                <li><a href="login.jsp">Log Out</a></li>
 	            </ul>
 	    	</div>
 	    	<div class="profile">
@@ -240,7 +344,7 @@ a {
 		    </div>
 	    </div>
 	</header>
-	<div style="height:60px;">---------------</div>
+	
 <div class="container">
     <h1 class="heading" style="color:black;">Our Courses</h1>
 
@@ -305,28 +409,60 @@ a {
     </div>
 
 </div>
-<section class="ss-footer">
-        <br><br><br>
-        <div class="icon">
-        <a href="https://www.google.com/search?q=facebook&oq=facebook&aqs=chrome.0.0i271j46i131i199i433i465i512j69i64j0i67i131i433i650j0i67i650l4.10435j0j15&sourceid=chrome&ie=UTF-8"> <i class="fa-brands fa-facebook" ></i>
-        </a>
-        <a href="https://www.youtube.com">
-        <i class="fa-brands fa-youtube"></i></a>
-        <a href="https://www.google.com/search?q=instagram&sca_esv=564367827&ei=TiX_ZPrYJ4OYseMP_qC4oAM&ved=0ahUKEwj6t42446KBAxUDTGwGHX4QDjQQ4dUDCBA&uact=5&oq=instagram&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWluc3RhZ3JhbTINEAAYigUYsQMYgwEYQzINEAAYigUYsQMYgwEYQzIHEAAYigUYQzIHEAAYigUYQzINEAAYigUYsQMYgwEYQzINEAAYigUYsQMYgwEYQzINEAAYigUYsQMYgwEYQzILEAAYgAQYsQMYgwEyCBAAGIAEGLEDMgsQABiABBixAxiDAUilGVDSBFjFFHABeAGQAQCYAYwBoAHHBaoBAzAuNrgBA8gBAPgBAcICChAAGEcY1gQYsAPCAgoQABiKBRiwAxhDwgIFEAAYgATiAwQYACBBiAYBkAYK&sclient=gws-wiz-serp">
-        <i class="fa-brands fa-instagram"></i></a>
-        <a href="https://twitter.com/">
-        <i class="fa-brands fa-twitter"></i></a>
-        <a href="https://www.google.com/search?q=linkedin&oq=link&aqs=chrome.0.0i67i131i355i433i650j46i67i131i199i433i465i650j69i57j69i64j46i67i131i199i433i465i650j0i67i650l2j0i67i131i433i650.7530j0j15&sourceid=chrome&ie=UTF-8">
-        <i class="fa-brands fa-linkedin"></i></a>
-        </div>
 
-        <div class="footer"><br><br>
-          <p>The world is a book and those who do not learn read only one page.</p>
-        </div>
+       <section class="ss-footer">
 
-        <div class="footer1">
-        <p >Copyright@2024;Designed By Smart Learn</p>
+        <footer>
+        <div class="footer-container">
+            <div class="footer-section contact-us">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:info@example.com">Info@example.com</a></p>
+                <p>Phone: +121 56556 565556</p>
+                <p>Address: Your Address 123 street</p>
+            </div>
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Course</a></li>
+                    <li><a href="#">About Us</a></li> 
+                </ul>
+            </div>
+            <div class="footer-section follow-us">
+                <h3>Follow Us</h3>
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.png" alt="Facebook"></a>
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/twitter--v1.png" alt="Twitter"></a>
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new.png" alt="Instagram"></a>
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/linkedin.png" alt="LinkedIn"></a>
+            </div>
         </div>
-      </section>
+        
+    </footer>
+<div class="footer-bottom">
+            <p>2024 Smart Learn Online Learning. All rights reserved</p>
+        </div>
+      
+   </section>   
+      
+      
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const boxes = document.querySelectorAll('.box');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            boxes.forEach(box => {
+                observer.observe(box);
+            });
+        });
+    </script>
 </body>
 </html>

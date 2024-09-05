@@ -261,11 +261,7 @@ margin-left:900px;
 	    
 	    <div class="header-icons">
 	    	<div class="account">
-		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
-	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
-	            </ul>
+		       
 	    	</div>
 	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>

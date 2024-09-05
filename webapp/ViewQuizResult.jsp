@@ -55,7 +55,7 @@ body {
 }
 /*header*/
 .header{
-	/*position:fixed;*/
+	position:fixed;
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -68,7 +68,7 @@ body {
 }
 
 .header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -189,7 +189,7 @@ color:blue;
 <body>
 <header class="header">
     <div class="logo">
-     <a href="sourceHomeLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a></div>
+     <a href="sourceLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a></div>
     <div class="header-icons">
     	<div class="account">
 	        <i class="fa-solid fa-circle-user"></i>
@@ -197,8 +197,8 @@ color:blue;
     	</div>
     </div>
   </header>
- 
-  <div style="height:60px;"></div>
+  <div style="height:60px;">------------</div>
+   <div style="height:60px;"></div>
 	    <div id="popup" class="container popup">
     	<a href="QuizStudent.jsp" class="close">&times;</a>
     	<div class="text">

@@ -17,7 +17,7 @@ import="java.util.ArrayList" import="model.CourseInstructor"%>
 
 lectureDAO lecturerdao=new lectureDAO();
 List<CourseInstructor> courses = new ArrayList<>();
-courses = lecturerdao.get1("Web Development");
+courses = lecturerdao.get1("Web Dev");
 pageContext.setAttribute("lectd", courses,PageContext.PAGE_SCOPE);
 
 %>
@@ -53,11 +53,10 @@ function loginFirst() {
 body{
 background:#E6E6E6;
 }
-/*header*/
 
 /*header*/
 .header{
-	position:fixed;
+	
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -69,7 +68,7 @@ background:#E6E6E6;
   	color:white;
 }
 .header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -283,15 +282,15 @@ img{
 <!-- Header -->
 	<header class="header">
 	     <div class="logo">
-     <a href="sourceHome.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+     <a href="source.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
      </div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
 		        <ul>
-	            	<li><a href="sourceHome.jsp">Home</a></li>
+	            	<li><a href="source.jsp">Home</a></li>
 	                <li><a href="Courses.jsp">Course</a></li>
-	                <li><a href="sourceHome.jsp#aboutUs">About Us</a></li>
+	                <li><a href="source.jsp#ourfaq">FAQ</a></li>
 	                <li><a href="login.jsp">Login</a></li>
 	            </ul>
 	    	</div>
@@ -300,7 +299,7 @@ img{
 <!-- About Java -->
     <div id="ja">
 	    <div id="javatext">
-	    	<h1>Web Development</h1>
+	    	<h1></h1>
 	    	<p>
 	    		Web Development is the standard markup language used to create and design web pages. It provides a structure for web content by using a system of tags and attributes to define the various elements on a webpage, such as text, images, links, forms, and multimedia.
 	    	</p><br><br>
@@ -316,7 +315,7 @@ try {
     Connection con = DBConnection.openConnection();
     
     // Query to get course IDs for category C#
-    String courseQuery = "SELECT course_id FROM courses WHERE category='Web Development'";
+    String courseQuery = "SELECT course_id FROM courses WHERE category='Web Dev'";
     Statement courseStatement = con.createStatement();
     ResultSet courseResultSet = courseStatement.executeQuery(courseQuery);
 

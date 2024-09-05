@@ -58,7 +58,7 @@ public class LoginController extends HttpServlet {
 					HttpSession session=request.getSession();
 					session.setAttribute("stuEmail", email);
 					session.setAttribute("userEmail", email);
-					dispatcher=request.getRequestDispatcher("sourceHomeLogin.jsp");
+					dispatcher=request.getRequestDispatcher("sourceLogin.jsp");
 					dispatcher.forward(request, response);
 					}
 				else {

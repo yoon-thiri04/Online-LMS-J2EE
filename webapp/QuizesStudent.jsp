@@ -38,18 +38,18 @@ String username=udao.getName(userEmail);
   font-family: Poppins, Helvetica, sans-serif;
 }
 body{
-  background-color: #DDF2FD;
+  background:#DDF2FD;
 }
 /*header*/
 .header{
-	/*position:fixed;*/
+	
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
   	height: 60px;
   	width:100%;
  	padding: 20px;
-  	background:#427D9D;
+  	background: #427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
   	color:white;
 }
@@ -76,6 +76,8 @@ body{
   align-items: center;
   margin-right:10px;
 }
+
+
 .header-icons .account{
 	margin-right:30px;
 }
@@ -134,7 +136,7 @@ display:flex;
     cursor: pointer;
     padding-left:50px;
     padding-top:20px;
-    height:290px;
+    height:320px;
     background:#fff;
     width:880px;
 }
@@ -356,7 +358,7 @@ display: flex;}
 	    
 	    <div class="header-icons">
 	    	
-	    	<div class="prF3F7ECofile">
+	    	<div class="profile">
 		        <a href="student1.jsp"><i class="fa-solid fa-circle-user"></i></a>
 		        <h4><%= username %></h4>
 		    </div>

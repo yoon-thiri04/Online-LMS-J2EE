@@ -54,7 +54,6 @@ background:#E6E6E6;
 
 /*header*/
 .header{
-	position:fixed;
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -66,7 +65,7 @@ background:#E6E6E6;
   	color:white;
 }
 .header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -284,15 +283,15 @@ img{
 <!-- Header -->
 	<header class="header">
 	    <div class="logo">
-	      <a href="sourceHomeLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+	      <a href="sourceLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
 </div>
 	    
 	    <div class="header-icons">
 	    	<div class="account">
 		        <ul>
-	            	<li><a href="sourceHome.jsp">Home</a></li>
+	            	<li><a href="source.jsp">Home</a></li>
 	                <li><a href="Courses.jsp">Course</a></li>
-	                <li><a href="sourceHome.jsp#aboutUs">About Us</a></li>
+	                <li><a href="source.jsp#outfaq">FAQ</a></li>
 	                <li><a href="Login.jsp">Login</a></li>
 	                
 	            </ul>

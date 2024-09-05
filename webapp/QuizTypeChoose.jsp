@@ -55,8 +55,8 @@ body {
 
 /*header*/
 .header{
-	position:fixed;
-  	display: flex;
+position:fixed;
+    display: flex;
   	align-items: center;
   	justify-content: space-between;
   	height: 60px;
@@ -294,7 +294,7 @@ label{
     </div>
     
   </header>
-   <div style="height:60px;"></div>
+   <div style="height:60px;">------------</div>
 	    <div id="popup" class="container popup">
     	<a href="QuizesLecture.jsp" class="close">&times;</a>
     	<div class="text">

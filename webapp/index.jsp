@@ -28,7 +28,7 @@ body{
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
-  	height: 26px;
+  	height: 20px;
  	padding: 20px;
   	background: #427D9D;
   	box-shadow: 0px 0px 10px 0px grey;
@@ -106,7 +106,7 @@ body{
 		float: left;
 		width:50%;
 	    height: 500px;
-	    background: url('pflog.jpg');
+	    background: url('online.avif');
 	    background-size: cover;
 		box-sizing: border-box;
 	}
@@ -179,15 +179,16 @@ body{
 <body>
 	<header class="header">
       <div class="logo">
-        <a href="#"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+        <a href="source.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
       </div>
       
       <div class="header-icons">
         <div class="account">
             <ul>
-                <li><a href="home.jsp">Home</a></li>
-                  <li><a href="course.jsp">Course</a></li>
-                  <li><a href="#">About Us</a></li>
+                <li><a href="source.jsp">Home</a></li>
+                  <li><a href="Course.jsp">Course</a></li>
+                  <li><a href="source.jsp#ourfaq">FAQ</a></li>
+                 
               </ul>
         </div>
       </div>

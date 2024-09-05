@@ -352,6 +352,7 @@ label{
     	</div>
     </div>
   </header>
+ 
  <%
  
  Lect lecture = (Lect)request.getAttribute("lecture");

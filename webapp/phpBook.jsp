@@ -31,6 +31,22 @@ String username=udao.getName(userEmail);
 <title>PHP</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+    <!-- Initialize AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        // Initialize AOS when the page is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000, // Animation duration in milliseconds
+                once: true, // Whether animation should happen only once
+            });
+        });
+    </script>
+
 <script>
 function enroll(course_id) {
     var xhr = new XMLHttpRequest();
@@ -73,7 +89,7 @@ background:#E6E6E6;
 
 /*header*/
 .header{
-	position:fixed;
+	
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -85,7 +101,7 @@ background:#E6E6E6;
   	color:white;
 }
 .header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -301,15 +317,15 @@ img{
 <!-- Header -->
 	<header class="header">
 	    <div class="logo">
-     <a href="sourceHomeLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
+     <a href="sourceLogin.jsp"><b>SmartLearn<i class="fa-solid fa-graduation-cap"></i></b> </a>
      </div>
 	  <div class="header-icons">
 	    	<div class="account">
 		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
+	            	<li><a href="sourceLogin.jsp">Home</a></li>
 	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
-	                <li><a href="login.jsp">Log out</a></li>
+	                <li><a href="sourceLogin.jsp#ourfaq">FAQ</a></li>
+	                <li><a href="login.jsp">Log Out</a></li>
 	            </ul>
 	            
 	    	</div>
@@ -406,68 +422,63 @@ pageContext.setAttribute("enrollExists",enrollExists);
 
 %>
             <div class="grid-container">
-    	<div id="b1" class="grid-item">
-        	<div>
-            	<img src="<%=filename %>" alt="Image">
-	        </div>
-            <div>
-            	<div class="enrollBTN">
-                	<h2 class="title"><%=title %><i class="fa-solid fa-code"></i></h2>
-                	<c:choose>
-                <c:when test="${not enrollExists}">
-                 <div>
-                    	<button  class="viewmaterial" onclick="enroll(<%= courseId %>)" type="button">Enroll</button>
-                    </div>
-                            
-                            </c:when>
-                        <c:otherwise>
+    <div id="b1" class="grid-item" data-aos="fade-up">
+        <div>
+            <img src="<%=filename %>" alt="Image">
+        </div>
+        <div>
+            <div class="enrollBTN">
+                <h2 class="title"><%=title %><i class="fa-solid fa-code"></i></h2>
+                <c:choose>
+                    <c:when test="${not enrollExists}">
                         <div>
-                    	<button  class="viewmaterial" onclick="view(<%= courseId %>)" type="button">View</button>
-                    </div>
-                        
-                         </c:otherwise>
-                         </c:choose>
-                   
-                </div>
-			<div style="margin-left:0px;margin-right:40px;width:880px;">
+                            <button class="viewmaterial" onclick="enroll(<%= courseId %>)" type="button">Enroll</button>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div>
+                            <button class="viewmaterial" onclick="view(<%= courseId %>)" type="button">View</button>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <div style="margin-left:0px;margin-right:40px;width:880px;">
                 <div style="display:flex;">
-	                <table class="table1">
-	                	<tr>
-	                    	<td class="table1firstcol"><b>Instructor</b></td>
-	                        <td class="2nd"><%=lectureName %></td>
-	                    </tr>
-	                    <tr>
-	                 		<td class="table2firstcol"><b>Level</b></td>
-	                    	<td class="2nd" ><%=level %></td>
-	                    </tr>
-	                    <tr>
-	                 		<td class="table2firstcol"><b>Start Date</b></td>
-	                    	<td class="2nd" ><%=start_date%></td>
-	                    </tr>
-	                	<tr>
-	                    	<td class="table1firstcol"><b>Enroll Deadline</b></td>
-	                    	<td class="2nd" ><%=enroll_deadline%></td>
-	                 	</tr>
-	                 	<tr>
-	                 	<td class="table2firstcol"><b>Duration</b></td>	                 		
-	                        <td class="2nd" ><%=duration%></td>
-	                    </tr>
-	                 	
-	                 </table >
-	                 <div style="width:700px;">
-		             	<table class="table2">
-		          	        <tr>
-		                 		<td class="table2firstcol" style="display:flex;"><b>Description</b></td>
-		                    	<td class="22nd" style="line-height:1.5;text-align:justify;"><%=description%></td>
-		                    </tr>
-		                </table>
-		                </div>
-		                </div>
-                 
-			</div>
-			</div>
-			</div>
-			</div>
+                    <table class="table1">
+                        <tr>
+                            <td class="table1firstcol"><b>Instructor</b></td>
+                            <td class="2nd"><%=lectureName %></td>
+                        </tr>
+                        <tr>
+                            <td class="table2firstcol"><b>Level</b></td>
+                            <td class="2nd" ><%=level %></td>
+                        </tr>
+                        <tr>
+                            <td class="table2firstcol"><b>Start Date</b></td>
+                            <td class="2nd" ><%=start_date%></td>
+                        </tr>
+                        <tr>
+                            <td class="table1firstcol"><b>Enroll Deadline</b></td>
+                            <td class="2nd" ><%=enroll_deadline%></td>
+                        </tr>
+                        <tr>
+                            <td class="table2firstcol"><b>Duration</b></td>
+                            <td class="2nd" ><%=duration%></td>
+                        </tr>
+                    </table>
+                    <div style="width:700px;">
+                        <table class="table2">
+                            <tr>
+                                <td class="table2firstcol" style="display:flex;"><b>Description</b></td>
+                                <td class="22nd" style="line-height:1.5;text-align:justify;"><%=description%></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                    <%
             }
         }

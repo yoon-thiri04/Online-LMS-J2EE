@@ -4,9 +4,10 @@
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8">
-    <title>Home page</title> 
+    <title>Smart Learn</title> 
     <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
     <style>
     	@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 *
@@ -17,20 +18,31 @@
   font-family: Poppins, Helvetica, sans-serif;
  
 }
+/*body{
+	background-color:#dfe6fd;
+}*/
+
 a {
     text-decoration: none;
     color: inherit;
 }
-
-.container {
-    width: 95%;
-    margin: 0 auto;
-    margin-top:-3px; 
+.form {
+    margin-top: 30px;
+    max-width: 1300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 2px 6px 0;
+    z-index: 100;
+    overflow: hidden;
+    display: grid;
+    height: 590px;
+    grid-template-columns: 500px 600px;
+    gap: 200px;
+    margin-left: 100px;
 }
-
 /*header*/
 .header{
-	position:fixed;
+	
   	display: flex;
   	align-items: center;
   	justify-content: space-between;
@@ -42,7 +54,7 @@ a {
   	color:white;
 }
 .header b{
-  font-size:39px;
+  font-size:37px;
   color:white;
   font-family: 'Amatic SC', cursive;
 }
@@ -56,6 +68,7 @@ a {
   color: #000;
   font-size: 18px;
   font-weight: 600;
+ 
 }
 
 .header-icons{
@@ -104,11 +117,12 @@ a {
 	margin-right:15px;
 	color:white;
 }
+
 .content
 {
   position: relative;
   width: 100%;
-  height: 90.5vh;
+  height: 92.5vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,19 +138,21 @@ a {
 .content .textBox h2
 {
   color: #333;
-  font-size: 4em;
+  font-size: 5em;
   line-height: 1.4em;
   font-weight: 500;
 }
-.content .textBox h2 span
+.content .textBox h1 span
 {
   color: #164863;
-  font-size: 1.2em;
-  font-weight: 900;
+  font-size: 53px;
+  font-weight: 1000;
+   font-family: 'Amatic SC', cursive;
 }
 .content .textBox p 
 {
   text-align: justify;
+   font-size: 16px;
   color: #333;
 }
 .content .textBox a 
@@ -161,7 +177,7 @@ a {
 }
 .content .imgBox img
 {
-  max-width: 500px;
+  max-width: 600px;
 }
 .thumb
 {
@@ -198,9 +214,6 @@ a {
   background: #164863;
   clip-path: circle(600px at right 800px);
 }
-
-
-
 
 /* Hero Section */
 #hero {
@@ -240,37 +253,8 @@ a {
 .cta:hover {
     background: #a97d56;
 }
-/*frequently ask and about*/
-.about-us{
-  display:flex;
-  align-items:center;
-  width:85%;
-  margin:auto;
-}
 
-.about-us img{
-  flex:0 50%;
-  max-width:20%;
-  height:auto;
-}
 
-.about{
-  padding-left:35px;
-  padding-right:35px;
-}
-.aboutheading{
-	text-align:center;
-	margin-top:25px;
-	font-size: 1.7em;
-    color: white;
-}
-.about p{
-  color:white;
-  font-size:20px;
-  line-height:1.5;
-  text-align:justify;
-  margin-top:20px;
-}
 
 .read-more-btn{
   display:inline-block;
@@ -324,7 +308,7 @@ a {
 
 .pannel p {
     color: rgba(0, 0, 0, 0.7);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     line-height: 1.4;
 }
 
@@ -332,7 +316,8 @@ a {
     border: 1px solid rgba(0, 0, 0, 0.2);
     margin: 10px 0;
     margin-left:50px;
-    width:600px;
+    width:550px;
+    
 }
 
 .faq.active {
@@ -340,8 +325,8 @@ a {
 }
 
 .form {
-	margin-top: 100px;
-    max-width: 1300px;
+	margin-top: 250px;
+    max-width: 1200px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow:  rgba(0, 0, 0, 0.5 ) 0 2px 6px 0;
@@ -351,16 +336,14 @@ a {
   	height:590px;
 	grid-template-columns:500px 600px;
 	gap:200px;
-	margin-left:100px;
+	margin-left:160px;
 }
 
 .contact-form {
-    background: hsla(191, 75%, 60%, 1);
-	background: linear-gradient(90deg, hsla(191, 75%, 60%, 1) 0%, hsla(248, 87%, 36%, 1) 100%);
-	background: -moz-linear-gradient(90deg, hsla(191, 75%, 60%, 1) 0%, hsla(248, 87%, 36%, 1) 100%);
-	background: -webkit-linear-gradient(90deg, hsla(191, 75%, 60%, 1) 0%, hsla(248, 87%, 36%, 1) 100%);
-	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#4DC9E6", endColorstr="#210CAE", GradientType=1 );
-}  
+    background: url('faqme.png');
+	background-size:500px 600px;
+	background-repeat:no-repeat;
+	}  
 .circle {
     border-radius: 50%;
     background: linear-gradient(135deg, transparent 20%,#5089FD );
@@ -409,7 +392,13 @@ background: #dfe6fd;
         	margin-top: 30px;
         	margin-bottom:30px;
         }
-
+        .ffaq {
+   font-size:3em;
+        	margin-top: 20px;
+        	margin-bottom:20px;
+    
+}
+        
         .boxcontainer {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -419,7 +408,7 @@ background: #dfe6fd;
         }
 
         .box {
-        	height: 250px;
+        	height: 300px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -458,8 +447,6 @@ background: #dfe6fd;
             transform: translateY(0);
         }
 /*frequently*/
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
 
 .wrapper {
     width:500px;
@@ -505,18 +492,19 @@ background: #dfe6fd;
 /*footer */
 footer {
  	margin-top:0px;
-    background: #4C3BCF;
+    background:#427D9D;
     color: #fff;
-    padding: 0px 0;
+    padding: 10px 0;
     text-align: center;
     margin-bottom: 0;
+    height:250px;
+    font-size:30px;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-around;
     padding: 20px 0;
-    
 }
 
 .footer-section {
@@ -525,13 +513,13 @@ footer {
 
 .footer-section h3 {
     margin-bottom: 15px;
-    font-size: 18px;
+    font-size: 20px;
     color: #fff;
 }
 
 .footer-section p, .footer-section ul {
-    margin: 5px 0;
-    font-size: 14px;
+    margin: 10px 0;
+    font-size: 16px;
     line-height: 1.6;
 }
 
@@ -541,7 +529,7 @@ footer {
 }
 
 .footer-section ul li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .footer-section ul li a {
@@ -567,28 +555,68 @@ footer {
 }
 
 .footer-bottom {
-    background-color: #000080;
+    background-color: #164863;
     padding: 10px 0;
-    margin: 0;
-    margin-top: auto;
-    
+    text-align:center;
+    color:white;
+   
 }
-
 .footer-bottom p {
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 0;
-    
 }
+
 .frequentlyclass{
 	background-color:#dfe6fd;
 	padding-top:10px;
 	padding-bottom:100px;
 }
+.contact-us{
+	text-align:left;
+	margin-left:150px;
+}
+.quick-links{
+text-align:left;
+}
+.follow-us{
+text-align:left;
+}
 
 
 
-    </style>
+/* Add animation classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add styles for accordion to ensure smooth transitions */
+.accordion {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accordion.active, .accordion:hover {
+  background-color: #f1f1f1;
+}
+
+.pannel {
+  display: none;
+  overflow: hidden;
+}
+
+.pannel.show {
+  display: block;
+}
+
+</style>
 </head> 
 <body> 
     <section>
@@ -600,67 +628,73 @@ footer {
     <div class="header-icons">
 	    	<div class="account">
 		        <ul>
-	            	<li><a href="sourceHomeLogin.jsp">Home</a></li>
-	                <li><a href="CoursesLogin.jsp">Course</a></li>
-	                <li><a href="sourceHomeLogin.jsp#aboutUs">About Us</a></li>
+	            	<li><a href="source.jsp">Home</a></li>
+	                <li><a href="Courses.jsp">Course</a></li>
+	                <li><a href="source.jsp#ourfaq">FAQ</a></li>
 	                <li><a href="login.jsp">Login</a></li>
 	            </ul>
+	            
 	    	</div>
 	    	
 	    </div>
 	</header>
-
-  
-    
+      
     
         <div class="content">
        
             <div class="textBox">
-                <h2>It's not just Coffee<br>It's <span>Starbucks</span></h2>
-                <p>Starbucks Corporation is an American multinational chain of coffeehouses and roastery reserves headquartered in Seattle, Washington. It was founded in 1971, and is currently the world's largest coffeehouse chain.As of November 2022, the company had 35,711 stores in 80 countries, 15,873 of which were located in the United States. Of Starbucks' U.S.-based stores, over 8,900 are company-operated, while the remainder are licensed</p>
-                <a href="#">Learn More</a>
+                <h1>It's not just online learning<br>It's  <span> SmartLearn<i class="fa-solid fa-graduation-cap"></i></span></h1>
+                <p>Welcome to Smart Learn, your go-to online learning platform designed to empower learners of all ages. At Smart Learn, we believe in making education accessible, engaging, and effective. Whether you're looking to expand your knowledge, gain new skills, or advance in your career, our diverse range of courses and expert instructors are here to guide you every step of the way. 
+                Join us today and start your journey to smarter learning!
+                <a href="#featured-products">Learn More</a>
             </div>
             <div class="imgBox">
-                <img src="home1.png" class="starbucks">
+                <img src="tree.png" class="starbucks">
             </div>
         </div>
        
        
     </section> 
 
+   
+
 
     <section id="featured-products">
         <h1 class="review">Review</h1>
     <div class="boxcontainer">
         <div class="box">
-            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Person 1">
-            <h3>Box Title 1</h3>
-            <p>Description for box 1. This is a brief summary of what this box represents.</p>
+            <img src="avatar.jpeg" alt="Person 1">
+            <h3>Alex Smith</h3>
+            <p>The program is extremely good, it is exactly what I required in my developers journey. It is very hands on 
+        and the perfect experience for someone</p>
         </div>
         <div class="box">
-            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Person 2">
-            <h3>Box Title 2</h3>
-            <p>Description for box 2. This is a brief summary of what this box represents.</p>
+            <img src="avatar.jpeg" alt="Person 2">
+            <h3>Ben</h3>
+            <p>Very well put together and clear.  I actually used Project 1 for a real world 2023 strategy.</p>
         </div>
         <div class="box">
-            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Person 3">
-            <h3>Box Title 3</h3>
-            <p>Description for box 3. This is a brief summary of what this box represents.</p>
+            <img src="avatar.jpeg" alt="Person 3">
+            <h3>Mahmoud</h3>
+            <p>Amazing, I was thinking "it's a tough topic" to learn, but the way the course materials and the exercises.</p>
         </div>
         <div class="box">
-            <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Person 4">
-            <h3>Box Title 4</h3>
-            <p>Description for box 4. This is a brief summary of what this box represents.</p>
+            <img src="avatar.jpeg" alt="Person 4">
+            <h3>Matthew</h3>
+            <p>It's been great so far.Though there were moments when it all seemed overwhelming, I kept moving and I'm 
+        glad I finished the first project.</p>
         </div>
         <div class="box">
-            <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="Person 5">
-            <h3>Box Title 5</h3>
-            <p>Description for box 5. This is a brief summary of what this box represents.</p>
+            <img src="avatar.jpeg" alt="Person 5">
+            <h3>Matt Mahood</h3>
+            <p>The program is extremely good, it is exactly what I required in my developers journey. It is very hands on 
+        and the perfect experience for someone</p>
         </div>
         <div class="box">
-            <img src="https://randomuser.me/api/portraits/women/6.jpg" alt="Person 6">
-            <h3>Box Title 6</h3>
-            <p>Description for box 6. This is a brief summary of what this box represents.</p>
+            <img src="avatar.jpeg" alt="Person 6">
+            <h3>Amr</h3>
+            <p>Amazing, I was thinking "it's a tough topic" to learn, but the way the course materials and the exercises
+        </p>
         </div>
     </div>
 
@@ -681,80 +715,108 @@ footer {
         });
     </script>
     </section>
-   <div class="frequentlyclass">
+    <div id="ourfaq">
+  <div class="frequentlyclass">
     <section id="frequently">
-    	<div class="form">
-      		<div class="wrapper">
-        		 <div class="headingfrq">
-	    			<h1>Fequently Asked Questions</h1>
-	  			</div>
-        			<div class="faq">
-              			<button class="accordion">
-                 			 What are the technology requirements to take an online course?
-                			<i class="fa-solid fa-chevron-down"></i>
-              			</button>
-             			 <div class="pannel">
-                 			 <p> You will need a computer, a high speed Internet connection, a newer version of a web browser, and access to common
-                     			tools and software like word processors, email, etc.
-            				 </p>
-              			</div>
-            		</div>
-            		<div class="faq">
-              			<button class="accordion">
-                  			Can I find out more about these courses?
-                			<i class="fa-solid fa-chevron-down"></i>
-             		   </button>
-              			<div class="pannel">
-                  		<p>The courses are detailed in the course offerings. For further information, please contact Online Learning.</p>
-                   		</div>
-       				 </div>
-        			<div class="faq">
-          				<button class="accordion">
-            				How do I contact my course instructor?
-            			<i class="fa-solid fa-chevron-down"></i>
-          				 </button>
-         				 <div class="pannel">
-            				<p> Instructors stay in touch with their Online Learning students in a variety of ways, depending on the course design.Your instructor will explain the best way to reach him or her within the course home pages.</p>
-            			 </div>
-        			</div>
-        			<div class="faq">
-           				<button class="accordion">
-            					How old do I have to be to take an online class?
-         						 <i class="fa-solid fa-chevron-down"></i>
-          				</button>
-          				<div class="pannel">
-            			<p> You must be at least a high school sophomore, junior, or senior.</p>
-              			</div>
-            		</div>
-					<div class="faq">
-              				<button class="accordion">
-                  				How do I enroll and register?
-               				 <i class="fa-solid fa-chevron-down"></i>
-              				</button>
-              				<div class="pannel">
-                  				<p> If you are a high school student, see the online courses page on the Precollege Studies website. Otherwise please  visit the registration page. </p>
-                  			</div>
-            		</div>
-			</div>
-			
-			<div class="contact-form">
-	            <div class="aboutheading">
-	    			<h1>About Us</h1>
-	  			</div>
-				<div class="about">
-	      			<p>
-	       				 Welcome to our online learning system, where knowledge meets innovation. At our platform, we are 
-	            		  dedicated to revolutionizing education by providing a dynamic and accessible learning environment for all. 
-	             		 Whether you're a student seeking to expand your horizons or a professional aiming to enhance your skills, 
-	             		 we offer a diverse range of courses tailored to meet your needs. With cutting-edge technology and expert 
-	             		 instructors, we empower learners to thrive in an ever-evolving world. Join us on a journey of discovery, 
-	             		 where learning knows no bounds.
-	      			</p>
-	    		</div>
-			</div>   
-    	</div>
-   
+      <h1 class="ffaq fade-in" style="text-align:center;">Our FAQs</h1>
+      <div class="form" style="margin-top:25px;">
+        <div class="wrapper">
+          <div class="headingfrq fade-in">
+            <h2>Frequently Asked Questions</h2>
+          </div>
+          <div class="faq fade-in">
+            <button class="accordion">
+              What are the technology requirements to take an online course?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+              <p>You will need a computer, a high speed Internet connection, a newer version of a web browser, and access to common tools and software like word processors, email, etc.</p>
+            </div>
+          </div>
+          <div class="faq fade-in">
+            <button class="accordion">
+              Can I find out more about these courses?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+              <p>The courses are detailed in the course offerings. For further information, please contact Online Learning.</p>
+            </div>
+          </div>
+          <div class="faq fade-in">
+            <button class="accordion">
+              How do I contact my course instructor?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+              <p>Instructors stay in touch with their Online Learning students in a variety of ways, depending on the course design. Your instructor will explain the best way to reach him or her within the course home pages.</p>
+            </div>
+          </div>
+          <div class="faq fade-in">
+            <button class="accordion">
+              How old do I have to be to take an online class?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+              <p>You must be at least a high school sophomore, junior, or senior.</p>
+            </div>
+          </div>
+          <div class="faq fade-in">
+            <button class="accordion">
+              How do I enroll and register?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+              <p>If you are a high school student, see the online courses page on the Precollege Studies website. Otherwise please visit the registration page.</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+    	
+    </section>
     </div>
+    </div>
+    
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Create an Intersection Observer instance
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Target elements to observe
+  const fadeElements = document.querySelectorAll('.fade-in');
+  fadeElements.forEach(el => observer.observe(el));
+
+  // Accordion functionality
+  document.querySelectorAll('.accordion').forEach(button => {
+    button.addEventListener('click', () => {
+      button.classList.toggle('active');
+      const panel = button.nextElementSibling;
+      if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+      } else {
+        panel.style.display = 'block';
+      }
+    });
+  });
+});
+</script>
+    
+    
+    
+    
+    
     <script>
             var acc = document.getElementsByClassName("accordion");
             var i;
@@ -778,16 +840,16 @@ footer {
         <div class="footer-container">
             <div class="footer-section contact-us">
                 <h3>Contact Us</h3>
-                <p>Email: <a href="mailto:info@example.com">Info@example.com</a></p>
+                <p>Email: <a href="mailto:yoonthiriaung04@gmail.com">smartlearn2024@gmail.com</a></p>
                 <p>Phone: +121 56556 565556</p>
-                <p>Address: Your Address 123 street</p>
+                <p>Address: Yangon, Myanamr</p>
             </div>
             <div class="footer-section quick-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Course</a></li>
-                    <li><a href="#">About Us</a></li> 
+                    <li><a href="source.jsp">Home</a></li>
+                    <li><a href="Courses.jsp">Course</a></li>
+                    <li><a href="source.jsp#ourfaq">FAQ</a></li> 
                 </ul>
             </div>
             <div class="footer-section follow-us">
@@ -798,11 +860,11 @@ footer {
                 <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/linkedin.png" alt="LinkedIn"></a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2024 Smart Learn Online Learning. All rights reserved</p>
-        </div>
+        
     </footer>
-    
+    <div class="footer-bottom">
+            <p>2024 Smart Learn Online Learning. All rights reserved</p>
+        </div>
 </body>
 
 <script>

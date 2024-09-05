@@ -273,8 +273,7 @@ table, th, td{
     	</div>
     </div>
   </header>
- 
-  <div style="height:60px;">------------</div>
+<div style="height:60px;">---------------</div>
   <div class="sidebar">
 	    	<ul>
 				<li><a href="Admin.jsp"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
@@ -284,7 +283,6 @@ table, th, td{
 				<li><a href="login.jsp"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
 			</ul>
 		</div>
-		
 	<div id="title">
 		<h2>Courses</h2>
 		<div id="Addbtn">

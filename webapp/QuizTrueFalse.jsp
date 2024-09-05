@@ -282,7 +282,7 @@ label{
     </div>
     
   </header>
-   <div style="height:60px;"></div>
+   <div style="height:60px;">------------</div>
 	    <div id="popup" class="container popup">
 	    <%if(action!=null && action.equalsIgnoreCase("Edit")){ %>
 	     <a href = "${pageContext.request.contextPath}/QuizLectureController?action=View&id=<%=id  %>" class="close">
