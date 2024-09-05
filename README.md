@@ -194,18 +194,5 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 - !! **Admin Design -> Lecture, list, Running course**
 - !! Change Pwd Btn
 - !! Quiz - Timer
-- !! Profile Card Student **Done**
-- !! Font size, color **In Progress**
-- !! Log out button 
-- !! Profile Card Student => Login , Change Pwd **Done**
-- !! Change design of the course for each Course
-- !! Animations 
-- !! Design material, assignment, quiz, **Done**
-- !! Design for register, student, LIst **Done**
-- !! Course background images
-- !! Result and review Design **Done**
-- !! Login page **Done** 
-- !! Home page **Mandatory**
-- !! Hsu Wai Linn **Data Lecturer and course**
 - !!! Empty state Ui
 
