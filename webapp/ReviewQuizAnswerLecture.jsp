@@ -122,7 +122,7 @@ font-size:18px;
     cursor: pointer;
     padding-left:50px;
     padding-top:15px;
-    height:300px;
+    height:320px;
     width:880px;
     background:#fff;
 }

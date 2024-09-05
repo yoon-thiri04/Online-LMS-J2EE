@@ -215,6 +215,9 @@ margin-bottom:10px;
             	<div class="error-message1">${requestScope.notMatch}</div>
      		</c:if>
 						<input type="submit" name="submit" value="Change">
+						<div class="register-link">
+        					<p> <a href="javascript:history.back()">Back</a></p>
+      					</div>
 					</form>
 				</div>
 			</div>

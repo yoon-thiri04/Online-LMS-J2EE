@@ -580,8 +580,8 @@ text-align:left;
 }
 
 
+/*
 
-/* Add animation classes */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -610,7 +610,7 @@ text-align:left;
 
 .pannel.show {
   display: block;
-}
+}*/
 </style>
 </head> 
 <body> 
@@ -779,7 +779,7 @@ text-align:left;
     </div>
     </div>
    
-    <script>
+  <!--    <script>
 document.addEventListener("DOMContentLoaded", function() {
   // Create an Intersection Observer instance
   const observer = new IntersectionObserver((entries) => {
@@ -811,7 +811,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
     
-    
+   --> 
     
     
     
