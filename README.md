@@ -189,10 +189,8 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 
 ## Project Features to Add:
 
-- !!!!!!! Password check
-- !! **Primary Color and Logo**
-- !! **Admin Design -> Lecture, list, Running course**
-- !! Change Pwd Btn
+- !!!!!!! Password che
 - !! Quiz - Timer
-- !!! Empty state Ui
+
+### I couldn't do well on my project show 05.9.24
 
