@@ -17,7 +17,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 ---
 ### Instructor
 **Default Login Credentials:** Provided by Admin.
-- Initially Default Password: lect@123!
+- Initially Login with Default Password: lect@123! , then change custom password later
 
 **Capabilities:**
 - Upload course materials (any file type, including .java, .pptx, .mp4, etc.).
