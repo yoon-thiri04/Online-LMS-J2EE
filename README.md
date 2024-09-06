@@ -189,7 +189,7 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 
 ## Project Features to Add:
 
-- !!!!!!! Password che
+- !!!!!!! Password check
 - !! Quiz - Timer
 - !! Assignment Deadline
 - !! Certification
