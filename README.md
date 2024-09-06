@@ -191,4 +191,5 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 
 - !!!!!!! Password che
 - !! Quiz - Timer
-- !! Assignment Deadline 
+- !! Assignment Deadline
+- !! Certification
