@@ -7,27 +7,25 @@ This Online Learning Management System (LMS) supports four user roles: Admin, Re
 
 ### Admin
 **Default Login:**
-- Username: Admin
+- Email: admin123@gmail.com
 - Password: admin@123!
 
 **Capabilities:**
 - Add courses.
 - Assign instructors to courses (default password: lect@123!).
 - View and manage registered users, courses, and instructors (both total counts and detailed lists).
-- Change password.
 ---
 ### Instructor
 **Default Login Credentials:** Provided by Admin.
-- Default Password: lect@123!
+- Initially Default Password: lect@123!
 
 **Capabilities:**
 - Upload course materials (any file type, including .java, .pptx, .mp4, etc.).
-- Enter material types (Assignment, Lecture Book, etc.).
-- Create quizzes (future update).
+- Create Assignment.
+- Create quizzes.
 - Provide Announcements.
-- Score assignments submitted by enrolled students.
+- View and Score assignments submitted by enrolled students.
 - Change password.
-- Create and manage quizzes.
 - View each student's Quiz Result inculding Started and Ended Datetime,Time taken,etc..
 - Also be able to review each enrolled Student's quiz answers.
 ---
