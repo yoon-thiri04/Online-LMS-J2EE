@@ -1,13 +1,7 @@
 package controller;
-
 import java.io.*;
-
-
-
-
 import javax.servlet.*;
 import javax.servlet.http.*;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
